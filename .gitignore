@@ -30,7 +30,7 @@
 *-blx.bib
 *.run.xml
 
-## Build tool auxiliary files:
+## Build tool auxiliary files: d
 *.fdb_latexmk
 *.synctex
 *.synctex(busy)
