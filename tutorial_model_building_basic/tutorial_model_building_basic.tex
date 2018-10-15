@@ -31,6 +31,7 @@
 \usepackage{marginnote}
 \usepackage{soul}
 \usepackage[toc,page]{appendix}
+\usepackage{caption}
 \sethlcolor{yellow}
 
 %\renewcommand{\hl}[1]{#1}
@@ -102,7 +103,7 @@ Density for amino acid side chains from an experimental electron density map at 
 \begin{flushright}
  \large
 %\emph{Author:}\\
-  \textsc{Roberto Marabini} % Your name
+  \textsc{Roberto Marabini AND Marta Martínez} % Your name
 \end{flushright}
 %\end{minipage}
 
@@ -115,7 +116,7 @@ Density for amino acid side chains from an experimental electron density map at 
 
 
 \subsection*{Intended audience}
-The recent rapid development of single-particle electron cryo-microscopy (cryo-EM) now allows structures to be solved by this method at resolutions close to 3\AA.  This tutorial provides an introduction to model building for cryo-RM data. %tomography in  electron microscopy with special emphasis in basic image processing. The tutorial requires matlab but does not assume any programing skills. 
+The recent rapid development of single-particle electron cryo-microscopy (cryo-EM) allows structures to be solved by this method at resolutions close to 3\AA.  Providing a basic introduction to model building, this tutorial shows the initial workflow aimed at obtaining high-quality atomic models from cryo-EM data by using Scipion software framework. %tomography in  electron microscopy with special emphasis in basic image processing. The tutorial requires matlab but does not assume any programing skills. 
 
 
 \subsection*{We'd like to hear from you}
@@ -130,7 +131,7 @@ future editions, by writing to
 
 \subsection*{Requirements}
 
-This tutorial requires, in addition to $Scipion$,  the \textit{CCP4 suite} including $refmac$ and $coot$ as well as $USCF Chimera$. Basic knowledge of USCF Chimera and $Scipion$ is assumed. Warning: all versions of $refmac$ are not suitable for EM data.
+This tutorial requires, in addition to $Scipion$,  the \textit{CCP4 suite} including $refmac$ and $coot$, the \textit{PHENIX suite} and $USCF Chimera$. Basic knowledge of $USCF Chimera$ and $Scipion$ is assumed. Warning: all versions of $refmac$ are not suitable for EM data.
 
 \newpage
 
@@ -144,31 +145,53 @@ This tutorial requires, in addition to $Scipion$,  the \textit{CCP4 suite} inclu
 \newpage % Begins on a new page instead of on the same page as the table of contents
 
 
-\section{Introduction}
+\section{Introduction to Model building}
 
 \begin{itemize}
- \item comment on resolution
- \item show full workflow and comment on sub-workflow to b covered
- \item describe model building
-\end{itemize}
+ \item Definition:\\Model building is the process that allows getting the atomic interpretation of a electron density map. Although a electron density volume can be obtained from different methodologies, in this $Scipion$ tutorial we focus in maps obtained by cryo-EM. As an example of these maps, Fig. 1 details the input electron density volume (a), as well as the output hemoglobin tetramer atomic model (b) obtained by the model building process. Since high quality atomic structures are essential to accomplish detailed mechanistic studies and to seek inhibitor drugs of macromolecules, the main aim of model building is obtaining reliable structures of these macromolecules. 
+ 
 
-\section{Particular problem to be solved}
-Describe the data and workflow to be used in this tutorial 
-
- \begin{figure}[H]
+\begin{figure}[H]
  \centering
- \includegraphics[width=0.7\textwidth]
- {{Images/adeno_scheme}.png}
- \caption{Image example}
- \label{fig:adeno_scheme}
- \end{figure} 
-kk
+ \captionsetup{width=.8\linewidth}  \includegraphics[width=0.6\textwidth]
+  {{Images/Fig1}.png}
+  \caption{Hemoglobin tetramer (Danev and Baumeister, 2016). a) Electron density map at 3.2\AA\ resolution obtained by Cryo-EM single particle analysis with Volta phase plate. b) Atomic structure model inferred from the electron density volume.}
+  \label{fig:model_building_example}
+  \end{figure} 
+ 
+
+\item Relevance of cryo-EM map resolution:\\Model building process is extraordinarily limited by the resolution of the starting cryo-EM density map. The lower the resolution, the more detailed and reliable atomic structure will be obtained. Fortunately, single-particle cryo-EM is undergoing in this decade a resolution revolution that has allowed the structures of macromolecules to be solved at near-atomic resolution. The density map is thus sufficiently resolved to build the atomic model. As a general rule, at resolutions of 4.5\AA\ the molecule backbone can be inferred based on the map alone, and resolutions lower than 4\AA\ allow to trace some residue side chains. 
+ \item Model building workflow:\\The set of succesive tasks aimed to get the atomic interpretation of electron density maps are kown as model building workflow. Main steps names of this general workflow are detailed top-to-bottom in Fig. 2. Taks' names and tools required are highlighted in green in the left side of the Fig. In short, this workflow considers as input the lower asymmetrical element (unit cell) of the starting volume and the sequence of each individual structural element (from 1 to n). These sequences are used to get the initial models, $de novo$ or by prediction based in homologous structures. Initial model of each individual structural element has to be fitted to the unit cell volume, and then refined accordig to the its fitted volume. Since the double refinement in real and reciprocal spaces seems to improve protein models (Brown $et al.$, 2015; Tools for macromolecular model building and refinement into electron cryo-microscopy reconstructions), these two steps of refinement are included in the workflow. Once refined, the geometry of each individual structure has to be validated regarding the starting volume. The last two steps of refinement and validation will be applied globally to the whole set of structures contained in that volume to avoid forbidden steric overlaps among them. In the reconstruction of the whole volume, borders between adjacent unit cells will be checked in this same way. 
+ 
+ In this basic tutorial of model building we are considering every step of the general workflow, except the $de novo$ modeling step because the appropriate tools to accomplish this type of modeling are not still implemented in $Scipion$. 
+ 
+\begin{figure}[H]
+ \centering
+ \includegraphics[width=0.95\textwidth]
+  {{Images/Fig2}.png}
+  \caption{General Model Building Workflow.}
+  \label{fig:model_building_workflow}
+  \end{figure} 
+  
+\end{itemize}  
+
+\section{Particular problem to be solved: Hemoglobin}
+Due to the basic nature of this tutorial, the small Hemoglobin macromolecule (~64 KDa) has been selected to model its atomic structure. 
+
+The metalloprotein Hemoglobin is the iron-containing protein able to transport oxygen, essential to get energy from aerobic metabolic reactions, through the red blood cells of almost every vertebrate. The first atomic structure of hemoglobin was determined in 1959 by X-ray crystallography (Perutz $et al.$, 1960; Structure of haemoglobin: a three-dimensional Fourier synthesis at 5.5-\AA\ resolution, obtained by X-ray analysis).
+
 \begin{appendices}
-\section{Some Appendix}
+\section{Input volume protocol}
+
+\section{Input pdb protocol}
+
+
 \marginnote{swissmodel}[1cm]
 When predicting by homology a structure is constructed by aligning a target protein sequence with known template structures. The protein sequence can be obtained from many sources, for example NCBI or UniProt. The quality of a structure depends upon the similarity between the target sequence and the database sharing highest similarity is aligned. 
 
 Esto es otro parrafo
+
+
 \end{appendices}
 
 \end{document}
