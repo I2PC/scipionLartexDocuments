@@ -8,11 +8,12 @@
 %	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
 %----------------------------------------------------------------------------------------
 
-\documentclass[12pt]{article} % Default font size is 12pt, it can be changed here
+\documentclass[12pt, draft]{article} % Default font size is 12pt, it can be changed here
 \usepackage[english]{babel}
 \usepackage[utf8]{inputenc}
 \usepackage{listings} % To include source code
 \usepackage{caption}
+\usepackage[htt]{hyphenat}
 \usepackage{geometry} % Required to change the page size to A4
 %\geometry{a4paper} % Set the page size to be A4 as opposed to the default US Letter
 \usepackage{framed}
@@ -32,6 +33,16 @@
 \usepackage{soul}
 \usepackage[toc,page]{appendix}
 \usepackage{caption}
+\usepackage{menukeys}
+\usepackage{fancybox,framed}
+\usepackage{xspace}
+\usepackage{rotating}
+\def\scipion{\textit{Scipion}\xspace}
+\newcommand{\ffigure}[1]{{Fig. {\ref{#1}}}\xspace}
+\newcommand{\ttable}[1]{{Table. {\ref{#1}}}\xspace}
+\newcommand{\scommand}[1]{{{\keys{#1}}}\xspace}
+\newcommand{\ccmask}{CC\textsubscript{MASK}\xspace}
+
 \sethlcolor{yellow}
 
 %\renewcommand{\hl}[1]{#1}
@@ -39,7 +50,7 @@
 %pdflatex -jobname=teachers '\def\teachers{}\input{main}'
 %  \ifdef{\teachers}
 %  {Content for teachers}
-%  {Content for students}
+%  {Content for students} 
 \newcommand{\ttt}[1]{\texttt{#1}}
 \newcommand{\iii}[1]{\textit{#1}}
 \newcommand{\ra}{$\rightarrow$}
@@ -54,7 +65,6 @@
 
 %\setlength\parindent{0pt} % Uncomment to remove all indentation from paragraphs
 
-\newcommand{\scipion}{\textsc{Scipion} }
 \newenvironment{command}{\tt\begin{quote}}{\end{quote}}
 \newcommand{\comm}[1]{\texttt{#1}}
 
@@ -93,7 +103,7 @@
 \HRule\\[0.4cm]
 { \huge \bfseries Model Building Basic}\\ % Title of your document
 \HRule \\[0.5cm]
-%{\large \today}\\[3cm] % Date, change the \today to a set date if you want to be precise
+%{\large \today}\\[3cbum] % Date, change the \today to a set date if you want to be precise
 \begin{center}
 \includegraphics[width=0.70\textwidth]{{images/aadensity}.png}\\
 Density for amino acid side chains from an experimental electron density map at 1.5 \AA~resolution (http://people.mbi.ucla.edu/sawaya/m230d/Modelbuilding/modelbuilding.html)\end{center}
@@ -116,7 +126,7 @@ Density for amino acid side chains from an experimental electron density map at 
 
 
 \subsection*{Intended audience}
-The recent rapid development of single-particle electron cryo-microscopy (cryo-EM) allows structures to be solved by this method at resolutions close to 3\AA.  Providing a basic introduction to model building, this tutorial shows the initial workflow aimed at obtaining high-quality atomic models from cryo-EM data by using Scipion software framework. %tomography in  electron microscopy with special emphasis in basic image processing. The tutorial requires matlab but does not assume any programing skills. 
+The recent rapid development of single-particle electron cryo-microscopy (cryo-EM) allows structures to be solved by this method at almost atomic resolutions.  Providing a basic introduction to model building, this tutorial shows the initial workflow aimed at obtaining high-quality atomic models from cryo-EM data by using \scipion software framework. %tomography in  electron microscopy with special emphasis in basic image processing. The tutorial requires matlab but does not assume any programing skills. 
 
 
 \subsection*{We'd like to hear from you}
@@ -131,7 +141,7 @@ future editions, by writing to
 
 \subsection*{Requirements}
 
-This tutorial requires, in addition to $Scipion$,  the \textit{CCP4 suite} including $refmac$ and $coot$, the \textit{PHENIX suite} and $USCF Chimera$. Basic knowledge of $USCF Chimera$ and $Scipion$ is assumed. Warning: all versions of $refmac$ are not suitable for EM data.
+This tutorial requires, in addition to \scipion,  the modeling system $USCF Chimera$ (\url{https://www.cgl.ucsf.edu/chimera/download.html}), the \textit{CCP4 suite} (\url{http://www.ccp4.ac.uk/download/#os=linux}) including $refmac$ and $coot$, the \textit{PHENIX suite} (\url{https://www.phenix-online.org/download/}) and \textit{PowerFit} application (\url{https://github.com/haddocking/powerfit}). Basic knowledge of $USCF Chimera$ and \scipion is assumed. Warning: old versions of $refmac$ are not suitable for EM data.
 
 \newpage
 
@@ -148,22 +158,27 @@ This tutorial requires, in addition to $Scipion$,  the \textit{CCP4 suite} inclu
 \section{Introduction to Model building}
 
 \begin{itemize}
- \item Definition:\\Model building is the process that allows getting the atomic interpretation of a electron density map. Although a electron density volume can be obtained from different methodologies, in this $Scipion$ tutorial we focus in maps obtained by cryo-EM. As an example of these maps, Fig. 1 details the input electron density volume (a), as well as the output hemoglobin tetramer atomic model (b) obtained by the model building process. Since high quality atomic structures are essential to accomplish detailed mechanistic studies and to seek inhibitor drugs of macromolecules, the main aim of model building is obtaining reliable structures of these macromolecules. 
+ \item Definition:\\Model building is the process that allows getting the atomic interpretation of a electron density map. Although a electron density volume can be obtained from different methodologies, in this \scipion tutorial we focus in maps obtained by cryo-EM. As an example of these maps, \ffigure{fig:model_building_example} details the input electron density volume (a), as well as the output hemoglobin tetramer atomic model (b) obtained by the model building process. Since high quality atomic structures are essential to accomplish detailed mechanistic studies and to seek inhibitor drugs of macromolecules, the main aim of model building is obtaining reliable structures of these macromolecules. 
  
 
 \begin{figure}[H]
  \centering
  \captionsetup{width=.8\linewidth}  \includegraphics[width=0.6\textwidth]
   {{Images/Fig1}.png}
-  \caption{Hemoglobin tetramer (Danev and Baumeister, 2016). a) Electron density map at 3.2\AA\ resolution obtained by Cryo-EM single particle analysis with Volta phase plate. b) Atomic structure model inferred from the electron density volume.}
+  \caption{Hemoglobin tetramer \citep{khoshouei2017}. a) Electron density map at 3.2\AA\ resolution obtained by Cryo-EM single particle analysis with Volta phase plate. b) Atomic structure model inferred from the electron density volume.}
   \label{fig:model_building_example}
   \end{figure} 
  
 
-\item Relevance of cryo-EM map resolution:\\Model building process is extraordinarily limited by the resolution of the starting cryo-EM density map. The lower the resolution, the more detailed and reliable atomic structure will be obtained. Fortunately, single-particle cryo-EM is undergoing in this decade a resolution revolution that has allowed the structures of macromolecules to be solved at near-atomic resolution. The density map is thus sufficiently resolved to build the atomic model. As a general rule, at resolutions of 4.5\AA\ the molecule backbone can be inferred based on the map alone, and resolutions lower than 4\AA\ allow to trace some residue side chains. 
- \item Model building workflow:\\The set of succesive tasks aimed to get the atomic interpretation of electron density maps are kown as model building workflow. Main steps names of this general workflow are detailed top-to-bottom in Fig. 2. Taks' names and tools required are highlighted in green in the left side of the Fig. In short, this workflow considers as input the lower asymmetrical element (unit cell) of the starting volume and the sequence of each individual structural element (from 1 to n). These sequences are used to get the initial models, $de novo$ or by prediction based in homologous structures. Initial model of each individual structural element has to be fitted to the unit cell volume, and then refined accordig to the its fitted volume. Since the double refinement in real and reciprocal spaces seems to improve protein models (Brown $et al.$, 2015; Tools for macromolecular model building and refinement into electron cryo-microscopy reconstructions), these two steps of refinement are included in the workflow. Once refined, the geometry of each individual structure has to be validated regarding the starting volume. The last two steps of refinement and validation will be applied globally to the whole set of structures contained in that volume to avoid forbidden steric overlaps among them. In the reconstruction of the whole volume, borders between adjacent unit cells will be checked in this same way. 
+\item Relevance of cryo-EM map resolution:\\Model building process is limited by the resolution of the starting cryo-EM density map. The higher the resolution, the more detailed and reliable atomic structure will be obtained. Fortunately, single-particle cryo-EM is undergoing in this decade a resolution revolution that has allowed the structures of macromolecules to be solved at near-atomic resolution. The density map is thus sufficiently resolved to build the atomic model. As a general rule, at resolutions of 4.5\AA\ the molecule backbone can be inferred based on the map alone, and resolutions lower than 4\AA\ allow to trace side chains of some residues. 
+
+ \item Model building workflow:\\The set of successive tasks aimed to get the atomic interpretation of electron density maps is known as model building workflow. Main steps of the general workflow are detailed from top to bottom in \ffigure{fig:model_building_workflow}. Tasks and tools required are highlighted in green (left side). Before starting those tasks, a detailed study and recruiting of experimental information of the macromolecule itself and similar specimens is recommended.
  
- In this basic tutorial of model building we are considering every step of the general workflow, except the $de novo$ modeling step because the appropriate tools to accomplish this type of modeling are not still implemented in $Scipion$. 
+ The workflow considers as input the lower asymmetrical element (unit cell) of the starting volume and the sequence of each individual structural element (from 1 to n). These sequences are used to get the initial models, \iii{de novo} or by prediction based in homologous structures. Initial model of each structure element has to be fitted to the unit cell volume, and then refined according to its fitted volume. Since the double refinement in real and reciprocal spaces seems to improve protein models \citep{brown2015}, these two steps of refinement are included in the workflow. Once refined, the geometry of each individual structure has to be validated regarding the starting volume. The last two steps of refinement and validation will be applied globally to the whole set of structures contained in that volume to avoid forbidden steric overlaps among them. In the reconstruction of the whole volume, borders between adjacent unit cells will be checked similarly. 
+ 
+ In this tutorial, we show how to obtain an atomic model using a reference homologous structure.
+ 
+% of model building every step of the general workflow will be considered, except the $de novo$ modeling step because the appropriate tools to accomplish this type of modeling are not still implemented in \scipion. 
  
 \begin{figure}[H]
  \centering
@@ -176,22 +191,1067 @@ This tutorial requires, in addition to $Scipion$,  the \textit{CCP4 suite} inclu
 \end{itemize}  
 
 \section{Particular problem to be solved: Hemoglobin}
-Due to the basic nature of this tutorial, the small Hemoglobin macromolecule (~64 KDa) has been selected to model its atomic structure. 
 
-The metalloprotein Hemoglobin is the iron-containing protein able to transport oxygen, essential to get energy from aerobic metabolic reactions, through the red blood cells of almost every vertebrate. The first atomic structure of hemoglobin was determined in 1959 by X-ray crystallography (Perutz $et al.$, 1960; Structure of haemoglobin: a three-dimensional Fourier synthesis at 5.5-\AA\ resolution, obtained by X-ray analysis).
+The metalloprotein Hemoglobin (\ttt{Hgb}) is the iron-containing protein able to transport oxygen, essential to get energy from aerobic metabolic reactions, through red blood cells of almost every vertebrate. The first atomic structure of \ttt{Hgb} was determined in 1960 by X-ray crystallography \citep{perutz1960}. \ttt{Hgb} was, alongside myoglobin, the first structure solved by this methodology. Due to its emblematic prominence in structural biology History, we have selected \ttt{Hgb} to model its atomic structure.\\
+
+\ttt{Hgb} is a relatively small macromolecule (molecular weight of 64 KDa) that shows C2 symmetry. This heterotetramer is constituted by four globular polypeptide subunits, two $\alpha$ and two $\beta$ monomers with 141 and 146 aminoacids in human \ttt{Hgb}, respectively. Each subunit associates to a prosthetic heme group, that consists in an iron (Fe) ion and the heterocyclic ring of porphyrin. Although the molecule is able of binding oxygen only in the reduced ferrous status, human \ttt{Hgb} is commercially distributed in its nonfunctional oxidized ferric status as \ttt{metHgb}. The atomic structure of the human \ttt{metHgb} specimen was inferred by \citep{khoshouei2017} for the first time from the electron density volume obtained by cryo-EM and using the Volta phase plate. The volume, at 3.2\AA\ resolution, and its atomic interpretation (\ffigure{fig:model_building_example}) are available in the Electron Microscopy Data Bank (\ttt{EMDB}) and Protein Data Bank (\ttt{PDB}) with accession numbers \ttt{EMD-3488} and \ttt{PDB-5NI1}, respectively.\\
+
+This tutorial will guide us in the deduction process of the human \ttt{metHgb} atomic structure using the \scipion framework, the 3D map and the protein sequences as starting input data, as well as reference atomic structures as homologous models. %true data and some fictitious restraints.
+
+\section{Starting Input data}
+
+ \begin{itemize}
+ \item Volume:\\ \ttt{EMD-3488}, that can be downloaded from \ttt{PDBE} (\url{http://www.ebi.ac.uk/pdbe/entry/emdb/EMD-3488}). %This volume emulates any other volume that you might obtain experimentally and reconstruct by single particle analyis.
+ 
+ \begin{figure}[H]
+  \centering
+  \captionsetup{width=.8\linewidth} 
+  \includegraphics[width=0.95\textwidth]
+  {{Images/Fig3}.png}
+  \caption{Downloading the volume from \ttt{PDBE}.}
+  \label{fig:PDBE}
+  \end{figure}
+  
+  Once downloaded the volume, unpack it (command line: \ttt{gunzip emd-3488.map.gz}) and save it in your tutorial folder.
+ 
+ \item Sequences:\\
+ The sequences of \ttt{Hgb} $\alpha$ and $\beta$ subunits are included in \ttt{UniProtKB}. Accession numbers are \ttt{P69905} and \ttt{P68871}, respectively. Here you are both sequences in fasta format:
+ \begin{quote}
+   \begin{verbatim}
+>sp|P69905|HBA_HUMAN Hemoglobin subunit alpha
+MVLSPADKTNVKAAWGKVGAHAGEYGAEALERMFLSFPTTKTYFPHFDLSHGSAQVKGHG
+KKVADALTNAVAHVDDMPNALSALSDLHAHKLRVDPVNFKLLSHCLLVTLAAHLPAEFTP
+AVHASLDKFLASVSTVLTSKYR
+
+>sp|P68871|HBB_HUMAN Hemoglobin subunit beta
+MVHLTPEEKSAVTALWGKVNVDEVGGEALGRLLVVYPWTQRFFESFGDLSTPDAVMGNPK
+VKAHGKKVLGAFSDGLAHLDNLKGTFATLSELHCDKLHVDPENFRLLGNVLVCVLAHHFG
+KEFTPPVQAAYQKVVAGVANALAHKYH
+\end{verbatim}
+ \end{quote}
+
+ 
+ These protein sequences were determined by direct translation from the experimental sequence obtained from complementary \ttt{DNA (cDNA)}, i.e., \ttt{DNA} synthesized or retro-transcribed from messenger \ttt{RNA (mRNA)}. In this way, it is quite unlikely that these sequences included post-translational modifications. Although methionine is added with the translation \ttt{Met-tRNA} initiation factor, the removal of methionine aminoacid from the N-terminus of a polypeptide is a common post-translational modification. Since methionine appears at the N-terminal end of both proteins, we can predict that these are not the polypeptide mature forms and Methionine will be removed in the mature ones that are present in the atomic structures. 
+ 
+ These two sequences can be retrieved from \ttt{UniProtKB} since the \scipion \scommand{import sequence} protocol allows direct download from the database.
+ 
+ \end{itemize} 
+
+\section{Import Input data}
+Taking advantage of \scipion software framework, we are going to import the above indicated input data using protocols \scommand{import volumes} and  \scommand{import sequence}. Details about the parameters of these two protocols are shown in tutorial Appendices \ref{app:importVolume} and \ref{app:importSequence}, respectively. 
+
+\begin{itemize}
+ \item Volume:\\First open the \scommand{import volumes} protocol (\ffigure{fig:import_volume} (1)), fill in the form and execute it (2), and finally you may visualize the volume (3). By default $Chimera$ \citep{pettersen2004} is used for visualization (\ffigure{fig:chimera_visualization_volume}). It shows the 3D map and the $x$ (red), $y$ (yellow) and $z$ (blue) axes.  
+ %  The C2 symmetry is shown, as well as the 45º turn of volume regarding the z axis (blue line).
+ 
+ \begin{figure}[H]
+  \centering 
+  \captionsetup{width=.7\linewidth} 
+  \includegraphics[width=0.80\textwidth]
+  {Images/Fig4.png}
+  \caption{Importing the volume in \scipion.}
+  \label{fig:import_volume}
+  \end{figure}
+  
+ \begin{figure}[H]
+  \centering 
+  \captionsetup{width=.7\linewidth} 
+  \includegraphics[width=0.80\textwidth]
+  {Images/Fig5.png}
+  \caption{Volume visualized with $Chimera$.}
+  \label{fig:chimera_visualization_volume}
+  \end{figure}
+ 
+ \item Sequences:\\
+ The sequences of \ttt{Hgb} $\alpha$ and $\beta$ subunits will be independently downloaded from \ttt{UniprotKB}. First of all, open the form of \scommand{import sequence} protocol (\ffigure{fig:import_sequence} (1)), then complete the form to download \ttt{HBA\_HUMAN} protein with \ttt{UniProtKB} accession code \ttt{P69905}, execute the process (2), and finally visualize the sequence (3) in a text editor. The sequence will appear in fasta format as it has been written above. Follow the same protocol to download \ttt{HBB\_HUMAN}.
+ 
+ \begin{figure}[H]
+  \centering 
+  \captionsetup{width=.7\linewidth} 
+  \includegraphics[width=0.80\textwidth]
+  {Images/Fig6.png}
+  \caption{Importing a \ttt{UniProtKB} sequence in \scipion.}
+  \label{fig:import_sequence}
+  \end{figure}
+ 
+ \end{itemize}  
+
+\section{Volume scenario: Set the input volume}
+Since smaller volumes usually include lower number of individual structural elements, making easier fitting models in maps and simplifying modeling process, the volume chosen will always be the smaller asymmetrical subunit of the starting loaded volume, also known as unit cell. The size of the unit cell thus depends on the symmetry order of the initial volume. The higher the symmetry order, the smaller the unit cell. The atomic structure of the whole volume will be obtained straight forward by simply repetition of the unit cell structure according to the symmetry order. Then, the first step to simplify the complexity of the initial volume is extracting the unit cell. This task can be accomplished by using the \scipion protocol \scommand{extract unit cell}. 
+
+\ffigure{fig:extract_unit_cell} shows how to complete this protocol form (1). Since \ttt{metHgb} macromolecule shows symmetry C2, we have selected cyclindric symmetry (Cn) as type of symmetry, and 2 as symmetry order. The angle offset selected (-45º) turns around the z axis the mask used to create the unit cell. 
+%Remark the relevance of including the offset in order to extract a unit cell able to reconstruct by symmetry the whole volume regarding the symmetry axes. 
+The extracted fraction of the initial volume will include the volume comprised between the coordinate origin (inner radius 0.0) and the maximum radius (outer radius 50.0), and will be slightly higher than the unit cell (expand factor 0.2). % We use an expanded unit cell  to favor the modeling of each individual structure edges. 
+Again, the respective tutorial appendix \ref{app:extractUnitCell} includes a comprehensive explanation of the meaning of parameters. 
+
+ \begin{figure}[H]
+  \centering 
+  \captionsetup{width=.7\linewidth} 
+  \includegraphics[width=0.90\textwidth]
+  {Images/Fig7.png}
+  \caption{Extracting the unit cell volume with \scipion.}
+  \label{fig:extract_unit_cell}
+  \end{figure}
+  
+After executing the protocol (\ffigure{fig:extract_unit_cell}(2)), the resulting expanded unit cell can be observed (3) with $Chimera$ (\ffigure{fig:chimera_visualization_unit_cell}). Note the additional expanded volume of the  unit cell on the left side of the Fig. The unit cell itself, on the right side, constitutes the half volume. Since the total volume contains the structure of four proteins, we can predict that this smaller asymmetrical subunit of the initial volume contains two proteins, one $\alpha$ and one $\beta$ \ttt{metHbg} subunits. Then, the respective structures of these two proteins will be fitted in the unit cell volume in successive modeling workflow steps. 
+  
+ \begin{figure}[H]
+  \centering 
+  \captionsetup{width=.7\linewidth} 
+  \includegraphics[width=0.80\textwidth]
+  {Images/Fig8.png}
+  \caption{Expanded unit cell (green-blue) and initial volume (gray) visualized with $Chimera$. The purple broken line delimits the unit cell (right) and its expanded volume (left).}
+  \label{fig:chimera_visualization_unit_cell}
+  \end{figure}
+ 
+
+\section{Sequence scenario: Structure Prediction by Sequence Homology}
+
+As we have mentioned above, from the options indicated in the general workflow (\ffigure{fig:model_building_workflow}) to get initial models of structural elements, in this tutorial we are going to use tools to predict structure from sequence homology. 
+
+Structure prediction by sequence homology only requires the sequence itself, from now ahead the \iii{target sequence}, and the access to databases to seek structures or \iii{templates} of homologous molecules. The sequences of homologous molecules show statistically significant similarity because they share common ancestry. Since the sequence encodes the structural information, from high similar sequences necessarily follows high similar structures. Structures from nearest homologous molecules will thus be preferred over remote relative ones. Remark that molecules containing several domains usually require independent searching for homologous templates of each domain. A small review about sequence similarity searching can be found in \citep{pearson2013}, and in \citep{kryshtafovych2018} the assessment of current \iii{template}-based modeling methods, many of them implemented as fully automated servers. Modeling tools appropriate to search for remote homologous \iii{templates}, folding recognition and \iii{template}-free methods (\iii{ab initio}), as well as $de\ novo$ modeling tools, which besides sequences use the volume itself, have still to be included in \scipion framework. 
+
+
+\subsubsection*{How to identify \iii{templates} of the \iii{target sequence}}
+ Similarity searching programs like \ttt{BLAST} (\ffigure{fig:blastp}) \citep{altschul1997}, available in \url{https://blast.ncbi.nlm.nih.gov/Blast.cgi}, use the \iii{target sequence} (1) to screen the structure-containing database \ttt{PDB} (2). Selecting or excluding a particular organism is an option (3). We usually start our searching selecting the organism in which we are interested or the closest evolutionarily related ones. If no similar sequences are found in these organisms, unrelated organisms may be selected or no one at all. Different searching algorithms are available (4) and one of them has to be selected. After executing \ttt{BLAST} (5) a list of score-ordered \iii{templates} is retrieved. 
+ 
+  \begin{figure}[H]
+  \centering 
+  \captionsetup{width=.7\linewidth} 
+  \includegraphics[width=0.80\textwidth]{Images/Fig9.png}
+  \caption{Form of the similarity searching program \ttt{BLAST}.}
+  \label{fig:blastp}
+  \end{figure}
+  
+  Of course the closest relatives to human \ttt{Hgb} subunits, structurally characterized, will be their own structures contained in \ttt{PDB-5NI1}. However, in this tutorial we are going to assume that in our example the closest relatives to the human \ttt{Hgb} $\alpha$ and $\beta$ subunits are the respective \ttt{Hgb} subunits (identity 49.3\% and 45.21\%) of the antarctic fish \iii{Pagothenia bernacchii} \citep{camardella1992}. The atomic structure associated to this \iii{template} has \ttt{PDB} accession code \ttt{1PBX}. Information about the structure can be checked in \url{https://www.rcsb.org/structure/1PBX}. In general, it is a good idea to read the information related with the \iii{template}, do it so and answer the following questions: (Answers in appendix \ref{app:solutions}; \textbf{Question 1})
+  
+  \begin{minipage}{\linewidth}
+  \begin{framed}
+  \begin{itemize}
+  \item How has this structure been obtained (X-ray diffraction, EM, NMR)?
+  \item What resolution does it have?
+  \item How many chains does it include?
+  \end{itemize}
+  \end{framed}
+  \end{minipage}
+
+\section{Moving from sequence to atomic structure scenario}
+
+\subsubsection*{Downloading the atomic structure}
+  
+  Once identified the \iii{template} that we are going to use as structural skeleton of our sequence, we import it into \scipion with the protocol \scommand{import atomic structure} (Appendix \ref{app:importAtomicStructure},  \ffigure{fig:import_atomic_structure} (1)). Select the option for importing the atomic structure from ID (2), write the \ttt{PDB} accession code (3) and execute the protocol (4). You can visualize the imported structure (5) in $Chimera$ (\ffigure{fig:chimera_visualization_structure}). By selecting chain \ttt{A} in the $Chimera$ upper menu (1) you can distinguish the \ttt{Hgb} $\alpha$ subunit (2).
+  
+  \begin{figure}[H]
+  \centering 
+  \captionsetup{width=.7\linewidth} 
+  \includegraphics[width=0.90\textwidth]{Images/Fig10.png}
+  \caption{Importing the atomic structure \ttt{1PBX}.}
+  \label{fig:import_atomic_structure}
+  \end{figure}
+  
+  \begin{figure}[H]
+  \centering 
+  \captionsetup{width=.7\linewidth} 
+  \includegraphics[width=0.50\textwidth]{Images/Fig11.png}
+  \caption{Atomic structure \ttt{1PBX} visualized with Chimera. \ttt{Hgb} $\alpha$ subunit (chain \ttt{A}) is shown green-highlighted.}
+  \label{fig:chimera_visualization_structure}
+  \end{figure}
+  
+\subsubsection*{Structural models of human metHgb subunits from templates}
+
+ $Modeller$ \citep{sali1993} is one of the computational web services used by $Chimera$, which provides the interface to run the program. Working with $Modeller$ requires a license key, which is provided free of charge for academic users. $Modeller$ allows two types of modeling computations to generate theoretical models, \iii{template}-based (sequence homology) and \iii{template}-free (\iii{de novo}, only for missing segments). In this tutorial we are going to consider the first one: structure prediction by sequence homology. Requirements for this type of modeling are the \iii{template} structure and a sequence alignment including sequences of \iii{target} and \iii{template}. 
+ 
+ \begin{itemize}
+ \item Preparing your sequence alignment:\\
+In addition to the ways to obtain the \iii{target-template} sequence alignment using $Chimera$, this alignment can be also generated in the \scipion protocol \scommand{model from template} (Appendix \ref{app:modelFromTemplate}). This protocol allows selecting between pairwise and multiple sequence alignments. Besides producing more reliable alignments, especially for more distantly related sequences, multiple sequence alignments provide more structural information than pairwise alignments; they locate conserved regions in the molecule, thus improving predictions of structural arrangements due to mutant residues or residues that differ between \iii{template} and \iii{target} sequences \citep{pearson2013}. For this reason, in this tutorial we are going to perform a multiple sequence alignment. Additionally, you can also test the available tools to perform pairwise alignments.\\
+ 
+Besides \iii{target} and \iii{template} sequence, some more sequences are needed to accomplish a multiple sequence alignment. The type and number of the sequences included depends on the sequence conservation, although they have to allow differentiating conserved regions. As an example, our multiple sequence alignment will include four more \ttt{Hgb} $\alpha$ subunit sequences from organisms located between human and fish in the evolutionary scale: \iii{Equus caballus} (Horse), \iii{Oryctolagus cuniculus} (Rabbit), \iii{Meleagris gallopavo} (Wild turkey), \iii{Aldabrachelys gigantea} (Aldabra giant tortoise). Download these sequences one by one from \ttt{UniProtKB} database filling in the \scommand{import sequence} protocol form with the appropriate accession codes (\ffigure{fig:multialignment_sequences}). A similar process has to be followed for \ttt{Hgb} $\beta$ subunit, importing \ttt{UniProtKB} sequences \ttt{P02062 (HBB\_HORSE), P02057(HBB\_RABIT), G1U9Q8 (G1U9Q8\_MELGA)} and \ttt{P83133 (HBB\_ALDGI)}.
+
+  \begin{figure}[H]
+  \centering 
+  \captionsetup{width=.7\linewidth} 
+  \includegraphics[width=0.95\textwidth]{Images/Fig12.png}
+  \caption{Importing additional sequences to perform the multiple sequence alignment.}
+  \label{fig:multialignment_sequences}
+  \end{figure}
+
+ \item Access to $Modeller$ in $Chimera$:\\
+ The protocol \scommand{model from template} allows direct opening of the multiple sequence alignment in $Chimera$ and then, access to $Modeller$ via web service. Fill in the protocol form (\ffigure{fig:model_from_template_protocol} (1)), including the \iii{template} \ttt{1PBX} previously imported (2), the particular chain of interest (use the wizard to select it (3)) and the \iii{target} sequence of human \ttt{Hgb} $\alpha$ subunit (4). Since we plan to perform a multiple sequence alignment, we'd like to include additional sequences to align (5), that have to add next (6). Finally, select one of the multiple sequence alignment tools (7). 
+ 
+ \begin{figure}[H]
+  \centering 
+  \captionsetup{width=.7\linewidth} 
+  \includegraphics[width=0.90\textwidth]{Images/Fig13.png}
+  \caption{Importing the multiple sequence alignment in $Chimera$.}
+  \label{fig:model_from_template_protocol}
+  \end{figure}
+ 
+ A couple of windows will be open, the multiple sequence alignment in the upper part of \ffigure{fig:chimera_alignment}, and $Chimera$ graphics window. The \iii{template} selected chain is shown green-highlighted in both windows. As you may observe in the alignment, \ttt{Hgb} $\alpha$ subunit is a quite conserved macromolecule; there is only one gap in the alignment because \ttt{PRO} (Proline) 47 residue has disappeared during evolution. Human \ttt{Hgb} $\alpha$ subunit is closer to the protein in mammals (horse, rabbit) than to the protein in unrelated organisms, as we would have anticipated. Corroborate this point by checking the identity percentage \%ID  between human sequence and the other sequences in \ffigure{fig:modeller} (B). 
+ 
+ \begin{figure}[H]
+  \centering 
+  \captionsetup{width=.7\linewidth} 
+  \includegraphics[width=0.80\textwidth]{Images/Fig14.png}
+  \caption{Opening the multiple sequence alignment in $Chimera$.}
+  \label{fig:chimera_alignment}
+  \end{figure}
+\end{itemize}
+
+In case you'd like edit the name or the order of the sequences, add,  delete or realign sequences, ..., go to the upper menu of the multiple sequence alignment (\ttt{Edit -> }). In particular, we are going to change the name of the \iii{target} sequence from \ttt{P69905} to \ttt{HBA\_HUMAN} in \ttt{Edit -> Edit Sequence Name...} (\ffigure{fig:modeller} (A)). To get possible atomic models of the \iii{target} sequence in $Modeller$ web service, we have to select \ttt{Structure -> Modeller (homology ...)} in the same upper menu. A new window for Comparative Modeling with Modeller will be open (\ffigure{fig:modeller} (B)), that we have to fill in selecting \iii{target} sequence (1) and \iii{template} (2). Modeller license key has to be included here (3). The number of output models can be specified in Advanced Options (5 by default). Finally, press Apply to start the computation without hide the panel (4) or OK to start the computation hiding it. In $Chimera$ main graphics window, lower left corner, you may see the status of your job. After a while, five possible atomic structures, from now ahead \iii{models}, are retrieved for the \iii{target} sequence (\ffigure{fig:modeller} (C)) together with their assessment scores. Column \ttt{GA341} of Modeller Results indicates the score derived from statistical potentials (values in \ttt{[0,1]}; \ttt{> 0.7} for reliable \iii{models}). Column \ttt{zDOPE} (normalized Discrete Optimized Protein Energy) score depends on the atomic distance (negative values for the better \iii{models}). Let's select \iii{model} \ttt{\#2.1}. You can check every model numbers in $Chimera$'s main menu (\ttt{Favorites -> Model Panel}).
+ 
+  \begin{figure}[H]
+  \centering 
+  \captionsetup{width=.7\linewidth} 
+  \includegraphics[width=0.80\textwidth]{Images/Fig15.png}
+  \caption{(A) Sequence edition. (B) Completing the form to access to homology modeling with $Modeller$. (C) Resulting \iii{models}.}
+  \label{fig:modeller}
+  \end{figure}
+ 
+ Comparing your selected \iii{model} of human \ttt{metHgb} $\alpha$ subunit with \ttt{1PBX\_A} \iii{template}, we observe that the selected \iii{model} \ttt{\#2.1} does not contain the \ttt{HEME} prosthetic group (\ffigure{fig:chimera_model} (A)). Before saving the \iii{model}, the \iii{template} \ttt{HEME} group will thus be added to your \iii{model} in $Chimera$. With this aim, open $Chimera$'s command line; from $Chimera$ main menu (\ttt{Favorites -> Command Line}) and delete every atom of \ttt{1PBX} \iii{template}, except the \ttt{HEME} group associated to chain \ttt{A}. To preserve residue 144 (\ttt{HEME} group) in chain \ttt{A}, write the next command line (\ffigure{fig:chimera_model} (A)(1)):\\ 
+ 
+ \ttt{delete \#1:0-143.A, 145-.A, .B}\\ or\\
+ \ttt{delete \#1:0-143.A}\\ \ttt{delete \#1:145-.A}\\ \ttt{delete\#1:.B}\\
+ 
+ Go to the Model Panel and select models \ttt{\#1} and \ttt{\#2.1} simultaneously, then press \ttt{Copy/Combine} on the right side column (\ffigure{fig:chimera_model} (B)(2)). Model Panel shows the new \iii{model} created \ttt{\#3} (3), that we can save in the command line (4) writing:\\
+ 
+ \ttt{scipionwrite model \#3}\\
+ 
+ \begin{figure}[H]
+  \centering 
+  \captionsetup{width=.7\linewidth} 
+  \includegraphics[width=0.80\textwidth]{Images/Fig16.png}
+  \caption{\iii{Model} selection in $Chimera$. (A) Selected \iii{model} \ttt{\#2.1}. (B) Creation of full final \iii{model} of human \ttt{metHgb} $\alpha$ subunit, including \ttt{HEME} group.}
+  \label{fig:chimera_model}
+  \end{figure}
+ 
+ After closing $Chimera$, you can visualize (\ffigure{fig:model_from_template_protocol} (8)) your full predicted \iii{model}. In a similar process, you can also obtain human \ttt{metHgb} $\beta$ subunit. Remark that in this case, the \ttt{HEME} group will be kept with the next $Chimera$ command line: \\
+ \ttt{delete \#1:.A, 0-147.B, 149-.B}\\ or \\
+ \ttt{delete \#1:.A}\\ \ttt{delete \#1:0-147.B}\\ \ttt{delete \#1:149-.B}\\
+  
+If for any reason you decide to go back and check a different \iii{model} from the five \iii{models} initially provided by $Modeller$, you can do it by using \scommand{chimera restore session} protocol (Appendix \ref{app:chimeraRestoreSession}). This protocol is allowed to be used whenever $Chimera$ session had been saved, specifically after using protocols $Chimera$ \ttt{rigid fit}, $Chimera$ \ttt{operate}, and \scipion \ttt{model from template}. In addition to the $Chimera$ command line \ttt{scipionss}, command line \ttt{scipionwrite} also save $Chimera$ session by default. So, if you want to restore a previous session just open the form (\ffigure{fig:restore_session_protocol}, 1), and include the session that you'd like to restore (2).
+
+ \begin{figure}[H]
+  \centering 
+  \captionsetup{width=.7\linewidth} 
+  \includegraphics[width=0.90\textwidth]{Images/Fig17.png}
+  \caption{Restoring session in $Chimera$.}
+  \label{fig:restore_session_protocol}
+  \end{figure}
+ 
+
+\section{Volume and models scenario: Rigid Fitting}
+Once we have the predicted \ttt{model} of any structural element included in our map, fitting that \ttt{model} in the volume constitutes the next step in the modeling workflow. Two protocols have been included in \scipion with this purpose, \scommand{powerfit} (Appendix \ref{app:powerfitProtocol}, \citep{vanzundert2016}) and \scommand{chimera rigid fit} (Appendix \ref{app:chimeraRigidFit}). The first one allows automatic fitting of models in maps, while the second only does it when model and map are quite close, thus requiring manual fitting in advance. Although there is no a general rule to fit map and model, because it will depend on the particular problem and on our previous knowledge, in this tutorial we are going to use $PowerFit$ application first, followed by the final \ttt{Fit in Map} in $Chimera$ \ttt{rigid fit}.
+
+\begin{itemize}
+ \item Initial rigid fit with $PowerFit$:\\
+ Open \scommand{powerfit} protocol ((\ffigure{fig:powerfit_protocol} (1)), and complete the form with the full \iii{model} of atomic structure previously saved in $Chimera$ (2), the extracted unit cell volume (3), and volume resolution (4). Among the advanced parameters, consider carefully the angular step (5) according to the size of your volume and your computing power. Despite getting a more accurate result, fitting of big volumes takes more time as  lower values of angular step are given.  
+ 
+ \begin{figure}[H]
+  \centering 
+  \captionsetup{width=.7\linewidth} 
+  \includegraphics[width=0.85\textwidth]{Images/Fig18.png}
+  \caption{Rigid fit with $PowerFit$: Filling in the protocol form.}
+  \label{fig:powerfit_protocol}
+  \end{figure}
+ 
+ After executing the \scommand{powerfit} protocol, you can check results ((\ffigure{fig:powerfit_results_table} (A)(1)). The first table opened allows you to check the fitting quality (2) of best score-ordered fits in a second table (B). In our example only two fits are proposed. You can check which one fits better to the map by writing the selected fit number in the \ttt{Model to visualize} square window, and then displaying the fitting (3).
+ 
+ \begin{figure}[H]
+  \centering 
+  \captionsetup{width=.7\linewidth} 
+  \includegraphics[width=0.85\textwidth]{Images/Fig19.png}
+  \caption{Rigid fit with $PowerFit$: Checking results by score.}
+  \label{fig:powerfit_results_table}
+  \end{figure}
+  
+  \ffigure{fig:powerfit_results_figs} shows the fitting of the two possible fits between map and \ttt{models} posed by $PowerFit$ (\ttt{fit\_1.pdb}, A, and \ttt{fit\_2.pdb}, B, green- and pink-colored, respectively). Although both of them seem to fit quite well the extracted unit cell map, only one of them should be OK. The other $model$ one must misfit the volume area that corresponds to \ttt{metHgb} $\beta$ subunit. This anomalous behavior of our \iii{model} is not surprising because \ttt{Hgb} $\alpha$ an $\beta$ subunits are 42.86\% sequence identical. 
+  
+ \begin{figure}[H]
+  \centering 
+  \captionsetup{width=.7\linewidth} 
+  \includegraphics[width=0.85\textwidth]{Images/Fig20.png}
+  \caption{Rigid fit with $PowerFit$: Checking the best fits in $Chimera$.}
+  \label{fig:powerfit_results_figs}
+  \end{figure}
+  
+ \item Completing rigid fit with $Chimera$ \ttt{rigid fit}:\\
+ In order to assess which one of the structures fits the map better, the fitting has to be improved with \scommand{chimera rigid fit} protocol. Open this protocol (\ffigure{fig:chimera_rigid_fit} (1)), include the extracted unit cell as volume (2), one of the structures fitted (3), the other one (4), and execute the protocol.
+ 
+ \begin{figure}[H]
+  \centering 
+  \captionsetup{width=.7\linewidth} 
+  \includegraphics[width=0.85\textwidth]{Images/Fig21.png}
+  \caption{Completing the $Chimera$ rigid fit protocol form.}
+  \label{fig:chimera_rigid_fit}
+  \end{figure}
+  
+  Once opened $Chimera$ graphical window, select in the upper main menu \ttt{Tools -> Volume Data -> Fit in Map}. A small window will be opened. Select each one of the fits in \ttt{Fit} and press \ttt{Fit} to allow the automatic rigid fitting. At the lower right side of \ffigure{fig:chimera_fit_in_map}, respective windows of \ttt{Fit in map} for \ttt{fit\_1.pdb} and \ttt{fit\_2.pdb} are detailed. In spite that the amount of \ttt{atoms outside the contour} is higher in \ttt{fit\_1.pdb} than in \ttt{fit\_2.pdb}, we can not conclude that the second fitting is better than the first one, because the \ttt{Average map value} is also lower. Visual inspection of both fits should identify the appropriate fitting of \iii{model} in map.
+  
+  \begin{figure}[H]
+  \centering 
+  \captionsetup{width=.7\linewidth} 
+  \includegraphics[width=0.85\textwidth]{Images/Fig22.png}
+  \caption{Fitting in map with $Chimera$.}
+  \label{fig:chimera_fit_in_map}
+  \end{figure}
+  
+  Suggestion before starting the visual inspection in $Chimera$: Check first the parts of the structure that could differ the most between \ttt{metHgb} $\alpha$ and $\beta$ subunits. These parts that differ the most can be identified by performing an additional alignment including the $\beta$ subunit sequence. \ffigure{fig:multiple_alignment_HBB} incorporates the $\beta$ subunit sequence (in yellow) to the alignment shown in \ffigure{fig:chimera_alignment}. Two regions that contain gaps of sequence are remarked in red frames. The first one, involving residues 19 and 20, absent in $\beta$ subunit, and the second one, after residue 51, could be the most relevant to differentiate between subunits. Look at them and identify the correct fit. You can highlight those residues in $Chimera$ writing in the command line:\\
+  \ttt{sel :19-20}\\
+  \ttt{sel :50-55}
+  
+  \begin{figure}[H]
+  \centering 
+  \captionsetup{width=.7\linewidth} 
+  \includegraphics[width=0.85\textwidth]{Images/Fig23.png}
+  \caption{Multiple sequence alignment including \ttt{Hgb} $\beta$ subunit (\ttt{HBB\_HUMAN}).}
+  \label{fig:multiple_alignment_HBB}
+  \end{figure}
+  
+  Once identified the appropriate fit, you can save it as fitted $model$ of the \ttt{metHgb} $\alpha$ subunit. Replacing \ttt{n} by your $model$ number (\ttt{1}, \ttt{2}), write in the command line of $Chimera$ graphical window:\\
+  
+  \ttt{scipionwrite model \#n refmodel \#1 saverefmodel 0}\\
+  
+In case you are still unable to decide which one is the best fit, don't worry. You will make your mind up with the next step in the workflow, but then save both fits with \ttt{scipionwrite} $Chimera$ command line. Don't forget to change the $model$ number. Your fitted models will be saved by $Chimera$ with names \ttt{chimeraOut0001.pdb} and \ttt{chimeraOut0002.pdb}.
+ 
+\end{itemize}
+
+\section{Refinement: Flexible fitting}
+
+Although the rigid fitting approximates map and atomic $model$, a detailed visual inspection of map and model reveals that part of residues are not perfectly fitted. In order to get a better fit, not only of the carbon skeleton but also of residue side chains, a flexible fitting or refinement has to be accomplished. Refinement can thus be defined as the optimization process of fitting $model$ parameters to experimental data (P. Afonine). Different strategies can be followed, that can be categorized as refinement in the real space and refinement in Fourier space. Implemented in \scipion are two protocols for real space refinement, \scommand{ccp4 - coot} (Appendix \ref{app:ccp4CootRefinement}, \citep{emsley2010}) and \scommand{phenix - real space refine} (Appendix \ref{app:realSpaceRefineProtocol}, (\citep{afonine2018}), and one protocol to refine in reciprocal space, \scommand{ccp4 - refmac} (Appendix \ref{app:ccp4Refmac}, \citep{vagin2004}).
+
+\begin{itemize}
+ \item CCP4 $Coot$ Refinement:\\
+ 
+ Initially devoted to atomic models obtained by X-ray crystallography methods, $Coot$ (from Crystallopgraphic Object-Oriented Toolkit) is a 3D computer graphics tool that allows simultaneous display of map and fitted $model$ to accomplish mostly interactive modeling operations. Although this tutorial does not try to show every functionality of $Coot$, but indicate how to open, close and save partial and final $Coot$ refined structures in \scipion, some of $Coot$ basic relevant commands will be shown. Initially, we are going to refine our \iii{moldel} with $Coot$. First of all, open \scommand{ccp4 - coot} (\ffigure{fig:coot_refinement_protocol} (1)), load the extracted unit cell volume (2), with electron density normalized to 1, and the fitted structure $model$ (3). Load also the second fit (4) if you are not still sure about the correct fitted structure. Reading the protocol Help is recommended. After executing the protocol (5), $Coot$ graphics window will appear to start working. 
+ 
+ \begin{figure}[H]
+  \centering 
+  \captionsetup{width=.7\linewidth} 
+  \includegraphics[width=0.85\textwidth]{Images/Fig24.png}
+  \caption{Filling in $Coot$ refinement protocol.}
+  \label{fig:coot_refinement_protocol}
+  \end{figure}
+  
+  To check the objects downloaded in $Coot$, go to the second bar of the main menu and select \ttt{Display Manager}. Map \ttt{(output\_volume.mrc)} (number \ttt{\#2}) and models \ttt{chimeraOut0001.pdb} and \ttt{chimeraOut0002.pdb} (numbers \ttt{\#1} and \ttt{\#0}, respectively) are displayed. To start, we are going to identify the fair fitted $model$ to the density map in order to delete in the \ttt{Display Manager} menu the other $model$ one, which is misfitted. Visual inspection would clarify this point, although direct observation of the \ttt{Density fit analysis} might be a shorter way. With this aim, go to the main menu of $Coot$ graphical window and select \ttt{Validate -> Density fit analysis}. This density analysis is compared for the two possible fitted \iii{models} in \ffigure{fig:coot_density_fit_analysis}. As you can see, model \ttt{chimeraOut0001.pdb} shows that residues 19, 20 and 22, framed in \ffigure{fig:multiple_alignment_HBB}, do not fit to the density map, as expected from the misfit of the $\alpha$ subunit in the density of the $\beta$ subunit.
+ 
+ \begin{figure}[H]
+  \centering 
+  \captionsetup{width=.7\linewidth} 
+  \includegraphics[width=0.85\textwidth]{Images/Fig25.png}
+  \caption{$Coot$ comparison of \iii{model} fit in the map density.}
+  \label{fig:coot_density_fit_analysis}
+  \end{figure}
+  
+  Go again to \ttt{Display Manager} and delete the unfair \iii{model} \ttt{chimeraOut0001.pdb} pressing \ttt{Delete Model}. From now ahead, the \iii{model} \ttt{chimeraOut0002.pdb} will be refined in the next steps of the modeling workflow.\\
+  
+  Before starting the refinement, IDs of chains should be fixed. Current IDs of chains are \ttt{Chain A} and \ttt{Chain} (see \ffigure{fig:coot_density_fit_analysis}) and will be changed to \ttt{Chain HEME} and \ttt{Chain A}, respectively. This can be carried out going to main $Coot$ menu and selecting \ttt{Edit -> Change Chain IDs}. Verify the identity of your \iii{model} molecule (\ffigure{fig:coot_change_name_ID} (1), select the initial Chain ID (2, 4), and write the new Chain ID (3, 5). Finally, press \ttt{Apply New Chain ID}.
+ 
+ \begin{figure}[H]
+  \centering 
+  \captionsetup{width=.7\linewidth} 
+  \includegraphics[width=0.85\textwidth]{Images/Fig26.png}
+  \caption{$Coot$ change chain ID of \iii{model} \ttt{chimeraOut0002.pdb}.}
+  \label{fig:coot_change_name_ID}
+  \end{figure}
+  
+  According to \ffigure{fig:coot_density_fit_analysis}, \ttt{MET} residue of the new chain \ttt{A} does not fit to the map density. Maybe this residue has been processed post-translationally, as we have anticipated in \textbf{Starting Input data} section. To solve this question, go to $Coot$ main menu and select \ttt{Draw -> Go To Atom... -> Chain A -> A 1 MET} (\ffigure{fig:coot_go_to_atom} (A)). \ttt{MET} residue will be located in the center of $Coot$ graphics widow. Check if this residue is surrounded by any electron density. As \ffigure{fig:coot_go_to_atom} (B)(1) shows, no density associates to the first chain residue. \ttt{MET} will thus be deleted. Then go to the lower right side menu and select the symbol to delete items (B)(2). Select \ttt{Residue/Monomer} in the opened \ttt{Delete item} window, and click the \ttt{MET} residue that you want to delete. Go again to \ttt{Validate -> Density fit analysis} and check that the red bar shown in \ttt{MET} residue (\ffigure{fig:coot_density_fit_analysis}) has disappeared.
+  
+  \begin{figure}[H]
+  \centering 
+  \captionsetup{width=.7\linewidth} 
+  \includegraphics[width=0.80\textwidth]{Images/Fig27.png}
+  \caption{Removing post-translationally processed Methionine residue in $Coot$.}
+  \label{fig:coot_go_to_atom}
+  \end{figure}
+  
+  Before a more detailed visual inspection of the \iii{model} fitting, an initial quick refinement may be accomplished. With this purpose, first of all, go to the upper right side menu (\ffigure{fig:coot_go_to_atom} (B)(3)) and select all four restrictions for \ttt{Regularization and Refinement} in the respective window of parameters. Secondly, open the \ttt{coot.ini} text file located in \scipion tutorial folder \ttt{/Runs/000XXX\_CootRefine/extra}, fill in it and save it as it is indicated below.\\
+  
+  \ttt{[myvars]}\\
+  \ttt{imol: 0}\\
+  \ttt{aa\_main\_chain: A}\\
+  \ttt{aa\_auxiliary\_chain: AA}\\
+  \ttt{aaNumber: 5}\\
+  \ttt{step: 10}\\
+ 
+ Finally, press ``U'' to initiate global variables and ``z'' to refine the next upstream 10 residues. Go through those residues, one by one, and accept refinement if you agree with it. If you disagree with the refinement of any residue, perform the interactive refinement, visualizing the residue side chain. Repeat the refinement process with ``z'' until the end of the molecule. Check that the orange bar of residue number 50 (\ffigure{fig:coot_density_fit_analysis}) goes missing at the end of this process.\\
+ 
+ After this partially automatic and partially interactive processing, go to \ttt{Draw -> Go To Atom... -> Chain A -> A 2 VAL} (\ttt{VAL} is now the first residue of the \ttt{metHgb} $\alpha$ subunit) and start the detailed interactive refinement of the initial residues of chain A. To accomplish this interactive refinement of a small group of 5 to 10 residues, select the blue circle in the upper right side menu and click the initial and final residues of the small group of residues (\ffigure{fig:coot_go_to_atom} (B)(4)). The group of selected residues gets flexible enough to look manually for another spatial distribution. Following these instructions, try to solve the misfit that you can find in \ttt{TYR} 141 residue at the end of the molecule. Specifically, try to improve the result of the \ttt{Validate -> Density fit analysis}, as you can see from (A) to (B) in \ffigure{fig:coot_density_fit_analysis2}, moving \ttt{TYR} 141 ((A)(1)) to the nearest empty map density ((A)(2)). Accept the refinement parameters after the displacement of \ttt{TYR} ((B)(3)). Finally, check the \ttt{Density Fit Graph}.
+ 
+  \begin{figure}[H]
+  \centering 
+  \captionsetup{width=.7\linewidth} 
+  \includegraphics[width=0.85\textwidth]{Images/Fig28.png}
+  \caption{$Coot$ fit in the map density of residue \ttt{TYR} 141.}
+  \label{fig:coot_density_fit_analysis2}
+  \end{figure}
+  
+ Rotamer refinement is another refinement tool available in $Coot$. You can try to improve your current $model$ modifying rotamers reported as incorrect in \ttt{Validate -> Rotamer analysis}. Otherwise, the next refinement program in modeling workflow ($Phenix$ \ttt{real space refine}) will perform rotamer refinement.\\
+ 
+ At the end of this interactive refinement with $Coot$, the refined atomic structure has to be saved. You can save the atomic structure with its default name by pressing ``w''. If you prefer another name, for instance ``HBA\_HUMAN.pdb'', it can be saved in $Coot$ main menu \ttt{Calculate -> Scripting -> Python} and the \ttt{Coot Python Scripting} window will be opened. Assuming that \ttt{0} is your \iii{model} number, write in Command:\\
+ \ttt{scipion\_write (0, ``HBA\_HUMAN'')}\\
+ 
+ In its interactive way, \scommand{ccp4 - coot} protocol can be launched again whenever you want in \scipion, and the last atomic structure saved will be loaded in $Coot$ graphics window. This functionality of \scipion allows to stop the interactive refinement and restart the process in the last refinement step, maintaining each one of the intermediate refined structures saved in order in \scipion tutorial folder \ttt{/Runs/000XXX\_CootRefine/extra}. In this way, go again to intermediate refined structures is also possible. Finally, when you reach the final refined structure, you can save this atomic structure with ``e'' and the $Coot$ protocol will not be interactive anymore.\\
+ 
+ A similar refinement process to that followed in $Coot$ for \ttt{metHgb} $\alpha$ subunit chain \ttt{A}, has to be carried out for chain \ttt{HEME} and for respective chains of \ttt{metHgb} $\beta$ subunit.\\
+ 
+ 
+ \item $Phenix$ Real Space Refine:\\
+ 
+ In order to compare the previous $Coot$ interactive refinement with an automatic refinement, we are going to use the
+ \scommand{phenix - real space refine} protocol in parallel. This protocol implements in \scipion the \iii{phenix.real\_space\_refine} program, initially developed to address cryo-EM structure-refinement requirements. Following a workflow similar to the $Phenix$ reciprocal-space refinement program \iii{phenix.refine}, basically devoted to crystallography, \iii{phenix.real\_space\_refine} program, mainly used in cryo-EM, is able to refine in real space atomic models against maps, which are the experimental data.\\
+ 
+ Start working by opening \scommand{phenix - real space refine} protocol (\ffigure{fig:phenix_real_space_refine_protocol} (1)), load as input volume the extracted unit cell saved in $Coot$ (2), write the volume resolution (3), load the atomic structure ($model$ \ttt{chimeraOut0002.pdb}, (4)) and select the output format of the refined atomic structure that will be generated (5). After executing the protocol (6), results can be checked (7). 
+ 
+ \begin{figure}[H]
+  \centering 
+  \captionsetup{width=.7\linewidth} 
+  \includegraphics[width=0.85\textwidth]{Images/Fig29.png}
+  \caption{Completing $Phenix$ Real Space Refine protocol.}
+  \label{fig:phenix_real_space_refine_protocol}
+  \end{figure}
+ 
+ The first tab of results shows the initial $model$ atomic structure as well as the refined one, both fitted to the normalized extract unit cell volume saved in $Coot$ (\ffigure{fig:phenix_real_space_refine_chimera}). 
+ 
+ \begin{figure}[H]
+  \centering 
+  \captionsetup{width=.7\linewidth} 
+  \includegraphics[width=0.85\textwidth]{Images/Fig30.png}
+  \caption{$Chimera$ visualization of refined $model$ of \ttt{metHgb} $\alpha$ subunit by $Phenix$ Real Space Refine protocol.}
+  \label{fig:phenix_real_space_refine_chimera}
+  \end{figure}
+  
+  The rest of tabs detail different statistics useful to compare the quality of distinct $models$ such as $MolProbity$ statistics and \ttt{Real-space} correlations. $MolProbity$ results will be discussed in the next section of validation and comparison. Regarding \ttt{Real-space} correlations, different $mdels$ can be compared by using the global number of \ccmask, that indicates the correlation $model$-to-map calculated considering the map region masked around the $model$. You can check also individual correlation values for each residue.  Remark that residues with lower correlation values might be susceptible to improve by additional refinement in $Coot$. Have a look to those correlation values and answer the following questions: (Answers in appendix \ref{app:solutions}; \textbf{Question 2}) \\
+  
+  \begin{minipage}{\linewidth}
+  \begin{framed}
+  \begin{itemize}
+  \item What is the \ccmask value?
+  \item Which one is the residue that shows the lower correlation value? Why?
+  \item What is that correlation value?
+  \item Which one is the second residue that shows the lower correlation value? Why?
+  \item What is that correlation value?
+  \item What is the correlation value of \ttt{HEME} group?
+  \end{itemize}
+  \end{framed}
+  \end{minipage}
+  
+  The conclusion of this part of refinement in real space is that $Coot$ and $Phenix$ \ttt{real space refine} might perform complementary tasks. The usage of both protocols may improve the result, especially when partial processing or big arrangements of molecules are involved. Now, to take advance of $model$ improvements performed with $Coot$, run $Phenix$ \ttt{real space refine} after $Coot$. When you finish, check again the above values of correlation. Have they changed? (Answer in appendix \ref{app:solutions}; \textbf{Question 3})
+  
+  Before finishing our refinement workflow with $Refmac$, we can ask ourselves how can we improve correlations in real space by modifying the advance parameters in the protocol form. Will the correlation values change if we set to ``yes'' optimization parameters previously set to ``no'' and increase the number of macro cycles from 5 to 30? Take into account that this process take much more time (around 6 times more) than the previous one. (Answer in appendix \ref{app:solutions}; \textbf{Question 4})\\
+  
+  \item CCP4 $Refmac$:\\
+  
+  As in the case of $Coot$, $Refmac$ (from maximum-likelihood Refinement of Macromolecules) was initially developed to optimize models obtained by X-ray crystallography methods, but unlike $Coot$, automatically and in reciprocal space. The $models$ refined in the real space with $Coot$ and $Phenix$ \ttt{real space refine}, successively, will be used as input to perform a second refinement step in the Fourier space with $Refmac$ protocol \scommand{ccp4 - refmac}. Firstly, open the $Refmac$ protocol form (\ffigure{fig:refmac_protocol} (1)), load the volume generated by $Coot$ (2), the atomic structure obtained with $Phenix$ \ttt{real space refine} (3), and the volume resolution as maximum resolution (4). Execute the protocol (5) and when it finish, analyze the results (6).
+  
+  \begin{figure}[H]
+  \centering 
+  \captionsetup{width=.7\linewidth} 
+  \includegraphics[width=0.85\textwidth]{Images/Fig31.png}
+  \caption{Filling in $Refmac$ protocol.}
+  \label{fig:refmac_protocol}
+  \end{figure}
+  
+  Clicking the first item in the display menu of results (\ffigure{fig:refmac_protocol} (1)), $Chimera$ graphics window will be opened showing the input volume, the initial $model$ (\ttt{HBA\_HUMAN} obtained with $Phenix$ \ttt{real space refine}), and the final $Refmac$ refined $model$ (\ffigure{fig:refmac_chimera}). By clicking the third item in the display menu of results (\ffigure{fig:refmac_protocol} (2)), a summary of $Refmac$ results are shown. Check if values of \ttt{R factor} and \ttt{Rms BondLength} have improved with this refinement process. Why the improvement seems to be very small? (Answers in appendix \ref{app:solutions}; \textbf{Question 5})\\
+  
+  Would you have seen a higher improvement running $Refmac$ immediately after $Coot$, thus ignoring $model$ improvements generated by $Phenix$ \ttt{real space refine}? (Answers in appendix \ref{app:solutions}; \textbf{Question 6})\\
+  
+  Regarding the using of mask: Compare $Refmac$ results (after $Coot$ and $Phenix$ \ttt{real space refine}) with those obtained selecting the option \ttt{No} in the protocol form parameter \ttt{Generate masked volume}. Use two different volumes, the one generated by $Coot$ protocol, and the one generated by the \ttt{extract unit cell} protocol. Are there any differences? Why? (Answers in appendix \ref{app:solutions}; \textbf{Question 7})\\
+  
+  \begin{figure}[H]
+  \centering 
+  \captionsetup{width=.7\linewidth} 
+  \includegraphics[width=0.85\textwidth]{Images/Fig32.png}
+  \caption{Display menu of $Refmac$ results.}
+  \label{fig:refmac_display_results}
+  \end{figure}
+  
+  \begin{figure}[H]
+  \centering 
+  \captionsetup{width=.7\linewidth} 
+  \includegraphics[width=0.85\textwidth]{Images/Fig33.png}
+  \caption{$Chimera$ visualization of refined $model$ of \ttt{metHgb} $\alpha$ subunit by $Refmac$.}
+  \label{fig:refmac_chimera}
+  \end{figure}
+  
+  Have a look to the rest of items in the display window of results. 
+  
+  \end{itemize}
+
+\section{Structure validation and comparison}
+
+ At the end of the refinement process of \ttt{metHgb} $\alpha$ subunit (a similar one would be required for $\beta$ subunit), we need to assess the geometry of our $model$ regarding the starting 
+volume to detect $model$ controversial elements or $model$ parameters that disagree with the map. Although each refinement program has their own tools to assess the progress of refinement ($Coot$ \ttt{Validate} menu; $Phenix$ \ttt{real space refine} real space correlations; $Refmac$ \ttt{R factor} and \ttt{Rms BondLength}), in this tutorial section, two assessment tools will be described to obtain comparative validation values after using any protocol in the workflow:  Protocols $EMRinger$ (\scommand{phenix - emringer}, Appendix \ref{app:emRingerProtocol}, \citep{barad2015}) and $MolProbity$ (\scommand{phenix - molprobity}, Appendix \ref{app:molprobityProtocol}, \citep{davis2004}). As in $Phenix$, correlation values in real space will be computed if a volume is provided with $MolProbity$ protocol. Additionally, we are going to introduce the protocol \scommand{phenix - superpose pdbs} (Appendix \ref{app:superposePdbsProtocol}, \citep{zwartUrl}) useful to compare visually the geometry of two atomic structures.\\
+
+\begin{itemize}
+
+ \item $EMRinger$:\\
+ 
+ Specifically designed for cryo-EM data, $EMRinger$ tool assesses the appropriate fitting of a model to a map, validating high-resolution features such as side chain arrangements. The placement of side chains regarding the molecule skeleton depends on the $\chi_{1}$ dihedral angle, which is determined by atomic positions of \ttt{N}, \ttt{C$\alpha$}, \ttt{C$\beta$} and \ttt{C$\gamma$}. The $model$ backbone well fitted should be enriched in rotameric $\chi_{1}$ dihedral angles of 60º, 180º and 300º (-60º). The lower deviations regarding these values, the better $model$, and the higher EMRinger value.  
+ 
+ We can start assessing with $EMRinger$ the \ttt{metHgb} $\alpha$ subunit $models$ that we have generated along the modeling workflow. In each case, open the \scommand{phenix - emringer} protocol ((\ffigure{fig:emringer_protocol} (1)), load the extracted unit cell volume (initial or saved with $Coot$) (2) and the atomic structure that you'd like to validate in relation to the volume (3), execute the program (4) and analyze results (5). A menu to check results in detail will be opened (bar \ttt{EMRinger results}). \iii{Phenix EMRinger} plots with density thresholds, with rolling window for each chain, as well as dihedral angles for each residue are shown here. The most relevant results, especially the EMRinger score, will also be written in the protocol \ttt{SUMMARY} (6). 
+ 
+  \begin{figure}[H]
+  \centering 
+  \captionsetup{width=.7\linewidth} 
+  \includegraphics[width=0.85\textwidth]{Images/Fig34.png}
+  \caption{Completing $EMRinger$ protocol form.}
+  \label{fig:emringer_protocol}
+  \end{figure}
+ 
+ Run $EMRinger$ protocol and determine the respective score after running \iii{PowerFit item2}, $Chimera$ \ttt{rigid fit} ($model$ 2), $Coot$ refinement, $Phenix$ \ttt{real space refine} after $Coot$ (default conditions and last modification of form parameters), and $Refmac$ refinement with MASK before and after $Phenix$ \ttt{real space refine}. Considering $EMRinger$ \ttt{score}, does our \ttt{metHgb} $\alpha$ subunit $models$ seem to be OK? (Answers in appendix \ref{app:solutions}; \textbf{Question 8}). Try the same validation with $\beta$ subunit $models$. \\
+ 
+ \item $MolProbity$:\\
+ 
+ The atomic structure validation web service $MolProbity$, with better reference data has been implemented in the open-source CCTBX portion of $Phenix$ \citep{williams2018}. This widely used tool assesses $model$ geometry and quality at both global and local levels. Originally designed to evaluate structures coming from X-Ray diffraction and NMR, it does not take into account the quality of the fitting with a 3D density map.  The implementation in $Phenix$, nevertheless, includes the possibility of adding a volume and assessing the correlation in the real space.\\
+ 
+ The assessment process that we have carried out with $EMRinger$ can also be done with $MolProbity$ in \scipion. We are going to validate the geometry of \ttt{metHgb} $\alpha$ subunit $models$ that we have generated along the modeling workflow. In each case, open the \scommand{phenix - molprobity} protocol (\ffigure{fig:molprobity_protocol} (1)), load the extracted unit cell volume (initial or generated by $Coot$) (2) wit its resolution (3) if you want to have real space correlation between map and $model$, load the $model$ atomic structure (4) and execute the protocol (5). In \ttt{Analyze results} (6) the same menu bars available in results section of $Phenix$ \ttt{real space refine} protocol are shown here. $MolProbity$ results bar include validation statistics. Protocol \ttt{SUMMARY} emphasizes the most relevant ones.\\
+ 
+ \begin{figure}[H]
+  \centering 
+  \captionsetup{width=.7\linewidth} 
+  \includegraphics[width=0.85\textwidth]{Images/Fig35.png}
+  \caption{Completing $MolProbity$ protocol form.}
+  \label{fig:molprobity_protocol}
+  \end{figure}
+  
+  Run $MolProbity$ protocol to obtain its statistics values after running \iii{PowerFit item2}, $Chimera$ \ttt{rigid fit} ($model$ 2), $Coot$ refinement, $Phenix$ \ttt{real space refine} (default conditions and last modification of form parameters) after $Coot$, and $Refmac$ refinement with MASK before and after $Phenix$ \ttt{real space refine}. In order to compare validation results of $models$ obtained along the modeling workflow, fill in the next table (\ttable{table:empty}) including, in addition to $MolProbity$ statistics, $EMRinger$ scores and \ccmask values obtained before. (Answers in appendix \ref{app:solutions}; \textbf{Question 9}). The same table (\ttable{table:empty}) can be completed for \ttt{metHgb} $\beta$ subunit (Appendix \ref{app:solutions}; \textbf{Question 10})\\
+  
+  \begin{sidewaystable}
+   \caption{Validation statistics of human \ttt{metHgb} $\alpha$ subunit $model$. \ttt{RSRAC} stands for \ttt{Real Space Refine} after $Coot$. \ttt{Rama} stands for \ttt{Ramachandran}.}
+   \centering\footnotesize
+   \begin{tabular}{l c c c c c c c c}
+   \hline\hline
+   Statistic &  \thead{$Powerfit$\\ $item$ \#2} & \thead{$Chimera$\\ $model$ \#2} & $Coot$ & \thead{$Phenix$\\ \ttt{RSRAC}\\(default)} & \thead{$Phenix$\\ \ttt{RSRAC}\\(modified)} & \thead{$Refmac$\\ after $Coot$} & \thead{$Refmac$\\ after \ttt{RSRAC}\\(modified)} & \ttt{5NI1}\\ [0.5ex]
+   \hline
+   \ccmask \\
+   $EMRinger$ \ttt{score} \\
+   \ttt{RMS} (Bonds) \\
+   \ttt{RMS} (Angles) \\
+   \ttt{Rama favored} (\%) \\
+   \ttt{Rama allowed} (\%) \\
+   \ttt{Rama outliers} (\%) \\
+   \ttt{Rotamer outliers} (\%) \\
+   \ttt{Clashscore} \\
+   \ttt{Overall score} \\
+   \ttt{C$\beta$ deviations} \\
+   \ttt{RMSD} \\[1ex] 
+   \hline
+   \end{tabular}
+   \label{table:empty}
+   \end{sidewaystable}
+ 
+ 
+ Results compiled in this table indicate that statistics are uncorrelated. From the point of view of correlation in real space, the best $model$ was obtained from $Phenix$ \ttt{real space refine} (last modification of form parameters) after $Coot$. Considering $EMRinger$ \ttt{score}, the best $model$ derives from the whole workflow $Coot$ \ttt{->} $Phenix$ \ttt{real space refine} (default conditions). With $MolProbity$ \ttt{Overall score} as validation rule, the last step in the workflow could be suppressed because the best value was obtained after $Coot$ \ttt{->} $Phenix$ \ttt{real space refine} (last modification of parameters). We'd like to select the best $model$ and continue refining it in order to improve it as much as possible. Assuming that no one $model$ is perfect, how can we select the best one?\\ 
+
+
+ \item $Model$ Comparison:\\
+ 
+ The question posed in the previous item does not have an easy answer in the real world, in which we do not know the final atomic structure. In this tutorial, nevertheless, we know it and we can wonder how far we are of the atomic structure already published for this cryo-EM map. The question can be answered by comparing a) validation statistics that we have obtained for our $models$ with the statistics computed for the available $\alpha$ subunit in \ttt{PDB} structure \ttt{5NI1}, and b) the atomic structures themselves by overlapping.\\ 
+    
+  \begin{itemize}
+  \item Comparison of validation statistics: \\
+  
+  Validation statistics of \ttt{metHgb} $\alpha$ subunit of \ttt{PDB} structure \ttt{5NI1} should be obtained as first step to compare them with our $models$ validation statistics. With this aim we are going to follow the next workflow:\\
+  \begin{itemize}
+    \item Protocol \scommand{import atomic structure}:\\
+    Download from \ttt{PDB} structure \ttt{5NI1}\\
+    
+    \item Protocol \scommand{chimera operate} (Appendix \ref{app:chimeraOperate}):\\
+    Similar to $Chimera$ \ttt{rigid fit}, $Chimera$ \ttt{operate} protocol allows to perform operations with atomic structures. We are going to use this protocol to save independently in \scipion the \ttt{metHgb} $\alpha$ subunit. Open the protocol  (\ffigure{fig:chimera_operate_protocol} (1)), complete the parameter \ttt{PDBx/mmCIF} including the atomic structure \ttt{5NI1} previously imported (2), and execute the protocol (3).      
+    
+    \begin{figure}[H]
+    \centering 
+    \captionsetup{width=.7\linewidth} 
+    \includegraphics[width=0.90\textwidth]{Images/Fig36.png}
+    \caption{Filling in $Chimera$ \ttt{operate} protocol form.}
+    \label{fig:chimera_operate_protocol}
+    \end{figure}
+    
+    The $Chimera$ graphics window will be opened with the structure \ttt{5NI1} as model number \#1. To save independently the structure of human \ttt{metHgb} $\alpha$ subunit (chain A), write in $Chimera$ command line:\\
+    \ttt{split \#1}\\
+    \ttt{scipionwrite model \#1.1}\\
+    
+    \item Protocol \scommand{powerfit}:\\
+    Open $PowerFit$ protocol and follow the instructions above indicated. The structure saved in $Chimera$ operate will replace this time our previous $model$ (\ffigure{fig:powerfit_protocol} (2)). Select \ttt{item 2} as best fit.\\
+    
+    \item Protocol \scommand{chimera rigid fit}:\\
+    Open again $Chimera$ \ttt{rigid fit} protocol and, following already indicated instructions, include this time \ttt{item 2}, the last fitted structure obtained with $PowerFit$ (\ffigure{fig:chimera_rigid_fit} (3)). After finishing the rigid fit of the extracted unit cell and \ttt{metHgb} $\alpha$ subunit from 5NI1 structure, you can save this fitted structure writing in $Chimera$ command line:\\
+    \ttt{scipionwrite model \#2 refmodel \#1 saverefmodel 0}\\
+    
+    \item Validation protocols \scommand{phenix - emringer} and \scommand{phenix - molprobity}:\\
+    Compute validation statistics with these two protocols for \ttt{metHgb} $\alpha$ subunit from \ttt{PDB} structure \ttt{5NI1}, write respective values in the previous table (\ttable{table:empty}), and compare them with the statistics of our $models$.
+    
+    Considering results shown in appendix \ref{app:solutions} (\textbf{Question 9}) for \ttt{metHgb} $\alpha$ subunit, we can conclude that published structures are not perfect and we are not very far from this published one. In fact, we have overcome every statistic except \ccmask. Then, the three different $models$ generated after $Coot$ refinement could be acceptable. \\
+
+  \end{itemize}
+ 
+  \item Comparison of atomic structures: \\
+  
+  $Phenix$ protocol \scommand{phenix - superpose pdbs} allows to compare two atomic structures by overlapping them. Root mean square deviation (RMSD) between the fixed structure (the published one) and one of our $models$ supports the classification of $models$ according to its proximity to the published model. Open $Phenix$ \ttt{superpose pdbs} protocol form (\ffigure{fig:superpose_pdbs_protocol} (1)), include the published structure of the \ttt{metHgb} $\alpha$ subunit as fixed structure (2), each one of the $models$ generated along the worflow (3) and execute the protocol (4). Finally, complete the \ttable{table:empty} with the value of RMSD obtained for each $model$. (Answers in appendix \ref{app:solutions}; \textbf{Question 9}).
+  
+  \begin{figure}[H]
+    \centering 
+    \captionsetup{width=.7\linewidth} 
+    \includegraphics[width=0.90\textwidth]{Images/Fig37.png}
+    \caption{Completing $Phenix$ \ttt{superpose pdbs} protocol form.}
+    \label{fig:superpose_pdbs_protocol}
+    \end{figure}
+    
+  You can check in $Chimera$ the fitted $model$ to the published structure by pressing \ttt{Analyze results} (\ffigure{fig:superpose_pdbs_protocol} (5)). Arrows of \ffigure{fig:superpose_pdbs_chimera} remark differing parts between both atomic structures. By opening these structures in $Coot$ you can see the difference between them.
+ 
+   \begin{figure}[H]
+    \centering 
+    \captionsetup{width=.7\linewidth} 
+    \includegraphics[width=0.90\textwidth]{Images/Fig38.png}
+    \caption{$Model$ generated for \ttt{metHgb} $\alpha$ subunit superposed to published $\alpha$ chain of \ttt{5NI1} structure.}
+    \label{fig:superpose_pdbs_chimera}
+   \end{figure}
+  
+  
+  \end{itemize}
+ \end{itemize}
+ 
+ A $model$ for \ttt{metHgb} $\alpha$ subunit has to be selected at the end of validation process. According to the statistics of \ttable{table:refmac_question_9} (Appendix \ref{app:solutions}; \textbf{Question 9}), $model$ obtained in the last step of modeling workflow ($Refmac$ after RSRAC (modified)) has been selected due to the smallest RMSD value, high value of $EMRinger$ \ttt{score}, quite high value of \ccmask and acceptable $MolProbity$ statistics. Follow a similar process to validate and select the $model$ generated for \ttt{metHgb} $\beta$ subunit. Appendix \ref{app:solutions} \textbf{Question 10} contains a statistics table for \ttt{metHgb} $\beta$ subunit, similar to that obtained for \ttt{metHgb} $\alpha$ subunit.\\
+ 
+ In the real world, selected $models$ usually are the starting point to improve specific validation parameters by additional refinement. Since the improvement of certain parameters normally implies worsening of others, a final compromise solution has to be taken.\\
+
+
+\section{Building the unit cell}
+
+Once we have selected $models$ for \ttt{metHgb} $\alpha$ and $\beta$ subunits, we can regenerate the smallest asymmetrical element (unit cell) of the starting volume. With this aim $Chimera$ \ttt{rigid fit} and assessment - refinement -assessment protocols will be used.\\ 
+
+\begin{itemize}
+ \item Protocol \scommand{chimera rigid fit} to generate the unit cell of human \ttt{metHgb}:\\
+ 
+    Open again $Chimera$ \ttt{rigid fit} protocol and following already indicated instructions, include this time $models$ for \ttt{metHgb} $\alpha$ and $\beta$ subunits (\ffigure{fig:chimera_rigid_fit} (3 and 4)). Firstly, perform the rigid fit of the extracted unit cell (output\_volume.mrc) and both subunits \#2 and \#3, by using \ttt{Tools -> Volume Data -> Fit in Map} in $Chimera$ (\ffigure{fig:chimera_rigid_fit_A_B}). Next, create a single atomic structure by selecting models \#2 and \#3 in $Chimera$ \ttt{Model Panel} and pressing \ttt{Copy/Combine} command in the right column. A new model \#4 is shown in $Chimera$ \ttt{Model Panel}. Finally, save this fitted structure writing in $Chimera$ command line:\\
+    \ttt{scipionwrite model \#4 refmodel \#1 saverefmodel 0}\\
+    
+    \begin{figure}[H]
+    \centering 
+    \captionsetup{width=.7\linewidth} 
+    \includegraphics[width=0.90\textwidth]{Images/Fig40.png}
+    \caption{Generation of the human \ttt{metHgb} unit cell $model$.}
+    \label{fig:chimera_rigid_fit_A_B}
+   \end{figure}
+    
+ \item Validation protocols to select the best $model$ of the human \ttt{metHgb} unit cell:\\
+ 
+ $EMRinger$ and $MolProbity$ validation statistics should be computed for the new $model$ of human \ttt{metHgb} unit cell, generated by combining \ttt{metHgb} $\alpha$ and $\beta$ subunits. Appendix \ref{app:solutions} (\textbf{Question 11}) contains a statistics table for the unit cell $model$ (\ttable{table:refmac_question_11}). We can try to improve those statistics by additional refinement processes. By performing refinement in real space with $Phenix$ and, additionally, in reciprocal space with $Refmac$, some of the statistics will result improved. \ttable{table:refmac_question_11} contains also RMSD values computed in a similar way as we have seen for $\alpha$ and $\beta$ subunits, considering as fixed structure chains A and B from \ttt{5NI1} atomic structure. In this tutorial, we have selected the unit cell $model$ generated by $Phenix$ \ttt{real space refine} (modified parameters) because it shows most of best statistics (\ccmask, $EMRinger$ \ttt{score} and $MolProbity$ values). Exceptionally, RMSD regarding the published structure yields the worst value.
+ 
+\end{itemize}
+
+
+\section{The whole macromolecule}
+
+To regenerate the whole human \ttt{metHgb} macromolecule, $Chimera$ \ttt{operate} and assessment - refinement -assessment protocols will be used. Starting from the unit cell, $Chimera$ \ttt{operate} protocol allows to generate the whole molecule by symmetry. As in the previous step, validation programs drive to selection of the best $model$ of the whole molecule after one or several rounds of assessment - refinement -assessment. A final validation step will be accomplish with $Chimera$ \ttt{operate} protocol to assess volume density occupancy.
+
+\begin{itemize}
+
+ \item Protocol \scommand{chimera operate} to generate the whole molecule of human \ttt{Hgb}:\\
+ 
+ Following previous instructions, open $Chimera$ \ttt{operate} protocol (\ffigure{fig:chimera_operate_protocol} (1)), load 
+ the selected atomic structure $model$ of \ttt{metHgb} unit cell (2), and execute the protocol (3). $Chimera$ graphics interface will show you the $model$ of \ttt{metHgb} unit cell. Considering the C2 symmetry of the whole molecule, write in $Chimera$ command line to re-generate the whole molecule:\\
+ 
+ \ttt{sym \#2 group C2}\\
+ 
+ A symmetric image of the input $model$ (\ffigure{fig:chimera_operate_sym}; \#2) will be generated (\#3). $Model$ \#1 is the initial extracted unit cell volume associated to \ttt{metHgb} unit cell $model$ loaded. By selecting $models$ \#2 and \#3, and pressing \ttt{Copy/Combine} in the right side of \ttt{Model Panel}, a new $model$ \#4 is generated. This new $model$ contains the four subunits that integrate the two symmetric unit cells. The whole molecule $model$ can be saved by writing in $Chimera$ command line:\\
+ 
+ \ttt{scipionwrite model \#4 refmodel \#1 saverefmodel 0}\\
+ 
+ \begin{figure}[H]
+    \centering 
+    \captionsetup{width=.7\linewidth} 
+    \includegraphics[width=0.90\textwidth]{Images/Fig41.png}
+    \caption{$Model$ generated for the whole human \ttt{metHgb}.}
+    \label{fig:chimera_operate_sym}
+   \end{figure}
+ 
+ \item Validation protocols to select the best $model$ of the whole human \ttt{Hgb}:\\
+ 
+ $EMRinger$ and $MolProbity$ statistics have to be computed for the new $model$ of the whole human \ttt{metHgb} obtained by using $Chimera$ \ttt{operate} protocol (see results \ttable{table:refmac_question_12} in Appendix \ref{app:solutions}; \textbf{Question 12}). Because of high values of \ccmask and $EMRinger$ \ttt{score}, as well as acceptable $MolProbity$ statistics, $model$ generated by $Chimera$ \ttt{operate} protocol is selected as $model$ of the whole human \ttt{metHgb}. Additional refinement steps with $Phenix$ \ttt{real space refine} and $Refmac$ do not seem to improve the result significantly. In this case, RMSD value of the selected atomic structure $model$ regarding the published structure yields an intermediate value between the best and the worst one.\\
+ 
+ \item Protocol \scommand{chimera operate} to assess volume density occupancy:\\
+ 
+ As we have seen previously, open $Chimera$ \ttt{operate} protocol (\ffigure{fig:chimera_operate_protocol} (1)), load both the initial volume and the selected atomic structure $model$ of the whole human \ttt{metHgb} (2), and execute the protocol (3). \ffigure{fig:chimera_operate_vol} shows the initial volume \ttt{EMD-3488} (grey) and the selected $model$ that we have traced for human \ttt{metHgb} (pink):
+ 
+ \begin{figure}[H]
+    \centering 
+    \captionsetup{width=.7\linewidth} 
+    \includegraphics[width=0.90\textwidth]{Images/Fig42.png}
+    \caption{Human \ttt{metHgb} $model$ opened by $Chimera$ \ttt{operate} protocol.}
+    \label{fig:chimera_operate_vol}
+   \end{figure}
+ 
+ To check if the selected model of \ttt{metHgb} occupies most part of the starting volume, we have to compare by subtraction the $model$-derived volume and the starting volume \ttt{EMD-3488}. To perform this operation, follow the next two steps:\\
+ 
+  \begin{itemize}
+  
+  \item To generate a volume from the $model$ at 3.307\AA\ resolution (resolution shown in $Phenix$-\ttt{$MolProbity$ viewer}; \ttt{Real space correlation}; \ttt{Atom Mask Radius}), write in $Chimera$ command line:\\
+  
+  \ttt{molmap \#2 3.307 modelId 3}\\
+  
+  Next \ffigure{fig:chimera_operate_vol_2} shows the volume (\iii{Chimera model} \#3) generated in $Chimera$ at 3.307\AA\ resolution, starting from the selected atomic structure of human \ttt{metHgb} (\iii{Chimera model} \#2). 
+   
+  \begin{figure}[H]
+    \centering 
+    \captionsetup{width=.7\linewidth} 
+    \includegraphics[width=0.90\textwidth]{Images/Fig43.png}
+    \caption{Electron density volume generated from human \ttt{metHgb} $model$ in $Chimera$.}
+    \label{fig:chimera_operate_vol_2}
+   \end{figure}
+  
+  \item To subtract this new model from the starting whole volume \ttt{EMD-3488}, write in $Chimera$ command line:\\
+  
+  \ttt{vop subtract \#1 \#3 modelId \#4} \\
+  
+  Resulting volume from this subtraction operation appears in \ffigure{fig:chimera_operate_vol_3} (\iii{Chimera model} \#4). From this result, we can conclude that most part of the initial density map has been traced, and there are no significant additional densities others than the four monomers and the four prosthetic groups that we have considered so far.
+  
+  \begin{figure}[H]
+    \centering 
+    \captionsetup{width=.7\linewidth} 
+    \includegraphics[width=0.90\textwidth]{Images/Fig44.png}
+    \caption{Electron density difference between the starting volume \ttt{EMD-3488} and the volume generated from human \ttt{metHgb} $model$.}
+    \label{fig:chimera_operate_vol_3}
+   \end{figure}
+  
+  
+  \end{itemize}
+ 
+\end{itemize}
+
+\section{Install}
+  branch -> master
+  
+  install
+  ccp4
+  phenix
+  chimera
+  clustal-omega
+  powerfit
+  
+  configure
+
+\section{TODO}
+\begin{itemize}
+ \item map2model (phenix) volume
+ \item buccaneer (ccp4) volume
+ \item chimera de novo NO volume
+ 
+\end{itemize}
+
+\bibliographystyle{abbrv}
+\bibliography{../tutorial_common/em}
 
 \begin{appendices}
-\section{Input volume protocol}
 
-\section{Input pdb protocol}
+\section{Answers to Questions}
+\label{app:solutions}
+
+\begin{itemize}
+ \item \textbf{Question 1:}\\
+ 
+Method: X\_Ray diffraction.\\
+Resolution: 2.5 \AA\\
+Chains: 2; A ($\alpha$ chain) and B ($\beta$ chain)\\
+
+ \item \textbf{Question 2:}\\
+ 
+\ccmask value: 0.778\\
+Residue with lower correlation value: 142 ARG (Misfit at the end of the chain)\\
+Correlation value: 0.186172531458\\
+Second residue with lower correlation value: 1 MET (Post-translationally processing)\\
+Correlation value: 0.348504275208\\
+Correlation value of \ttt{HEME} group: 0.81328813 (To get this value, Select Residue Type (Other) and Show CC below (0.9 or 1.0)).\\
+
+ \item \textbf{Question 3:}\\
+ 
+\ccmask value has improved to 0.787.\\
+A 142 ARG correlation has improved to 0.4282267700789.\\
+\ttt{HEME} group correlation has not improved (0.81007005253).\\
+
+ \item \textbf{Question 4:}\\
+ 
+ \ccmask value has improved to 0.805.\\
+ A 142 ARG correlation has improved to 0.474205806292.\\
+ \ttt{HEME} group correlation has also improved to 0.821341112742.\\
+ 
+ \item \textbf{Question 5:}\\
+ 
+ \ttable{table:refmac_question_5}
+ 
+ \begin{table}[]
+   \caption{$Refmac$ results:}
+   \centering\footnotesize
+   \begin{tabular}{l c c}
+   \hline
+   Statistic &  Initial & Final\\ [0.5ex]
+   \hline
+   \ttt{R factor} & 0.3506 & 0.3488\\
+   \ttt{Rms BondLength} & 0.0137 & 0.0150\\
+   \ttt{Rms BondAngle} & 1.6843 & 1.8655\\
+   \ttt{Rms ChirVolume} & 0.0783 & 0.0783\\[1ex] 
+   \hline
+   \end{tabular}
+   \label{table:refmac_question_5}
+  \end{table}
+
+Why: Because the starting values were already very good. Then, the model can not be improved very much. Maybe we did not need this refinement step.
+
+ \item \textbf{Question 6:}\\
+ 
+ \ttable{table:refmac_question_6}
+ 
+ \begin{table}[]
+  \caption{$Refmac$ results:}
+   \centering\footnotesize
+   \begin{tabular}{l c c}
+   \hline
+   Statistic &  Initial & Final\\ [0.5ex]
+   \hline
+   \ttt{R factor} & 0.3865 & 0.3441\\
+   \ttt{Rms BondLength} & 0.0142 & 0.0165\\
+   \ttt{Rms BondAngle} & 2.0081 & 1.9696\\
+   \ttt{Rms ChirVolume} & 0.1401 & 0.0844\\[1ex] 
+   \hline
+   \end{tabular}
+   \label{table:refmac_question_6}
+  \end{table}
+
+The improvement seems to be higher because the starting position was worse. Anyway, $Refmac$ seems to partially compensate the effect of the additional refinement in the real space accomplished with $Phenix$. 
+
+\item \textbf{Question 7:}\\
+ 
+ \ttable{table:refmac_question_7}
+ 
+ \begin{table}[]
+  \caption{$Refmac$ results:}
+   \centering\footnotesize
+   \begin{tabular}{l c c c c}
+   \hline
+   $Refmac$ & \multicolumn{2}{c}{$Coot$ volume} & \multicolumn{2}{c}{\ttt{unit cell} volume} \\ [0.5ex]
+   Statistic & Initial & Final & Initial & Final \\ [0.5ex]
+   \hline
+   \ttt{R factor} & 0.3495 & 0.3484 & 0.4865 & 0.4851 \\
+   \ttt{Rms BondLength} & 0.0141 & 0.0150 & 0.0141 & 0.0221 \\
+   \ttt{Rms BondAngle} & 1.7022 & 1.8683 & 1.7022 & 2.3357 \\
+   \ttt{Rms ChirVolume} & 0.0797 & 0.0860 & 0.0797 & 0.1110 \\[1ex] 
+   \hline
+   \end{tabular}
+   \label{table:refmac_question_7}
+  \end{table}
+  
+  Starting and final \ttt{Rfactor} values seem to be worse when we use the volume generated by the \ttt{extract unit cell} protocol than when the normalized volume generated by $Coot$ is used. However, no difference is detected between the use of mask (\ttable{table:refmac_question_5}) and the absence of mask when the normalized volume generated by $Coot$ is considered. Probably, the use of mask results irrelevant when high quality data are available. \\
+
+\item \textbf{Question 8:}\\
+
+$EMRinger$ \ttt{score} after \iii{PowerFit item2}: -0.57; With this value makes sense that $item1$ was the model with highest score in PowerFit.\\
+$EMRinger$ \ttt{score} after $Chimera$ \ttt{rigid fit} $item2$: 3.86; Things clearly change after $Chimera$ \ttt{rigid fit}.\\
+$EMRinger$ \ttt{score} after $Coot$: 2.37; Manual refinement depends on each user and in this case, for instance, we did not pay attention to rotamers.\\
+$EMRinger$ \ttt{score} after $Phenix$ \ttt{real space refine} (default) after $Coot$: 5.38\\
+$EMRinger$ \ttt{score} after $Phenix$ \ttt{real space refine} (last modification of form parameters) after $Coot$: 5.23\\
+$EMRinger$ \ttt{score} after $Refmac$ after $Coot$: 2.87; With $Refmac$ parameters used, the improvement got with $Phenix$ \ttt{real space refine} after $Coot$ is clearly higher than the improvement got with $Refmac$ after $Coot$.\\
+$EMRinger$ \ttt{score} after $Refmac$ after $Phenix$ \ttt{real space refine} (last modification of form parameters) after $Coot$: 5.34; $Refmac$ does not improve very much the result (because it was already good). With the $EMRinger$ statistic, we can say that the modeling workflow is helpful to get a quite good model.
 
 
-\marginnote{swissmodel}[1cm]
-When predicting by homology a structure is constructed by aligning a target protein sequence with known template structures. The protein sequence can be obtained from many sources, for example NCBI or UniProt. The quality of a structure depends upon the similarity between the target sequence and the database sharing highest similarity is aligned. 
+\item \textbf{Question 9:}\\
 
-Esto es otro parrafo
+\ttable{table:refmac_question_9}
+
+ \begin{sidewaystable}
+   \caption{Validation statistics of human \ttt{metHgb} $\alpha$ subunit $model$. \ttt{RSRAC} stands for \ttt{Real Space Refine} after $Coot$. \ttt{Rama} stands for Ramachandran.}
+   \centering\footnotesize
+   \begin{tabular}{l c c c c c c c c}
+   \hline\hline
+   Statistic &  \thead{$Powerfit$\\ $item$ \#2} & \thead{$Chimera$\\ $model$ \#2} & $Coot$ & \thead{$Phenix$\\ \ttt{RSRAC}\\(default)} & \thead{$Phenix$\\ \ttt{RSRAC}\\(modified)} & \thead{$Refmac$\\ after $Coot$} & \thead{$Refmac$\\ after \ttt{RSRAC}\\(modified)} & \ttt{5NI1}\\ [0.5ex]
+   \hline
+   \ccmask & 0.194 & 0.569 & 0.725 & 0.787 & 0.805 & 0.803 & 0.801 & 0.843\\
+   $EMRinger$ \ttt{score} & -0.57 & 3.86 & 2.37 & 5.38 & 5.23 & 2.87 & 5.34 & 3.98\\
+   \ttt{RMS} (Bonds) & 0.0187 & 0.0188 & 0.0183 & 0.0090 & 0.0066 & 0.020 & 0.0191 & 0.0126\\
+   \ttt{RMS} (Angles) & 2.41 & 2.41 & 2.02 & 1.30 & 1.16 & 1.94 & 1.84 & 1.43\\
+   \ttt{Rama favored} (\%) & 97.14 & 97.14 & 97.12 & 95.68 & 95.68 & 97.12 & 95.68 & 94.24\\
+   \ttt{Rama allowed} (\%) & 2.15 & 2.15 & 2.88 & 4.32 & 4.32 & 2.88 & 4.32 & 5.76\\
+   \ttt{Rama outliers} (\%) & 0.71 & 0.71 & 0.00 & 0.00 & 0.00 & 0.00 & 0.00 & 0.00\\
+   \ttt{Rotamer outliers} (\%) & 1.75 & 1.75 & 24.78 & 0.00 & 0.00 & 23.01 & 1.77 & 0.88\\
+   \ttt{Clashscore} & 71.68 & 70.34 & 26.24 & 1.81 & 1.36 & 21.73 & 1.36 & 2.26\\
+   \ttt{Overall score} & 2.67 & 2.66 & 3.12 & 1.24 & 1.16 & 3.02 & 1.35 & 1.39\\
+   \ttt{C$\beta$ deviations} & 1 & 1 & 7 & 0 & 0 & 2 & 0 & 0 \\
+   \ttt{RMSD} & 0.841 & 0.841 & 0.447 & 0.456 & 0.407 & 0.414 & 0.384 & 0.0 \\[1ex] 
+   \hline
+   \end{tabular}
+   \label{table:refmac_question_9}
+   \end{sidewaystable}
+   
+   \item \textbf{Question 10:}\\
+   
+   \ttable{table:refmac_question_10}
+
+ \begin{sidewaystable}
+   \caption{Validation statistics of human \ttt{metHgb} $\beta$ subunit $model$. \ttt{RSRAC} stands for \ttt{Real Space Refine} after $Coot$. \ttt{Rama} stands for Ramachandran.}
+   \centering\footnotesize
+   \begin{tabular}{l c c c c c c c c}
+   \hline\hline
+   Statistic &  \thead{$Powerfit$\\ $item$ \#2} & \thead{$Chimera$\\ $model$ \#2} & $Coot$ & \thead{$Phenix$\\ \ttt{RSRAC}\\(default)} & \thead{$Phenix$\\ \ttt{RSRAC}\\(modified)} & \thead{$Refmac$\\ after $Coot$} & \thead{$Refmac$\\ after \ttt{RSRAC}\\(modified)} & \ttt{5NI1}\\ [0.5ex]
+   \hline
+   \ccmask & 0.340 & 0.524 & 0.690 & 0.776 & 0.793 & 0.765 & 0.767 & 0.830\\
+   $EMRinger$ \ttt{score} & 1.41 & 1.13 & 3.93 & 4.76 & 4.94 & 3.70 & 5.32 & 4.87\\
+   \ttt{RMS} (Bonds) & 0.0313 & 0.0313 & 0.0169 & 0.0078 & 0.0098 & 0.0191 & 0.0183 & 0.0117\\
+   \ttt{RMS} (Angles) & 2.17 & 2.17 & 1.97 & 1.33 & 1.39 & 1.95 & 1.87 & 1.40\\
+   \ttt{Rama favored} (\%) & 96.55 & 96.55 & 97.92 & 96.53 & 96.53 & 97.22 & 95.14 & 95.83\\
+   \ttt{Rama allowed} (\%) & 3.45 & 3.45 & 2.08 & 3.47 & 3.47 & 2.78 & 4.86 & 4.17\\
+   \ttt{Rama outliers} (\%) & 0.0 & 0.0 & 0.00 & 0.00 & 0.00 & 0.00 & 0.00 & 0.00\\
+   \ttt{Rotamer outliers} (\%) & 1.68 & 1.68 & 29.66 & 0.85 & 0.85 & 27.97 & 5.93 & 0.00\\
+   \ttt{Clashscore} & 75.50 & 75.93 & 34.24 & 3.89 & 3.03 & 25.57 & 2.16 & 4.32\\
+   \ttt{Overall score} & 2.74 & 2.75 & 3.16 & 1.40 & 1.32 & 3.14 & 1.92 & 1.50\\
+   \ttt{C$\beta$ deviations} & 0 & 0 & 8 & 0 & 0 & 1 & 0 & 0 \\
+   \ttt{RMSD} & 0.935 & 0.935 & 0.495 & 0.470 & 0.535 & 0.441 & 0.494 & 0.0 \\[1ex] 
+   \hline
+   \end{tabular}
+   \label{table:refmac_question_10}
+   \end{sidewaystable}
+   
+\item \textbf{Question 11:}\\
+
+\ttable{table:refmac_question_11}
+
+ \begin{table}
+   \caption{Validation statistics of human \ttt{metHgb} unit cell $model$. \ttt{RSR} stands for \ttt{Real Space Refine}. \ttt{Rama} stands for Ramachandran.}
+   \centering\footnotesize
+   \begin{tabular}{l c c c c c}
+   \hline\hline
+   Statistic &  \thead{$Chimera$\\ \ttt{rigid fit}} & \thead{$Phenix$\\ \ttt{RSR}\\(default)} & \thead{$Phenix$\\ \ttt{RSR}\\(modified)} & \thead{$Refmac$\\ after \ttt{RSR}\\(modified)} & \ttt{5NI1}\\ [0.5ex]
+   \hline
+   \ccmask & 0.787 & 0.808 & 0.807 & 0.789 & 0.840 \\
+   $EMRinger$ \ttt{score} & 4.64 & 4.58 & 4.91 & 4.35 & 4.11 \\
+   \ttt{RMS} (Bonds) & 0.0187 & 0.0093 & 0.0093 & 0.0182 & 0.0122\\
+   \ttt{RMS} (Angles) & 1.860 & 1.380 & 1.390 & 1.840 & 1.410\\
+   \ttt{Rama favored} (\%) & 95.41 & 95.41 & 95.41 & 94.70 & 95.05\\
+   \ttt{Rama allowed} (\%) & 4.59 & 4.59 & 4.59 & 5.30 & 4.95\\
+   \ttt{Rama outliers} (\%) & 0.0 & 0.0 & 0.00 & 0.00 & 0.00 \\
+   \ttt{Rotamer outliers} (\%) & 3.90 & 0.43 & 0.00 & 3.90 & 0.43 \\
+   \ttt{Clashscore} & 5.31 & 3.54 & 2.87 & 3.32 & 3.53 \\
+   \ttt{Overall score} & 2.05 & 1.46 & 1.40 & 1.94 & 1.49 \\
+   \ttt{C$\beta$ deviations} & 0 & 0 & 0 & 0 & 0 \\
+   \ttt{RMSD} & 0.494 & 0.509 & 0.579 & 0.537 & 0.00 \\[1ex] 
+   \hline
+   \end{tabular}
+   \label{table:refmac_question_11}
+   \end{table}
+   
+   \item \textbf{Question 12:}\\
+
+\ttable{table:refmac_question_12}
+
+ \begin{table}
+   \caption{Validation statistics of whole human \ttt{metHgb} $model$. \ttt{RSR} stands for \ttt{Real Space Refine}. \ttt{Rama} stands for Ramachandran.}
+   \centering\footnotesize
+   \begin{tabular}{l c c c c c}
+   \hline\hline
+   Statistic &  \thead{$Chimera$\\ \ttt{operate}} & \thead{$Phenix$\\ \ttt{RSR}\\(default)} & \thead{$Phenix$\\ \ttt{RSR}\\(modified)} & \thead{$Refmac$\\ after \ttt{RSR}\\(modified)} & \ttt{5NI1}\\ [0.5ex]
+   \hline
+   \ccmask & 0.810 & 0.803 & 0.796 & 0.792 & 0.842 \\
+   $EMRinger$ \ttt{score} & 4.95 & 4.70 & 3.86 & 4.05 & 4.18 \\
+   \ttt{RMS} (Bonds) & 0.0093 & 0.0076 & 0.0067 & 0.0181 & 0.0122\\
+   \ttt{RMS} (Angles) & 1.390 & 1.350 & 1.350 & 1.860 & 1.410\\
+   \ttt{Rama favored} (\%) & 95.41 & 95.41 & 96.82 & 95.41 & 95.23\\
+   \ttt{Rama allowed} (\%) & 4.59 & 4.59 & 3.18 & 4.59 & 4.77\\
+   \ttt{Rama outliers} (\%) & 0.00 & 0.00 & 0.00 & 0.00 & 0.00 \\
+   \ttt{Rotamer outliers} (\%) & 0.00 & 0.00 & 1.30 & 5.41 & 0.43 \\
+   \ttt{Clashscore} & 4.97 & 3.21 & 3.98 & 2.54 & 3.53 \\
+   \ttt{Overall score} & 1.58 & 1.43 & 1.46 & 1.94 & 1.48 \\
+   \ttt{C$\beta$ deviations} & 0 & 0 & 0 & 0 & 0 \\
+   \ttt{RMSD} & 0.579 & 0.642 & 0.517 & 0.454 & 0.00 \\[1ex] 
+   \hline
+   \end{tabular}
+   \label{table:refmac_question_12}
+   \end{table}
+
+\end{itemize}
+
+
+
+\section{Chimera Operate protocol}
+\label{app:chimeraOperate}
+
+\section{Chimera Restore Session protocol}
+\label{app:chimeraRestoreSession}
+
+\section{Chimera Rigid Fit protocol}
+\label{app:chimeraRigidFit}
+
+\section{CCP4 Coot Refinement protocol}
+\label{app:ccp4CootRefinement}
+
+\section{CCP4 Refmac protocol}
+\label{app:ccp4Refmac}
+
+\section{Extract unit cell protocol}
+\label{app:extractUnitCell}
+
+\section{Import atomic structure protocol}
+\label{app:importAtomicStructure}
+
+\section{Import sequence protocol}
+\label{app:importSequence}
+
+\section{Import volume protocol}
+\label{app:importVolume}
+
+\begin{figure}[H]
+    \centering 
+    \captionsetup{width=.7\linewidth} 
+    \includegraphics[width=0.90\textwidth]{Images_appendix/Fig100.png}
+    \caption{Protocol \scommand{import volumes}. A: Protocol location in \scipion menu. B: Protocol form.}
+    \label{fig:app_protocol_volume_1}
+   \end{figure}
+   
+ \begin{itemize}
+  \item \scipion menu:\\
+  \ttt{Protocols SPA -> Imports} (\ffigure{fig:app_protocol_volume_1} (A))\\
+  
+  \item Protocol form parameters:\\
+  \begin{itemize}
+   \item \ttt{Files directory}: Folder that contain one or several volumes (a set of volumes) that you'd like to import. By clicking the folder symbol right to the \ttt{Files directory} box, a browser will be opened to allow you look for the volume(s)-containing file in your computer. Click the volume that you want to select, if only one volume is going to be loaded. If a set of volumes from the same folder are going to be loaded, click the respective folder.\\
+   \item \ttt{Pattern}: In case you'd like to import a set of volumes, you can include here the common name pattern to all of them. Read the help (question mark) of the previous parameter \ttt{Files directory} to 
+   
+  
+  \end{itemize}
+  
+  
+ \end{itemize}
+
+
+\section{Model from template protocol}
+\label{app:modelFromTemplate}
+
+\section{Phenix EMRinger protocol}
+\label{app:emRingerProtocol}
+
+\section{Phenix Molprobity protocol}
+\label{app:molprobityProtocol}
+
+\section{Phenix Real Space Refine protocol}
+\label{app:realSpaceRefineProtocol}
+
+\section{Phenix Superpose PDBs protocol}
+\label{app:superposePdbsProtocol}
+
+\section{Powerfit protocol}
+\label{app:powerfitProtocol}
+
+
+
+
+
+%\marginnote{swissmodel}[1cm]
+%When predicting by homology a structure is constructed by aligning a target protein sequence with known template structures. The protein sequence can be obtained from many sources, for example NCBI or UniProt. The quality of a structure depends upon the similarity between the target sequence and the database sharing highest similarity is aligned. 
+
+%Esto es otro parrafo
 
 
 \end{appendices}
 
 \end{document}
+
+% NOTES
+% to be implemented map2model (phenix)
+%       chimera (see building parts of a protein without using a template)

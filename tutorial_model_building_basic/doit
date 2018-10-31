@@ -1,0 +1,2 @@
+okular tutorial_model_building_basic.pdf&
+latexmk -pvc -pdf tutorial_model_building_basic.tex 
