@@ -202,31 +202,171 @@ This tutorial requires, in addition to \scipion,  the modeling system $USCF Chim
 \section{Import sequence protocol}
 \label{app:importSequence}
 
+\begin{itemize}
+  \item \scipion menu:\\
+  \ttt{Protocols SPA -> Imports} (\ffigure{fig:app_protocol_sequence_1} (A))\\
+  
+  \item Protocol form parameters (\ffigure{fig:app_protocol_sequence_1} (B)):\\
+  
+  \begin{figure}[H]
+    \centering 
+    \captionsetup{width=.7\linewidth} 
+    \includegraphics[width=0.90\textwidth]{Images_appendix/Fig104.png}
+    \caption{Protocol \scommand{import sequence}. A: Protocol location in \scipion menu. B: Protocol form.}
+    \label{fig:app_protocol_sequence_1}
+   \end{figure}
+  
+  \begin{itemize}
+  \item \ttt{Sequence ID}: Optional short name to identify your sequence (acronym or number, e. g. Q05769). If no ID is assigned by the user, and the sequence has been downloaded from GeneBank/UniProtKB/PDB database, the database ID will be selected as \ttt{Sequence ID} (Read the help section (question mark) to see some examples). Otherwise, \ttt{Sequence name} will be set as \ttt{Sequence ID}.\\
+  \item \ttt{Sequence name}: Compulsory short name to identify your sequence (PGH2\_MOUSE). Names with certain meaning are recommended.\\
+  \item \ttt{Sequence description}: Optional description of your sequence. It can include functionality, organism, size, etc... (e.g. Prostaglandin G/H synthase 2). If no description is assigned by the user, and the sequence has been downloaded from GeneBank/UniProtKB/PDB database, the database description will be selected as \ttt{Sequence description}. Otherwise, no description will be included.\\
+  \item \ttt{Import sequence of}: Selection parameter to choose between \ttt{aminoacids} and \ttt{nucleotides}. After selecting one of them, a new selection menu will be opened:\\
+  
+  \begin{itemize}
+  \item \ttt{aminoacids}: Parameter to select one of these four options:\\
+   \begin{itemize}
+   \item \ttt{plain text}: Select this option if you want to introduce your own single letter aminoacid sequence. Since your sequence will be cleaned according to the standard protein alphabet of 20 aminoacids (\ttt{Protein}) or to an extended one that includes 6 additional aminoacids or aminoacid groups (\ttt{Extended Protein}), you have to select one of these \ttt{IUPAC Protein} alphabets. Read the help section (question mark) to know the aminoacids included in each alphabet. Not only non-canonical aminoacids will be cleaned, but also wildcard characters such as *,\#, ?, -, etc... \ttt{Write your sequence here} indicates the place where your single letter aminoacid sequence has to be written or paste.\\ 
+   \item \ttt{atomic structure}: Select this option if you want to download the sequence from an atomic structure (\ffigure{fig:app_protocol_sequence_2} (A)). Select \ttt{id} to download your sequence from PDB database. Then, write the PDB ID (\ttt{Atomic structure ID} and select the chain sequence of your preference (\ttt{Chain}). Use the wizard at the right side of \ttt{Chain} parameter to select that chain. Follow an analogous process to download the sequence from an atomic structure that you already has in your computer. This time, the \ttt{File path} will replace the \ttt{Atomic structure ID}. By pressing the folder symbol, a browser will help you to find the structure file.\\
+   \item \ttt{file}: Select this option if your sequence is written in a text file that you already have in your computer (\ffigure{fig:app_protocol_sequence_2} (B)). By pressing the folder symbol, a browser will help you to find the sequence file.\\
+   \item \ttt{UniProtID}: Select this option if you want to download the sequence from UniProtKB database (\ffigure{fig:app_protocol_sequence_2} (C)). Write the name/ID of the respective sequence in the parameter box \ttt{UniProt name/ID}. A error message appears in case you introduce a wrong ID.\\
+   
+   \begin{figure}[H]
+    \centering 
+    \captionsetup{width=.7\linewidth} 
+    \includegraphics[width=0.90\textwidth]{Images_appendix/Fig105.png}
+    \caption{Protocol \scommand{import sequence}. Protocol form to import aminoacid sequences from the PDB database by indicating its respective ID (A), from a file (B), and from UniProtKB by writing the database ID/name (C).}
+    \label{fig:app_protocol_sequence_2}
+   \end{figure}
+   
+   \end{itemize}
+  \item \ttt{nucleotides}: Analogously to \ttt{aminoacids} parameter, select one of these four options:\\
+  \begin{itemize}
+   \item{plain text}: Parameter to introduce your own single letter nucleotide sequence (\ffigure{fig:app_protocol_sequence_3} (A)). Since your sequence will be cleaned according to the standard nucleic acid alphabet, you have to select one of the next five alphabets. The first three are DNA alphabets and the last two ones are RNA alphabets. Read the help section (question mark) to know each alphabet. The most restricted ones are \ttt{Unambiguous DNA} (``A, C, G, T'') and \ttt{Unambiguous RNA} (``A, C, G, U'') for DNA and RNA, respectively. The cleaning process also involves wildcard characters such as *,\#, ?, -, etc...\\
+   \item{atomic structure}: Information described for aminoacids is valid for nucleotides (\ffigure{fig:app_protocol_sequence_3} (B)).\\
+   \item{file}: Information described for aminoacids is valid for nucleotides (\ffigure{fig:app_protocol_sequence_3} (C)).\\
+   \item{GeneBank}: Information described for aminoacids is valid for nucleotides, this time replacing UniProtKB by GeneBank t(\ffigure{fig:app_protocol_sequence_3} (D)).\\
+   
+   \begin{figure}[H]
+    \centering 
+    \captionsetup{width=.7\linewidth} 
+    \includegraphics[width=0.90\textwidth]{Images_appendix/Fig106.png}
+    \caption{Protocol \scommand{import sequence}. Protocol form to write (A) or import nucleotide sequences from the PDB database by indicating its respective ID (B), from a file (C), and from GeneBank by writing the database accession number (D).}
+    \label{fig:app_protocol_sequence_3}
+   \end{figure}
+   
+  \end{itemize}
+  
+  \end{itemize}
+  
+
+  \end{itemize}
+ 
+
+  \item Protocol execution:\\
+  
+  Press the \ttt{Execute} red button at the form bottom.\\
+  Adding specific volume label is recommended in \ttt{Run name} section, at the form top. If you want to run again this protocol, do not forget set to \ttt{Restart} the \ttt{Run mode}.\\
+  
+  \item Visualization of protocol results:\\
+  
+  After executing the protocol, press \ttt{Analyze Results} and a text editor will be opened in which you can read the sequence in fasta format. \ttt{Sequence ID} and \ttt{Sequence description}
+  
+  
+  
+  This window allows you to select between \ttt{chimera} ($Chimera$ graphics window) and \ttt{slices} ($ShowJ$, the default \scipion viewer), to visualize the volume.
+  
+ \item Summary content:\\
+   
+   
+  
+  \end{itemize}
+
 \section{Import volume protocol}
 \label{app:importVolume}
-
-\begin{figure}[H]
+   
+ \begin{itemize}
+  \item \scipion menu:\\
+  \ttt{Protocols SPA -> Imports} (\ffigure{fig:app_protocol_volume_1} (A))\\
+  
+  \item Protocol form parameters (\ffigure{fig:app_protocol_volume_1} (B)):\\
+  
+  \begin{figure}[H]
     \centering 
     \captionsetup{width=.7\linewidth} 
     \includegraphics[width=0.90\textwidth]{Images_appendix/Fig100.png}
     \caption{Protocol \scommand{import volumes}. A: Protocol location in \scipion menu. B: Protocol form.}
     \label{fig:app_protocol_volume_1}
    \end{figure}
-   
- \begin{itemize}
-  \item \scipion menu:\\
-  \ttt{Protocols SPA -> Imports} (\ffigure{fig:app_protocol_volume_1} (A))\\
   
-  \item Protocol form parameters:\\
+  \begin{itemize}
+   \item \ttt{Input} section\\
+  
+
   \begin{itemize}
    \item \ttt{Files directory}: Folder that contain one or several volumes (a set of volumes) that you'd like to import. By clicking the folder symbol right to the \ttt{Files directory} box, a browser will be opened to allow you look for the volume(s)-containing file in your computer. Click the volume that you want to select, if only one volume is going to be loaded. If a set of volumes from the same folder are going to be loaded, click the respective folder.\\
-   \item \ttt{Pattern}: In case you'd like to import a set of volumes, you can include here the common name pattern to all of them. Read the help (question mark) of the previous parameter \ttt{Files directory} to 
+   \item \ttt{Pattern}: In case you'd like to import a set of volumes, you can include here the common name pattern to all of them. Read the help section (question mark) of this parameter and the previous parameter \ttt{Files directory} to know about wildcard characters that can be used to generalize patterns.\\
+   \item \ttt{Copy files?}: Advanced parameter set to ``No'' by default because copy density maps unnecessarily duplicates disk space occupied by them, space that could be quite big. Then, by default, volumes will be downloaded by a symbolic link to the file location in your computer. Set this parameter to ``Yes'' only if you plan to transfer the project to other computers in order to preserve map data in the \scipion project.\\
+   \item \ttt{Pixel size (``sampling rate'')} (\AA/px): The size of building blocks (the smallest units) of images depend on the microscope camera and magnification conditions used to get the data.\\
+   \item \ttt{Set origin of coordinates}: You have to choose between setting the default origin of coordinates (option ``No'') or another origin of coordinates (``Yes''). In the option by default, the center of the electron density map will be placed in the origin of coordinates. This is the preferred option in case you want to run afterwards programs that require symmetry regarding the origin of coordinates, like the extract unit cell protocol. If you decide to set your own origin of coordinates (option ``Yes''), a new form parameter (\ttt{Offset}) will appear below.\\
+   \item \ttt{Offset}: Write here x, y, and z coordinates of your preference (in \AA). Suggestions for coordinates can be obtained by pressing the wizard symbol located at the right side of the \ttt{Offset} parameter. In map files with format .mrc, suggested coordinates will be read from the map header.\\
+   \end{itemize}
    
+  \item \ttt{Streaming} section\\
+  
+  Go to this section if you plan simultaneous data acquisition and processing, and select the option ``Yes''. By default, \scipion considers that you run your processes once you have finished data acquisition (option ``No'').\\
   
   \end{itemize}
+  \item Protocol execution:\\
   
+  Press the \ttt{Execute} red button at the form bottom.\\
+  Adding specific volume label is recommended in \ttt{Run name} section, at the form top. If you want to run again this protocol, do not forget set to \ttt{Restart} the \ttt{Run mode}.\\
   
- \end{itemize}
+  \item Visualization of protocol results:\\
+  
+  After executing the protocol, press \ttt{Analyze Results} and a small window will be opened (\ffigure{fig:app_protocol_volume_2}). This window allows you to select between \ttt{chimera} ($Chimera$ graphics window) and \ttt{slices} ($ShowJ$, the default \scipion viewer), to visualize the volume.
+  
+  \begin{figure}[H]
+    \centering 
+    \captionsetup{width=.7\linewidth} 
+    \includegraphics[width=0.90\textwidth]{Images_appendix/Fig101.png}
+    \caption{Protocol \scommand{import volumes}. Menu to select a visualization tool.}
+    \label{fig:app_protocol_volume_2}
+   \end{figure}
+   
+   \begin{itemize}
+   \item \ttt{chimera}: $Chimera$ graphics window\\
+   
+   Volumes in $Chimera$ are referred to the origin of coordinates. To show the relative position of the volume, the three coordinate axes are represented; x axis (red), y axis (yellow), and z axis (blue). Coordinate axes and imported volume are model numbers \#0 and \#1, respectively, in $Chimera$ \ttt{Model Panel} (\ffigure{fig:app_protocol_volume_3}). Volume coordinates and pixel size can be checked in $Chimera$ main menu \ttt{Tools -> Volume Data -> Volume Viewer -> Features -> Coordinates: Origin index/ Voxel size}. Take into account that coordinates appear in pixels while they have been introduced in \AA.
+   
+   \begin{figure}[H]
+   \centering 
+    \captionsetup{width=.7\linewidth} 
+    \includegraphics[width=0.90\textwidth]{Images_appendix/Fig102.png}
+    \caption{Protocol \scommand{import volumes}. Default $Chimera$ graphics window with coordinate axes.}
+    \label{fig:app_protocol_volume_3}
+    \end{figure}
+   
+  \item \ttt{slices}: $ShowJ$\\
+   
+\url{https://github.com/I2PC/scipion/wiki/ShowJ}
+
+
+   \begin{figure}[H]
+   \centering 
+    \captionsetup{width=.7\linewidth} 
+    \includegraphics[width=0.90\textwidth]{Images_appendix/Fig103.png}
+    \caption{Protocol \scommand{import volumes}. Gallery model of $ShowJ$ to visualize volume slices.}
+    \label{fig:app_protocol_volume_4}
+   \end{figure}
+   
+   \end{itemize}
+   
+   \item Summary content:\\
+   
+   Protocol output (below \scipion framework): Volume (x, y, and z dimensions, sampling rate).\\
+   \ttt{SUMMARY} box:\\Path from which the volume has been downloaded.\\Sampling rate.
+  
+  \end{itemize}
 
 
 \section{Model from template protocol}
