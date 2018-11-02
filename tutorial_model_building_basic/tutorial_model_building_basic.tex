@@ -21,7 +21,7 @@
 \usepackage{graphicx} % Required for including pictures
 \usepackage{natbib}
 \usepackage{float} % Allows putting an [H] in \begin{figure} to specify the exact location of the figure
-\usepackage{hyperref}
+%\usepackage{hyperref}
 \usepackage{menukeys}
 \usepackage{array}
 \usepackage{fancyhdr}
@@ -37,11 +37,19 @@
 \usepackage{fancybox,framed}
 \usepackage{xspace}
 \usepackage{rotating}
-\def\scipion{\textit{Scipion}\xspace}
+%commands
 \newcommand{\ffigure}[1]{{Fig. {\ref{#1}}}\xspace}
 \newcommand{\ttable}[1]{{Table. {\ref{#1}}}\xspace}
 \newcommand{\scommand}[1]{{{\keys{#1}}}\xspace}
-\newcommand{\ccmask}{CC\textsubscript{MASK}\xspace}
+%definitions
+\def\ccmask{CC\textsubscript{MASK}\xspace}
+\def\ccp4{\textit{CCP4}\xspace}
+\def\chimera{\textit{Chimera}\xspace}
+\def\coot{\textit{Coot}\xspace}
+\def\phenix{\textit{PHENIX}\xspace}
+\def\powerfit{\textit{PowerFit}\xspace}
+\def\refmac{\textit{Refmac}\xspace}
+\def\scipion{\textit{Scipion}\xspace}
 
 \sethlcolor{yellow}
 
@@ -136,12 +144,12 @@ to the best of our knowledge, but since our programs are in continuous
 development you may find inaccuracies and errors in this text. Please
 let us know about any errors, as well as your suggestions for
 future editions, by writing to
-\href{mailto:scipion@cnb.csic.es}{scipion@cnb.csic.es}.
+scipion@cnb.csic.es.
 
 
 \subsection*{Requirements}
 
-This tutorial requires, in addition to \scipion,  the modeling system $USCF Chimera$ (\url{https://www.cgl.ucsf.edu/chimera/download.html}), the \textit{CCP4 suite} (\url{http://www.ccp4.ac.uk/download/#os=linux}) including $refmac$ and $coot$, the \textit{PHENIX suite} (\url{https://www.phenix-online.org/download/}) and \textit{PowerFit} application (\url{https://github.com/haddocking/powerfit}). Basic knowledge of $USCF Chimera$ and \scipion is assumed. Warning: old versions of $refmac$ are not suitable for EM data.
+This tutorial requires, in addition to \scipion, USCF~\chimera (\url{https://www.cgl.ucsf.edu/chimera/download.html}), the \ccp4 suite (\url{http://www.ccp4.ac.uk/download/#os=linux}) including \refmac and \coot, the \textit{PHENIX suite} (\url{https://www.phenix-online.org/download/}) and \powerfit application (\url{https://github.com/haddocking/powerfit}). Basic knowledge of chimera and \scipion is assumed. Warning: old versions of \refmac are not suitable for EM data.
 
 \newpage
 
@@ -172,7 +180,7 @@ This tutorial requires, in addition to \scipion,  the modeling system $USCF Chim
 \input{140-todo.tex}
 
 
-\bibliographystyle{abbrv}
+\bibliographystyle{elsart-harv}
 \bibliography{../tutorial_common/em}
 
 \begin{appendices}
