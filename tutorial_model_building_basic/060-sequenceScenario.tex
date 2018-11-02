@@ -1,5 +1,5 @@
-\section{Sequence scenario: Structure Prediction by Sequence Homology}
-
+\section{Structure Prediction by Sequence Homology. Searching for Homologues}
+\label{sec:structurePrediction}
 As we have mentioned above, from the options indicated in the general workflow (\ffigure{fig:model_building_workflow}) to get initial models of structural elements, in this tutorial we are going to use tools to predict structure from sequence homology. 
 
 Structure prediction by sequence homology only requires the sequence itself, from now ahead the \iii{target sequence}, and the access to databases to seek structures or \iii{templates} of homologous molecules. The sequences of homologous molecules show statistically significant similarity because they share common ancestry. Since the sequence encodes the structural information, from high similar sequences necessarily follows high similar structures. Structures from nearest homologous molecules will thus be preferred over remote relative ones. Remark that molecules containing several domains usually require independent searching for homologous templates of each domain. A small review about sequence similarity searching can be found in \citep{pearson2013}, and in \citep{kryshtafovych2018} the assessment of current \iii{template}-based modeling methods, many of them implemented as fully automated servers. Modeling tools appropriate to search for remote homologous \iii{templates}, folding recognition and \iii{template}-free methods (\iii{ab initio}), as well as $de\ novo$ modeling tools, which besides sequences use the volume itself, have still to be included in \scipion framework. 
@@ -11,19 +11,19 @@ Structure prediction by sequence homology only requires the sequence itself, fro
   \begin{figure}[H]
   \centering 
   \captionsetup{width=.7\linewidth} 
-  \includegraphics[width=0.80\textwidth]{Images/Fig9.png}
+  \includegraphics[width=0.80\textwidth]{Images/Fig9}
   \caption{Form of the similarity searching program \ttt{BLAST}.}
   \label{fig:blastp}
   \end{figure}
   
-  Of course the closest relatives to human \ttt{Hgb} subunits, structurally characterized, will be their own structures contained in \ttt{PDB-5NI1}. However, in this tutorial we are going to assume that in our example the closest relatives to the human \ttt{Hgb} $\alpha$ and $\beta$ subunits are the respective \ttt{Hgb} subunits (identity 49.3\% and 45.21\%) of the antarctic fish \iii{Pagothenia bernacchii} \citep{camardella1992}. The atomic structure associated to this \iii{template} has \ttt{PDB} accession code \ttt{1PBX}. Information about the structure can be checked in \url{https://www.rcsb.org/structure/1PBX}. In general, it is a good idea to read the information related with the \iii{template}, do it so and answer the following questions: (Answers in appendix \ref{app:solutions}; \textbf{Question 1})
+  Of course the closest relatives to human \ttt{Hgb} subunits, structurally characterized, will be their own structures contained in \ttt{PDB-5NI1}. However, in this tutorial we are going to assume that in our example the closest relatives to the human \ttt{Hgb} $\alpha$ and $\beta$ subunits are the respective \ttt{Hgb} subunits (identity 49.3\% and 45.21\%) of the antarctic fish \iii{Pagothenia bernacchii} \citep{camardella1992}. The atomic structure associated to this \iii{template} has \ttt{PDB} accession code \ttt{1PBX}. Information about the structure can be checked in \url{https://www.rcsb.org/structure/1PBX}. In general, it is a good idea to read the information related with the \iii{template}, do it so and answer the following questions: (Answers in appendix \ref{app:solutions}; \textbf{Question \ref{sec:structurePrediction}\_1})
   
   \begin{minipage}{\linewidth}
-  \begin{framed}
-  \begin{itemize}
-  \item How has this structure been obtained (X-ray diffraction, EM, NMR)?
-  \item What resolution does it have?
-  \item How many chains does it include?
-  \end{itemize}
-  \end{framed}
+    \begin{framed}
+      \begin{itemize}
+        \item How has this structure been obtained (X-ray diffraction, EM, NMR)?
+        \item What resolution does it have?
+        \item How many chains does it include?
+      \end{itemize}
+    \end{framed}
   \end{minipage}
