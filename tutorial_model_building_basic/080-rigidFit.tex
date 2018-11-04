@@ -1,8 +1,7 @@
 \section{Volume and models scenario: Rigid Fitting}
-Once we have the predicted \ttt{model} of any structural element included in our map, fitting that \ttt{model} in the volume constitutes the next step in the modeling workflow. Two protocols have been included in \scipion with this purpose, \scommand{powerfit} (Appendix \ref{app:powerfitProtocol}, \citep{vanzundert2016}) and \scommand{chimera rigid fit} (Appendix \ref{app:chimeraRigidFit}). The first one allows automatic fitting of models in maps, while the second only does it when model and map are quite close, thus requiring manual fitting in advance. Although there is no a general rule to fit map and model, because it will depend on the particular problem and on our previous knowledge, in this tutorial we are going to use $PowerFit$ application first, followed by the final \ttt{Fit in Map} in $Chimera$ \ttt{rigid fit}.
+Once we have the predicted \ttt{model} of any structural element included in our map, fitting that \ttt{model} in the volume constitutes the next step in the modeling workflow. Two protocols have been included in \scipion with this purpose, \powerfit (Appendix \ref{app:powerfitProtocol}, \citep{vanzundert2016}) and \scommand{chimera rigid fit} (Appendix \ref{app:chimeraRigidFit}). The first one allows automatic fitting of models in maps, while the second only does it when model and map are quite close, thus requiring manual fitting in advance. Although there is no a general rule to fit map and model, because it will depend on the particular problem and on our previous knowledge, in this tutorial we are going to use $PowerFit$ application first, followed by the final \ttt{Fit in Map} in $Chimera$ \ttt{rigid fit}. 
 
-\begin{itemize}
- \item Initial rigid fit with $PowerFit$:\\
+\subsection*{Initial rigid fit with \powerfit}
  Open \scommand{powerfit} protocol ((\ffigure{fig:powerfit_protocol} (1)), and complete the form with the full \iii{model} of atomic structure previously saved in $Chimera$ (2), the extracted unit cell volume (3), and volume resolution (4). Among the advanced parameters, consider carefully the angular step (5) according to the size of your volume and your computing power. Despite getting a more accurate result, fitting of big volumes takes more time as  lower values of angular step are given.  
  
  \begin{figure}[H]
@@ -33,7 +32,7 @@ Once we have the predicted \ttt{model} of any structural element included in our
   \label{fig:powerfit_results_figs}
   \end{figure}
   
- \item Completing rigid fit with $Chimera$ \ttt{rigid fit}:\\
+ \subsection Completing rigid fit with $Chimera$ \ttt{rigid fit}:\\
  In order to assess which one of the structures fits the map better, the fitting has to be improved with \scommand{chimera rigid fit} protocol. Open this protocol (\ffigure{fig:chimera_rigid_fit} (1)), include the extracted unit cell as volume (2), one of the structures fitted (3), the other one (4), and execute the protocol.
  
  \begin{figure}[H]
@@ -72,4 +71,3 @@ Once we have the predicted \ttt{model} of any structural element included in our
   
 In case you are still unable to decide which one is the best fit, don't worry. You will make your mind up with the next step in the workflow, but then save both fits with \ttt{scipionwrite} $Chimera$ command line. Don't forget to change the $model$ number. Your fitted models will be saved by $Chimera$ with names \ttt{chimeraOut0001.pdb} and \ttt{chimeraOut0002.pdb}.
  
-\end{itemize}
