@@ -1,8 +1,8 @@
-\section{Volume and models scenario: Rigid Fitting}
-Once we have the predicted \ttt{model} of any structural element included in our map, fitting that \ttt{model} in the volume constitutes the next step in the modeling workflow. Two protocols have been included in \scipion with this purpose, \powerfit (Appendix \ref{app:powerfitProtocol}, \citep{vanzundert2016}) and \scommand{chimera rigid fit} (Appendix \ref{app:chimeraRigidFit}). The first one allows automatic fitting of models in maps, while the second only does it when model and map are quite close, thus requiring manual fitting in advance. Although there is no a general rule to fit map and model, because it will depend on the particular problem and on our previous knowledge, in this tutorial we are going to use \powerfit application first, followed by the final \ttt{Fit in Map} in \chimera \ttt{rigid fit}. 
+\section{Merging 3D Maps and Atomic Structures: Rigid Fitting}
+Once we have the predicted \ttt{model} of any structural element included in our map, fitting that \ttt{model} in the volume constitutes the next step in the modeling workflow. Two protocols have been included in \scipion with this purpose, \powerfit (Appendix \ref{app:powerfitProtocol}, \citep{vanzundert2016}) and \scommand{chimera rigid fit} (Appendix \ref{app:chimeraRigidFit}). The first one allows automatic fitting of models in maps, while the second only does it when model and map are quite close, thus requiring manual fitting in advance. Although there is no a general rule to fit map and model, because it will depend on the particular problem and on our previous knowledge, in this tutorial we are going to use \powerfit application first, followed by the final \ttt{Fit in Map} in \chimera \ttt{rigid fit}. In our experience \powerfit performance decays for large 3D maps or when fitting atomic models that cover a small region of the 3D map.
 
 \subsection*{Initial rigid fit with \powerfit}
- Open \scommand{powerfit} protocol ((\ffigure{fig:powerfit_protocol} (1)), and complete the form with the full \iii{model} of atomic structure previously saved in \chimera (2), the extracted unit cell volume (3), and volume resolution (4). Among the advanced parameters, consider carefully the angular step (5) according to the size of your volume and your computing power. Despite getting a more accurate result, fitting of big volumes takes more time as  lower values of angular step are given.  
+ Open \scommand{powerfit} protocol ((\ffigure{fig:powerfit_protocol} (1)), and complete the form with the \iii{model} of atomic structure previously saved in \chimera (2), the extracted unit cell volume (3), and volume resolution (4). Among the advanced parameters, consider carefully the angular step (5) according to the size of your volume and your computing power. Despite getting a more accurate result, fitting of large volumes takes more time as  lower values of angular step are needed.  
  
  \begin{figure}[H]
   \centering 
@@ -32,7 +32,8 @@ Once we have the predicted \ttt{model} of any structural element included in our
   \label{fig:powerfit_results_figs}
   \end{figure}
   
- \subsection Completing rigid fit with \chimera \ttt{rigid fit}:\\
+ \subsection*{ Completing rigid fit with \chimera \ttt{rigid fit}}
+ 
  In order to assess which one of the structures fits the map better, the fitting has to be improved with \scommand{chimera rigid fit} protocol. Open this protocol (\ffigure{fig:chimera_rigid_fit} (1)), include the extracted unit cell as volume (2), one of the structures fitted (3), the other one (4), and execute the protocol.
  
  \begin{figure}[H]
@@ -52,8 +53,8 @@ Once we have the predicted \ttt{model} of any structural element included in our
   \caption{Fitting in map with \chimera.}
   \label{fig:chimera_fit_in_map}
   \end{figure}
-  
-  Suggestion before starting the visual inspection in \chimera: Check first the parts of the structure that could differ the most between \ttt{metHgb} $\alpha$ and $\beta$ subunits. These parts that differ the most can be identified by performing an additional alignment including the $\beta$ subunit sequence. \ffigure{fig:multiple_alignment_HBB} incorporates the $\beta$ subunit sequence (in yellow) to the alignment shown in \ffigure{fig:chimera_alignment}. Two regions that contain gaps of sequence are remarked in red frames. The first one, involving residues 19 and 20, absent in $\beta$ subunit, and the second one, after residue 51, could be the most relevant to differentiate between subunits. Look at them and identify the correct fit. You can highlight those residues in \chimera writing in the command line:\\
+   
+  Suggestion, before starting the visual inspection in \chimera check first the parts of the structure that could differ the most between \ttt{metHgb} $\alpha$ and $\beta$ subunits. These parts that differ the most can be identified by performing an additional alignment including the $\beta$ subunit sequence. A way to perform this multiple alignment would be to: (1) import the  \ttt{metHgb} $\beta$ sequence (UnitProt id=P68871), (2) copy the protocol \scommand{model from template} and (3) add in the \ttt{other sequences to align} field the  \ttt{metHgb} $\beta$. \ffigure{fig:multiple_alignment_HBB} shows the result of incorporating the $\beta$ subunit sequence (in yellow) to the alignment shown in \ffigure{fig:chimera_alignment}. Two regions that contain gaps of sequence are remarked in red frames. The first one, involving residues 19 and 20, absent in $\beta$ subunit, and the second one, after residue 51, could be the most relevant to differentiate between subunits. Look at them and identify the correct fit. You can highlight those residues in \chimera writing in the command line:\\
   \ttt{sel :19-20}\\
   \ttt{sel :50-55}
   
