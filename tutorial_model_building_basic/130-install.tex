@@ -1,11 +1,21 @@
 \section{Install}
-  branch -> master
+  All the protocols shown in this document will be available in the next stable \scipion release (code name \textit{Diocletian}). This will be a major release in which protocols will be published as ``plugins''. In the meantime, if you want to use the model building protocols you may clone \scipion repository (install git if not present in your system):
+
+  \begin{verbatim}
+   git clone https://github.com/mmmtnez/scipion.git
+   cd scipion
+   git branch mm_modeling_new
+  \end{verbatim}
+
+  In adition to the standard scipion dependencies you will need to install the following packages
   
-  install
-  ccp4
-  phenix
-  chimera
-  clustal-omega
-  powerfit
+  \begin{itemize}
+   \item\textbf{ccp4:} Connect to \url{http://www.ccp4.ac.uk/download/#os=linux} and follow instructions.
+   \item\textbf{phenix:} Connect to \url{https://www.phenix-online.org/download/} and follow instructions.
+   \item\textbf{chimera:} \ttt{scipion install chimera} .
+   \item\textbf{clustal-omega:} \ttt{sudo apt-get install clustal-omega} (in ubuntu).
+   \item\textbf{powerfit:} \ttt{scipion install locscale}.
+  \end{itemize}
+
   
-  configure
+  Finally, (1) edit the file \ttt{~/.config/scipion/scipion.conf} and set the right values for the variables \ttt{CCP4\_HOME} and \ttt{PHENIX\_HOME}, and (2) execute \ttt{scipion config --update}
