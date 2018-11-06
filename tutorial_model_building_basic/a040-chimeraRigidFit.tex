@@ -4,7 +4,7 @@ Protocol designed to manually fit atomic structures to electron density maps in 
    
  \begin{itemize}
   \item \scipion menu:\\
-   \ttt{Protocols SPA -> Imports} (\ffigure{fig:app_protocol_chimera_1} (A))\\
+   \ttt{Protocols SPA -> Model building} (\ffigure{fig:app_protocol_chimera_1} (A))\\
   
   \item Protocol form parameters (\ffigure{fig:app_protocol_chimera_1} (B)):\\
   
@@ -25,7 +25,7 @@ Protocol designed to manually fit atomic structures to electron density maps in 
      \item \ttt{Other reference PDBx/mmCIF files}: Atomic structures others than the $model$ than can help in the rigid body fitting process.\\
     \end{itemize}
     \item \ttt{Help} section\\
-    This section contains \chimera commands required to save $models$ according their reference volumes, which can also be saved if required. Remark that using \ttt{scipionwrite} command, \chimera session will be saved by default, without detriment that it could be saved with \ttt{scipionss} command. \chimera sessions can be restored by using \scommand{chimera restore session} protocol.\\
+    This section contains \chimera commands required to save $models$ according to their reference volumes, which can also be saved if required. Remark that using \ttt{scipionwrite} command, \chimera session will be saved by default, without prejudice that it may be saved with \ttt{scipionss} command. \chimera sessions can be restored by using \scommand{chimera restore session} protocol.\\
     
     \end{itemize}
 
@@ -44,14 +44,27 @@ Protocol designed to manually fit atomic structures to electron density maps in 
   
   \item Visualization of protocol results:\\
   
-    After executing the protocol, press \ttt{Analyze Results} and \chimera graphics window will be opened by default (\ffigure{fig:app_protocol_volume_2}). Atomic structures and volumes are referred to the origin of coordinates in \chimera. To show the relative position of atomic structure and electron density volume, the three coordinate axes are represented; X axis (red), Y axis (yellow), and Z axis (blue). Coordinate axes, volume, and each atomic structure are model numbers \#0, \#1, and \#2, respectively, in \chimera \ttt{Model Panel} (\ffigure{fig:app_protocol_powerfit_3}).\\
+    After executing the protocol, press \ttt{Analyze Results} and \chimera graphics window will be opened by default (\ffigure{fig:app_protocol_volume_2}). Atomic structures and volumes are referred to the origin of coordinates in \chimera. To show the relative position of atomic structure and electron density volume, the three coordinate axes are represented; X axis (red), Y axis (yellow), and Z axis (blue). Coordinate axes, volume, and atomic structure are model numbers \#0, \#1, and \#2, respectively, in \chimera \ttt{Model Panel}.\\
    
   \item Summary content:\\
-  
    \begin{itemize}
-     \item Protocol output (below \scipion framework): \ttt{chimera - rigid fit -> ouputPdb\_01}; Pdbfile (pseudoatoms=True/ False, volume=True/ False).\\Pseudoatoms is set to True when the structure is made of pseudoatoms instead of atoms. Volume is set to True when a electron density map is associated to the atomic structure.\\
+    \item If only the atomic structure has been saved by \ttt{scipionwrite} command:\\
+
+   \begin{itemize}
+     \item Protocol output (below \scipion framework):\\ \ttt{chimera - rigid fit -> ouputPdb\_01}; Pdbfile (pseudoatoms=True/ False, volume=True/ False).\\Pseudoatoms is set to True when the structure is made of pseudoatoms instead of atoms. Volume is set to True when a electron density map is associated to the atomic structure.\\
      \item \ttt{SUMMARY} box:\\Produced files:\\chimeraOut0001.pdb\\we have some result\\
     \end{itemize}
+    
+   \item If both the atomic structure and its reference electron density map have been saved by \ttt{scipionwrite} command:\\ 
+   
+   \begin{itemize}
+     \item Protocol output (below \scipion framework):\\
+      \ttt{chimera - rigid fit -> ouput3Dmap}; Volume (x, y, and z dimensions, sampling rate).\\
+      \ttt{chimera - rigid fit -> ouputPdb\_01}; Pdbfile (pseudoatoms=True/ False, volume=True/ False).\\Pseudoatoms is set to True when the structure is made of pseudoatoms instead of atoms. Volume is set to True when a electron density map is associated to the atomic structure.\\
+     \item \ttt{SUMMARY} box:\\Produced files:\\chimeraOut0001.pdb\\chimeraOut0001.mrc\\we have some result\\
+    \end{itemize}
+    
+   \end{itemize} 
   
  \end{itemize}
 

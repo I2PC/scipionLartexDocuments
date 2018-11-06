@@ -1,11 +1,11 @@
 \section{Powerfit protocol}
 \label{app:powerfitProtocol}%a160
-Protocol designed to automatically fit atomic structures to electron density maps in \scipion by using $PowerFit$ \citep{vanzundert2016}), application that performs a rigid body search based on cross-correlation between atomic structure and electron density map. You can follow additional instructions to run $PowerFit$ in \url{http://www.bonvinlab.org/education/powerfit/}.\\
+Protocol designed to automatically fit atomic structures to electron density maps in \scipion by using $PowerFit$ (\citep{vanzundert2016}), application that performs a rigid body search based on cross-correlation between atomic structure and electron density map. You can follow additional instructions to run $PowerFit$ in \url{http://www.bonvinlab.org/education/powerfit/}.\\
 
    
  \begin{itemize}
   \item \scipion menu:\\
-   \ttt{Protocols SPA -> Imports} (\ffigure{fig:app_protocol_powerfit_1} (A))\\
+   \ttt{Protocols SPA -> Model building} (\ffigure{fig:app_protocol_powerfit_1} (A))\\
   
   \item Protocol form parameters (\ffigure{fig:app_protocol_powerfit_1} (B)):\\
   
@@ -66,7 +66,7 @@ Protocol designed to automatically fit atomic structures to electron density map
   \item Summary content:\\
   
    \begin{itemize}
-     \item Protocol output (below \scipion framework): \ttt{powerfit - powerfit -> ouputPDBs}; SetOfPDBs (n items).\\ n items indicates the number of non-redundant structures best fitted to the electron density map, found by $PowerFit$.\\
+     \item Protocol output (below \scipion framework):\\ \ttt{powerfit - powerfit -> ouputPDBs}; SetOfPDBs (n items).\\ n items indicates the number of non-redundant structures best fitted to the electron density map, found by $PowerFit$.\\
      \item \ttt{SUMMARY} box:\\Angular step: 10.000000\\
     \end{itemize}
   
