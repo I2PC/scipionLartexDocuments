@@ -17,18 +17,18 @@ Protocol designed to import aminoacid or nucleotide sequences in \scipion from f
    \end{figure}
   
   \begin{itemize}
-  \item \ttt{Sequence ID}: Optional short name to identify your sequence (acronym or number, e. g. Q05769). If no ID is assigned by the user, and the sequence has been downloaded from GeneBank/UniProtKB/PDB database, the database ID will be selected as \ttt{Sequence ID} (Read the help section (question mark) to see some examples). Otherwise, \ttt{Sequence name} will be set as \ttt{Sequence ID}.\\
-  \item \ttt{Sequence name}: Compulsory short name to identify your sequence (PGH2\_MOUSE). Names with certain meaning are recommended.\\
-  \item \ttt{Sequence description}: Optional description of your sequence. It can include functionality, organism, size, etc... (e.g. Prostaglandin G/H synthase 2). If no description is assigned by the user, and the sequence has been downloaded from GeneBank/UniProtKB/PDB database, the database description will be selected as \ttt{Sequence description}. Otherwise, no description will be included.\\
+  \item \ttt{Sequence ID}: Optional short name to identify your sequence (acronym or number, e. g. \ttt{Q05769}). If no ID is assigned by the user, and the sequence has been downloaded from GeneBank/UniProtKB/PDB database, the database ID will be selected as \ttt{Sequence ID} (Read \ttt{Help} section (question mark) to see some examples). Otherwise, \ttt{Sequence name} will be set as \ttt{Sequence ID}.\\
+  \item \ttt{Sequence name}: Compulsory short name to identify your sequence (\ttt{PGH2\_MOUSE}). Names with certain meaning are recommended.\\
+  \item \ttt{Sequence description}: Optional description of your sequence. It can include functionality, organism, size, etc... (e.g. \ttt{Prostaglandin G/H synthase 2}). If no description is assigned by the user, and the sequence has been downloaded from GeneBank/UniProtKB/PDB database, the database description will be selected as \ttt{Sequence description}. Otherwise, no description will be included.\\
   \item \ttt{Import sequence of}: Selection parameter to choose between \ttt{aminoacids} and \ttt{nucleotides}. After selecting one of them, a new selection menu will be opened:\\
   
   \begin{itemize}
   \item \ttt{aminoacids}: Parameter to select one of these four options:\\
    \begin{itemize}
-   \item \ttt{plain text}: Select this option if you want to introduce your own single letter aminoacid sequence. Since your sequence will be cleaned according to the standard protein alphabet of 20 aminoacids (\ttt{Protein}) or to an extended one that includes 6 additional aminoacids or aminoacid groups (\ttt{Extended Protein}), you have to select one of these \ttt{IUPAC Protein} alphabets. Read the help section (question mark) to know the aminoacids included in each alphabet. Not only non-canonical aminoacids will be cleaned, but also wildcard characters such as *,\#, ?, -, etc... \ttt{Write your sequence here} indicates the place where your single letter aminoacid sequence has to be written or paste.\\ 
+   \item \ttt{plain text}: Select this option if you want to introduce your own single letter aminoacid sequence. Since your sequence will be cleaned according to the standard protein alphabet of 20 aminoacids (\ttt{Protein}) or to an extended one that includes 6 additional aminoacids or aminoacid groups (\ttt{Extended Protein}), you have to select one of these \ttt{IUPAC Protein} alphabets. Read \ttt{Help} section (question mark) to know the aminoacids included in each alphabet. Not only non-canonical aminoacids will be cleaned, but also wildcard characters such as \ttt{*}, \ttt{\#}, \ttt{?}, \ttt{-}, etc... \ttt{Write your sequence here} indicates the place where your single letter aminoacid sequence has to be written or paste.\\ 
    \item \ttt{atomic structure}: Select this option if you want to download the sequence from an atomic structure (\ffigure{fig:app_protocol_sequence_2} (A)). Select \ttt{id} to download your sequence from PDB database. Then, write the PDB ID (\ttt{Atomic structure ID} and select the chain sequence of your preference (\ttt{Chain}). Use the wizard at the right side of \ttt{Chain} parameter to select that chain. Follow an analogous process to download the sequence from an atomic structure that you already has in your computer. This time, the \ttt{File path} will replace the \ttt{Atomic structure ID}. By pressing the folder symbol, a browser will help you to find the structure file.\\
    \item \ttt{file}: Select this option if your sequence is written in a text file that you already have in your computer (\ffigure{fig:app_protocol_sequence_2} (B)). By pressing the folder symbol, a browser will help you to find the sequence file.\\
-   \item \ttt{UniProtID}: Select this option if you want to download the sequence from UniProtKB database (\ffigure{fig:app_protocol_sequence_2} (C)). Write the name/ID of the respective sequence in the parameter box \ttt{UniProt name/ID}. A error message appears in case you introduce a wrong ID.\\
+   \item \ttt{UniProtID}: Select this option if you want to download the sequence from UniProtKB database (\ffigure{fig:app_protocol_sequence_2} (C)). Write the name/ID of the respective sequence in the parameter box \ttt{UniProt name/ID}. An error message appears in case you introduce a wrong ID.\\
    
    \begin{figure}[H]
     \centering 
@@ -41,7 +41,7 @@ Protocol designed to import aminoacid or nucleotide sequences in \scipion from f
    \end{itemize}
   \item \ttt{nucleotides}: Analogously to \ttt{aminoacids} parameter, select one of these four options:\\
   \begin{itemize}
-   \item{plain text}: Parameter to introduce your own single letter nucleotide sequence (\ffigure{fig:app_protocol_sequence_3} (A)). Since your sequence will be cleaned according to the standard nucleic acid alphabet, you have to select one of the next five alphabets. The first three are DNA alphabets and the last two ones are RNA alphabets. Read the help section (question mark) to know each alphabet. The most restricted ones are \ttt{Unambiguous DNA} (``A, C, G, T'') and \ttt{Unambiguous RNA} (``A, C, G, U'') for DNA and RNA, respectively. The cleaning process also involves wildcard characters such as *,\#, ?, -, etc...\\
+   \item{plain text}: Parameter to introduce your own single letter nucleotide sequence (\ffigure{fig:app_protocol_sequence_3} (A)). Since your sequence will be cleaned according to the standard nucleic acid alphabet, you have to select one of the next five alphabets. The first three are DNA alphabets and the last two ones are RNA alphabets. Read \ttt{Help} section (question mark) to know each alphabet. The most restricted ones are \ttt{Unambiguous DNA} (``A, C, G, T'') and \ttt{Unambiguous RNA} (``A, C, G, U'') for DNA and RNA, respectively. The cleaning process also involves wildcard characters such as \ttt{*}, \ttt{\#}, \ttt{?}, \ttt{-}, etc...\\
    \item{atomic structure}: Information described for aminoacids is valid for nucleotides (\ffigure{fig:app_protocol_sequence_3} (B)).\\
    \item{file}: Information described for aminoacids is valid for nucleotides (\ffigure{fig:app_protocol_sequence_3} (C)).\\
    \item{GeneBank}: Information described for aminoacids is valid for nucleotides, this time replacing UniProtKB by GeneBank t(\ffigure{fig:app_protocol_sequence_3} (D)).\\
@@ -69,7 +69,7 @@ Protocol designed to import aminoacid or nucleotide sequences in \scipion from f
   
   \item Visualization of protocol results:\\
   
-  After executing the protocol, press \ttt{Analyze Results} and a text editor will be opened in which you can read the sequence in fasta format. \ttt{Sequence ID} and \ttt{Sequence description} are included in the header. 
+  After executing the protocol, press \ttt{Analyze Results} and a text editor will be opened in which you can read the sequence in fasta format. \ttt{Sequence ID} and \ttt{Sequence description} are included in the header.\\ 
 
  \item Summary content:\\
   \begin{itemize}
