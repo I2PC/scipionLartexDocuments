@@ -101,23 +101,24 @@ volume to detect $model$ controversial elements or $model$ parameters that disag
     \ttt{split \#1}\\
     \ttt{scipionwrite model \#1.1}\\
     
-    \subsubsection*{Protocol \scommand{powerfit}}
+    \item Protocol \scommand{powerfit}:
     
     Open \powerfit protocol and follow the instructions above indicated. The structure saved in \chimera operate will replace this time our previous $model$ (\ffigure{fig:powerfit_protocol} (2)). Select \ttt{item 2} as best fit.\\
     
-    \item Protocol \scommand{chimera rigid fit}:\\
+    \item Protocol \scommand{chimera rigid fit}:
     Open again \chimera \ttt{rigid fit} protocol and, following already indicated instructions, include this time \ttt{item 2}, the last fitted structure obtained with \powerfit (\ffigure{fig:chimera_rigid_fit} (3)). After finishing the rigid fit of the extracted unit cell and \ttt{metHgb} $\alpha$ subunit from 5NI1 structure, you can save this fitted structure writing in \chimera command line:\\
     \ttt{scipionwrite model \#2 refmodel \#1 saverefmodel 0}\\
     
-    \subsubsection*{Validation protocols \scommand{phenix - emringer} and \scommand{phenix - molprobity}}
+    \item{Validation protocols \scommand{phenix - emringer} and \scommand{phenix - molprobity}}:
+    
     Compute validation statistics with these two protocols for \ttt{metHgb} $\alpha$ subunit from \ttt{PDB} structure \ttt{5NI1}, write respective values in the previous table (\ttable{table:empty}), and compare them with the statistics of our $models$.
     
-    Considering results shown in appendix \ref{app:solutions} (\textbf{Question 9}) for \ttt{metHgb} $\alpha$ subunit, we can conclude that published structures are not perfect and we are not very far from this published one. In fact, we have overcome every statistic except \ccmask. Then, the three different $models$ generated after \coot refinement could be acceptable. \\
+    Considering results shown in appendix \ref{app:solutions} (\textbf{Question \ref{seq:structurevalidation}\_2}) for \ttt{metHgb} $\alpha$ subunit, we can conclude that published structures are not perfect and we are not very far from this published one. In fact, we have overcome every statistic except \ccmask. Then, the three different $models$ generated after \coot refinement could be acceptable. \\
 
  
   \subsection*{Comparison of atomic structures}
   
-  \phenix protocol \scommand{phenix - superpose pdbs} allows to compare two atomic structures by overlapping them. Root mean square deviation (RMSD) between the fixed structure (the published one) and one of our $models$ supports the classification of $models$ according to its proximity to the published model. Open \phenix \ttt{superpose pdbs} protocol form (\ffigure{fig:superpose_pdbs_protocol} (1)), include the published structure of the \ttt{metHgb} $\alpha$ subunit as fixed structure (2), each one of the $models$ generated along the worflow (3) and execute the protocol (4). Finally, complete the \ttable{table:empty} with the value of RMSD obtained for each $model$. (Answers in appendix \ref{app:solutions}; \textbf{Question 9}).
+  \phenix protocol \scommand{phenix - superpose pdbs} allows to compare two atomic structures by overlapping them. Root mean square deviation (RMSD) between the fixed structure (the published one) and one of our $models$ supports the classification of $models$ according to its proximity to the published model. Open \phenix \ttt{superpose pdbs} protocol form (\ffigure{fig:superpose_pdbs_protocol} (1)), include the published structure of the \ttt{metHgb} $\alpha$ subunit as fixed structure (2), each one of the $models$ generated along the worflow (3) and execute the protocol (4). Finally, complete the \ttable{table:empty} with the value of RMSD obtained for each $model$. (Answers in appendix \ref{app:solutions}; \textbf{Question \ref{seq:structurevalidation}\_2}).
   
   \begin{figure}[H]
     \centering 
@@ -140,7 +141,7 @@ volume to detect $model$ controversial elements or $model$ parameters that disag
   
   \end{itemize}
  
- A $model$ for \ttt{metHgb} $\alpha$ subunit has to be selected at the end of validation process. According to the statistics of \ttable{table:refmac_question_9} (Appendix \ref{app:solutions}; \textbf{Question 9}), $model$ obtained in the last step of modeling workflow (\refmac after RSRAC (modified)) has been selected due to the smallest RMSD value, high value of \emringer \ttt{score}, quite high value of \ccmask and acceptable \molprobity statistics. Follow a similar process to validate and select the $model$ generated for \ttt{metHgb} $\beta$ subunit. Appendix \ref{app:solutions} \textbf{Question 10} contains a statistics table for \ttt{metHgb} $\beta$ subunit, similar to that obtained for \ttt{metHgb} $\alpha$ subunit.\\
+ A $model$ for \ttt{metHgb} $\alpha$ subunit has to be selected at the end of validation process. According to the statistics of \ttable{table:refmac_question_9} (Appendix \ref{app:solutions}; \textbf{Question \ref{seq:structurevalidation}\_2}), $model$ obtained in the last step of modeling workflow (\refmac after RSRAC (modified)) has been selected due to the smallest RMSD value, high value of \emringer \ttt{score}, quite high value of \ccmask and acceptable \molprobity statistics. Follow a similar process to validate and select the $model$ generated for \ttt{metHgb} $\beta$ subunit. Appendix \ref{app:solutions} \textbf{Question \ref{seq:structurevalidation}\_3} contains a statistics table for \ttt{metHgb} $\beta$ subunit, similar to that obtained for \ttt{metHgb} $\alpha$ subunit.\\
  
  In the real world, selected $models$ usually are the starting point to improve specific validation parameters by additional refinement. Since the improvement of certain parameters normally implies worsening of others, a final compromise solution has to be taken.\\
 
