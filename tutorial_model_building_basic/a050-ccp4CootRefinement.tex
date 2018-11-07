@@ -38,11 +38,14 @@ Protocol designed to interactively fit and refine atomic structures, in real spa
      Press \ttt{``U''} in your keyboard.\\ 
      \item Semi-automatic refinement of small groups of residues (10 to 15):\\As soon as $Coot$ protocol is executed, the text file \ttt{coot.ini} will be saved in the project folder \ttt{/Runs/00XXXX\_CootRefine/extra/} (\ffigure{fig:app_protocol_coot_6} (1, 2)). This file content has to be modified according to our atomic structure model in this way:\\
      \begin{itemize}
+
       \item \ttt{imol}: \ttt{\#0} has to be replaced by the number of the molecule that has to be refined. This number appears detailed in $Coot$ main menu \ttt{Display Manager} (\ffigure{fig:app_protocol_coot_2} (B, red arrow)).\\
       \item \ttt{aa\_main\_chain}: \ttt{A} has to be replaced by the name of the molecule chain that has to be refined.\\
       \item \ttt{aa\_auxiliary\_chain}: \ttt{AA}, name of the small chain of 10-15 residues, can be optionally replaced by other name.\\
       \item \ttt{aaNumber}: \ttt{\#100} has to be replaced by the position of the residue from which the refinement has to start.\\
-      \item \ttt{step}: \ttt{\#10} will be replaced by the desired shift over the sequence, i.e., the size of the small auxiliary chain that gets flexible enough to select a different conformation.\\ 
+      \item \ttt{step}: \ttt{\#10} will be replaced by the desired small step of residues that gets flexible enough to select other conformation of this auxiliary chain.\\
+
+>>>>>>> 5f44b0ccb10510d9105c8b25cbb545478e34b9c3
      \end{itemize} 
      Save \ttt{coot.ini} text file after its modification. Go to the residue position indicated in \ttt{aaNumber}, initialize global variables with \ttt{``U''}, and pres \ttt{``z''} or \ttt{``Z''} in the keyboard to refine those \ttt{aaNumber} residues upstream or downstream, respectively.\\
      \item Printing \coot environment:\\ Press \ttt{``E''} in the keyboard.\\
