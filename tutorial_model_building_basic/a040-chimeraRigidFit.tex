@@ -21,8 +21,8 @@ Protocol designed to manually fit atomic structures to electron density maps in 
 
     \begin{itemize}
      \item \ttt{Input Volume}: Electron density map previously downloaded or generated in \scipion to fit the atomic structure.\\
-     \item \ttt{PDBx/mmCIF file to be refined}: Atomic structure previously downloaded or generated in \scipion to be fitted to an electron density map.\\
-     \item \ttt{Other reference PDBx/mmCIF files}: Atomic structures others than the $model$ than can help in the rigid body fitting process.\\
+     \item \ttt{Atomic structure to be fitted}: Atomic structure previously downloaded or generated in \scipion to be fitted to an electron density map.\\
+     \item \ttt{Other reference atomic structures}: Atomic structures others than the $model$ that can help in the rigid body fitting process.\\
     \end{itemize}
     \item \ttt{Help} section\\
     
@@ -39,7 +39,7 @@ Protocol designed to manually fit atomic structures to electron density maps in 
   \begin{itemize}
    \item If density map and atomic structure are quite close to each other:\\Go tho \chimera main menu and select \ttt{Tools -> Volume -> Fit in Map}. A small \ttt{Fit in Map} window will be opened. Once atomic structure and electron density volume have been selected, fit them by clicking \ttt{Fit}. Press \ttt{Help} to consider different fitting options.\\
    \item If map and $model$ are far to each other, start the fitting process interactively activating and inactivating \chimera objects alternatively to finally get map and $model$ close enough to go to the previous step.\\ 
-   \item Save fitted $model$ regarding the electron density map by writing in \chimera command line:\\ \ttt{scipionwrite model \#n refmodel \#n saverefmodel 0/1}.\\Replace \ttt{\#n} by model numbers shown in \chimera \ttt{Model Panel}. Select \ttt{1} if you want to save the reference map or \ttt{0} if you do not want to avoid unnecessary duplicate data.
+   \item Save fitted $model$ regarding the electron density map by writing in \chimera command line:\\ \ttt{scipionwrite model \#n refmodel \#n saverefmodel 0/1}.\\Replace \ttt{\#n} by model numbers shown in \chimera \ttt{Model Panel}. Select \ttt{1} if you want to save the reference map or \ttt{0} otherwise, to avoid duplicate data unnecessarily.
    \item Close \chimera graphics window.\\
   \end{itemize}
   

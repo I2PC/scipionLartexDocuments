@@ -39,7 +39,7 @@
 \usepackage{rotating}
 %commands
 \newcommand{\ffigure}[1]{{Fig. {\ref{#1}}}\xspace}
-\newcommand{\ttable}[1]{{Table. {\ref{#1}}}\xspace}
+\newcommand{\ttable}[1]{{Table {\ref{#1}}}\xspace}
 \newcommand{\scommand}[1]{{{\keys{#1}}}\xspace}
 %definitions
 \def\ccmask{CC\textsubscript{MASK}\xspace}
@@ -198,51 +198,10 @@ This tutorial requires, in addition to \scipion, USCF~\chimera (\url{https://www
 \input{a090-importSequence.tex}
 \input{a100-importvolume.tex}
 \input{a110-modelFromTemplate.tex}
-
-\section{Phenix EMRinger protocol}
-\label{app:emRingerProtocol}%a120
-
-\begin{figure}[H]
-    \centering 
-    \captionsetup{width=.7\linewidth} 
-    \includegraphics[width=0.50\textwidth]{Images_appendix/Fig126.pdf}
-    \caption{}
-    \label{fig:working}
-   \end{figure}
-
-\section{Phenix Molprobity protocol}
-\label{app:molprobityProtocol}%a130
-
-\begin{figure}[H]
-    \centering 
-    \captionsetup{width=.7\linewidth} 
-    \includegraphics[width=0.50\textwidth]{Images_appendix/Fig126.pdf}
-    \caption{}
-    \label{fig:working}
-   \end{figure}
-
-\section{Phenix Real Space Refine protocol}
-\label{app:realSpaceRefineProtocol}%a140
-
-\begin{figure}[H]
-    \centering 
-    \captionsetup{width=.7\linewidth} 
-    \includegraphics[width=0.50\textwidth]{Images_appendix/Fig126.pdf}
-    \caption{}
-    \label{fig:working}
-   \end{figure}
-
-\section{Phenix Superpose PDBs protocol}
-\label{app:superposePdbsProtocol}%a150
-
-\begin{figure}[H]
-    \centering 
-    \captionsetup{width=.7\linewidth} 
-    \includegraphics[width=0.50\textwidth]{Images_appendix/Fig126.pdf}
-    \caption{}
-    \label{fig:working}
-   \end{figure}
-
+\input{a120-emRingerProtocol.tex}
+%\input{a130-molprobityProtocol.tex}
+%\input{a140-realSpaceRefineProtocol.tex}
+%\input{a150-superposePdbsProtocol.tex}
 \input{a160-powerfitProtocol.tex}
 
 

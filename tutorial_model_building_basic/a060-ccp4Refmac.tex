@@ -18,9 +18,9 @@ Protocol designed to refine atomic structures, in reciprocal space, regarding el
     \end{figure}
 
     \begin{itemize}
-     \item \ttt{Input Volume/s}: One electron density map previously downloaded or generated in \scipion. An atomic structure should be refined regarding to that volume.
+     \item \ttt{Input Volume/s}: One electron density map previously downloaded or generated in \scipion. An atomic structure should be refined regarding to this volume.
      
-     \item \ttt{Input PDBx/mmCIF file}: Atomic structure previously downloaded or generated in \scipion. This structure will be refined according to the density volume.
+     \item \ttt{Atomic structure to be refined}: Atomic structure previously downloaded or generated in \scipion. This structure will be refined according to the electron density volume.
      
      \item \ttt{Max. Resolution (\AA)}: Upper limit of resolution used for refinement, in Angstroms. Using double value of sampling rate is recommendable. 
      
@@ -122,7 +122,7 @@ Protocol designed to refine atomic structures, in reciprocal space, regarding el
      
      where $|F_o|$ is the observed amplitude of the structure factor and $|F_c|$ is the calculated amplitude of the structure factor.
      
-     \item Average Fourier shell correlation: FSC, cross-correlation between shells of two 3D volumes in Fourier space, calculated using complex Fourier coefficients, divided by the number of structure factors in a particular frequency (resolution) shell. \begin{math}FSC_{average}\end{math} has the advantage over FSC of being independent on weight (related with inverse variances of cryo-EM density maps) whenever resolution shells are thin enough that the number of structure factor in each shell are almost equal \citep{brown2015}.
+     \item Average Fourier shell correlation: FSC, cross-correlation between shells of two 3D volumes in Fourier space, calculated using complex Fourier coefficients, divided by the number of structure factors in a particular frequency (resolution) shell. \begin{math}FSC_{average}\end{math} has the advantage over FSC of being independent on weight (related with inverse variances of cryo-EM density maps) whenever resolution shells are thin enough that the number of structure factors in each shell is almost equal \citep{brown2015}.
      
      \item Overall weighted R factor: Overall R factor that applies a weight factor to differences between observed and computed amplitudes of structure factors, and also applies that weight factor to the observed amplitudes of structure factors. As in the \begin{math}FSC_{average}\end{math}, the weight is related with inverse variances of cryo-EM density maps.\\
      

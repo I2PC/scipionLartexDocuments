@@ -22,8 +22,8 @@ Protocol designed to perform operations with atomic structures in \scipion by us
 
     \begin{itemize}
      \item \ttt{Input Volume}: Optional parameter to be completed with the electron density map previously downloaded or generated in \scipion.\\
-     \item \ttt{PDBx/mmCIF file}: Atomic structure previously downloaded or generated in \scipion.\\
-     \item \ttt{Other PDBx/mmCIF files}: Additional atomic structures.\\
+     \item \ttt{Atomic structure}: Atomic structure previously downloaded or generated in \scipion.\\
+     \item \ttt{Other atomic structures}: Additional atomic structures.\\
     \end{itemize}
     \item \ttt{Help} section\\
     
@@ -43,9 +43,9 @@ Protocol designed to perform operations with atomic structures in \scipion by us
    Write in \chimera command line:\\
    \ttt{scipionwrite model \#n}\\
    If you want to save the model regarding any electron density map, write in \chimera command line:\\
-   \ttt{scipionwrite model \#n refmodel \#n saverefmodel 0/1}.\\Replace \ttt{\#n} by model numbers shown in \chimera \ttt{Model Panel}. Select \ttt{1} if you want to save the reference map or \ttt{0} if you do not want to avoid unnecessary duplicate data.
+   \ttt{scipionwrite model \#n refmodel \#n saverefmodel 0/1}.\\Replace \ttt{\#n} by model numbers shown in \chimera \ttt{Model Panel}. Select \ttt{1} if you want to save the reference map or \ttt{0} otherwise, to avoid duplicate data unnecessarily.
    \item To save a volume generated with this \chimera protocol:
-   New volume data sets have to be saved first in a separate volume file. Otherwise those volumes will not be saved in the \chimera session since session files only record file paths to volumes. Assuming that the name chosen for the new volume generated is \ttt{volume\_name.mrc}, and \ttt{abspath} the absolute path in which you want to save the volume, write in \chimera command line:\\
+   New volume data sets have to be saved first in a separate volume file. Otherwise, those volumes will not be saved in the \chimera session since session files only record file paths to volumes. Assuming that the name chosen for the new volume generated is \ttt{volume\_name.mrc}, and \ttt{abspath} the absolute path in which you want to save the volume, write in \chimera command line:\\
    \ttt{volume \#n save abspath/volume\_name.mrc}\\
    \ttt{scipionwrite model \#n refmodel \#n saverefmodel 1}.\\Replace \ttt{\#n} by model numbers shown in \chimera \ttt{Model Panel}. Remark that you have to save an atomic structure if you want to save a volume in \scipion.\\
    \item Close \chimera graphics window.

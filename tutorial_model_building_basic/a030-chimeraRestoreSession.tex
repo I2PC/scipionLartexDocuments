@@ -21,7 +21,7 @@ Protocol designed to restore \chimera session, provided that this session has be
      \item \ttt{Input} section\\
 
     \begin{itemize}
-     \item \ttt{Input protocols}: Parameter that allows to select a particular protocol in which \chimera session has been saved in \scipion. As has been already mentioned above, three protocols support this possibility (\chimera \ttt{rigid fit}, \chimera \ttt{operate} and \scipion \ttt{model from template}).\\
+     \item \ttt{Input protocols}: Parameter that allows to select a particular protocol in which \chimera session has been saved in \scipion. As it was mentioned before, three protocols support this possibility (\chimera \ttt{rigid fit}, \chimera \ttt{operate} and \chimera \ttt{model from template}).\\
      
     \end{itemize}
     \item \ttt{Help} section\\
@@ -42,7 +42,7 @@ Protocol designed to restore \chimera session, provided that this session has be
    Write in \chimera command line:\\
    \ttt{scipionwrite model \#n}\\
    If you want to save the model regarding any electron density map, write in \chimera command line:\\
-   \ttt{scipionwrite model \#n refmodel \#n saverefmodel 0/1}.\\Replace \ttt{\#n} by model numbers shown in \chimera \ttt{Model Panel}. Select \ttt{1} if you want to save the reference map or \ttt{0} if you do not want to avoid unnecessary duplicate data.\\
+   \ttt{scipionwrite model \#n refmodel \#n saverefmodel 0/1}.\\Replace \ttt{\#n} by model numbers shown in \chimera \ttt{Model Panel}. Select \ttt{1} if you want to save the reference map or \ttt{0} otherwise, to avoid duplicate data unnecessarily.\\
    \item To save a volume generated with this protocol:\\
    New volume data sets have to be saved first in a separate volume file. Otherwise those volumes will not be saved in the \chimera session since session files only record file paths to volumes. Assuming that the name chosen for the new volume generated is \ttt{volume\_name.mrc}, and \ttt{abspath} the absolute path in which you want to save the volume, write in \chimera command line:\\
    \ttt{volume \#n save abspath/volume\_name.mrc}\\
