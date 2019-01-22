@@ -40,45 +40,47 @@ Protocol designed to assess the geometry of refined atomic structures regarding 
     
    Two taps are shown in the upper part of the results window:
     \begin{itemize}
-     \item XXXX Maps and models:
+     \item \ttt{Volume and models}:
      \chimera graphics window displays coordinate axes, selected input volume and fitted atomic structure.
-     \item XXXX EMRinger Results (\ffigure{fig:app_protocol_emringer_3}):
+     \item \ttt{EMRinger Results} (\ffigure{fig:app_protocol_emringer_3}):
      
      \begin{figure}[H]
      \centering 
      \captionsetup{width=.7\linewidth} 
-     \includegraphics[width=0.60\textwidth]{Images_appendix/Fig141.pdf}
+     \includegraphics[width=0.70\textwidth]{Images_appendix/Fig141.pdf}
      \caption{Protocol \scommand{phenix - emringer}. Menu to visualize $EMRinger$ results.}
      \label{fig:app_protocol_emringer_3}
     \end{figure}
       \begin{itemize}
-        \item XXX Results table (\ffigure{fig:app_protocol_emringer_4}):
+        \item \ttt{Summary Table of Results} (\ffigure{fig:app_protocol_emringer_4}):
         \begin{figure}[H]
          \centering 
          \captionsetup{width=.7\linewidth} 
-         \includegraphics[width=0.60\textwidth]{Images_appendix/Fig142.pdf}
+         \includegraphics[width=0.40\textwidth]{Images_appendix/Fig142.pdf}
          \caption{Protocol \scommand{phenix - emringer}. Final $EMRinger$ results.}
         \label{fig:app_protocol_emringer_4}
      \end{figure}
          \begin{itemize}
-          \item Optimal Threshold: Selected volume Electron Potential, in a range of 20, at which maximum values of EMRinger Score and Percentage of Rotameric Residues are reached. 
-          \item Rotamer-Ratio:
-          \item Max Zscore: Probability of finding a certain number of rotameric residues, at a specific side chain dihedral angle, among the total number of map peaks found above the Optimal Electron Potential Threshold, assuming a binomial distribution of rotameric residues B(\ttt{n, p)} ($n$: total number of map peaks found above the Optimal Electron Potential Threshold; $p$: 39/72; with map sampling every 5º, 39 angle binds are considered rotameric from a total of 360/5 = 72).
-          \item Model Length: Total model number of residues considered in EMRinger computation, non-$\gamma$-branched, non-proline aminoacids with a non-H $\gamma$ atom.
-          \item EMRinger Score: Highest Z-score, rescaled regarding model length, across the range of Electron Potential Thresholds. Since the Z-score is rescaled to the EMRinger Score according model length, EMRinger Score allows suitable comparisons among different model-map pairs. EMRinger Score of 1.0 is usual for initial models refined regarding 3.2-3.5\AA resolution maps. For high-quality models with high resolution, EMRinger Score values higher than 2 are expected.
+          \item \ttt{Optimal Threshold}: \ttt{Electron Potential} cutoff value of the volume, in a range of 20, at which maximum values of \ttt{EMRinger Score} and \ttt{Percentage of Rotameric Residues} are reached. 
+          \item \ttt{Rotamer-Ratio}: \ttt{Percentage of Rotameric Residues} at the \ttt{Optimal Threshold}.
+          \item \ttt{Max Zscore}: Z-score indicating the significance of the distribution at the \ttt{Optimal Threshold}; in other words, Probability of finding a certain number of rotameric residues, at a specific side chain dihedral angle, among the total number of map peaks found above the \ttt{Optimal Threshold}, assuming a binomial distribution of rotameric residues B(\ttt{n, p)} ($n$: total number of map peaks found above the \ttt{Optimal Threshold}; $p$: 39/72; with map sampling every 5º, 39 angle binds are considered rotameric from a total of 360/5 = 72).
+          \item \ttt{Model Length}: Total number of residues of the model considered in EMRinger computation, non-$\gamma$-branched, non-proline aminoacids with a non-H $\gamma$ atom.
+          \item \ttt{EMRinger Score}: Highest Z-score, rescaled regarding model length, across the range of \ttt{Electron Potential} thresholds. Since the Z-score is rescaled to the \ttt{EMRinger Score} according model length, \ttt{EMRinger Score} allows suitable comparisons among different model-map pairs. \ttt{EMRinger Score} of 1.0 is usual for initial models refined regarding 3.2-3.5\AA resolution maps. For high-quality models with high resolution, \ttt{EMRinger Score} values higher than 2 are expected.
          \end{itemize}
 
-        \item XXX Thresholds Scan:
-         \begin{itemize}
-          \item Plot of EMRinger Score and Percentage of Rotameric Residues regarding Electron Potential Threshold.
-         \end{itemize}
-        \item XXXX
+        \item \ttt{Threshold Scan}: Plots of \ttt{EMRinger Score} (blue line) and \ttt{Percentage of Rotameric Residues} (red line) regarding the \ttt{Electron Potential} threshold. The maximum value of \ttt{EMRinger Score} stablishes the \ttt{Optimal Threshold}.
+        \item \ttt{Density threshold}: Box to select one of the 20 volume density cutoff values at which the \ttt{Percentage of Rotameric Residues} has been computed. The \ttt{Optimal Threshold}, at which the \ttt{EMRinger Score} was obtained, is shown by default.
+        \item \ttt{Peak count for the selected density threshold}: Histograms counting rotameric (blue) and non-rotameric (red) residues at the selected \ttt{Electron Potential Threshold}.
+        \item \ttt{Chain}: Box to select one of the chains of the model. By default, the name of the first chain is shown.
+        \item \ttt{Rolling window for the selected chain}: The analysis of EMRinger rolling window, performed on rolling sliding 21-residue windows along the primary sequence of monomers, allows to distinguish high quality regions of the model.
+        \item \ttt{Residue}: Box to select one residue, with at least one \ttt{Chi} angle (non-H $\gamma$ atom-containing), located in the specific position indicated in the primary sequence of one of the monomer chains indicated.
+        \item \ttt{Ringer results for the selected residue}: Individual plots for each \ttt{Chi} angle of the selected residue. Detailed numeric values are shown in the \ttt{extra/*.csv} file.
       \end{itemize}
     \end{itemize}
     
  \item Summary content:\\
  
-  \ttt{SUMMARY} box:\\Statistics included in the above Final Results Table (an example can be observed in \ffigure{fig:emringer_protocol} (6):
+  \ttt{SUMMARY} box:\\Statistics included in the above \ttt{Summary Table of Results} (an example can be observed in \ffigure{fig:emringer_protocol} (6):
 
 \end{itemize}
 
