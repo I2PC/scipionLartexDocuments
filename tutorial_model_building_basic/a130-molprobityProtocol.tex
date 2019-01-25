@@ -1,6 +1,6 @@
 \section{Phenix MolProbity protocol}
 \label{app:molprobityProtocol}%a130
-Protocol designed to assess the geometry of refined atomic structures without considering electron density maps in \scipion by using $MolProbity$ \citep{davis2004}. Integrated in cryo-EM validation tools of $Phenix$ software suite (\url{https://www.phenix-online.org/}), $MolProbity$ tool validates geometry and dihedral-angle combinations of atomic structures. $MolProbity$ scores can guide the refinement process of the atomic structure to get a good fitting of the atomic structure to the cryo-EM density map. Adding a volume as input in \ttt{Phenix MolProbity} protocol is not mandatory, although if a volume is provided \ttt{Real Space Correlation} coefficients between map and model will be calculated. Additionally, experimental electron density maps give sense to the interpretation of geometry outliers.\\
+Protocol designed to assess the geometry of refined atomic structures without considering electron density maps in \scipion by using $MolProbity$ \citep{davis2004}. Integrated in cryo-EM validation tools of $Phenix$ software suite (\url{https://www.phenix-online.org/}), $MolProbity$ tool validates geometry and dihedral-angle combinations of atomic structures. $MolProbity$ scores can guide the refinement process of the atomic structure to get a good fitting of the atomic structure to the cryo-EM density map. Adding a volume as input in \ttt{Phenix MolProbity} protocol is not mandatory, although if a volume is provided \ttt{Real Space Correlation} coefficients between map and model-derived map will be calculated. Additionally, experimental electron density maps give sense to the interpretation of geometry outliers.\\
 
 \begin{itemize}
  \item \scipion menu:\\
@@ -62,7 +62,7 @@ Protocol designed to assess the geometry of refined atomic structures without co
             
             \ttt{Rotamer outliers}: Percentage of residues assessed that adopt an unusual conformation of $\chi$ dihedral angles. Rotamer outliers, commonly used to characterize the conformation of protein sidechains, are detailed in Chi1-Chi2 plot, shown below.\\
             
-            \ttt{C-beta outliers}: Number of residues showing an unusual deviation (higher than 0.25 \AA) of the beta carbon from its ideal position. This deviation is an indicator of incompatibility between sidechain and backbone. \\
+            \ttt{C-beta outliers}: Number of residues showing an unusual deviation (higher than 0.25 \AA) of the C{$\beta$} from its ideal position. This deviation is an indicator of incompatibility between sidechain and backbone. \\
             
             \ttt{Clahscore}: Score associated to the number of pairs of non-bonded atoms unsually close to each other, showing probable steric overlaps. Clashscore is calculated as the number of serious clashes per 1000 atoms. This value has to be as low as possible.\\
             
@@ -70,25 +70,27 @@ Protocol designed to assess the geometry of refined atomic structures without co
             
             \ttt{RMS (angles)}: Root-mean-square deviation of molecule bond angles.\\
             
-            \ttt{Overall score}: MolProbity overall score representing the experimental resolution expected for the structure model. This value should be lower than the actual resolution. The lower the value, the better quality of the structure model.\\
+            \ttt{Overall score}: $MolProbity$ overall score representing the experimental resolution expected for the structure model. This value should be lower than the actual resolution. The lower the value, the better quality of the structure model.\\
            
-           \item \ttt{Open in Coot}: Interactive visualization and structure modification tool for Ramachandran, Rotamer and C-beta outliers, as well as severe clashes. Coot graphics window will be recentered on a the specific atom or residue outlier when it is clicked.
+           \item \ttt{Open in Coot}: Interactive visualization and structure modification tool for Ramachandran, Rotamer and C{$\beta$} outliers, as well as severe clashes. Coot graphics window will be recentered on the specific atom or residue outlier when it is clicked.
+           
+           \item \ttt{Missing atoms}: For clarity, hydrogen atoms are not included.
           \end{itemize}
           
-         \item \ttt{Basic Geometry: Bond Length Restraints}: Outlier bonded pairs of atoms according to the bond restraints between pairs of bonded atoms. The \ttt{Deviations} table indicates the number of outliers and the number of restraints (deviations from ideal values). These outliers appear sorted by deviation (higher than 4 sigmas) in the \ttt{Outliers} list.
-         \item \ttt{Basic Geometry: Bond Angle Restraints}: Outlier bonded triplets of atoms according to the angle restraints between triplets of bonded atoms. The \ttt{Deviations} table indicates the number of outliers and the number of restraints (deviations from ideal values). These outliers appear sorted by deviation (higher than 4 sigmas) in the \ttt{Outliers} list.
-         \item \ttt{Basic Geometry: Dihedral Angle Restraints}: Outlier bonded tetrads of atoms according to the dihedral angle restraints between tetrads of bonded atoms. The \ttt{Deviations} table indicates the number of outliers and the number of restraints (deviations from ideal values). These outliers appear sorted by deviation (higher than 4 sigmas) in the \ttt{Outliers} list.
-         \item \ttt{Basic Geometry: Chilarity Restraints}: Outlier bonded tetrads of atoms according to the chilarity restraints between tetrads of bonded atoms. The \ttt{Deviations} table indicates the number of outliers and the number of restraints (deviations from ideal values). These outliers appear sorted by deviation (higher than 4 sigmas) in the \ttt{Outliers} list.
-         \item \ttt{Basic Geometry: Planarity Restraints}: Outlier bonded groups of atoms according to the planarity restraints between groups of bonded atoms. The \ttt{Deviations} table indicates the number of outliers and the number of restraints (deviations from ideal values). These outliers appear sorted by deviation (higher than 4 sigmas) in the \ttt{Outliers} list.
+         \item \ttt{Basic Geometry: Bond Length Restraints}: Bonded pairs of atoms outliers   according to the bond restraints between pairs of bonded atoms. The \ttt{Deviations} table indicates the number of outliers and the number of restraints (deviations from ideal values). These outliers appear sorted by deviation (higher than 4 sigmas) in the \ttt{Outliers} list.
+         \item \ttt{Basic Geometry: Bond Angle Restraints}: Bonded triplets of atoms outliers according to the angle restraints between triplets of bonded atoms. The \ttt{Deviations} table indicates the number of outliers and the number of restraints (deviations from ideal values). These outliers appear sorted by deviation (higher than 4 sigmas) in the \ttt{Outliers} list.
+         \item \ttt{Basic Geometry: Dihedral Angle Restraints}: Bonded tetrads of atoms outliers  according to the dihedral angle restraints between tetrads of bonded atoms. The \ttt{Deviations} table indicates the number of outliers and the number of restraints (deviations from ideal values). These outliers appear sorted by deviation (higher than 4 sigmas) in the \ttt{Outliers} list.
+         \item \ttt{Basic Geometry: Chilarity Restraints}: Bonded tetrads of atoms outliers according to the chilarity restraints between tetrads of bonded atoms. The \ttt{Deviations} table indicates the number of outliers and the number of restraints (deviations from ideal values). These outliers appear sorted by deviation (higher than 4 sigmas) in the \ttt{Outliers} list.
+         \item \ttt{Basic Geometry: Planarity Restraints}: Bonded groups of atoms outliers according to the planarity restraints between groups of bonded atoms. The \ttt{Deviations} table indicates the number of outliers and the number of restraints (deviations from ideal values). These outliers appear sorted by deviation (higher than 4 sigmas) in the \ttt{Outliers} list.
          \item \ttt{Protein}: Box validating protein geometry:
          \begin{itemize}
           \item \ttt{Select plot}: Box to select a plot to visualize: The Ramachandran plot or the Chi1-Chi2 plot.
           \item \ttt{View plot}: Visualization of the plot previously selected.
           \item \ttt{Ramachandran outliers}: List of Ramachandran residue outliers with their respective $\phi$ (C-N-CA-C) and $\psi$ (N-CA-C-N) dihedral angle values.
           \item \ttt{Rotamer outliers}: List of Rotamer residue outliers with their respective $\chi$ dihedral angles.
-          \item \ttt{C-beta outliers}: List of C-beta residue outliers with their respective angles.
+          \item \ttt{C-beta outliers}: List of C{$\beta$} residue outliers with their respective angles.
           \item \ttt{Recommended Asn/Gln/His sidechain flips}: Asn, Gln and His residues, harboring asymmetric sidechains, recommended to be flipped to form favourable van der Waals contacts and hydrogen bonds.
-          \item \ttt{Cis and Twisted peptides}: Residues showing cis or twisted conformations that could be modeling errors.
+          \item \ttt{Cis and Twisted peptides}: Residues showing $cis$ or $twisted$ conformations that could be modeling errors.
          \end{itemize}
 
          \item \ttt{Clashes}: Box to detail \ttt{All atom-contact analysis}, the list that contains all severe clashes (non-H atoms overlaping more than 0.4 \AA) and that can be checked in \coot.
@@ -104,7 +106,7 @@ Protocol designed to assess the geometry of refined atomic structures without co
         \begin{itemize}
          \item \ttt{Real-space correlation to electron density}: 
          \begin{itemize}
-          \item \ttt{View Multi-criterion plot}: Plot showing cross-correlation and B-factor values for each residue of the macromolecule over 100-residue regions. Additional validation information, such as Ramachandran, Rotamer or C-beta outliers, is also detailed, as well as bad clashes.  
+          \item \ttt{View Multi-criterion plot}: Plot showing cross-correlation and B-factor values for each residue of the macromolecule over 100-residue regions. Additional validation information, such as Ramachandran, Rotamer or C{$\beta$} outliers, is also detailed, as well as severe clashes.  
           \item \ttt{Correlations Coefficients}: Three Real-space correlation coefficients are computed \citep{afonine2018b}: \setlength{\parindent}{12pt}\\
           
            \ttt{Mask CC}: Correlation coefficient between experimental volume and model-derived map inside the mask region around the model.\\
@@ -136,13 +138,13 @@ Protocol designed to assess the geometry of refined atomic structures without co
          \item \ttt{Occupancies}: Atomic property used in crystallography. It represents the fraction of molecules in which a specific atom is in a given position or conformation at any given time. The sum of occupancies has to be 1 in total. Occupancies of zero indicate that no experimental data support the position of the atom in the model.
          \item \ttt{B-factor/ADPs}: Temperature factors reflect the vibration status of the atoms in which the observed electron density constitutes an average of all the small motions. Low values (around 10) indicate low vibration of atoms, whereas high values (around 50) show atoms moving so much that locate them propperly results difficult. This last is usually the case of atoms located at the protein surface.
           \begin{itemize}
-           \item \ttt{Isotropic B}: Temperature factor contrained to be the same in all three directions. By clicking here, a table showing the statistics (\ttt{Min}, \ttt{Max} and \ttt{Mean}) of the isotropic B-factor is displayed.
+           \item \ttt{Isotropic B}: Temperature factor constrained to be the same in all three directions. By clicking here, a table showing the statistics (\ttt{Min}, \ttt{Max} and \ttt{Mean}) of the isotropic B-factor is displayed.
           \end{itemize}
         \end{itemize}
     \end{itemize}
     
  \item Summary content:\\
  
-  \ttt{SUMMARY} box:\\Main statistics included in the above \ttt{Model Final Statistics} table (an example can be seen in \ffigure{fig:molprobity_protocol} (7)).
+  \ttt{SUMMARY} box:\\Main statistics included in the above $MolProbity$ \ttt{Model Final Statistics} table (an example can be seen in \ffigure{fig:molprobity_protocol} (7)).
 
 \end{itemize}
