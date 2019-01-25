@@ -17,7 +17,7 @@ Protocol designed to refine in real space an atomic structure into a map in \sci
     \end{figure}
     
     \begin{itemize}
-     \item \ttt{Input Volume}: (Optional) Electron density map previously downloaded or generated in \scipion.
+     \item \ttt{Input Volume}: Electron density map previously downloaded or generated in \scipion.
      \item \ttt{Resolution (\AA)}: \ttt{Input Volume} resolution.
      \item \ttt{Input atomic structure}: Atomic structure previously downloaded or generated in \scipion and fitted to the electron density map.\
      \item \ttt{Extra Params}: Advanced param that allows to add a string to the phenix command including other \iii{phenix.real\_space\_refine} program params. Syntax to add extra params: \ttt{paramName1} = \ttt{value1} \ttt{paramName2} = \ttt{value2}
@@ -52,8 +52,7 @@ Protocol designed to refine in real space an atomic structure into a map in \sci
     
 Four taps are shown in the upper part of the results window:
    \begin{itemize}
-     \item \ttt{Volume and models}:
-     \chimera graphics window displays coordinate axes, selected input volume and the fitted atomic structure.
+     \item \ttt{Volume and models}: \chimera graphics window will be opened by default. Atomic structure and volume are referred to the origin of coordinates in \chimera. To show the relative position of atomic structure and electron density volume, the three coordinate axes are represented; X axis (red), Y axis (yellow), and Z axis (blue) (\ffigure{fig:app_protocol_volume_3}).\\
      \item \ttt{MolProbity results} (\ffigure{fig:app_protocol_real_space_refine_3}):
         \begin{figure}[H]
          \centering 
