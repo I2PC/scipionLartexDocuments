@@ -3,6 +3,12 @@
 Protocol designed to refine in real space an atomic structure into a map in \scipion by using \iii{phenix.real\_space\_refine} program \citep{afonine2018}. Integrated in the $Phenix$ software suite (\url{https://www.phenix-online.org/}), \iii{phenix.real\_space\_refine} tool can be applied to refine models generated both from cryo-EM and from crystallography. This program computes \ttt{Real Space Correlation} coefficients between map and model-derived map and, additionally, it assesses the geometry and dihedral-angle combinations of atomic structures with the aim of getting the best map-fitted structure by reducing the number of geometry outliers.   Validation $MolProbity$ scores are shown at the end of the refinement process.\\
 
 \begin{itemize}
+ \item Requirements to run this protocol and visualize results:
+    \begin{itemize}
+        \item \scipion plugin: \ttt{scipion-em-phenix}
+        \item PHENIX software suite (version 1.13-2998)
+        \item \scipion plugin: \ttt{scipion-em-chimera}
+    \end{itemize}
  \item \scipion menu:\\
   \ttt{Protocols SPA -> Model building} (\ffigure{fig:app_protocol_real_space_refine_1} (A))\\
   

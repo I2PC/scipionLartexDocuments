@@ -3,6 +3,12 @@
 Protocol designed to interactively fit and refine atomic structures, in real space, regarding electron density maps in \scipion by using $Coot$ \citep{emsley2010}. This protocol integrates $Coot$ 3D graphics display functionality in \scipion, supporting accession to $Coot$ input and output data in the general model building workflow.\\$Coot$, acronym of Crystallopgraphic Object-Oriented Toolkit, gathers several tools useful to perform mostly interactive modeling procedures and is integrated in CCP4 software suite (\url{www.ccp4.ac.uk/ccp4\_projects.php}). Initially applicable to X-ray data, some modifications of $Coot$ also allow to model atomic structures regarding electron density maps obtained from cryo-EM (\citep{brown2015}). Additional instructions to use $Coot$ can be found in \url{https://www2.mrc-lmb.cam.ac.uk/personal/pemsley/coot/}. Remark in \url{https://www2.mrc-lmb.cam.ac.uk/personal/pemsley/coot/web/docs/coot.html#Mousing-and-Keyboarding} mouse requirements to get the \coot best functioning.\\
 
 \begin{itemize}
+  \item Requirements to run this protocol and visualize results:
+    \begin{itemize}
+        \item \scipion plugin: \ttt{scipion-em-ccp4}
+        \item CCP4 software suite (version 7.0.056 or higher)
+        \item \scipion plugin: \ttt{scipion-em-chimera}
+    \end{itemize}
   \item \scipion menu:\\
    \ttt{Protocols SPA -> Model building} (\ffigure{fig:app_protocol_coot_1} (A))\\
   

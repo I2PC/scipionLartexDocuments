@@ -3,6 +3,12 @@
 Protocol designed to assess the geometry of refined atomic structures without considering electron density maps in \scipion by using $MolProbity$ \citep{davis2004}. Integrated in cryo-EM validation tools of $Phenix$ software suite (\url{https://www.phenix-online.org/}), $MolProbity$ tool validates geometry and dihedral-angle combinations of atomic structures. $MolProbity$ scores can guide the refinement process of the atomic structure to get a good fitting of the atomic structure to the cryo-EM density map. Adding a volume as input in \ttt{Phenix MolProbity} protocol is not mandatory, although if a volume is provided \ttt{Real Space Correlation} coefficients between map and model-derived map will be calculated. Additionally, experimental electron density maps give sense to the interpretation of geometry outliers.\\
 
 \begin{itemize}
+ \item Requirements to run this protocol and visualize results:
+    \begin{itemize}
+        \item \scipion plugin: \ttt{scipion-em-phenix}
+        \item PHENIX software suite (version 1.13-2998)
+        \item \scipion plugin: \ttt{scipion-em-chimera}
+    \end{itemize}
  \item \scipion menu:\\
   \ttt{Protocols SPA -> Model building} (\ffigure{fig:app_protocol_molprobity_1} (A))\\
   

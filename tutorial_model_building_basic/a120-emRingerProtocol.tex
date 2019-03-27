@@ -3,6 +3,12 @@
 Protocol designed to assess the geometry of refined atomic structures regarding electron density maps in \scipion by using $EMRinger$ \citep{barad2015}. Integrated in cryo-EM validation tools of $Phenix$ software suite (\url{https://www.phenix-online.org/}) and created as an extension of the X-ray crystallography validation tool $Ringer$, $EMRinger$ tool computes the amount of rotameric angles of the structure side chains as a function of map value to assess the goodness of the fitting to the cryo-EM density map.\\
 
 \begin{itemize}
+ \item Requirements to run this protocol and visualize results:
+    \begin{itemize}
+        \item \scipion plugin: \ttt{scipion-em-phenix}
+        \item PHENIX software suite (version 1.13-2998)
+        \item \scipion plugin: \ttt{scipion-em-chimera}
+    \end{itemize}
  \item \scipion menu:\\
   \ttt{Protocols SPA -> Model building} (\ffigure{fig:app_protocol_emringer_1} (A))\\
   

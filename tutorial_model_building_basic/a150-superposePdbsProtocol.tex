@@ -3,6 +3,12 @@
 Protocol designed to refine in real space an atomic structure into a map in \scipion by using \iii{phenix.superpose\_pdbs} program \citep{zwartUrl}. Integrated in the $Phenix$ software suite (\url{https://www.phenix-online.org/}), \phenix protocol \scommand{phenix - superpose pdbs} allows to compare visually the geometry of two atomic structures by overlapping them. Root mean square deviation (RMSD) between fixed and moving structures is computed before and after the superposition. 
 
 \begin{itemize}
+ \item Requirements to run this protocol and visualize results:
+    \begin{itemize}
+        \item \scipion plugin: \ttt{scipion-em-phenix}
+        \item PHENIX software suite (version 1.13-2998)
+        \item \scipion plugin: \ttt{scipion-em-chimera}
+    \end{itemize}
  \item \scipion menu:\\
   \ttt{Protocols SPA -> Tools -> Calculators} (\ffigure{fig:app_protocol_superpose_pdbs_1} (A))\\
   

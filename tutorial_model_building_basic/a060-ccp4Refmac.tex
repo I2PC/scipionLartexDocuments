@@ -4,6 +4,12 @@
 Protocol designed to refine atomic structures, in reciprocal space, regarding electron density maps in \scipion by using \refmac \citep{vagin2004}, \citep{kovalevskiy2018}. This protocol integrates \refmac functionality in \scipion, supporting accession to \refmac input and output data in the general model building workflow.\\\refmac, Refinement of Macromolecular Structures by the Maximum-Likelihood method, allows the refinement of atomic models against experimental data, and is integrated in CCP4 software suite (\url{www.ccp4.ac.uk/ccp4\_projects.php}). Initially applicable to X-ray data, some modifications of \refmac also support optimal fitting of atomic structures into electron density maps obtained from cryo-EM \citep{brown2015}. Particullarly, \refmac considers a five-Gaussian approximation for electron scatttering factors because, unlike of X-rays crystallography, cryo-EM scattering is modified by each atom electric charge and ionization state. In addition, \refmac computes structure factors only for the model-explained part of the map. These structure factors are complex because they include, not only amplitude data, but also phase information. \refmac will try to minimize the difference between the ``observed'' and calculated structure factors, computed from cryo-EM maps and from atom coordinates (structure), respectively. Additional instructions to use \refmac can be found in \url{http://www.ysbl.york.ac.uk/refmac/}.  
 
 \begin{itemize}
+  \item Requirements to run this protocol and visualize results:
+    \begin{itemize}
+        \item \scipion plugin: \ttt{scipion-em-ccp4}
+        \item CCP4 software suite (version 7.0.056 or higher)
+        \item \scipion plugin: \ttt{scipion-em-chimera}
+    \end{itemize}
   \item \scipion menu:\\
    \ttt{Protocols SPA -> Model building} (\ffigure{fig:app_protocol_refmac_1} (A))\\
   
