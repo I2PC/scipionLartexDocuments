@@ -1,0 +1,31 @@
+# create LAdV-2 VIII homology model by forcing template use of Hong's VIII Ad5 structure
+
+# LAdV2 sequence in Uniprot is A0A076FT36_9ADEN
+# Ad5 PDB ID is 3iyn, VIII (peripentonal) is chain O
+chimera
+Fetch by id, pdb, 3iyn
+Select, Chain, O
+Tools > Sequence > Sequence
+In Sequence window:
+	Edit > Add sequence > give Uniprot code A0A076FYV2_9ADEN
+	Edit > Realign sequences
+	Structure > Modeller (homology) > Run via web service
+	# may take a longish time, see progress in message region in the main chimera window bottom left corner
+	
+# Cterminal regions are just looooong loops. Hide them.
+select #1:301-999
+Action> Ribbon> Hide
+
+# Save session VIII_MODELLER.py
+
+# the model closest to the template seems to be #3
+# mostly only the head domain is reasonably modeled, the rest is garbage
+
+# save pdb, selected atoms only, VIII_MODELLER.pdb, relative to 3iyn_A 	
+
+#####################
+
+## FIT into map
+# PWD: clar5_cinco:/home/carmen/Adeno/Lagarto/FIT_NEW_HOMOLOGY_MODELS
+	
+

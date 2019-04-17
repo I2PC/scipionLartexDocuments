@@ -1,0 +1,914 @@
+/* line 9, content/airstatic/assets/style/fixes/langs.scss */
+.lange_de .search_form .search_form_wrapper form .passengers .passengers_count_field .input .passengers_count .passengers_detail .passengers_counter {
+  width: 370px;
+}
+
+/* line 21, content/airstatic/assets/style/fixes/langs.scss */
+.lang_fr {
+  /* Fix for button in price box in search results */
+}
+/* line 29, content/airstatic/assets/style/fixes/langs.scss */
+.lang_fr .checkin_journeys .journey_wrapper .journey .flights .flight_details .checkin_call a strong {
+  font-size: 18px !important;
+}
+/* line 41, content/airstatic/assets/style/fixes/langs.scss */
+.lang_fr #results .process_wrapper_content .results_scroll .results_content .results_by_hour .results_list .prices .prices_block .body .price_block a span {
+  font-size: 12px;
+}
+
+/* Apply fixes to ie 8 and lower versions */
+/* line 3, content/airstatic/assets/style/fixes/ie8.scss */
+html.lt-ie9 {
+  /* Buscar vuelo */
+  /* Info Vuelo */
+  /* Hacer checkin */
+  /* Home */
+  /* Info Pages */
+  /* Loading GIF animation in button */
+  /************************************/
+  /* Aircraft map overlay */
+}
+/* line 9, content/airstatic/assets/style/fixes/ie8.scss */
+html.lt-ie9 .search_form {
+  display: none;
+}
+/* line 13, content/airstatic/assets/style/fixes/ie8.scss */
+html.lt-ie9 .search_form.active {
+  display: block;
+}
+/* line 17, content/airstatic/assets/style/fixes/ie8.scss */
+html.lt-ie9 .search_form .search_form_wrapper form .passengers .passengers_count_field .input .passengers_count .passengers_detail .corner_sup {
+  bottom: 17px;
+}
+/* line 20, content/airstatic/assets/style/fixes/ie8.scss */
+html.lt-ie9 #results .process_wrapper_content .results_scroll .results_content .results_by_hour .results_list .result .journeys .journeys_block .journeys_group .body .matrix_table .prices_matrix .prices_row .cell .price_wrapper em {
+  line-height: 12px;
+}
+/* line 23, content/airstatic/assets/style/fixes/ie8.scss */
+html.lt-ie9 .search_form .search_form_wrapper form .passengers .counter.viewing_details .input .passengers_count .passengers_detail {
+  display: block;
+  filter: none !important;
+}
+/* line 28, content/airstatic/assets/style/fixes/ie8.scss */
+html.lt-ie9 .search_form .search_form_wrapper form .passengers .passengers_count_field .input .passengers_count .passengers_detail .passengers_counter {
+  width: 305px;
+}
+/* line 32, content/airstatic/assets/style/fixes/ie8.scss */
+html.lt-ie9 #search {
+  background-repeat: repeat;
+  background-image: url(../graphic/ie/pattern_search.png);
+}
+/* line 37, content/airstatic/assets/style/fixes/ie8.scss */
+html.lt-ie9 .search_form .close {
+  z-index: 3000;
+}
+/* line 41, content/airstatic/assets/style/fixes/ie8.scss */
+html.lt-ie9 .search_form .search_form_wrapper form .dates .calendar .input input {
+  height: 0px;
+  overflow: hidden;
+}
+/* line 46, content/airstatic/assets/style/fixes/ie8.scss */
+html.lt-ie9 .search_form .search_form_wrapper form .airports .airport .input .input_wrapper {
+  width: 170px;
+  display: inline;
+}
+/* line 51, content/airstatic/assets/style/fixes/ie8.scss */
+html.lt-ie9 .search_form .search_form_wrapper form .passengers {
+  margin-right: 40px;
+}
+/* line 55, content/airstatic/assets/style/fixes/ie8.scss */
+html.lt-ie9 #topbar .fixed_bar .menu_icon p a {
+  background-color: #00beff;
+}
+/* line 59, content/airstatic/assets/style/fixes/ie8.scss */
+html.lt-ie9 #topbar .nav .main_nav ul li {
+  float: left;
+  margin-right: 23px;
+  font-size: 16px;
+  font-family: "Source Sans Pro",sans-serif;
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+/* line 69, content/airstatic/assets/style/fixes/ie8.scss */
+html.lt-ie9 #topbar .nav .main_nav ul li a {
+  display: inline-block;
+}
+/* line 73, content/airstatic/assets/style/fixes/ie8.scss */
+html.lt-ie9 #topbar .fixed_bar .fixed_bar_content .nav .main_nav ul li a {
+  color: #ffffff;
+  letter-spacing: 0.7px;
+}
+/* line 78, content/airstatic/assets/style/fixes/ie8.scss */
+html.lt-ie9 #topbar .nav .languages .language_options .select_language,
+html.lt-ie9 .nav_bar .nav_bar_wrapper .fixed_bar .fixed_bar_content .languages .language_options .select_language {
+  display: none;
+  filter: none !important;
+  background-repeat: repeat;
+  background-image: url(../graphic/ie/pattern_bottombar.png);
+}
+/* line 86, content/airstatic/assets/style/fixes/ie8.scss */
+html.lt-ie9 #topbar .nav .languages .language_options:hover .select_language,
+html.lt-ie9 .nav_bar .nav_bar_wrapper .fixed_bar .fixed_bar_content .languages .language_options:hover .select_language {
+  display: block;
+  visibility: visible;
+}
+/* line 92, content/airstatic/assets/style/fixes/ie8.scss */
+html.lt-ie9 .nav_bar .nav_bar_wrapper .fixed_bar .fixed_bar_content .languages .language_options .selected_language {
+  background-color: transparent;
+}
+/* line 96, content/airstatic/assets/style/fixes/ie8.scss */
+html.lt-ie9 #footer .footer_wrapper .footer_contact .newsletter form .fields .checkbox .field_wrapper label {
+  font-family: Arial;
+  background-color: #ffffff;
+}
+/* line 101, content/airstatic/assets/style/fixes/ie8.scss */
+html.lt-ie9 .search_form .search_form_wrapper form .options {
+  width: 380px;
+}
+/* line 105, content/airstatic/assets/style/fixes/ie8.scss */
+html.lt-ie9 .search_form .search_form_wrapper form .options .checkbox .label label {
+  color: #333333;
+}
+/* line 109, content/airstatic/assets/style/fixes/ie8.scss */
+html.lt-ie9 .search_form .search_form_wrapper form .options .checkbox.checked .label label {
+  color: #00beff;
+}
+/* line 113, content/airstatic/assets/style/fixes/ie8.scss */
+html.lt-ie9 .search_form .search_form_wrapper form .reserve_number .reserve_field .label label {
+  display: inline;
+}
+/* line 117, content/airstatic/assets/style/fixes/ie8.scss */
+html.lt-ie9 .ui-datepicker .ui-datepicker-group .ui-datepicker-header .ui-datepicker-next {
+  background-color: #ffffff;
+}
+/* line 121, content/airstatic/assets/style/fixes/ie8.scss */
+html.lt-ie9 .ui-datepicker .ui-datepicker-group .ui-datepicker-calendar tbody tr td a,
+html.lt-ie9 .ui-datepicker .ui-datepicker-group .ui-datepicker-calendar tbody tr td span {
+  background-color: #ffffff;
+}
+/* line 126, content/airstatic/assets/style/fixes/ie8.scss */
+html.lt-ie9 .search_form .search_form_wrapper form .submit .submit_button input,
+html.lt-ie9 .search_form .search_form_wrapper form .submit .submit_button button {
+  border: 2px solid #1c242a;
+}
+/* line 131, content/airstatic/assets/style/fixes/ie8.scss */
+html.lt-ie9 .search_form .search_form_wrapper form.ready .submit input,
+html.lt-ie9 .search_form .search_form_wrapper form.ready .submit button {
+  border: 2px solid #2be3a4;
+}
+/* line 138, content/airstatic/assets/style/fixes/ie8.scss */
+html.lt-ie9 .search_form .search_form_wrapper form .dates .calendar .input {
+  height: 100%;
+  filter: none !important;
+}
+/* line 143, content/airstatic/assets/style/fixes/ie8.scss */
+html.lt-ie9 .search_form .search_form_wrapper form .dates {
+  height: 83px;
+}
+/* line 147, content/airstatic/assets/style/fixes/ie8.scss */
+html.lt-ie9 .search_form .search_form_wrapper form .dates .input input {
+  border: 0;
+  filter: none;
+  box-sizing: border-box;
+  background-color: transparent;
+}
+/* line 154, content/airstatic/assets/style/fixes/ie8.scss */
+html.lt-ie9 .search_form .search_form_wrapper form .airports .airport .input {
+  filter: none !important;
+}
+/* line 158, content/airstatic/assets/style/fixes/ie8.scss */
+html.lt-ie9 .search_form .search_form_wrapper form .airports .airport.error .input,
+html.lt-ie9 .search_form .search_form_wrapper form .airports .airport.focused .input {
+  display: block;
+  visibility: visible;
+  filter: none !important;
+}
+/* line 167, content/airstatic/assets/style/fixes/ie8.scss */
+html.lt-ie9 .search_form .search_form_wrapper form .airports .airport .input {
+  height: 100%;
+  filter: none !important;
+}
+/* line 172, content/airstatic/assets/style/fixes/ie8.scss */
+html.lt-ie9 .search_form .search_form_wrapper form .flight_number .flight_field .input {
+  filter: none !important;
+  height: 0;
+  overflow: hidden;
+}
+/* line 178, content/airstatic/assets/style/fixes/ie8.scss */
+html.lt-ie9 .search_form .search_form_wrapper form .flight_number .flight_field.valid .input {
+  height: 0;
+}
+/* line 182, content/airstatic/assets/style/fixes/ie8.scss */
+html.lt-ie9 .search_form .search_form_wrapper form .flight_number .flight_field.focused .input {
+  filter: none !important;
+  height: 100%;
+}
+/* line 187, content/airstatic/assets/style/fixes/ie8.scss */
+html.lt-ie9 .search_form .search_form_wrapper form .flight_number .flight_field.filled.error .input {
+  filter: none !important;
+  height: 100%;
+  overflow: visible;
+}
+/* line 195, content/airstatic/assets/style/fixes/ie8.scss */
+html.lt-ie9 .search_form .search_form_wrapper form .reserve_number .reserve_field .input {
+  filter: none !important;
+  height: 0;
+  overflow: hidden;
+}
+/* line 201, content/airstatic/assets/style/fixes/ie8.scss */
+html.lt-ie9 .search_form .search_form_wrapper form .reserve_number .reserve_field.valid .input {
+  height: 0;
+}
+/* line 205, content/airstatic/assets/style/fixes/ie8.scss */
+html.lt-ie9 .search_form .search_form_wrapper form .reserve_number .reserve_field.focused .input {
+  filter: none !important;
+  height: 100%;
+}
+/* line 210, content/airstatic/assets/style/fixes/ie8.scss */
+html.lt-ie9 .search_form .search_form_wrapper form .reserve_number .reserve_field.filled.error .input {
+  filter: none !important;
+  height: 100%;
+  overflow: visible;
+}
+/* line 219, content/airstatic/assets/style/fixes/ie8.scss */
+html.lt-ie9 #slider {
+  height: 670px;
+}
+/* line 223, content/airstatic/assets/style/fixes/ie8.scss */
+html.lt-ie9 #slider .ui_main_slider .loading_screen {
+  display: none;
+  filter: none !important;
+}
+/* line 228, content/airstatic/assets/style/fixes/ie8.scss */
+html.lt-ie9 #slider .ui_main_slider .slides ul li .slide_content .image {
+  width: 100%;
+  height: auto;
+  display: block;
+  top: auto !important;
+  bottom: 0 !important;
+  left: 0 !important;
+  filter: none !important;
+  position: absolute;
+}
+/* line 239, content/airstatic/assets/style/fixes/ie8.scss */
+html.lt-ie9 #slider .ui_main_slider .slides ul li .slide_content .image img {
+  width: 100%;
+  height: auto;
+}
+/* line 244, content/airstatic/assets/style/fixes/ie8.scss */
+html.lt-ie9 .search_form .search_form_wrapper form .airports .airport .label {
+  display: none;
+  filter: none !important;
+}
+/* line 249, content/airstatic/assets/style/fixes/ie8.scss */
+html.lt-ie9 .search_form .search_form_wrapper form .airports .airport:hover .label {
+  display: block;
+}
+/* line 256, content/airstatic/assets/style/fixes/ie8.scss */
+html.lt-ie9 .html .lightbox_content_wrapper .link.last-child,
+html.lt-ie9 .inner_content .inner_block .inner_block_content .link.last.last-child {
+  margin-bottom: 0px;
+}
+/* line 261, content/airstatic/assets/style/fixes/ie8.scss */
+html.lt-ie9 #bottombar {
+  background-repeat: repeat;
+  background-image: url(../graphic/ie/pattern_bottombar.png);
+}
+/* line 266, content/airstatic/assets/style/fixes/ie8.scss */
+html.lt-ie9 #checkout .process_wrapper_content .process_scroll .process_top_bar .top_bar_content .opened.resume .close_checkout {
+  display: none;
+}
+/* line 270, content/airstatic/assets/style/fixes/ie8.scss */
+html.lt-ie9 .dialog {
+  background: transparent url(../graphic/ie/pattern_dialog.png) 0 0 repeat;
+}
+/* line 274, content/airstatic/assets/style/fixes/ie8.scss */
+html.lt-ie9 .routes_overlay {
+  background: transparent url(../graphic/ie/pattern_routes_overlay.png) 0 0 repeat;
+}
+/* line 278, content/airstatic/assets/style/fixes/ie8.scss */
+html.lt-ie9 .routes_lightbox .routes_content .routes_wrapper .routes_group {
+  padding-right: 25px;
+}
+/* line 283, content/airstatic/assets/style/fixes/ie8.scss */
+html.lt-ie9 .routes_content .routes_group {
+  float: left;
+}
+/* line 286, content/airstatic/assets/style/fixes/ie8.scss */
+html.lt-ie9 .routes_content .routes_group .routes_title {
+  margin-top: 25px;
+}
+/* line 292, content/airstatic/assets/style/fixes/ie8.scss */
+html.lt-ie9 .routes_content .first .routes_title {
+  margin-top: 0px;
+}
+/* line 298, content/airstatic/assets/style/fixes/ie8.scss */
+html.lt-ie9 .tags_group {
+  margin-right: 25px;
+}
+/* line 302, content/airstatic/assets/style/fixes/ie8.scss */
+html.lt-ie9 #checkin .process_wrapper_content .process_content .process_blocks .cards_slider {
+  height: 510px !important;
+  margin-top: -305px !important;
+}
+/* line 306, content/airstatic/assets/style/fixes/ie8.scss */
+html.lt-ie9 #checkin .process_wrapper_content .process_content .process_blocks .cards_slider ul.slide_wrapper {
+  height: 510px;
+}
+/* line 309, content/airstatic/assets/style/fixes/ie8.scss */
+html.lt-ie9 #checkin .process_wrapper_content .process_content .process_blocks .cards_slider ul.slide_wrapper .boarding_card {
+  height: 510px;
+  width: 396px;
+  margin: 0 auto;
+  padding-left: 0;
+  display: block;
+}
+/* line 316, content/airstatic/assets/style/fixes/ie8.scss */
+html.lt-ie9 #checkin .process_wrapper_content .process_content .process_blocks .cards_slider ul.slide_wrapper .boarding_card .boarding_card_header {
+  position: static;
+  width: 100% !important;
+  height: 60px;
+  background-position: 20px 50%;
+}
+/* line 322, content/airstatic/assets/style/fixes/ie8.scss */
+html.lt-ie9 #checkin .process_wrapper_content .process_content .process_blocks .cards_slider ul.slide_wrapper .boarding_card .boarding_card_header .boarding_card_title {
+  height: auto;
+  width: auto;
+  position: static;
+  padding: 20px 0 20px 55px;
+}
+/* line 328, content/airstatic/assets/style/fixes/ie8.scss */
+html.lt-ie9 #checkin .process_wrapper_content .process_content .process_blocks .cards_slider ul.slide_wrapper .boarding_card .boarding_card_header .boarding_card_title span {
+  margin: 0 10px 0 0;
+}
+/* line 336, content/airstatic/assets/style/fixes/ie8.scss */
+html.lt-ie9 #checkin .process_wrapper_content .process_content .process_blocks .cards_slider ul.slide_wrapper .boarding_card.adult_baby .boarding_card_header .boarding_card_title {
+  padding: 10px 0 10px 75px;
+}
+/* line 345, content/airstatic/assets/style/fixes/ie8.scss */
+html.lt-ie9 #process .spinner {
+  background: transparent url(../graphic/ie/loading_ball_over_black.gif) 50% 50% no-repeat !important;
+}
+/* line 350, content/airstatic/assets/style/fixes/ie8.scss */
+html.lt-ie9 #process .process_page_wrapper .process_page.checkout .spinner {
+  background: transparent url(../graphic/ie/loading_ball_over_blue.gif) 50% 50% no-repeat !important;
+}
+/* line 357, content/airstatic/assets/style/fixes/ie8.scss */
+html.lt-ie9 .inner_content .inner_block .inner_block_content .text_table .text_table_body .info .info_extend .info_extend_text {
+  padding: 35px 10px 35px 35px;
+}
+/* line 360, content/airstatic/assets/style/fixes/ie8.scss */
+html.lt-ie9 .inner_content .inner_block .inner_block_content .text_table .text_table_body .info .info_extend .info_extend_text ul li {
+  width: 150px;
+  float: left;
+  padding-right: 25px;
+}
+/* line 368, content/airstatic/assets/style/fixes/ie8.scss */
+html.lt-ie9 #results .process_wrapper_content .results_scroll .results_content .results_by_hour .results_list .result .journeys .journeys_block .journeys_group .body .journey .info .graphic_wrapper {
+  border: 1px solid #ccc;
+}
+/* line 374, content/airstatic/assets/style/fixes/ie8.scss */
+html.lt-ie9 a.loading {
+  background-image: url(../graphic/ie/loading_point.gif);
+  background-color: transparent;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+}
+/* line 384, content/airstatic/assets/style/fixes/ie8.scss */
+html.lt-ie9 .seats_map_overlay {
+  background-image: url(../graphic/ie/overlay_pattern.png);
+  background-color: transparent;
+}
+/* line 392, content/airstatic/assets/style/fixes/ie8.scss */
+html.lt-ie9 body.loyalty .cards_slider .slides ul.slide_wrapper {
+  width: auto;
+}
+/* line 394, content/airstatic/assets/style/fixes/ie8.scss */
+html.lt-ie9 body.loyalty .cards_slider .slides ul.slide_wrapper li.slide {
+  float: left;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=20);
+  opacity: 0.2;
+  position: static;
+  width: 590px;
+}
+/* line 399, content/airstatic/assets/style/fixes/ie8.scss */
+html.lt-ie9 body.loyalty .cards_slider .slides ul.slide_wrapper li.slide.active {
+  filter: progid:DXImageTransform.Microsoft.Alpha(enabled=false);
+  opacity: 1;
+}
+/* line 411, content/airstatic/assets/style/fixes/ie8.scss */
+html.lt-ie9 #results .process_wrapper_content .process_top_bar .top_bar_content .view_minisearch .open_minisearch a span, html.lt-ie9 #results .process_wrapper_content .process_top_bar .top_bar_content .view_minisearch .close_minisearch a span {
+  background-image: url(../graphic/common/submit_search_2_ie8.png);
+  background-position: 0px 0px;
+}
+/* line 415, content/airstatic/assets/style/fixes/ie8.scss */
+html.lt-ie9 #results .process_wrapper_content .process_top_bar .top_bar_content .view_minisearch .open_minisearch:hover a span {
+  background-position: 0px -16px;
+}
+/* line 418, content/airstatic/assets/style/fixes/ie8.scss */
+html.lt-ie9 #search {
+  display: none;
+  visibility: hidden;
+}
+/* line 421, content/airstatic/assets/style/fixes/ie8.scss */
+html.lt-ie9 #search.visible {
+  display: block;
+  visibility: visible;
+}
+/* line 426, content/airstatic/assets/style/fixes/ie8.scss */
+html.lt-ie9 .dialog {
+  display: none;
+  visibility: hidden;
+}
+/* line 429, content/airstatic/assets/style/fixes/ie8.scss */
+html.lt-ie9 .dialog.visible {
+  display: block;
+  visibility: visible;
+}
+/* line 434, content/airstatic/assets/style/fixes/ie8.scss */
+html.lt-ie9 #results .process_wrapper_content .process_top_bar .top_bar_content .mini_search .mini_search_form_wrapper form .options .checkbox .label label {
+  background-image: url(../graphic/common/checkbox_bg_3_ie8.png);
+  background-position: 0 0;
+}
+/* line 438, content/airstatic/assets/style/fixes/ie8.scss */
+html.lt-ie9 #results .process_wrapper_content .process_top_bar .top_bar_content .mini_search .mini_search_form_wrapper form .options .checkbox .label label:hover {
+  background-position: 0 -40px;
+}
+/* line 441, content/airstatic/assets/style/fixes/ie8.scss */
+html.lt-ie9 #results .process_wrapper_content .results_scroll .results_content .results_by_hour .results_list .result .journeys .journeys_block .journeys_group .body .journey.selected .info {
+  width: 65px;
+}
+/* line 444, content/airstatic/assets/style/fixes/ie8.scss */
+html.lt-ie9 #results .process_wrapper_content .results_scroll .results_content .results_by_hour .results_list .result .journeys .journeys_block .journeys_group .body .journey .info {
+  width: 65px;
+}
+/* line 447, content/airstatic/assets/style/fixes/ie8.scss */
+html.lt-ie9 #results .process_wrapper_content .results_scroll .results_content .results_by_hour .results_list .result .journeys .journeys_block .journeys_group .body .journey .price {
+  padding-left: 9px;
+}
+
+/* Apply fixes to ie9 */
+/* line 2, content/airstatic/assets/style/fixes/ie9.scss */
+html.ie9 {
+  /* Home Slider Opacity Issue */
+}
+/* line 6, content/airstatic/assets/style/fixes/ie9.scss */
+html.ie9 #slider .ui_main_slider .loading_screen {
+  display: none;
+  filter: none !important;
+}
+/* line 11, content/airstatic/assets/style/fixes/ie9.scss */
+html.ie9 #slider,
+html.ie9 #slider .ui_main_slider,
+html.ie9 #slider .ui_main_slider .slides,
+html.ie9 #slider .ui_main_slider .slides ul {
+  height: 100%;
+}
+/* line 17, content/airstatic/assets/style/fixes/ie9.scss */
+html.ie9 #results .process_wrapper_content .results_scroll .results_content .results_by_hour .results_list .result .journeys .journeys_block .journeys_group .body .matrix_table .prices_matrix .prices_row .cell .price_wrapper em {
+  line-height: 12px;
+}
+/* line 20, content/airstatic/assets/style/fixes/ie9.scss */
+html.ie9 #slider .ui_main_slider .slides ul li .slide_content .image {
+  opacity: 1;
+  width: 100%;
+  height: 100%;
+  display: block;
+  top: 0 !important;
+  left: 0 !important;
+  filter: none !important;
+}
+/* line 30, content/airstatic/assets/style/fixes/ie9.scss */
+html.ie9 #slider .ui_main_slider .slides ul li .slide_content .image img {
+  height: auto;
+  min-width: 100%;
+}
+/* line 35, content/airstatic/assets/style/fixes/ie9.scss */
+html.ie9 #bottombar {
+  background-repeat: repeat;
+  background-image: url(../graphic/ie/pattern_bottombar.png);
+}
+/* line 40, content/airstatic/assets/style/fixes/ie9.scss */
+html.ie9 .search_form {
+  display: none;
+}
+/* line 44, content/airstatic/assets/style/fixes/ie9.scss */
+html.ie9 .search_form.active {
+  display: block;
+}
+/* line 48, content/airstatic/assets/style/fixes/ie9.scss */
+html.ie9 .search_form .search_form_wrapper form .dates .calendar .input input {
+  height: 0px;
+  overflow: hidden;
+}
+/* line 53, content/airstatic/assets/style/fixes/ie9.scss */
+html.ie9 .search_form .search_form_wrapper form .options .checkbox .label label {
+  padding-left: 25px;
+}
+/* line 57, content/airstatic/assets/style/fixes/ie9.scss */
+html.ie9 .search_form .search_form_wrapper form .airports .airport .input .input_wrapper {
+  width: 100%;
+}
+/* line 61, content/airstatic/assets/style/fixes/ie9.scss */
+html.ie9 .search_form .search_form_wrapper form .airports .airport .input input::-ms-clear {
+  width: 0;
+  height: 0;
+}
+/* line 66, content/airstatic/assets/style/fixes/ie9.scss */
+html.ie9 #process .spinner {
+  background: transparent url(../graphic/ie/loading_ball_over_black.gif) 50% 50% no-repeat !important;
+}
+/* line 72, content/airstatic/assets/style/fixes/ie9.scss */
+html.ie9 #process .process_page_wrapper .process_page.checkout .spinner {
+  background: transparent url(../graphic/ie/loading_ball_over_blue.gif) 50% 50% no-repeat !important;
+}
+/* line 78, content/airstatic/assets/style/fixes/ie9.scss */
+html.ie9 .routes_lightbox .routes_content .routes_wrapper .routes_group {
+  padding-right: 25px;
+}
+/* line 82, content/airstatic/assets/style/fixes/ie9.scss */
+html.ie9 .tags_group {
+  margin-right: 25px;
+}
+/* line 87, content/airstatic/assets/style/fixes/ie9.scss */
+html.ie9 .inner_content .inner_block .inner_block_content .text_table .text_table_body .info .info_extend .info_extend_text {
+  padding: 35px 10px 35px 35px;
+}
+/* line 90, content/airstatic/assets/style/fixes/ie9.scss */
+html.ie9 .inner_content .inner_block .inner_block_content .text_table .text_table_body .info .info_extend .info_extend_text ul li {
+  width: 150px;
+  float: left;
+  padding-right: 25px;
+}
+/* line 101, content/airstatic/assets/style/fixes/ie9.scss */
+html.ie9 body.loyalty .cards_slider .slides ul.slide_wrapper {
+  width: auto;
+}
+/* line 103, content/airstatic/assets/style/fixes/ie9.scss */
+html.ie9 body.loyalty .cards_slider .slides ul.slide_wrapper li.slide {
+  float: left;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=20);
+  opacity: 0.2;
+  position: static;
+  width: 590px;
+}
+/* line 108, content/airstatic/assets/style/fixes/ie9.scss */
+html.ie9 body.loyalty .cards_slider .slides ul.slide_wrapper li.slide.active {
+  filter: progid:DXImageTransform.Microsoft.Alpha(enabled=false);
+  opacity: 1;
+}
+/* line 117, content/airstatic/assets/style/fixes/ie9.scss */
+html.ie9 .routes_overlay .routes_lightbox .routes_content .column {
+  width: 100% !important;
+}
+/* line 120, content/airstatic/assets/style/fixes/ie9.scss */
+html.ie9 .routes_overlay .routes_lightbox .routes_content .routes_wrapper ul.tab_list_airport {
+  position: static;
+}
+
+/* Apply fixes to ie 10 */
+/* line 2, content/airstatic/assets/style/fixes/ie10.scss */
+html.ie10 {
+  /* Home Slider Opacity Issue */
+}
+/* line 6, content/airstatic/assets/style/fixes/ie10.scss */
+html.ie10 #slider .ui_main_slider .loading_screen {
+  display: none;
+  filter: none !important;
+}
+/* line 11, content/airstatic/assets/style/fixes/ie10.scss */
+html.ie10 #slider,
+html.ie10 #slider .ui_main_slider,
+html.ie10 #slider .ui_main_slider .slides,
+html.ie10 #slider .ui_main_slider .slides ul {
+  height: 100%;
+}
+/* line 18, content/airstatic/assets/style/fixes/ie10.scss */
+html.ie10 #slider .ui_main_slider .slides ul li .slide_content .image {
+  opacity: 1;
+  width: 100%;
+  height: 100%;
+  display: block;
+  top: 0 !important;
+  left: 0 !important;
+  filter: none !important;
+}
+/* line 28, content/airstatic/assets/style/fixes/ie10.scss */
+html.ie10 #slider .ui_main_slider .slides ul li .slide_content .image img {
+  height: auto;
+  min-width: 100%;
+}
+/* line 33, content/airstatic/assets/style/fixes/ie10.scss */
+html.ie10 .search_form {
+  display: none;
+  filter: none !important;
+  -moz-transition-property: none;
+  -o-transition-property: none;
+  -webkit-transition-property: none;
+  transition-property: none;
+  -moz-transition-duration: 0;
+  -o-transition-duration: 0;
+  -webkit-transition-duration: 0;
+  transition-duration: 0;
+}
+/* line 38, content/airstatic/assets/style/fixes/ie10.scss */
+html.ie10 .search_form.active {
+  display: block;
+}
+/* line 43, content/airstatic/assets/style/fixes/ie10.scss */
+html.ie10 .search_form .search_form_wrapper form .options .checkbox .label label {
+  padding-left: 25px;
+}
+/* line 47, content/airstatic/assets/style/fixes/ie10.scss */
+html.ie10 .search_form .search_form_wrapper form .airports .airport .input .input_wrapper {
+  width: auto;
+}
+/* line 51, content/airstatic/assets/style/fixes/ie10.scss */
+html.ie10 .search_form .search_form_wrapper form .airports .airport .input input::-ms-clear {
+  width: 0;
+  height: 0;
+}
+/* line 59, content/airstatic/assets/style/fixes/ie10.scss */
+html.ie10 #checkin .process_wrapper_content.full .process_content {
+  margin-top: -40px;
+}
+
+/* line 1, content/airstatic/assets/style/fixes/ie11.scss */
+html.ie11 {
+  /* Apply fixes to ie 11 */
+  /* Home Slider Opacity Issue */
+}
+/* line 5, content/airstatic/assets/style/fixes/ie11.scss */
+html.ie11 #slider .ui_main_slider .loading_screen {
+  display: none;
+  filter: none !important;
+}
+/* line 10, content/airstatic/assets/style/fixes/ie11.scss */
+html.ie11 #slider,
+html.ie11 #slider .ui_main_slider,
+html.ie11 #slider .ui_main_slider .slides,
+html.ie11 #slider .ui_main_slider .slides ul {
+  height: 100%;
+}
+/* line 17, content/airstatic/assets/style/fixes/ie11.scss */
+html.ie11 #slider .ui_main_slider .slides ul li .slide_content .image {
+  opacity: 1;
+  width: 100%;
+  height: 100%;
+  display: block;
+  top: 0 !important;
+  left: 0 !important;
+  filter: none !important;
+}
+/* line 27, content/airstatic/assets/style/fixes/ie11.scss */
+html.ie11 #slider .ui_main_slider .slides ul li .slide_content .image img {
+  height: auto;
+  min-width: 100%;
+}
+/* line 32, content/airstatic/assets/style/fixes/ie11.scss */
+html.ie11 .search_form .search_form_wrapper form .options .checkbox .label label {
+  padding-left: 25px;
+}
+/* line 36, content/airstatic/assets/style/fixes/ie11.scss */
+html.ie11 .search_form .search_form_wrapper form .airports .airport .input .input_wrapper {
+  width: 100%;
+}
+/* line 40, content/airstatic/assets/style/fixes/ie11.scss */
+html.ie11 .search_form .search_form_wrapper form .airports .airport .input input::-ms-clear {
+  width: 0;
+  height: 0;
+}
+/* line 48, content/airstatic/assets/style/fixes/ie11.scss */
+html.ie11 #checkin .process_wrapper_content.full .process_content {
+  margin-top: -40px;
+}
+
+/* Styles for touch devices */
+/* line 3, content/airstatic/assets/style/fixes/touch.scss */
+html.touch {
+  /* CSS animations/transitions causes change of z-index */
+  /* Allow scroll scaled content */
+}
+/* line 5, content/airstatic/assets/style/fixes/touch.scss */
+html.touch body.processing {
+  overflow: auto;
+}
+/* line 8, content/airstatic/assets/style/fixes/touch.scss */
+html.touch #process {
+  overflow: auto;
+}
+/* line 10, content/airstatic/assets/style/fixes/touch.scss */
+html.touch #process #bottombar {
+  position: initial;
+}
+/* line 15, content/airstatic/assets/style/fixes/touch.scss */
+html.touch #search {
+  overflow: auto;
+}
+/* line 19, content/airstatic/assets/style/fixes/touch.scss */
+html.touch #results .process_wrapper_content .process_top_bar.hidden_process_topbar {
+  display: none !important;
+}
+/* line 26, content/airstatic/assets/style/fixes/touch.scss */
+html.touch * {
+  -webkit-touch-callout: none;
+}
+/* line 31, content/airstatic/assets/style/fixes/touch.scss */
+html.touch body.processing {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+}
+/* line 37, content/airstatic/assets/style/fixes/touch.scss */
+html.touch body.showing_routes {
+  overflow: hidden;
+}
+/* line 41, content/airstatic/assets/style/fixes/touch.scss */
+html.touch #wrapper {
+  min-width: 960px;
+}
+/* line 50, content/airstatic/assets/style/fixes/touch.scss */
+html.touch #topbar .nav .languages .language_options .select_language {
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+  opacity: 0;
+  visibility: hidden;
+}
+/* line 56, content/airstatic/assets/style/fixes/touch.scss */
+html.touch #topbar .nav .languages .language_options:hover .select_language {
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+  opacity: 0;
+  visibility: hidden;
+}
+/* line 63, content/airstatic/assets/style/fixes/touch.scss */
+html.touch #topbar .nav .languages .language_options.active .select_language {
+  visibility: visible;
+  filter: progid:DXImageTransform.Microsoft.Alpha(enabled=false);
+  opacity: 1;
+}
+/* line 76, content/airstatic/assets/style/fixes/touch.scss */
+html.touch #process .process_page_wrapper {
+  min-width: 960px;
+}
+/* line 82, content/airstatic/assets/style/fixes/touch.scss */
+html.touch #subnav {
+  -webkit-transform: translateZ(0px);
+}
+/* line 87, content/airstatic/assets/style/fixes/touch.scss */
+html.touch #subnav #my_account.panel .title .panel_title {
+  width: 290px;
+  margin-top: 190px;
+}
+/* line 107, content/airstatic/assets/style/fixes/touch.scss */
+html.touch #slider .ui_main_slider .search_trigger .form form .airports .airport .label .routes {
+  display: none;
+  width: 100%;
+  height: 79px;
+}
+/* line 112, content/airstatic/assets/style/fixes/touch.scss */
+html.touch #slider .ui_main_slider .search_trigger .form form .airports .airport .label .routes a {
+  width: 0;
+  background: none;
+}
+/* line 123, content/airstatic/assets/style/fixes/touch.scss */
+html.touch #slider .ui_main_slider .search_trigger .form form .airports .airport:hover {
+  border-color: #e2d2d2;
+  background-color: transparent;
+}
+/* line 150, content/airstatic/assets/style/fixes/touch.scss */
+html.touch .routes_overlay {
+  overflow: scroll;
+}
+/* line 154, content/airstatic/assets/style/fixes/touch.scss */
+html.touch .routes_overlay .routes_lightbox .centered_box {
+  margin-top: 100px;
+}
+/* line 158, content/airstatic/assets/style/fixes/touch.scss */
+html.touch .routes_overlay .routes_lightbox:before {
+  height: 10%;
+}
+/* line 166, content/airstatic/assets/style/fixes/touch.scss */
+html.touch .search_form .search_form_wrapper {
+  position: relative;
+  z-index: 15;
+}
+/* line 173, content/airstatic/assets/style/fixes/touch.scss */
+html.touch .search_form .search_form_wrapper form .airports .airport .label {
+  visibility: hidden;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+  opacity: 0;
+}
+/* line 177, content/airstatic/assets/style/fixes/touch.scss */
+html.touch .search_form .search_form_wrapper form .airports .airport .label .routes {
+  display: none;
+  width: 100%;
+  height: 79px;
+}
+/* line 182, content/airstatic/assets/style/fixes/touch.scss */
+html.touch .search_form .search_form_wrapper form .airports .airport .label .routes a {
+  width: 100%;
+  background: none;
+}
+/* line 188, content/airstatic/assets/style/fixes/touch.scss */
+html.touch .search_form .search_form_wrapper form .airports .airport .label label {
+  display: none;
+}
+/* line 193, content/airstatic/assets/style/fixes/touch.scss */
+html.touch .search_form .search_form_wrapper form .airports .airport:hover {
+  border-color: #e2d2d2;
+  background-color: transparent;
+}
+/* line 197, content/airstatic/assets/style/fixes/touch.scss */
+html.touch .search_form .search_form_wrapper form .airports .airport:hover .label {
+  visibility: visible;
+  filter: progid:DXImageTransform.Microsoft.Alpha(enabled=false);
+  opacity: 1;
+}
+/* line 202, content/airstatic/assets/style/fixes/touch.scss */
+html.touch .search_form .search_form_wrapper form .airports .airport:hover .input {
+  visibility: visible;
+  filter: progid:DXImageTransform.Microsoft.Alpha(enabled=false);
+  opacity: 1;
+}
+/* line 208, content/airstatic/assets/style/fixes/touch.scss */
+html.touch .search_form .search_form_wrapper form .airports .airport.showing_routes {
+  z-index: 15;
+}
+/* line 217, content/airstatic/assets/style/fixes/touch.scss */
+html.touch .search_form .search_form_wrapper form .dates .calendar .input input {
+  visibility: hidden;
+}
+/* line 232, content/airstatic/assets/style/fixes/touch.scss */
+html.touch #results .process_wrapper_content .process_top_bar .top_bar_content .mini_search {
+  letter-spacing: 0;
+}
+/* line 238, content/airstatic/assets/style/fixes/touch.scss */
+html.touch #results .process_wrapper_content .process_top_bar .top_bar_content .mini_search .mini_search_form_wrapper form .options .expand_options {
+  visibility: hidden;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+  opacity: 0;
+}
+/* line 244, content/airstatic/assets/style/fixes/touch.scss */
+html.touch #results .process_wrapper_content .process_top_bar .top_bar_content .mini_search .mini_search_form_wrapper form .options:hover .expand_options {
+  visibility: hidden;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+  opacity: 0;
+}
+/* line 251, content/airstatic/assets/style/fixes/touch.scss */
+html.touch #results .process_wrapper_content .process_top_bar .top_bar_content .mini_search .mini_search_form_wrapper form .options.active .expand_options {
+  filter: progid:DXImageTransform.Microsoft.Alpha(enabled=false);
+  opacity: 1;
+  visibility: visible;
+}
+/* line 260, content/airstatic/assets/style/fixes/touch.scss */
+html.touch #results .process_wrapper_content .process_top_bar .top_bar_content .mini_search .mini_search_form_wrapper form .submit .submit_button button {
+  padding: 0 5px;
+}
+/* line 273, content/airstatic/assets/style/fixes/touch.scss */
+html.touch #slider .ui_main_slider .search_trigger .form form .airports .airport .ui-autocomplete-wrapper, html.touch #slider .ui_main_slider .search_trigger .form form .airports .airport .no_results, html.touch #slider .ui_main_slider .search_trigger .form form .airports .airport .no_origin {
+  top: 0 !important;
+  bottom: auto !important;
+}
+/* line 278, content/airstatic/assets/style/fixes/touch.scss */
+html.touch #results .process_wrapper_content .results_scroll .results_content .prices .prices_block .body .price_block .price_tooltip {
+  display: block;
+  position: relative;
+  width: 160px;
+}
+/* line 283, content/airstatic/assets/style/fixes/touch.scss */
+html.touch #results .process_wrapper_content .results_scroll .results_content .prices .prices_block .body .price_block.economy .price_tooltip {
+  top: 70px;
+}
+/* line 286, content/airstatic/assets/style/fixes/touch.scss */
+html.touch #results .process_wrapper_content .results_scroll .results_content .prices .prices_block .body .price_block.business {
+  top: 230px;
+}
+/* line 288, content/airstatic/assets/style/fixes/touch.scss */
+html.touch #results .process_wrapper_content .results_scroll .results_content .prices .prices_block .body .price_block.business .price_tooltip {
+  top: 70px;
+}
+/* line 292, content/airstatic/assets/style/fixes/touch.scss */
+html.touch #results .process_wrapper_content .results_scroll .results_content .results_by_hour .results_list .prices {
+  width: 240px;
+}
+/* line 295, content/airstatic/assets/style/fixes/touch.scss */
+html.touch #results .process_wrapper_content .results_scroll .results_content .results_by_hour .journeys .journeys_block {
+  margin-right: 240px;
+}
+/* line 299, content/airstatic/assets/style/fixes/touch.scss */
+html.touch .price_tooltip .assets_icons p {
+  float: initial;
+}
+/* line 302, content/airstatic/assets/style/fixes/touch.scss */
+html.touch .price_tooltip .cost_tooltip ul {
+  margin: 0 0 5px 0;
+}
+/* line 304, content/airstatic/assets/style/fixes/touch.scss */
+html.touch .price_tooltip .cost_tooltip ul li span {
+  clear: left;
+}
+/* line 309, content/airstatic/assets/style/fixes/touch.scss */
+html.touch .locator_number dl dd {
+  margin-left: 350px;
+  float: left;
+}

@@ -1,0 +1,21 @@
+var controlObject =
+{
+	"timeColor":"#ffffff",
+	"tooltips":{"marginBottom":5,
+	"buttons":false},
+	"name":"controls",
+	"opacity":0,
+	"border":"0px",
+	"bufferColor":"#a3a3a3",
+	"buttonColor":"#ffffff",
+	"durationColor":"#b8d9ff",
+	"autoHide":{"enabled":true,"hideDelay":500,"hideStyle":"fade","mouseOutDelay":500,"hideDuration":400,"fullscreenOnly":true},
+	"backgroundGradient":"none",
+	"width":"100pct",
+	"display":"block",
+	"buttonOverColor":"#ffffff",
+	"url":"flowplayer.controls-v3.2.16.swf",
+	"bottom":0,
+	"builtIn":false,
+	"playlist":true
+}

@@ -1,0 +1,10 @@
+/* #715460108 */
+_oEa.website("aireuropa");
+var _EaCP = {"cgip" : _oEa.hcgi
+,"tp":{"":""}
+};
+_oEa.mtrun = function() {
+};
+_oEa.mtrun();
+_oEa.websiteend();
+ /* end !config */

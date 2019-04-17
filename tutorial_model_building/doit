@@ -1,0 +1,4 @@
+pdflatex traceChain.tex
+kile traceChain.tex&
+okular traceChain.pdf&
+latexmk -pvc -pdf traceChain.tex 

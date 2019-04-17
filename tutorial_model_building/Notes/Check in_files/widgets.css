@@ -1,0 +1,2910 @@
+@charset "UTF-8";
+/** 
+ * Base classes to use with @extend
+ */
+/* line 6, content/airstatic/assets/style/utils/base_classes.scss */
+.ui-autocomplete .ui-menu-item:after, .seats_map_overlay .seats_map_wrapper .seats_map .legend ul:after, .dialog .dialog_wrapper .dialog_content .dialog_buttons ul:after, .dialog .dialog_wrapper .dialog_content .dialog_articles ul:after {
+  content: ".";
+  display: block;
+  height: 0px;
+  clear: both;
+  visibility: hidden;
+}
+
+/* Needed to vertically center the content */
+/* line 29, content/airstatic/assets/style/utils/base_classes.scss */
+.dialog .dialog_wrapper:before {
+  content: '';
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+}
+
+/* line 37, content/airstatic/assets/style/utils/base_classes.scss */
+.dialog .dialog_wrapper .dialog_content {
+  display: inline-block;
+  vertical-align: middle;
+  width: 90%;
+}
+
+/* Image replacement */
+/* line 45, content/airstatic/assets/style/utils/base_classes.scss */
+.seats_map_overlay .close_seats_map p a, .seats_map_overlay .seats_map_wrapper .seats_map .arrows ul li a, .dialog .close_dialog p a {
+  display: block;
+  position: relative;
+  margin: 0px;
+  overflow: hidden;
+  background-position: left top;
+  background-repeat: no-repeat;
+}
+/* line 52, content/airstatic/assets/style/utils/base_classes.scss */
+.seats_map_overlay .close_seats_map p a span, .seats_map_overlay .seats_map_wrapper .seats_map .arrows ul li a span, .dialog .close_dialog p a span {
+  visibility: hidden;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 0px;
+  height: 0px;
+  overflow: hidden;
+}
+
+/* line 1, content/airstatic/assets/style/widgets/ui_get_info.scss */
+.ui_get_info {
+  text-align: center;
+  background-color: #15181d;
+  background-image: url(../graphic/common/block_get_info_bg.png);
+  background-repeat: repeat;
+  background-position: 50% 0;
+  width: 100%;
+  padding: 0;
+  overflow: hidden;
+  -webkit-animation: ui_get_info_bg_animation 10s 0s linear infinite;
+  -moz-animation: ui_get_info_bg_animation 10s 0s linear infinite;
+  animation: ui_get_info_bg_animation 10s 0s linear infinite;
+}
+/* line 20, content/airstatic/assets/style/widgets/ui_get_info.scss */
+.ui_get_info .force_scale_ratio {
+  width: 100%;
+  height: auto;
+}
+/* line 25, content/airstatic/assets/style/widgets/ui_get_info.scss */
+.ui_get_info form {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin: -68px 0 0 -600px;
+  width: 1200px;
+}
+/* line 33, content/airstatic/assets/style/widgets/ui_get_info.scss */
+.ui_get_info form fieldset.verb {
+  margin-bottom: 12px;
+}
+/* line 36, content/airstatic/assets/style/widgets/ui_get_info.scss */
+.ui_get_info form fieldset.verb div {
+  text-align: center;
+}
+/* line 39, content/airstatic/assets/style/widgets/ui_get_info.scss */
+.ui_get_info form fieldset.verb div p {
+  margin: 0;
+  color: #fff;
+  font-size: 56px;
+  line-height: 70px;
+  height: 70px;
+  letter-spacing: -3.5px;
+  word-spacing: -1px;
+  font-family: "Maison Neue Light", sans-serif;
+  font-weight: 200;
+  -webkit-font-smoothing: antialiased;
+}
+/* line 54, content/airstatic/assets/style/widgets/ui_get_info.scss */
+.ui_get_info form fieldset.options {
+  min-height: 25px;
+  width: 1140px;
+  height: auto;
+  margin: 0 auto;
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 14px;
+  font-family: "Source Sans Pro", sans-serif;
+  font-weight: 200;
+  letter-spacing: 0.4px;
+}
+/* line 66, content/airstatic/assets/style/widgets/ui_get_info.scss */
+.ui_get_info form fieldset.options p {
+  display: inline-block;
+  margin: 0 4px 0 0;
+  overflow: hidden;
+  height: 26px;
+  line-height: 24px;
+  font-family: "Open Sans", sans-serif;
+  font-size: 14px;
+  text-transform: none;
+  font-style: italic;
+}
+/* line 78, content/airstatic/assets/style/widgets/ui_get_info.scss */
+.ui_get_info form fieldset.options div {
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+  margin-left: 10px;
+  cursor: pointer;
+  line-height: 26px;
+  height: 26px;
+}
+/* line 87, content/airstatic/assets/style/widgets/ui_get_info.scss */
+.ui_get_info form fieldset.options div label {
+  display: inline-block;
+  cursor: pointer;
+  padding-left: 21px;
+  background: url(../graphic/common/checkbox_bg_2.png) 0 -1px no-repeat;
+  -moz-transition-property: color;
+  -o-transition-property: color;
+  -webkit-transition-property: color;
+  transition-property: color;
+  -moz-transition-duration: 200ms;
+  -o-transition-duration: 200ms;
+  -webkit-transition-duration: 200ms;
+  transition-duration: 200ms;
+}
+/* line 67, content/airstatic/assets/style/utils/mixins.scss */
+html.no-touch .ui_get_info form fieldset.options div label:hover {
+  color: #00beff;
+}
+/* line 94, content/airstatic/assets/style/widgets/ui_get_info.scss */
+.ui_get_info form fieldset.options div label:hover {
+  background-position: 0 -27px;
+}
+/* line 100, content/airstatic/assets/style/widgets/ui_get_info.scss */
+.ui_get_info form fieldset.options div input {
+  position: absolute;
+  left: -9999px;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+  opacity: 0;
+}
+/* line 107, content/airstatic/assets/style/widgets/ui_get_info.scss */
+.ui_get_info form fieldset.options div.checked label {
+  color: #00beff;
+  background-position: 0 -27px;
+}
+/* line 115, content/airstatic/assets/style/widgets/ui_get_info.scss */
+.ui_get_info form fieldset.submit {
+  background-color: transparent;
+  border: 0;
+  height: auto;
+  line-height: 0;
+  clear: none;
+}
+/* line 122, content/airstatic/assets/style/widgets/ui_get_info.scss */
+.ui_get_info form fieldset.submit div {
+  text-align: center;
+}
+/* line 125, content/airstatic/assets/style/widgets/ui_get_info.scss */
+.ui_get_info form fieldset.submit div input, .ui_get_info form fieldset.submit div button {
+  -moz-box-sizing: content-box;
+  -webkit-box-sizing: content-box;
+  box-sizing: content-box;
+  cursor: pointer;
+  border: 2px solid #00beff;
+  padding: 0 40px;
+  text-transform: uppercase;
+  background-image: none;
+  background-color: #191C21;
+  width: auto;
+  height: 60px;
+  color: #00beff;
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 60px;
+  letter-spacing: 0.6px;
+}
+/* line 143, content/airstatic/assets/style/widgets/ui_get_info.scss */
+.ui_get_info form fieldset.submit div button {
+  position: relative;
+}
+/* line 146, content/airstatic/assets/style/widgets/ui_get_info.scss */
+.ui_get_info form fieldset.submit div button span {
+  border: 0;
+  padding: 0;
+}
+/* line 151, content/airstatic/assets/style/widgets/ui_get_info.scss */
+.ui_get_info form fieldset.submit div button .line {
+  display: block;
+  background-color: #00beff;
+  height: 1px;
+  width: 0;
+  position: relative;
+  top: -18px;
+  left: 0;
+  -moz-transition-property: width;
+  -o-transition-property: width;
+  -webkit-transition-property: width;
+  transition-property: width;
+  -moz-transition-duration: 300ms;
+  -o-transition-duration: 300ms;
+  -webkit-transition-duration: 300ms;
+  transition-duration: 300ms;
+}
+/* line 164, content/airstatic/assets/style/widgets/ui_get_info.scss */
+.ui_get_info form fieldset.submit div button:hover .line {
+  width: 100%;
+}
+
+/* line 1, content/airstatic/assets/style/widgets/ui_autocomplete.scss */
+.ui-autocomplete-wrapper {
+  display: none;
+  z-index: 2000;
+  top: 0 !important;
+  left: -1px !important;
+  width: 100% !important;
+  position: absolute;
+  padding: 23px 1px;
+  background-color: #fff;
+  height: 150px;
+  margin: 83px 0;
+  border-width: 1px 0 0 0;
+  border-style: solid;
+  border-color: #e7e7e7;
+}
+
+/* line 17, content/airstatic/assets/style/widgets/ui_autocomplete.scss */
+.ui-autocomplete {
+  border: 0;
+  z-index: 2000;
+  top: 23px !important;
+  left: 0 !important;
+  width: 97% !important;
+  height: 160px;
+  padding: 0;
+  background-color: #fff;
+  -moz-border-radius: 0;
+  -webkit-border-radius: 0;
+  border-radius: 0;
+  line-height: 32px;
+  overflow: auto;
+}
+/* line 30, content/airstatic/assets/style/widgets/ui_autocomplete.scss */
+.ui-autocomplete::-webkit-scrollbar {
+  width: 10px;
+}
+/* line 34, content/airstatic/assets/style/widgets/ui_autocomplete.scss */
+.ui-autocomplete::-webkit-scrollbar-track {
+  background: none;
+}
+/* line 38, content/airstatic/assets/style/widgets/ui_autocomplete.scss */
+.ui-autocomplete::-webkit-scrollbar-thumb {
+  -moz-border-radius: 6px;
+  -webkit-border-radius: 6px;
+  border-radius: 6px;
+  background: #e6e6e6;
+  border: 0;
+}
+/* line 44, content/airstatic/assets/style/widgets/ui_autocomplete.scss */
+.ui-autocomplete .ui-menu-item {
+  height: 32px;
+  line-height: 0;
+  position: relative;
+  padding: 0 17px 0 27px;
+  width: auto;
+  font-size: 16px;
+  font-family: "Source Sans Pro", sans-serif;
+  font-weight: 100 !important;
+  letter-spacing: 0.5px;
+}
+/* line 56, content/airstatic/assets/style/widgets/ui_autocomplete.scss */
+.ui-autocomplete .ui-menu-item a {
+  display: block;
+  width: 100%;
+  height: 100%;
+  height: 32px;
+  line-height: 24px;
+  color: #000;
+  padding: 0;
+  cursor: pointer;
+  font-weight: 100 !important;
+}
+/* line 67, content/airstatic/assets/style/widgets/ui_autocomplete.scss */
+.ui-autocomplete .ui-menu-item a .description {
+  pointer-events: none;
+  float: left;
+  color: #000;
+  position: relative;
+  z-index: 5;
+  padding: 0 3px;
+  margin-left: -3px;
+}
+/* line 76, content/airstatic/assets/style/widgets/ui_autocomplete.scss */
+.ui-autocomplete .ui-menu-item a .description span.autoCompleteWord {
+  color: #00beff;
+}
+/* line 81, content/airstatic/assets/style/widgets/ui_autocomplete.scss */
+.ui-autocomplete .ui-menu-item a .code {
+  pointer-events: none;
+  float: right;
+  text-transform: uppercase;
+  color: #00beff;
+  position: relative;
+  z-index: 5;
+}
+/* line 90, content/airstatic/assets/style/widgets/ui_autocomplete.scss */
+.ui-autocomplete .ui-menu-item a.ui-state-focus {
+  border: 0;
+  margin: 0;
+}
+/* line 94, content/airstatic/assets/style/widgets/ui_autocomplete.scss */
+.ui-autocomplete .ui-menu-item a.ui-state-focus .description {
+  color: #fff;
+  background-color: #00beff;
+}
+/* line 98, content/airstatic/assets/style/widgets/ui_autocomplete.scss */
+.ui-autocomplete .ui-menu-item a.ui-state-focus .description span.autoCompleteWord {
+  color: #fff;
+}
+
+/* line 1, content/airstatic/assets/style/widgets/ui_datepicker.scss */
+.ui-datepicker {
+  border: 0;
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  border-radius: 2px;
+  padding: 0;
+  background-color: #fff;
+  width: 485px !important;
+  z-index: 2100 !important;
+  -moz-box-shadow: 4px 5px 2px rgba(0, 0, 0, 0.7);
+  -webkit-box-shadow: 4px 5px 2px rgba(0, 0, 0, 0.7);
+  box-shadow: 4px 5px 2px rgba(0, 0, 0, 0.7);
+}
+/* line 10, content/airstatic/assets/style/widgets/ui_datepicker.scss */
+.ui-datepicker .ui-datepicker-group {
+  /*min-height: 245px;*/
+  min-height: 277px;
+}
+/* line 14, content/airstatic/assets/style/widgets/ui_datepicker.scss */
+.ui-datepicker .ui-datepicker-group .ui-datepicker-header {
+  padding: 18px 0 0 0;
+  height: 29px;
+  line-height: 29px;
+  border: 0;
+}
+/* line 20, content/airstatic/assets/style/widgets/ui_datepicker.scss */
+.ui-datepicker .ui-datepicker-group .ui-datepicker-header .ui-datepicker-next,
+.ui-datepicker .ui-datepicker-group .ui-datepicker-header .ui-datepicker-prev {
+  display: block;
+  width: 29px;
+  height: 29px;
+  top: 17px;
+  cursor: pointer;
+}
+/* line 29, content/airstatic/assets/style/widgets/ui_datepicker.scss */
+.ui-datepicker .ui-datepicker-group .ui-datepicker-header .ui-datepicker-next {
+  right: 19px;
+  background: transparent url(../graphic/common/arrow_right_calendar.png) 0 0 no-repeat;
+}
+/* line 33, content/airstatic/assets/style/widgets/ui_datepicker.scss */
+.ui-datepicker .ui-datepicker-group .ui-datepicker-header .ui-datepicker-next:hover {
+  background-position: 0 -29px;
+  border: 0;
+}
+/* line 39, content/airstatic/assets/style/widgets/ui_datepicker.scss */
+.ui-datepicker .ui-datepicker-group .ui-datepicker-header .ui-datepicker-prev {
+  left: 19px;
+  background: transparent url(../graphic/common/arrow_left_calendar.png) 0 0 no-repeat;
+}
+/* line 43, content/airstatic/assets/style/widgets/ui_datepicker.scss */
+.ui-datepicker .ui-datepicker-group .ui-datepicker-header .ui-datepicker-prev:hover {
+  background-position: 0 -29px;
+  border: 0;
+}
+/* line 49, content/airstatic/assets/style/widgets/ui_datepicker.scss */
+.ui-datepicker .ui-datepicker-group .ui-datepicker-header .ui-datepicker-title {
+  font-family: "Proxima N W01 Thin Reg", "proxima-nova", sans-serif;
+  font-size: 20px;
+  font-weight: 100;
+  color: #00beff;
+  margin: 0 17px;
+  line-height: 30px;
+}
+/* line 59, content/airstatic/assets/style/widgets/ui_datepicker.scss */
+.ui-datepicker .ui-datepicker-group .ui-datepicker-calendar {
+  width: 210px;
+  margin: 4px auto 15px auto;
+}
+/* line 63, content/airstatic/assets/style/widgets/ui_datepicker.scss */
+.ui-datepicker .ui-datepicker-group .ui-datepicker-calendar thead tr th,
+.ui-datepicker .ui-datepicker-group .ui-datepicker-calendar tbody tr td {
+  padding: 0;
+  font-weight: 100;
+  font-family: "Proxima N W01 Thin Reg", "proxima-nova", sans-serif;
+  font-size: 19px;
+  color: #000;
+  height: 29px;
+  line-height: 29px;
+  text-align: center;
+}
+/* line 77, content/airstatic/assets/style/widgets/ui_datepicker.scss */
+.ui-datepicker .ui-datepicker-group .ui-datepicker-calendar thead tr th {
+  color: #00beff;
+}
+/* line 80, content/airstatic/assets/style/widgets/ui_datepicker.scss */
+.ui-datepicker .ui-datepicker-group .ui-datepicker-calendar thead tr th span {
+  text-align: center;
+}
+/* line 90, content/airstatic/assets/style/widgets/ui_datepicker.scss */
+.ui-datepicker .ui-datepicker-group .ui-datepicker-calendar tbody tr td a, .ui-datepicker .ui-datepicker-group .ui-datepicker-calendar tbody tr td span {
+  border: 0;
+  color: #000;
+  font-weight: 100;
+  padding: 1px 0;
+  height: 29px;
+  line-height: 29px;
+  text-align: center;
+  margin: 0 0 -1px 0;
+}
+/* line 101, content/airstatic/assets/style/widgets/ui_datepicker.scss */
+.ui-datepicker .ui-datepicker-group .ui-datepicker-calendar tbody tr td a:hover {
+  color: #00beff;
+}
+/* line 106, content/airstatic/assets/style/widgets/ui_datepicker.scss */
+.ui-datepicker .ui-datepicker-group .ui-datepicker-calendar tbody tr .ui-state-disabled {
+  filter: progid:DXImageTransform.Microsoft.Alpha(enabled=false);
+  opacity: 1;
+}
+/* line 110, content/airstatic/assets/style/widgets/ui_datepicker.scss */
+.ui-datepicker .ui-datepicker-group .ui-datepicker-calendar tbody tr .ui-state-disabled.ow_date span {
+  border: 1px solid #92ddf6;
+  background-color: #e3f4fc;
+  background-image: url(../graphic/common/arrow_right_day_calendar.png);
+  background-position: 50% 24px;
+  background-repeat: no-repeat;
+}
+/* line 120, content/airstatic/assets/style/widgets/ui_datepicker.scss */
+.ui-datepicker .ui-datepicker-group .ui-datepicker-calendar tbody tr .ui-state-disabled.ui-datepicker-current-day span {
+  border: 1px solid #92ddf6;
+  background-color: #e3f4fc;
+}
+/* line 127, content/airstatic/assets/style/widgets/ui_datepicker.scss */
+.ui-datepicker .ui-datepicker-group .ui-datepicker-calendar tbody tr .ui-state-disabled a, .ui-datepicker .ui-datepicker-group .ui-datepicker-calendar tbody tr .ui-state-disabled span {
+  color: #cbccce;
+}
+/* line 132, content/airstatic/assets/style/widgets/ui_datepicker.scss */
+.ui-datepicker .ui-datepicker-group .ui-datepicker-calendar tbody tr .ui-state-disabled.range span {
+  background-color: #e3f4fc;
+  color: #00beff;
+  border-width: 1px 0 1px 0;
+  border-style: solid;
+  border-color: #92ddf6;
+}
+/* line 141, content/airstatic/assets/style/widgets/ui_datepicker.scss */
+.ui-datepicker .ui-datepicker-group .ui-datepicker-calendar tbody tr .ui-state-disabled.range.first_day_week span {
+  border-left: 1px solid #92ddf6;
+}
+/* line 147, content/airstatic/assets/style/widgets/ui_datepicker.scss */
+.ui-datepicker .ui-datepicker-group .ui-datepicker-calendar tbody tr .ui-state-disabled.range.first_day_month span {
+  border-left: 1px solid #92ddf6;
+}
+/* line 153, content/airstatic/assets/style/widgets/ui_datepicker.scss */
+.ui-datepicker .ui-datepicker-group .ui-datepicker-calendar tbody tr .ui-state-disabled.range.last_day_week span {
+  border-right: 1px solid #92ddf6;
+}
+/* line 159, content/airstatic/assets/style/widgets/ui_datepicker.scss */
+.ui-datepicker .ui-datepicker-group .ui-datepicker-calendar tbody tr .ui-state-disabled.range.last_day_month span {
+  border-right: 1px solid #92ddf6;
+}
+/* line 165, content/airstatic/assets/style/widgets/ui_datepicker.scss */
+.ui-datepicker .ui-datepicker-group .ui-datepicker-calendar tbody tr .ui-state-disabled.range_last_day_week span {
+  border-right: 1px solid #92ddf6;
+}
+/* line 171, content/airstatic/assets/style/widgets/ui_datepicker.scss */
+.ui-datepicker .ui-datepicker-group .ui-datepicker-calendar tbody tr .ui-state-disabled.range_last_day_month span {
+  border-right: 1px solid #92ddf6;
+}
+/* line 177, content/airstatic/assets/style/widgets/ui_datepicker.scss */
+.ui-datepicker .ui-datepicker-group .ui-datepicker-calendar tbody tr .ui-state-disabled.range_first_day span {
+  border-width: 1px 0 1px 1px;
+  border-style: solid;
+  border-color: #92ddf6;
+  background-color: #e3f4fc;
+  background-image: url(../graphic/common/arrow_right_day_calendar.png);
+  background-position: 50% 24px;
+  background-repeat: no-repeat;
+}
+/* line 192, content/airstatic/assets/style/widgets/ui_datepicker.scss */
+.ui-datepicker .ui-datepicker-group .ui-datepicker-calendar tbody tr .ow_date a,
+.ui-datepicker .ui-datepicker-group .ui-datepicker-calendar tbody tr .ui-datepicker-current-day a {
+  border: 1px solid #92ddf6;
+  background-color: #e3f4fc;
+  color: #00beff;
+}
+/* line 200, content/airstatic/assets/style/widgets/ui_datepicker.scss */
+.ui-datepicker .ui-datepicker-group .ui-datepicker-calendar tbody tr .range a {
+  background-color: #e3f4fc;
+  color: #00beff;
+  border-width: 1px 0 1px 0;
+  border-style: solid;
+  border-color: #92ddf6;
+}
+/* line 210, content/airstatic/assets/style/widgets/ui_datepicker.scss */
+.ui-datepicker .ui-datepicker-group .ui-datepicker-calendar tbody tr .range_first_day a {
+  border-width: 1px 0 1px 1px;
+  border-style: solid;
+  border-color: #92ddf6;
+  background-color: #e3f4fc;
+  color: #00beff;
+  background-image: url(../graphic/common/arrow_right_day_calendar.png);
+  background-position: 50% 24px;
+  background-repeat: no-repeat;
+}
+/* line 223, content/airstatic/assets/style/widgets/ui_datepicker.scss */
+.ui-datepicker .ui-datepicker-group .ui-datepicker-calendar tbody tr .range_last_day a {
+  border-width: 1px 1px 1px 0;
+  border-style: solid;
+  border-color: #92ddf6;
+  background-color: #e3f4fc;
+  color: #00beff;
+  background-image: url(../graphic/common/arrow_left_day_calendar.png);
+  background-position: 100% 0;
+  background-repeat: no-repeat;
+}
+/* line 233, content/airstatic/assets/style/widgets/ui_datepicker.scss */
+.ui-datepicker .ui-datepicker-group .ui-datepicker-calendar tbody tr .range_last_day a:hover {
+  background-position: 100% -32px;
+}
+/* line 241, content/airstatic/assets/style/widgets/ui_datepicker.scss */
+.ui-datepicker .ui-datepicker-group .ui-datepicker-calendar tbody tr .range_first_day.range_last_day a {
+  border-width: 1px 1px 1px 1px;
+  background-image: url(../graphic/common/arrow_both_day_calendar.png) !important;
+  background-position: 50% 22px !important;
+}
+/* line 250, content/airstatic/assets/style/widgets/ui_datepicker.scss */
+.ui-datepicker .ui-datepicker-group .ui-datepicker-calendar tbody tr .range.first_day_week a,
+.ui-datepicker .ui-datepicker-group .ui-datepicker-calendar tbody tr .range.first_day_month a {
+  border-left: 1px solid #92ddf6;
+}
+/* line 258, content/airstatic/assets/style/widgets/ui_datepicker.scss */
+.ui-datepicker .ui-datepicker-group .ui-datepicker-calendar tbody tr .range.last_day_week a,
+.ui-datepicker .ui-datepicker-group .ui-datepicker-calendar tbody tr .range.last_day_month a {
+  border-right: 1px solid #92ddf6;
+}
+/* line 268, content/airstatic/assets/style/widgets/ui_datepicker.scss */
+.ui-datepicker .ui-datepicker-group-first {
+  border-right: 1px solid #e5e5e5;
+  margin-right: -2px;
+}
+/* line 273, content/airstatic/assets/style/widgets/ui_datepicker.scss */
+.ui-datepicker .ui-datepicker-group-first .ui-datepicker-header .ui-datepicker-title {
+  text-align: right;
+}
+/* line 281, content/airstatic/assets/style/widgets/ui_datepicker.scss */
+.ui-datepicker .ui-datepicker-group-last .ui-datepicker-header .ui-datepicker-title {
+  text-align: left;
+}
+/* line 287, content/airstatic/assets/style/widgets/ui_datepicker.scss */
+.ui-datepicker.rt .ui-datepicker-group .ui-datepicker-calendar tbody tr .ow_date a, .ui-datepicker.ow .ui-datepicker-group .ui-datepicker-calendar tbody tr .ui-datepicker-current-day a {
+  background-image: url(../graphic/common/arrow_right_day_calendar.png);
+  background-position: 50% 24px;
+  background-repeat: no-repeat;
+}
+/* line 294, content/airstatic/assets/style/widgets/ui_datepicker.scss */
+.ui-datepicker.rt .ui-datepicker-group .ui-datepicker-calendar tbody tr .ui-datepicker-current-day a {
+  background-image: url(../graphic/common/arrow_left_day_calendar.png);
+  background-position: 100% 0;
+  background-repeat: no-repeat;
+}
+/* line 299, content/airstatic/assets/style/widgets/ui_datepicker.scss */
+.ui-datepicker.rt .ui-datepicker-group .ui-datepicker-calendar tbody tr .ui-datepicker-current-day a:hover {
+  background-position: 100% -29px;
+}
+/* line 304, content/airstatic/assets/style/widgets/ui_datepicker.scss */
+.ui-datepicker.rt .ui-datepicker-group .ui-datepicker-calendar tbody tr .ui-state-disabled.ui-datepicker-current-day span:hover {
+  background-position: 100% -29px;
+}
+/* line 309, content/airstatic/assets/style/widgets/ui_datepicker.scss */
+.ui-datepicker .corner_sub {
+  display: block;
+  left: 135px;
+  top: 100%;
+  border-width: 10px;
+  border-top: 10px solid #fff;
+  border-bottom-color: transparent;
+}
+/* line 318, content/airstatic/assets/style/widgets/ui_datepicker.scss */
+.ui-datepicker.reduced {
+  margin-left: 0;
+  border: 1px solid #e2e2e2;
+  -moz-border-radius: 0;
+  -webkit-border-radius: 0;
+  border-radius: 0;
+  -moz-box-shadow: 4px 5px 2px rgba(240, 240, 240, 0.7);
+  -webkit-box-shadow: 4px 5px 2px rgba(240, 240, 240, 0.7);
+  box-shadow: 4px 5px 2px rgba(240, 240, 240, 0.7);
+}
+/* line 324, content/airstatic/assets/style/widgets/ui_datepicker.scss */
+.ui-datepicker.reduced .corner_sub {
+  display: block;
+  left: 40px;
+  top: -12px;
+  border-width: 12px;
+  border-bottom-color: #fff;
+  border-top: none;
+}
+
+/* line 1, content/airstatic/assets/style/widgets/ui_tooltip.scss */
+.ui-tooltip {
+  border: 0;
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  -moz-border-radius: 0;
+  -webkit-border-radius: 0;
+  border-radius: 0;
+  background-color: #fff;
+  color: #000;
+  font-size: 13px;
+  font-family: "Source Sans Pro", sans-serif;
+  font-weight: 200;
+  letter-spacing: 0.5px;
+  padding: 3px;
+}
+
+/* line 14, content/airstatic/assets/style/widgets/ui_tooltip.scss */
+.ui-tooltip.plain {
+  border: 0;
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  -moz-border-radius: 0;
+  -webkit-border-radius: 0;
+  border-radius: 0;
+  padding: 0;
+  background-color: transparent;
+}
+
+/* line 3, content/airstatic/assets/style/widgets/ui_cards.scss */
+.cards_slider {
+  height: 450px;
+}
+/* line 6, content/airstatic/assets/style/widgets/ui_cards.scss */
+.cards_slider .slides {
+  position: relative;
+  left: 50%;
+  margin-left: -295px;
+}
+/* line 11, content/airstatic/assets/style/widgets/ui_cards.scss */
+.cards_slider .slides ul.slide_wrapper {
+  height: 450px;
+  position: relative;
+  margin: 0;
+}
+/* line 16, content/airstatic/assets/style/widgets/ui_cards.scss */
+.cards_slider .slides ul.slide_wrapper li.slide {
+  float: left;
+  width: 590px;
+  text-align: center;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=20);
+  opacity: 0.2;
+  -moz-transition-property: opacity;
+  -o-transition-property: opacity;
+  -webkit-transition-property: opacity;
+  transition-property: opacity;
+  -moz-transition-duration: 300ms;
+  -o-transition-duration: 300ms;
+  -webkit-transition-duration: 300ms;
+  transition-duration: 300ms;
+  -moz-user-select: -moz-none;
+  -ms-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+/* line 25, content/airstatic/assets/style/widgets/ui_cards.scss */
+.cards_slider .slides ul.slide_wrapper li.slide .boarding_card {
+  cursor: pointer;
+}
+/* line 29, content/airstatic/assets/style/widgets/ui_cards.scss */
+.cards_slider .slides ul.slide_wrapper li.slide.active {
+  filter: progid:DXImageTransform.Microsoft.Alpha(enabled=false);
+  opacity: 1;
+}
+/* line 33, content/airstatic/assets/style/widgets/ui_cards.scss */
+.cards_slider .slides ul.slide_wrapper li.slide:hover {
+  filter: progid:DXImageTransform.Microsoft.Alpha(enabled=false);
+  opacity: 1;
+}
+/* line 40, content/airstatic/assets/style/widgets/ui_cards.scss */
+.cards_slider .process_content {
+  padding-left: 0;
+  width: 100%;
+}
+/* line 45, content/airstatic/assets/style/widgets/ui_cards.scss */
+.cards_slider .arrows {
+  display: none;
+}
+/* line 49, content/airstatic/assets/style/widgets/ui_cards.scss */
+.cards_slider .paginator {
+  display: none;
+}
+
+/* line 54, content/airstatic/assets/style/widgets/ui_cards.scss */
+.boarding_card {
+  display: inline-block;
+  height: 450px;
+  overflow: hidden;
+  position: relative;
+  padding-left: 50px;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+  text-align: left;
+  -moz-box-shadow: 4px 4px 2px rgba(156, 156, 156, 0.5);
+  -webkit-box-shadow: 4px 4px 2px rgba(156, 156, 156, 0.5);
+  box-shadow: 4px 4px 2px rgba(156, 156, 156, 0.5);
+}
+/* line 64, content/airstatic/assets/style/widgets/ui_cards.scss */
+.boarding_card .boarding_card_header {
+  background-color: #0093c8;
+  width: 60px;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  -moz-border-radius: 4px 0 0 4px;
+  -webkit-border-radius: 4px;
+  border-radius: 4px 0 0 4px;
+}
+/* line 73, content/airstatic/assets/style/widgets/ui_cards.scss */
+.boarding_card .boarding_card_header .ae_logo {
+  background-image: url("../graphic/common/ae_logo_2.png");
+  background-repeat: no-repeat;
+  bottom: 0;
+  display: block;
+  left: 0;
+  margin: 0;
+  position: absolute;
+  -moz-transform-origin: 0 0;
+  -ms-transform-origin: 0 0;
+  -webkit-transform-origin: 0 0;
+  transform-origin: 0 0;
+  -moz-transform: rotate(-90deg) translate(0, 8px);
+  -ms-transform: rotate(-90deg) translate(0, 8px);
+  -webkit-transform: rotate(-90deg) translate(0, 8px);
+  transform: rotate(-90deg) translate(0, 8px);
+  height: 19px;
+  width: 86px;
+}
+/* line 87, content/airstatic/assets/style/widgets/ui_cards.scss */
+.boarding_card .boarding_card_header .boarding_card_title {
+  position: absolute;
+  top: 427px;
+  text-align: right;
+  left: 20px;
+  color: #ffffff;
+  font-family: "Proxima N W01 Thin Reg", "proxima-nova", sans-serif;
+  font-weight: 100;
+  margin: 0;
+  line-height: 20px;
+  height: 26px;
+  overflow: hidden;
+  width: 398px;
+  text-transform: uppercase;
+  -moz-transform-origin: 0 0;
+  -ms-transform-origin: 0 0;
+  -webkit-transform-origin: 0 0;
+  transform-origin: 0 0;
+  -moz-transform: rotate(-90deg) translate(10px, 7px);
+  -ms-transform: rotate(-90deg) translate(10px, 7px);
+  -webkit-transform: rotate(-90deg) translate(10px, 7px);
+  transform: rotate(-90deg) translate(10px, 7px);
+}
+/* line 104, content/airstatic/assets/style/widgets/ui_cards.scss */
+.boarding_card .boarding_card_header .boarding_card_title span {
+  font-size: 14px;
+  display: block;
+  position: relative;
+  left: -1px;
+}
+/* line 112, content/airstatic/assets/style/widgets/ui_cards.scss */
+.boarding_card .boarding_card_header .boarding_card_title em {
+  font-size: 13px;
+  color: #b9b9b9;
+  font-family: Arial, sans-serif;
+  font-weight: 100;
+  font-style: normal;
+  display: block;
+  position: relative;
+  left: -1px;
+}
+/* line 125, content/airstatic/assets/style/widgets/ui_cards.scss */
+.boarding_card .boarding_card_content {
+  background-color: #009ED3;
+  position: relative;
+  -moz-border-radius: 0 4px 4px 0;
+  -webkit-border-radius: 0;
+  border-radius: 0 4px 4px 0;
+  /* New boarding passes styles */
+  /***/
+    /*.boarding_card_top {
+      height: 125px;
+      border-bottom: 1px dotted #d4d4d4;
+      margin-right: 19px;
+      position: relative;
+
+      .cities {
+        position: relative;
+        left: -5px;
+        padding-top: 30px;
+
+        ul {
+          height: auto;
+          margin: 0;
+
+          li {
+            float: left;
+            margin-right: 20px;
+            width: auto;
+
+            .code {
+              font-family: $font_proxima;
+              font-weight: 100;
+              font-size: 68px;
+              color: $main_highlight_color;
+              display: block;
+              line-height: 50px;
+            }
+
+            .description {
+              margin-left: 5px;
+              display: block;
+              font-family: $font_open;
+              font-size: 11px;
+              font-weight: 400;
+              letter-spacing: -0.2px;
+              color: #000;
+              text-transform: uppercase;
+            }
+          }
+        }
+      }
+
+      .tags {
+        position: absolute;
+        top: 22px;
+        right: 0;
+
+        ul {
+          margin: 0;
+          height: auto;
+
+          li {
+            width: auto;
+            float: none;
+            text-transform: uppercase;
+            color: #fff;
+            font-family: $font_source;
+            font-size: 11px;
+            font-weight: 300;
+            line-height: 12px;
+            margin-bottom: 7px;
+            display: block;
+            text-align: right;
+
+            span {
+              background-color: $main_highlight_color;
+              padding: 0 2px;
+            }
+
+            &.vip {
+              span {
+                background-color: #d62931;
+              }
+            }
+          }
+        }
+      }
+
+      .qr_code {
+        display: none;
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 106px;
+        height: 125px;
+        border-left: 1px dotted #d4d4d4;
+        text-align: right;
+
+        img {
+          display: inline;
+        }
+      }
+    }
+
+    .boarding_card_bottom {
+      clear: both;
+      height: 150px;
+      padding-top: 96px;
+      position: relative;
+
+      .flight {
+        position: absolute;
+        top: 20px;
+        left: 0;
+
+        .operator {
+          display: block;
+          font-family: $font_open;
+          font-size: 11px;
+          font-weight: 300;
+          color: #000;
+          text-transform: uppercase;
+          margin-bottom: 12px;
+          margin-left: 1px;
+
+          &.ae {
+            background: transparent url(../graphic/common/icon_ae.png) 0 50% no-repeat;
+            padding-left: 15px;
+          }
+        }
+
+        .flight_number {
+          margin-left: -2px;
+          display: block;
+          font-family: $font_proxima;
+          font-weight: 100;
+          font-size: 35px;
+          color: $main_highlight_color;
+          display: block;
+          text-transform: uppercase;
+        }
+      }
+
+      .boarding_card_details {
+        margin-left: -10px;
+
+        .col {
+          padding-left: 10px;
+          width: 95px;
+          float: left;
+          border-right: 1px dotted #d4d4d4;
+          padding-bottom: 12px;
+          height: 130px;
+          position: relative;
+
+          dl {
+            height: 57px;
+            text-align: left;
+            margin-bottom: 13px;
+            position: relative;
+            top: -6px;
+
+            dt {
+              display: block;
+              font-family: $font_open;
+              font-size: 11px;
+              font-weight: 400;
+              letter-spacing: -0.2px;
+              color: #000;
+              text-transform: uppercase;
+              margin-bottom: 14px;
+            }
+
+            dd {
+              margin-left: -1px;
+              font-family: $font_proxima;
+              font-weight: 100;
+              font-size: 33px;
+              letter-spacing: -1px;
+              color: $main_highlight_color;
+              display: block;
+              text-transform: uppercase;
+
+              span {
+                font-size: 24px;
+              }
+            }
+          }
+
+          @include last-child {
+            border: 0;
+          }
+        }
+      }
+    }*/
+}
+/* line 131, content/airstatic/assets/style/widgets/ui_cards.scss */
+.boarding_card .boarding_card_content .boarding_card_left {
+  float: left;
+  background-color: #009ED3;
+  min-width: 222px;
+  height: 100%;
+  min-height: 450px;
+}
+/* line 139, content/airstatic/assets/style/widgets/ui_cards.scss */
+.boarding_card .boarding_card_content .boarding_card_left .info ul {
+  padding-left: 14px;
+  margin: 0 0 10px 0;
+}
+/* line 143, content/airstatic/assets/style/widgets/ui_cards.scss */
+.boarding_card .boarding_card_content .boarding_card_left .info ul li {
+  border-bottom: 1px solid #0086b4;
+  padding: 4px 0 14px;
+}
+/* line 147, content/airstatic/assets/style/widgets/ui_cards.scss */
+.boarding_card .boarding_card_content .boarding_card_left .info ul li.tag {
+  margin: 0 0 0 -14px;
+}
+/* line 151, content/airstatic/assets/style/widgets/ui_cards.scss */
+.boarding_card .boarding_card_content .boarding_card_left .info ul li span {
+  color: #fff;
+}
+/* line 157, content/airstatic/assets/style/widgets/ui_cards.scss */
+.boarding_card .boarding_card_content .boarding_card_left .info .boarding_close {
+  color: #fff;
+  margin: 0 10px;
+  max-width: 202px;
+  min-height: 100px;
+  position: relative;
+}
+/* line 163, content/airstatic/assets/style/widgets/ui_cards.scss */
+.boarding_card .boarding_card_content .boarding_card_left .info .boarding_close p {
+  line-height: normal;
+  margin: 0;
+  font-size: 10px;
+}
+/* line 167, content/airstatic/assets/style/widgets/ui_cards.scss */
+.boarding_card .boarding_card_content .boarding_card_left .info .boarding_close p.advice_title {
+  text-decoration: underline;
+  margin: 5px 0;
+}
+/* line 172, content/airstatic/assets/style/widgets/ui_cards.scss */
+.boarding_card .boarding_card_content .boarding_card_left .info .boarding_close p.advice {
+  line-height: 13px;
+  font-size: 9px;
+}
+/* line 182, content/airstatic/assets/style/widgets/ui_cards.scss */
+.boarding_card .boarding_card_content .boarding_card_right {
+  float: left;
+  background-color: #fff;
+  height: 100%;
+  min-height: 450px;
+  min-width: 174px;
+}
+/* line 191, content/airstatic/assets/style/widgets/ui_cards.scss */
+.boarding_card .boarding_card_content .boarding_card_right .info ul li {
+  border-bottom: 1px solid #d9d9d9;
+  padding: 4px 0 14px;
+}
+/* line 196, content/airstatic/assets/style/widgets/ui_cards.scss */
+.boarding_card .boarding_card_content .boarding_card_right .info ul li.tag span {
+  margin-left: 0;
+}
+/* line 201, content/airstatic/assets/style/widgets/ui_cards.scss */
+.boarding_card .boarding_card_content .boarding_card_right .info ul li span {
+  color: #232323;
+  margin-left: 14px;
+}
+/* line 205, content/airstatic/assets/style/widgets/ui_cards.scss */
+.boarding_card .boarding_card_content .boarding_card_right .info ul li span.qr {
+  margin-left: 25px;
+}
+/* line 208, content/airstatic/assets/style/widgets/ui_cards.scss */
+.boarding_card .boarding_card_content .boarding_card_right .info ul li span.qr img {
+  width: 124px;
+  height: 124px;
+}
+/* line 215, content/airstatic/assets/style/widgets/ui_cards.scss */
+.boarding_card .boarding_card_content .boarding_card_right .info ul li:last-child {
+  border-bottom: none;
+}
+/* line 219, content/airstatic/assets/style/widgets/ui_cards.scss */
+.boarding_card .boarding_card_content .boarding_card_right .info ul li:last-child span.label {
+  margin-bottom: 0;
+}
+/* line 222, content/airstatic/assets/style/widgets/ui_cards.scss */
+.boarding_card .boarding_card_content .boarding_card_right .info ul li:last-child span.zoom_in {
+  width: 17px;
+  height: 16px;
+  margin: -17px 5px 0 0;
+  float: right;
+  background-size: contain;
+  background-image: url("../graphic/common/icon_zoom_in@x2.png");
+  background-repeat: no-repeat;
+}
+/* line 243, content/airstatic/assets/style/widgets/ui_cards.scss */
+.boarding_card .boarding_card_content .section .info ul li:first-child {
+  padding: 3px 0 3px 14px;
+  min-height: 20px;
+}
+/* line 248, content/airstatic/assets/style/widgets/ui_cards.scss */
+.boarding_card .boarding_card_content .section .info ul li span {
+  display: block;
+  width: 100%;
+  font-size: 32px;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 300;
+  text-transform: uppercase;
+}
+/* line 256, content/airstatic/assets/style/widgets/ui_cards.scss */
+.boarding_card .boarding_card_content .section .info ul li span.label {
+  font-size: 11px;
+  margin-bottom: 7px;
+}
+/* line 263, content/airstatic/assets/style/widgets/ui_cards.scss */
+.boarding_card .boarding_card_content .section .info ul li.tag span {
+  font-size: 10px;
+  text-transform: uppercase;
+  font-family: "Proxima N W01 Thin Reg", "proxima-nova", sans-serif;
+  color: #FFF;
+}
+/* line 270, content/airstatic/assets/style/widgets/ui_cards.scss */
+.boarding_card .boarding_card_content .section .info ul li.tag.sky_vip {
+  background: none repeat scroll 0 0 #DB1C30;
+}
+/* line 273, content/airstatic/assets/style/widgets/ui_cards.scss */
+.boarding_card .boarding_card_content .section .info ul li.tag.vip {
+  background: none repeat scroll 0 0 #DB1C30;
+}
+/* line 276, content/airstatic/assets/style/widgets/ui_cards.scss */
+.boarding_card .boarding_card_content .section .info ul li.tag.frequent {
+  background: none repeat scroll 0 0 #0182B5;
+}
+/* line 279, content/airstatic/assets/style/widgets/ui_cards.scss */
+.boarding_card .boarding_card_content .section .info ul li.tag.resident {
+  background: none repeat scroll 0 0 #877780;
+}
+/* line 282, content/airstatic/assets/style/widgets/ui_cards.scss */
+.boarding_card .boarding_card_content .section .info ul li.tag.large_family {
+  background: none repeat scroll 0 0 #b7dea7;
+}
+/* line 480, content/airstatic/assets/style/widgets/ui_cards.scss */
+.boarding_card.qr {
+  width: 674px;
+}
+/* line 484, content/airstatic/assets/style/widgets/ui_cards.scss */
+.boarding_card.qr .boarding_card_content .boarding_card_top .tags {
+  right: 115px;
+}
+/* line 488, content/airstatic/assets/style/widgets/ui_cards.scss */
+.boarding_card.qr .boarding_card_content .boarding_card_top .qr_code {
+  display: block;
+}
+/* line 494, content/airstatic/assets/style/widgets/ui_cards.scss */
+.boarding_card.qr .boarding_card_content .boarding_card_bottom .boarding_card_details {
+  padding-right: 110px;
+}
+/* line 55, content/airstatic/assets/style/utils/mixins.scss */
+.boarding_card.qr .boarding_card_content .boarding_card_bottom .boarding_card_details .col.last-child {
+  border-right: 1px dotted #d4d4d4;
+}
+/* line 501, content/airstatic/assets/style/widgets/ui_cards.scss */
+.boarding_card.qr .boarding_card_content .boarding_card_bottom .boarding_card_details .col.last-child .seats {
+  position: absolute;
+  top: -6px;
+  right: -110px;
+  width: 95px;
+}
+/* line 56, content/airstatic/assets/style/utils/mixins.scss */
+.boarding_card.qr .boarding_card_content .boarding_card_bottom .boarding_card_details .col:last-child {
+  border-right: 1px dotted #d4d4d4;
+}
+/* line 501, content/airstatic/assets/style/widgets/ui_cards.scss */
+.boarding_card.qr .boarding_card_content .boarding_card_bottom .boarding_card_details .col:last-child .seats {
+  position: absolute;
+  top: -6px;
+  right: -110px;
+  width: 95px;
+}
+/* line 515, content/airstatic/assets/style/widgets/ui_cards.scss */
+.boarding_card.adult .boarding_card_header {
+  background-image: url(../graphic/common/icon_adult_3.png);
+  background-repeat: no-repeat;
+  background-position: 50% 30px;
+}
+/* line 522, content/airstatic/assets/style/widgets/ui_cards.scss */
+.boarding_card.adult_baby {
+  padding-left: 80px;
+}
+/* line 525, content/airstatic/assets/style/widgets/ui_cards.scss */
+.boarding_card.adult_baby .boarding_card_header {
+  background-image: url(../graphic/common/icon_adult_baby.png);
+  background-repeat: no-repeat;
+  background-position: 50% 30px;
+  width: 80px;
+}
+/* line 531, content/airstatic/assets/style/widgets/ui_cards.scss */
+.boarding_card.adult_baby .boarding_card_header .boarding_card_title {
+  height: 40px;
+  -moz-transform: rotate(-90deg) translate(-10px, 20px);
+  -ms-transform: rotate(-90deg) translate(-10px, 20px);
+  -webkit-transform: rotate(-90deg) translate(-10px, 20px);
+  transform: rotate(-90deg) translate(-10px, 20px);
+}
+/* line 539, content/airstatic/assets/style/widgets/ui_cards.scss */
+.boarding_card.infant .boarding_card_header {
+  background-image: url(../graphic/common/icon_infant.png);
+  background-repeat: no-repeat;
+  background-position: 50% 30px;
+}
+
+/* line 1, content/airstatic/assets/style/widgets/ui_seats_map.scss */
+.seats_map_overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.87);
+  z-index: 1000;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+/* line 12, content/airstatic/assets/style/widgets/ui_seats_map.scss */
+.seats_map_overlay .close_seats_map {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+/* line 17, content/airstatic/assets/style/widgets/ui_seats_map.scss */
+.seats_map_overlay .close_seats_map p {
+  margin: 0;
+}
+/* line 20, content/airstatic/assets/style/widgets/ui_seats_map.scss */
+.seats_map_overlay .close_seats_map p a {
+  width: 41px;
+  height: 41px;
+  background: transparent url(../graphic/common/icon_close_3.png) 0 0 no-repeat;
+}
+/* line 26, content/airstatic/assets/style/widgets/ui_seats_map.scss */
+.seats_map_overlay .close_seats_map p a:hover {
+  background-position: 0 -41px;
+}
+/* line 33, content/airstatic/assets/style/widgets/ui_seats_map.scss */
+.seats_map_overlay .seats_map_wrapper {
+  top: 50%;
+  left: 5%;
+  position: absolute;
+  background-color: #333638;
+  width: 90%;
+  min-width: 910px;
+  height: 60%;
+}
+/* line 42, content/airstatic/assets/style/widgets/ui_seats_map.scss */
+.seats_map_overlay .seats_map_wrapper .seats_map {
+  margin: 25px 95px 60px 95px;
+  position: relative;
+  padding-left: 18px;
+}
+/* line 47, content/airstatic/assets/style/widgets/ui_seats_map.scss */
+.seats_map_overlay .seats_map_wrapper .seats_map .seats_table_wrapper {
+  left: 0;
+  overflow: hidden;
+  width: 500%;
+}
+/* line 52, content/airstatic/assets/style/widgets/ui_seats_map.scss */
+.seats_map_overlay .seats_map_wrapper .seats_map .seats_table_wrapper .column_header {
+  position: absolute;
+  left: 0;
+  top: 40px;
+  z-index: 1000;
+  color: #fff;
+  font-family: "Proxima N W01 Thin Reg", "proxima-nova", sans-serif;
+  font-size: 18px;
+  font-weight: 100;
+  width: 18px;
+}
+/* line 63, content/airstatic/assets/style/widgets/ui_seats_map.scss */
+.seats_map_overlay .seats_map_wrapper .seats_map .seats_table_wrapper .column_header .header {
+  height: 49px;
+  line-height: 49px;
+  position: relative;
+  width: 100%;
+}
+/* line 70, content/airstatic/assets/style/widgets/ui_seats_map.scss */
+.seats_map_overlay .seats_map_wrapper .seats_map .seats_table_wrapper .column_header .passage {
+  height: 15px;
+  position: relative;
+  z-index: 101;
+}
+/* line 75, content/airstatic/assets/style/widgets/ui_seats_map.scss */
+.seats_map_overlay .seats_map_wrapper .seats_map .seats_table_wrapper .column_header .passage span {
+  top: 6px;
+  left: 0;
+  position: absolute;
+  display: block;
+  height: 1px;
+  width: 100%;
+  background-color: #4d5053;
+}
+/* line 88, content/airstatic/assets/style/widgets/ui_seats_map.scss */
+.seats_map_overlay .seats_map_wrapper .seats_map .seats_table_wrapper .seats_table {
+  float: left;
+  position: relative;
+}
+/* line 92, content/airstatic/assets/style/widgets/ui_seats_map.scss */
+.seats_map_overlay .seats_map_wrapper .seats_map .seats_table_wrapper .seats_table .column {
+  padding-top: 40px;
+  float: left;
+  width: 55px;
+  color: #fff;
+  font-family: "Proxima N W01 Thin Reg", "proxima-nova", sans-serif;
+  font-size: 18px;
+  font-weight: 100;
+  text-align: center;
+  position: relative;
+}
+/* line 103, content/airstatic/assets/style/widgets/ui_seats_map.scss */
+.seats_map_overlay .seats_map_wrapper .seats_map .seats_table_wrapper .seats_table .column .seat, .seats_map_overlay .seats_map_wrapper .seats_map .seats_table_wrapper .seats_table .column .header, .seats_map_overlay .seats_map_wrapper .seats_map .seats_table_wrapper .seats_table .column .column_number {
+  height: 49px;
+  line-height: 49px;
+  position: relative;
+  width: 100%;
+}
+/* line 112, content/airstatic/assets/style/widgets/ui_seats_map.scss */
+.seats_map_overlay .seats_map_wrapper .seats_map .seats_table_wrapper .seats_table .column .seats_group .seat .seat_wrapper {
+  position: relative;
+  height: 49px;
+  width: 49px;
+  display: block;
+}
+/* line 118, content/airstatic/assets/style/widgets/ui_seats_map.scss */
+.seats_map_overlay .seats_map_wrapper .seats_map .seats_table_wrapper .seats_table .column .seats_group .seat .seat_wrapper span {
+  cursor: pointer;
+  display: block;
+  width: 49px;
+  height: 44px;
+  position: absolute;
+  top: 3px;
+  right: 0;
+  background: transparent url(../graphic/common/seats.png) 0 0 no-repeat;
+}
+/* line 127, content/airstatic/assets/style/widgets/ui_seats_map.scss */
+.seats_map_overlay .seats_map_wrapper .seats_map .seats_table_wrapper .seats_table .column .seats_group .seat .seat_wrapper span:hover {
+  background-position: -50px 0px;
+}
+/* line 134, content/airstatic/assets/style/widgets/ui_seats_map.scss */
+.seats_map_overlay .seats_map_wrapper .seats_map .seats_table_wrapper .seats_table .column .seats_group .seat.exit .seat_wrapper {
+  border-left: 1px solid #5d6062;
+}
+/* line 137, content/airstatic/assets/style/widgets/ui_seats_map.scss */
+.seats_map_overlay .seats_map_wrapper .seats_map .seats_table_wrapper .seats_table .column .seats_group .seat.exit .seat_wrapper span {
+  background-position: 0 -308px;
+}
+/* line 139, content/airstatic/assets/style/widgets/ui_seats_map.scss */
+.seats_map_overlay .seats_map_wrapper .seats_map .seats_table_wrapper .seats_table .column .seats_group .seat.exit .seat_wrapper span:hover {
+  background-position: -50px -308px;
+}
+/* line 145, content/airstatic/assets/style/widgets/ui_seats_map.scss */
+.seats_map_overlay .seats_map_wrapper .seats_map .seats_table_wrapper .seats_table .column .seats_group .seat.exit .arrow {
+  position: absolute;
+  left: -3px;
+  width: 7px;
+  height: 4px;
+  display: none;
+}
+/* line 154, content/airstatic/assets/style/widgets/ui_seats_map.scss */
+.seats_map_overlay .seats_map_wrapper .seats_map .seats_table_wrapper .seats_table .column .seats_group .seat.exit.first-child .arrow {
+  display: block;
+  top: 0;
+  background: transparent url(../graphic/common/seat_exit_top_arrow.png) 0 0 no-repeat;
+}
+/* line 154, content/airstatic/assets/style/widgets/ui_seats_map.scss */
+.seats_map_overlay .seats_map_wrapper .seats_map .seats_table_wrapper .seats_table .column .seats_group .seat.exit:first-child .arrow {
+  display: block;
+  top: 0;
+  background: transparent url(../graphic/common/seat_exit_top_arrow.png) 0 0 no-repeat;
+}
+/* line 162, content/airstatic/assets/style/widgets/ui_seats_map.scss */
+.seats_map_overlay .seats_map_wrapper .seats_map .seats_table_wrapper .seats_table .column .seats_group .seat.exit.last-child .arrow {
+  display: block;
+  bottom: 0;
+  background: transparent url(../graphic/common/seat_exit_bottom_arrow.png) 0 0 no-repeat;
+}
+/* line 162, content/airstatic/assets/style/widgets/ui_seats_map.scss */
+.seats_map_overlay .seats_map_wrapper .seats_map .seats_table_wrapper .seats_table .column .seats_group .seat.exit:last-child .arrow {
+  display: block;
+  bottom: 0;
+  background: transparent url(../graphic/common/seat_exit_bottom_arrow.png) 0 0 no-repeat;
+}
+/* line 172, content/airstatic/assets/style/widgets/ui_seats_map.scss */
+.seats_map_overlay .seats_map_wrapper .seats_map .seats_table_wrapper .seats_table .column .seats_group .seat.babies .seat_wrapper span {
+  background-position: 0 -132px;
+}
+/* line 174, content/airstatic/assets/style/widgets/ui_seats_map.scss */
+.seats_map_overlay .seats_map_wrapper .seats_map .seats_table_wrapper .seats_table .column .seats_group .seat.babies .seat_wrapper span:hover {
+  background-position: -50px -132px;
+}
+/* line 183, content/airstatic/assets/style/widgets/ui_seats_map.scss */
+.seats_map_overlay .seats_map_wrapper .seats_map .seats_table_wrapper .seats_table .column .seats_group .seat.preferent .seat_wrapper span {
+  background-position: 0 -88px;
+}
+/* line 185, content/airstatic/assets/style/widgets/ui_seats_map.scss */
+.seats_map_overlay .seats_map_wrapper .seats_map .seats_table_wrapper .seats_table .column .seats_group .seat.preferent .seat_wrapper span:hover {
+  background-position: -50px -88px;
+}
+/* line 194, content/airstatic/assets/style/widgets/ui_seats_map.scss */
+.seats_map_overlay .seats_map_wrapper .seats_map .seats_table_wrapper .seats_table .column .seats_group .seat.xl .seat_wrapper span {
+  background-position: 0 -44px;
+}
+/* line 196, content/airstatic/assets/style/widgets/ui_seats_map.scss */
+.seats_map_overlay .seats_map_wrapper .seats_map .seats_table_wrapper .seats_table .column .seats_group .seat.xl .seat_wrapper span:hover {
+  background-position: -50px -44px;
+}
+/* line 205, content/airstatic/assets/style/widgets/ui_seats_map.scss */
+.seats_map_overlay .seats_map_wrapper .seats_map .seats_table_wrapper .seats_table .column .seats_group .seat.premium .seat_wrapper span {
+  background-position: 0 -352px;
+}
+/* line 207, content/airstatic/assets/style/widgets/ui_seats_map.scss */
+.seats_map_overlay .seats_map_wrapper .seats_map .seats_table_wrapper .seats_table .column .seats_group .seat.premium .seat_wrapper span:hover {
+  background-position: -50px -352px;
+}
+/* line 216, content/airstatic/assets/style/widgets/ui_seats_map.scss */
+.seats_map_overlay .seats_map_wrapper .seats_map .seats_table_wrapper .seats_table .column .seats_group .seat.occupied .seat_wrapper span {
+  cursor: default !important;
+  background-position: 0 -264px;
+}
+/* line 219, content/airstatic/assets/style/widgets/ui_seats_map.scss */
+.seats_map_overlay .seats_map_wrapper .seats_map .seats_table_wrapper .seats_table .column .seats_group .seat.occupied .seat_wrapper span:hover {
+  background-position: 0 -264px;
+}
+/* line 228, content/airstatic/assets/style/widgets/ui_seats_map.scss */
+.seats_map_overlay .seats_map_wrapper .seats_map .seats_table_wrapper .seats_table .column .seats_group .seat.selected .seat_wrapper span {
+  cursor: default;
+  background-position: 0 -176px;
+}
+/* line 231, content/airstatic/assets/style/widgets/ui_seats_map.scss */
+.seats_map_overlay .seats_map_wrapper .seats_map .seats_table_wrapper .seats_table .column .seats_group .seat.selected .seat_wrapper span:hover {
+  background-position: -50px -176px;
+}
+/* line 240, content/airstatic/assets/style/widgets/ui_seats_map.scss */
+.seats_map_overlay .seats_map_wrapper .seats_map .seats_table_wrapper .seats_table .column .seats_group .seat.current_selected .seat_wrapper span {
+  background-position: 0 -220px;
+}
+/* line 242, content/airstatic/assets/style/widgets/ui_seats_map.scss */
+.seats_map_overlay .seats_map_wrapper .seats_map .seats_table_wrapper .seats_table .column .seats_group .seat.current_selected .seat_wrapper span:hover {
+  background-position: -50px -220px;
+}
+/* line 251, content/airstatic/assets/style/widgets/ui_seats_map.scss */
+.seats_map_overlay .seats_map_wrapper .seats_map .seats_table_wrapper .seats_table .column .seats_group .seat.void .seat_wrapper span {
+  background-image: none;
+}
+/* line 260, content/airstatic/assets/style/widgets/ui_seats_map.scss */
+.seats_map_overlay .seats_map_wrapper .seats_map .seats_table_wrapper .seats_table .column .passage {
+  height: 15px;
+  position: relative;
+  z-index: 101;
+}
+/* line 265, content/airstatic/assets/style/widgets/ui_seats_map.scss */
+.seats_map_overlay .seats_map_wrapper .seats_map .seats_table_wrapper .seats_table .column .passage span {
+  top: 6px;
+  left: 0;
+  position: absolute;
+  display: block;
+  height: 1px;
+  width: 100%;
+  background-color: #4d5053;
+}
+/* line 276, content/airstatic/assets/style/widgets/ui_seats_map.scss */
+.seats_map_overlay .seats_map_wrapper .seats_map .seats_table_wrapper .seats_table .column .column_number {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+/* line 281, content/airstatic/assets/style/widgets/ui_seats_map.scss */
+.seats_map_overlay .seats_map_wrapper .seats_map .seats_table_wrapper .seats_table .column.column_header {
+  width: 18px;
+  text-align: left;
+}
+/* line 292, content/airstatic/assets/style/widgets/ui_seats_map.scss */
+.seats_map_overlay .seats_map_wrapper .seats_map .seats_table_wrapper .seats_table.must_choose_infant_seat .column .seats_group .seat .seat_wrapper span {
+  cursor: default;
+  background-position: 0 -264px !important;
+}
+/* line 316, content/airstatic/assets/style/widgets/ui_seats_map.scss */
+.seats_map_overlay .seats_map_wrapper .seats_map .seats_table_wrapper .seats_table.must_choose_infant_seat .column .seats_group .seat.babies .seat_wrapper span {
+  background-position: 0 -132px !important;
+  cursor: pointer;
+}
+/* line 320, content/airstatic/assets/style/widgets/ui_seats_map.scss */
+.seats_map_overlay .seats_map_wrapper .seats_map .seats_table_wrapper .seats_table.must_choose_infant_seat .column .seats_group .seat.babies .seat_wrapper span:hover {
+  background-position: -50px -132px !important;
+}
+/* line 337, content/airstatic/assets/style/widgets/ui_seats_map.scss */
+.seats_map_overlay .seats_map_wrapper .seats_map .seats_table_wrapper .seats_table.must_choose_infant_seat .column .seats_group .seat.occupied .seat_wrapper span {
+  background-position: 0 -264px !important;
+}
+/* line 340, content/airstatic/assets/style/widgets/ui_seats_map.scss */
+.seats_map_overlay .seats_map_wrapper .seats_map .seats_table_wrapper .seats_table.must_choose_infant_seat .column .seats_group .seat.occupied .seat_wrapper span:hover {
+  background-position: 0 -264px !important;
+}
+/* line 349, content/airstatic/assets/style/widgets/ui_seats_map.scss */
+.seats_map_overlay .seats_map_wrapper .seats_map .seats_table_wrapper .seats_table.must_choose_infant_seat .column .seats_group .seat.selected .seat_wrapper span {
+  background-position: 0 -176px !important;
+}
+/* line 352, content/airstatic/assets/style/widgets/ui_seats_map.scss */
+.seats_map_overlay .seats_map_wrapper .seats_map .seats_table_wrapper .seats_table.must_choose_infant_seat .column .seats_group .seat.selected .seat_wrapper span:hover {
+  background-position: 0 -176px !important;
+}
+/* line 361, content/airstatic/assets/style/widgets/ui_seats_map.scss */
+.seats_map_overlay .seats_map_wrapper .seats_map .seats_table_wrapper .seats_table.must_choose_infant_seat .column .seats_group .seat.current_selected .seat_wrapper span {
+  background-position: 0 -220px !important;
+}
+/* line 364, content/airstatic/assets/style/widgets/ui_seats_map.scss */
+.seats_map_overlay .seats_map_wrapper .seats_map .seats_table_wrapper .seats_table.must_choose_infant_seat .column .seats_group .seat.current_selected .seat_wrapper span:hover {
+  background-position: -50px -220px !important;
+}
+/* line 378, content/airstatic/assets/style/widgets/ui_seats_map.scss */
+.seats_map_overlay .seats_map_wrapper .seats_map .legend {
+  position: relative;
+  z-index: 110;
+  top: 13px;
+  left: -18px;
+  min-height: 13px;
+}
+/* line 385, content/airstatic/assets/style/widgets/ui_seats_map.scss */
+.seats_map_overlay .seats_map_wrapper .seats_map .legend ul {
+  margin: 0;
+}
+/* line 389, content/airstatic/assets/style/widgets/ui_seats_map.scss */
+.seats_map_overlay .seats_map_wrapper .seats_map .legend ul li {
+  float: left;
+  display: block;
+  margin-right: 10px;
+}
+/* line 394, content/airstatic/assets/style/widgets/ui_seats_map.scss */
+.seats_map_overlay .seats_map_wrapper .seats_map .legend ul li span {
+  height: 13px;
+  line-height: 13px;
+  padding-left: 17px;
+  background: transparent url(../graphic/common/seats_legend.png) 0 0 no-repeat;
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+  color: #898b8c;
+  display: block;
+}
+/* line 408, content/airstatic/assets/style/widgets/ui_seats_map.scss */
+.seats_map_overlay .seats_map_wrapper .seats_map .legend ul li.hidden {
+  display: none;
+}
+/* line 413, content/airstatic/assets/style/widgets/ui_seats_map.scss */
+.seats_map_overlay .seats_map_wrapper .seats_map .legend ul li.xl span {
+  background-position: 0 -0;
+}
+/* line 419, content/airstatic/assets/style/widgets/ui_seats_map.scss */
+.seats_map_overlay .seats_map_wrapper .seats_map .legend ul li.exit span {
+  background-position: 0 -13px;
+}
+/* line 425, content/airstatic/assets/style/widgets/ui_seats_map.scss */
+.seats_map_overlay .seats_map_wrapper .seats_map .legend ul li.babies span {
+  background-position: 0 -26px;
+}
+/* line 431, content/airstatic/assets/style/widgets/ui_seats_map.scss */
+.seats_map_overlay .seats_map_wrapper .seats_map .legend ul li.normal span {
+  background-position: 0 -39px;
+}
+/* line 437, content/airstatic/assets/style/widgets/ui_seats_map.scss */
+.seats_map_overlay .seats_map_wrapper .seats_map .legend ul li.premium span {
+  background-position: 0 -52px;
+}
+/* line 446, content/airstatic/assets/style/widgets/ui_seats_map.scss */
+.seats_map_overlay .seats_map_wrapper .seats_map .arrows ul {
+  margin: 0;
+}
+/* line 449, content/airstatic/assets/style/widgets/ui_seats_map.scss */
+.seats_map_overlay .seats_map_wrapper .seats_map .arrows ul li {
+  position: absolute;
+  top: 50%;
+  margin-top: -28px;
+  width: 57px;
+  height: 57px;
+  z-index: 105;
+}
+/* line 457, content/airstatic/assets/style/widgets/ui_seats_map.scss */
+.seats_map_overlay .seats_map_wrapper .seats_map .arrows ul li a {
+  display: block;
+  width: 57px;
+  height: 57px;
+  background-color: transparent;
+  background-position: 0 0;
+  background-repeat: no-repeat;
+}
+/* line 466, content/airstatic/assets/style/widgets/ui_seats_map.scss */
+.seats_map_overlay .seats_map_wrapper .seats_map .arrows ul li a:hover {
+  background-position: 0 -57px;
+}
+/* line 471, content/airstatic/assets/style/widgets/ui_seats_map.scss */
+.seats_map_overlay .seats_map_wrapper .seats_map .arrows ul li.prev {
+  left: -75px;
+}
+/* line 474, content/airstatic/assets/style/widgets/ui_seats_map.scss */
+.seats_map_overlay .seats_map_wrapper .seats_map .arrows ul li.prev a {
+  background-image: url(../graphic/common/seats_map_arrow_left.png);
+}
+/* line 479, content/airstatic/assets/style/widgets/ui_seats_map.scss */
+.seats_map_overlay .seats_map_wrapper .seats_map .arrows ul li.next {
+  right: -70px;
+}
+/* line 482, content/airstatic/assets/style/widgets/ui_seats_map.scss */
+.seats_map_overlay .seats_map_wrapper .seats_map .arrows ul li.next a {
+  background-image: url(../graphic/common/seats_map_arrow_right.png);
+}
+/* line 490, content/airstatic/assets/style/widgets/ui_seats_map.scss */
+.seats_map_overlay .seats_map_wrapper .seats_map .atr_seats_message {
+  color: white;
+  font-size: 12px;
+}
+/* line 495, content/airstatic/assets/style/widgets/ui_seats_map.scss */
+.seats_map_overlay .seats_map_wrapper .seats_map .confirm_seats {
+  position: absolute;
+  bottom: -45px;
+  right: 0px;
+  z-index: 120;
+}
+/* line 501, content/airstatic/assets/style/widgets/ui_seats_map.scss */
+.seats_map_overlay .seats_map_wrapper .seats_map .confirm_seats p {
+  margin: 0;
+}
+/* line 504, content/airstatic/assets/style/widgets/ui_seats_map.scss */
+.seats_map_overlay .seats_map_wrapper .seats_map .confirm_seats p a {
+  display: block;
+  line-height: 46px;
+  height: 46px;
+  padding: 0 24px;
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 13px;
+  font-weight: 100;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+  color: #fff;
+  border: 2px solid #464a4d;
+  background-color: #383c3f;
+  -moz-transition-duration: 250ms;
+  -o-transition-duration: 250ms;
+  -webkit-transition-duration: 250ms;
+  transition-duration: 250ms;
+}
+/* line 519, content/airstatic/assets/style/widgets/ui_seats_map.scss */
+.seats_map_overlay .seats_map_wrapper .seats_map .confirm_seats p a:hover {
+  background-color: #00b8f8;
+  color: white;
+  border: 2px solid #00b8f8;
+}
+/* line 526, content/airstatic/assets/style/widgets/ui_seats_map.scss */
+.seats_map_overlay .seats_map_wrapper .seats_map .confirm_seats p a.loading span {
+  -webkit-animation: blink 0.75s 0s linear infinite;
+  -moz-animation: blink 0.75s 0s linear infinite;
+  animation: blink 0.75s 0s linear infinite;
+}
+/* line 539, content/airstatic/assets/style/widgets/ui_seats_map.scss */
+.seats_map_overlay .seats_map_wrapper .seats_map .gradient_left,
+.seats_map_overlay .seats_map_wrapper .seats_map .gradient_right {
+  width: 75px;
+  height: 100%;
+  position: absolute;
+  z-index: 100;
+  top: 0;
+}
+/* line 548, content/airstatic/assets/style/widgets/ui_seats_map.scss */
+.seats_map_overlay .seats_map_wrapper .seats_map .gradient_left {
+  display: none;
+  left: -10px;
+  background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9IjEuMCIgeTE9IjAuNSIgeDI9IjAuMCIgeTI9IjAuNSI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzMzMzYzOCIgc3RvcC1vcGFjaXR5PSIwLjAiLz48c3RvcCBvZmZzZXQ9IjUwJSIgc3RvcC1jb2xvcj0iIzMzMzYzOCIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JhZCkiIC8+PC9zdmc+IA==');
+  background-size: 100%;
+  background-image: -webkit-gradient(linear, 100% 50%, 0% 50%, color-stop(0%, rgba(51, 54, 56, 0)), color-stop(50%, #333638));
+  background-image: -moz-linear-gradient(right, rgba(51, 54, 56, 0) 0%, #333638 50%);
+  background-image: -webkit-linear-gradient(right, rgba(51, 54, 56, 0) 0%, #333638 50%);
+  background-image: linear-gradient(to left, rgba(51, 54, 56, 0) 0%, #333638 50%);
+  pointer-events: none;
+}
+/* line 555, content/airstatic/assets/style/widgets/ui_seats_map.scss */
+.seats_map_overlay .seats_map_wrapper .seats_map .gradient_right {
+  right: -40px;
+  background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9IjAuMCIgeTE9IjAuNSIgeDI9IjEuMCIgeTI9IjAuNSI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzMzMzYzOCIgc3RvcC1vcGFjaXR5PSIwLjAiLz48c3RvcCBvZmZzZXQ9IjUwJSIgc3RvcC1jb2xvcj0iIzMzMzYzOCIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JhZCkiIC8+PC9zdmc+IA==');
+  background-size: 100%;
+  background-image: -webkit-gradient(linear, 0% 50%, 100% 50%, color-stop(0%, rgba(51, 54, 56, 0)), color-stop(50%, #333638));
+  background-image: -moz-linear-gradient(left, rgba(51, 54, 56, 0) 0%, #333638 50%);
+  background-image: -webkit-linear-gradient(left, rgba(51, 54, 56, 0) 0%, #333638 50%);
+  background-image: linear-gradient(to right, rgba(51, 54, 56, 0) 0%, #333638 50%);
+  pointer-events: none;
+}
+
+/* line 1, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog {
+  visibility: hidden;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+  opacity: 0;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgba(6, 13, 18, 0.94);
+  z-index: 2000;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  -moz-transition-property: opacity, visibility;
+  -o-transition-property: opacity, visibility;
+  -webkit-transition-property: opacity, visibility;
+  transition-property: opacity, visibility;
+  -moz-transition-duration: 300ms;
+  -o-transition-duration: 300ms;
+  -webkit-transition-duration: 300ms;
+  transition-duration: 300ms;
+}
+/* line 15, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog.total_opacity {
+  background-color: rgba(6, 13, 18, 0);
+}
+/* line 17, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog.total_opacity .close_dialog {
+  display: none;
+}
+/* line 21, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog.total_opacity .dialog_wrapper .overlay_closeFunct {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100.2%;
+  height: 100%;
+  z-index: 0;
+}
+/* line 29, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog.total_opacity .dialog_wrapper .dialog_content {
+  -moz-box-shadow: 5px 2px 9px 2px rgba(0, 0, 0, 0.4);
+  box-shadow: 5px 2px 9px 2px rgba(0, 0, 0, 0.4);
+  z-index: 2;
+}
+/* line 33, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog.total_opacity .dialog_wrapper .dialog_content .close_dialog_content {
+  position: absolute;
+  top: 8px;
+  right: 6px;
+  z-index: 5;
+}
+/* line 38, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog.total_opacity .dialog_wrapper .dialog_content .close_dialog_content p {
+  margin: 0;
+}
+/* line 40, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog.total_opacity .dialog_wrapper .dialog_content .close_dialog_content p a {
+  width: 25px;
+  height: 25px;
+  display: block;
+  -moz-border-radius: 14px;
+  -webkit-border-radius: 14px;
+  border-radius: 14px;
+  background-image: url(../graphic/common/icon_close_7.png);
+  background-position: 7px 7px;
+  background-repeat: no-repeat;
+  background-color: #2D2E2F;
+}
+/* line 49, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog.total_opacity .dialog_wrapper .dialog_content .close_dialog_content p a:hover {
+  background-color: #454a4d;
+}
+/* line 52, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog.total_opacity .dialog_wrapper .dialog_content .close_dialog_content p a span {
+  visibility: hidden;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 0px;
+  height: 0px;
+  overflow: hidden;
+}
+/* line 68, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog .close_dialog {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 5;
+}
+/* line 74, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog .close_dialog p {
+  margin: 0;
+}
+/* line 77, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog .close_dialog p a {
+  width: 41px;
+  height: 41px;
+  background: transparent url(../graphic/common/icon_close_3.png) 0 0 no-repeat;
+}
+/* line 83, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog .close_dialog p a:hover {
+  background-position: 0 -41px;
+}
+/* line 90, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog .dialog_wrapper {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100.2%;
+  height: 100%;
+  z-index: 1;
+  /* Styles for dangerous goods modal window */
+}
+/* line 99, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog .dialog_wrapper .dialog_content {
+  background-color: #fff;
+  -moz-border-radius: 1px;
+  -webkit-border-radius: 1px;
+  border-radius: 1px;
+  width: 550px;
+  left: 50%;
+  position: relative;
+  margin-left: -275px;
+  padding: 68px 0 35px 0;
+}
+/* line 109, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog .dialog_wrapper .dialog_content .dialog_title {
+  margin-bottom: 45px;
+  line-height: 33px;
+  text-align: center;
+}
+/* line 114, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog .dialog_wrapper .dialog_content .dialog_title p {
+  display: inline;
+  margin: 0;
+  font-family: "Proxima N W01 Thin Reg", "proxima-nova", sans-serif;
+  font-size: 36px;
+  font-weight: 100;
+  color: #00beff;
+}
+/* line 122, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog .dialog_wrapper .dialog_content .dialog_title p span {
+  padding-bottom: 5px;
+  border-bottom: 1px solid #ccf2ff;
+}
+/* line 129, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog .dialog_wrapper .dialog_content .dialog_subtitle {
+  font-family: "Open Sans", sans-serif;
+  font-size: 14px;
+  font-weight: 200;
+  font-style: italic;
+  line-height: 20px;
+  text-align: center;
+  letter-spacing: -0.5px;
+  padding: 0 46px;
+  margin-top: -15px;
+  margin-bottom: 25px;
+  word-wrap: break-word;
+}
+/* line 142, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog .dialog_wrapper .dialog_content .dialog_subtitle p {
+  margin: 0;
+}
+/* line 147, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog .dialog_wrapper .dialog_content .dialog_form {
+  padding: 0 30px;
+}
+/* line 150, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog .dialog_wrapper .dialog_content .dialog_form .banner_dialog {
+  float: left;
+  width: 100%;
+  margin: 20px 0;
+}
+/* line 155, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog .dialog_wrapper .dialog_content .dialog_form .banner_dialog img {
+  width: 100%;
+}
+/* line 160, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog .dialog_wrapper .dialog_content .dialog_form .dialog_form_error {
+  background: transparent url(../graphic/common/icon_warning.png) 0 50% no-repeat;
+  padding-left: 35px;
+  line-height: 26px;
+  height: 26px;
+  margin: 0 0 22px 5px;
+}
+/* line 167, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog .dialog_wrapper .dialog_content .dialog_form .dialog_form_error p {
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+  color: #f10000;
+  margin: 0;
+}
+/* line 178, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog .dialog_wrapper .dialog_content .dialog_form .dialog_form_section {
+  padding: 0 0 10px 0;
+  margin: 0 5px 21px 5px;
+  border-bottom: 1px dotted #b9b9b9;
+}
+/* line 183, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog .dialog_wrapper .dialog_content .dialog_form .dialog_form_section .dialog_form_section_wrapper {
+  margin: 0 -5px;
+}
+/* line 185, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog .dialog_wrapper .dialog_content .dialog_form .dialog_form_section .dialog_form_section_wrapper p {
+  font-size: 12px;
+  line-height: 1.25;
+  padding-left: .5em;
+}
+/* line 191, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog .dialog_wrapper .dialog_content .dialog_form .dialog_form_section #field_register_data_cession_cepsa_conditions_wrapper {
+  display: none;
+}
+/* line 193, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog .dialog_wrapper .dialog_content .dialog_form .dialog_form_section #field_register_data_cession_cepsa_conditions_wrapper.visible {
+  display: block;
+}
+/* line 199, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog .dialog_wrapper .dialog_content .dialog_form .block_header {
+  font-family: "Open Sans",sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  color: #00beff;
+  text-transform: uppercase;
+}
+/* line 207, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog .dialog_wrapper .dialog_content .dialog_form .conditions_dialog {
+  line-height: 20px;
+  font-size: 14px;
+  font-family: "Open Sans", sans-serif;
+  height: 400px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+/* line 216, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog .dialog_wrapper .dialog_content .dialog_form .conditions_dialog h1, .dialog .dialog_wrapper .dialog_content .dialog_form .conditions_dialog h2, .dialog .dialog_wrapper .dialog_content .dialog_form .conditions_dialog h3, .dialog .dialog_wrapper .dialog_content .dialog_form .conditions_dialog h4, .dialog .dialog_wrapper .dialog_content .dialog_form .conditions_dialog h5, .dialog .dialog_wrapper .dialog_content .dialog_form .conditions_dialog h6 {
+  font-size: 20px;
+  margin-bottom: 20px;
+  color: #00beff;
+}
+/* line 222, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog .dialog_wrapper .dialog_content .dialog_form .conditions_dialog p, .dialog .dialog_wrapper .dialog_content .dialog_form .conditions_dialog ul, .dialog .dialog_wrapper .dialog_content .dialog_form .conditions_dialog ol {
+  margin-bottom: 20px;
+}
+/* line 228, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog .dialog_wrapper .dialog_content .dialog_body {
+  font-family: "Open Sans", sans-serif;
+  font-size: 14px;
+  font-weight: 200;
+  font-style: italic;
+  line-height: 20px;
+  text-align: center;
+  padding: 0 55px;
+  margin-bottom: 35px;
+}
+/* line 238, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog .dialog_wrapper .dialog_content .dialog_body p {
+  margin: 0;
+}
+/* line 243, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog .dialog_wrapper .dialog_content .dialog_list {
+  padding: 0 36px;
+  margin-bottom: 19px;
+  color: #000;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 200;
+  font-size: 13px;
+}
+/* line 251, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog .dialog_wrapper .dialog_content .dialog_list ul {
+  margin: 0;
+  border-top: 1px dotted #b9b9b9;
+}
+/* line 255, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog .dialog_wrapper .dialog_content .dialog_list ul li {
+  height: 54px;
+  line-height: 28px;
+  width: 100%;
+  border-bottom: 1px dotted #b9b9b9;
+  padding-top: 2%;
+}
+/* line 262, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog .dialog_wrapper .dialog_content .dialog_list ul li p {
+  margin: 0;
+}
+/* line 266, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog .dialog_wrapper .dialog_content .dialog_list ul li em {
+  font-style: normal;
+  color: #ababab;
+}
+/* line 273, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog .dialog_wrapper .dialog_content .dialog_list .field {
+  margin: 0;
+}
+/* line 277, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog .dialog_wrapper .dialog_content .dialog_list label {
+  color: #000;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 200;
+  font-size: 13px;
+  height: 49px;
+  line-height: 49px;
+  display: inline-block;
+}
+/* line 288, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog .dialog_wrapper .dialog_content .dialog_list .checkbox label {
+  padding-left: 35px;
+  background: transparent url(../graphic/common/checkbox_bg_9.png) 0 11px no-repeat;
+}
+/* line 294, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog .dialog_wrapper .dialog_content .dialog_list .checkbox.checked label {
+  background-position: 0 -67px;
+}
+/* line 302, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog .dialog_wrapper .dialog_content .dialog_list.update_passengers ul li {
+  min-height: 20px;
+  height: auto;
+  line-height: 20px;
+  width: 100%;
+  border-bottom: none;
+  margin: 0 0 5px 10px;
+}
+/* line 310, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog .dialog_wrapper .dialog_content .dialog_list.update_passengers ul li.passenger_name {
+  height: 25px;
+  margin-top: 29px;
+  font-weight: 400;
+  margin-left: 0;
+}
+/* line 322, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog .dialog_wrapper .dialog_content .dialog_buttons {
+  padding: 0 30px;
+}
+/* line 325, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog .dialog_wrapper .dialog_content .dialog_buttons ul {
+  margin: 0;
+  text-align: center;
+}
+/* line 330, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog .dialog_wrapper .dialog_content .dialog_buttons ul li {
+  float: left;
+  display: block;
+  width: 50%;
+  height: 56px;
+  line-height: 56px;
+  text-align: center;
+}
+/* line 340, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog .dialog_wrapper .dialog_content .dialog_buttons p {
+  height: 56px;
+  line-height: 56px;
+  text-align: center;
+}
+/* line 346, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog .dialog_wrapper .dialog_content .dialog_buttons a {
+  margin: 0 5px;
+  border: 2px solid #b2ebff;
+  display: block;
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+  color: #00beff;
+  position: relative;
+  -moz-transition-property: border-color, background-color, color;
+  -o-transition-property: border-color, background-color, color;
+  -webkit-transition-property: border-color, background-color, color;
+  transition-property: border-color, background-color, color;
+  -moz-transition-duration: 200ms;
+  -o-transition-duration: 200ms;
+  -webkit-transition-duration: 200ms;
+  transition-duration: 200ms;
+}
+/* line 360, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog .dialog_wrapper .dialog_content .dialog_buttons a:hover {
+  border-color: #00beff;
+  background-color: #00beff;
+  color: #fff;
+}
+/* line 367, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog .dialog_wrapper .dialog_content .dialog_buttons a.loading span {
+  -webkit-animation: blink 0.75s 0s linear infinite;
+  -moz-animation: blink 0.75s 0s linear infinite;
+  animation: blink 0.75s 0s linear infinite;
+}
+/* line 380, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog .dialog_wrapper .dialog_content .dialog_buttons .return a {
+  border-color: #e3e3e3;
+  color: #787878;
+  -moz-transition-property: border-color, background-color, color;
+  -o-transition-property: border-color, background-color, color;
+  -webkit-transition-property: border-color, background-color, color;
+  transition-property: border-color, background-color, color;
+  -moz-transition-duration: 200ms;
+  -o-transition-duration: 200ms;
+  -webkit-transition-duration: 200ms;
+  transition-duration: 200ms;
+}
+/* line 386, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog .dialog_wrapper .dialog_content .dialog_buttons .return a:hover {
+  border-color: #00beff;
+  background-color: #00beff;
+  color: #fff;
+}
+/* line 395, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog .dialog_wrapper .dialog_content .dialog_buttons .ok a {
+  border-color: #2be3a4;
+  color: #2be3a4;
+  -moz-transition-property: border-color, background-color, color;
+  -o-transition-property: border-color, background-color, color;
+  -webkit-transition-property: border-color, background-color, color;
+  transition-property: border-color, background-color, color;
+  -moz-transition-duration: 200ms;
+  -o-transition-duration: 200ms;
+  -webkit-transition-duration: 200ms;
+  transition-duration: 200ms;
+}
+/* line 401, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog .dialog_wrapper .dialog_content .dialog_buttons .ok a:hover {
+  border-color: #00beff;
+  background-color: #00beff;
+  color: #fff;
+}
+/* line 411, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog .dialog_wrapper .dialog_content .dialog_sub_buttons {
+  padding: 0 30px 10px 0;
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+  margin-top: 43px;
+}
+/* line 420, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog .dialog_wrapper .dialog_content .dialog_sub_buttons p {
+  padding: 36px 0 0 0;
+  margin: 0;
+  border-top: 1px solid #e7e7e7;
+}
+/* line 426, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog .dialog_wrapper .dialog_content .dialog_sub_buttons a {
+  color: #00beff;
+}
+/* line 431, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog .dialog_wrapper .dialog_content .dialog_spinner {
+  display: none;
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  text-align: center;
+  margin: 20px 0 0 -6px;
+}
+/* line 439, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog .dialog_wrapper .dialog_content .dialog_spinner .spinner {
+  display: inline-block;
+  margin-right: 4px;
+  width: 13px;
+  height: 13px;
+  background-color: #d8d8d8;
+  -moz-border-radius: 7px;
+  -webkit-border-radius: 7px;
+  border-radius: 7px;
+  -webkit-animation: blink 0.75s 0s linear infinite;
+  -moz-animation: blink 0.75s 0s linear infinite;
+  animation: blink 0.75s 0s linear infinite;
+}
+/* line 454, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog .dialog_wrapper .dialog_content .dialog_spinner .spinner_text {
+  position: relative;
+  top: -1px;
+  color: #a6a6a6;
+  font-family: "Open Sans", sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+}
+/* line 463, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog .dialog_wrapper .dialog_content .dialog_spinner.checkin_share {
+  margin-top: 60px;
+}
+/* line 468, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog .dialog_wrapper .dialog_content .dialog_success {
+  display: none;
+  position: absolute;
+  top: 50%;
+  margin-top: -20px;
+}
+/* line 474, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog .dialog_wrapper .dialog_content .dialog_success .dialog_subtitle {
+  margin-top: 0;
+}
+/* line 479, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog .dialog_wrapper .dialog_content .dialog_articles {
+  border-width: 1px 0 1px 0;
+  border-bottom: 1px dotted #d4d4d4;
+  border-color: #d4d4d4;
+  background-color: #fff;
+  padding: 29px 0 16px 0;
+}
+/* line 486, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog .dialog_wrapper .dialog_content .dialog_articles ul {
+  width: 625px;
+  margin: 0 auto;
+}
+/* line 491, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog .dialog_wrapper .dialog_content .dialog_articles ul li {
+  display: inline-block;
+  vertical-align: top;
+  width: 114px;
+  margin: 0 20px 10px 20px;
+}
+/* line 497, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog .dialog_wrapper .dialog_content .dialog_articles ul li p {
+  display: block;
+  margin: 0;
+  padding-top: 95px;
+}
+/* line 502, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog .dialog_wrapper .dialog_content .dialog_articles ul li p span {
+  text-align: center;
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 12px;
+  color: #666;
+  line-height: 20px;
+  display: block;
+}
+/* line 513, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog .dialog_wrapper .dialog_content .dialog_articles ul li.explosive p {
+  background: transparent url(../graphic/common/articles_explosive.png) 50% 0 no-repeat;
+}
+/* line 519, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog .dialog_wrapper .dialog_content .dialog_articles ul li.solid p {
+  background: transparent url(../graphic/common/articles_solid.png) 50% 0 no-repeat;
+}
+/* line 525, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog .dialog_wrapper .dialog_content .dialog_articles ul li.liquid p {
+  background: transparent url(../graphic/common/articles_liquid.png) 50% 0 no-repeat;
+}
+/* line 531, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog .dialog_wrapper .dialog_content .dialog_articles ul li.gas p {
+  background: transparent url(../graphic/common/articles_gas.png) 50% 0 no-repeat;
+}
+/* line 537, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog .dialog_wrapper .dialog_content .dialog_articles ul li.oxidizing p {
+  background: transparent url(../graphic/common/articles_oxidizing.png) 50% 0 no-repeat;
+}
+/* line 543, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog .dialog_wrapper .dialog_content .dialog_articles ul li.radioactive p {
+  background: transparent url(../graphic/common/articles_radioactive.png) 50% 0 no-repeat;
+}
+/* line 549, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog .dialog_wrapper .dialog_content .dialog_articles ul li.poisonous p {
+  background: transparent url(../graphic/common/articles_poisonous.png) 50% 0 no-repeat;
+}
+/* line 555, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog .dialog_wrapper .dialog_content .dialog_articles ul li.corrosive p {
+  background: transparent url(../graphic/common/articles_corrosive.png) 50% 0 no-repeat;
+}
+/* line 559, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog .dialog_wrapper .dialog_content .dialog_articles ul li.dangerous {
+  display: block;
+  margin: 0 auto;
+}
+/* line 562, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog .dialog_wrapper .dialog_content .dialog_articles ul li.dangerous p {
+  background: transparent url(../graphic/common/dangerous_substances.png) 50% 0 no-repeat;
+}
+/* line 570, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog .dialog_wrapper .dialog_content .dialog_articles_form {
+  padding-top: 16px;
+  position: relative;
+}
+/* line 574, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog .dialog_wrapper .dialog_content .dialog_articles_form .field.checkbox {
+  margin-bottom: 16px;
+}
+/* line 606, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog .dialog_wrapper .dialog_content .dialog_articles_form .articles_error {
+  display: none;
+  color: #eb1818;
+  font-family: "Open Sans", sans-serif;
+  font-size: 13px;
+  font-weight: 200;
+  line-height: 26px;
+  text-align: center;
+  margin-bottom: 5px;
+}
+/* line 616, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog .dialog_wrapper .dialog_content .dialog_articles_form .articles_error p {
+  margin: 0;
+}
+/* line 619, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog .dialog_wrapper .dialog_content .dialog_articles_form .articles_error p span {
+  padding-left: 20px;
+  background: transparent url(../graphic/common/icon_warning_6.png) 0 50% no-repeat;
+}
+/* line 628, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog .dialog_wrapper .dialog_content .share_articles_form .articles_error {
+  display: none;
+  text-align: center;
+  color: #eb1818;
+  font-family: "Open Sans", sans-serif;
+  font-size: 13px;
+  font-weight: 200;
+  line-height: 26px;
+}
+/* line 637, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog .dialog_wrapper .dialog_content .share_articles_form .articles_error p {
+  padding-left: 15px;
+  margin: 0 0 20px 0;
+}
+/* line 644, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog .dialog_wrapper .dialog_content .code_miles_sent {
+  font-style: normal;
+}
+/* line 647, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog .dialog_wrapper .dialog_content .code_miles_sent p {
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+/* line 652, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog .dialog_wrapper .dialog_content .code_miles_sent .code_miles {
+  display: inline-block;
+  text-transform: uppercase;
+  height: 66px;
+  line-height: 66px;
+  text-align: center;
+  padding: 0 60px;
+  border: 2px solid #dadada;
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 24px;
+}
+/* line 663, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog .dialog_wrapper .dialog_content .code_miles_sent .code_miles p {
+  margin: 0;
+}
+/* line 669, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog .dialog_wrapper .dialog_content.dialog_conditions {
+  max-height: 570px !important;
+  overflow: hidden !important;
+}
+/* line 673, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog .dialog_wrapper .dialog_content.dialog_conditions .dialog_form_section {
+  border: 0;
+}
+/* line 677, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog .dialog_wrapper .dialog_content.dialog_conditions .dialog_buttons {
+  position: relative;
+}
+/* line 682, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog .dialog_wrapper .dialog_content.xl {
+  width: 670px;
+  margin-left: -335px;
+}
+/* line 686, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog .dialog_wrapper .dialog_content.xl .dialog_form {
+  padding: 0 70px;
+}
+/* line 690, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog .dialog_wrapper .dialog_content.xl .dialog_buttons {
+  padding: 0 70px;
+}
+/* line 694, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog .dialog_wrapper .dialog_content.xl .dialog_sub_buttons {
+  padding: 0 70px;
+}
+/* line 699, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog .dialog_wrapper .dialog_content.no_horizontal_scroll {
+  overflow-x: hidden;
+}
+/* line 703, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog .dialog_wrapper .dialog_content.xxl {
+  width: 735px;
+  margin-left: -367px;
+  padding-bottom: 30px;
+}
+/* line 709, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog .dialog_wrapper .dialog_content.xxxl {
+  width: 860px;
+  margin-left: -430px;
+  padding: 74px 0 68px 0;
+}
+/* line 714, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog .dialog_wrapper .dialog_content.xxxl .dialog_title {
+  margin-left: 75px;
+  margin-right: 75px;
+}
+/* line 719, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog .dialog_wrapper .dialog_content.xxxl .dialog_subtitle {
+  padding: 0 110px;
+  letter-spacing: 0;
+}
+/* line 723, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog .dialog_wrapper .dialog_content.xxxl .dialog_subtitle p {
+  margin-bottom: 20px;
+}
+/* line 728, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog .dialog_wrapper .dialog_content.xxxl .dialog_form {
+  padding: 0 120px;
+}
+/* line 732, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog .dialog_wrapper .dialog_content.xxxl .dialog_buttons {
+  padding: 0 120px;
+}
+/* line 736, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog .dialog_wrapper .dialog_content.xxxl .dialog_buttons ul li {
+  height: 78px;
+  line-height: 78px;
+}
+/* line 742, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog .dialog_wrapper .dialog_content.xxxl .dialog_buttons p {
+  height: 78px;
+  line-height: 78px;
+}
+/* line 748, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog .dialog_wrapper .dialog_content.xxxl .dialog_sub_buttons {
+  padding: 0 120px;
+}
+/* line 753, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog .dialog_wrapper .dialog_content.xxxl.with_scroll .dialog_buttons {
+  margin-bottom: 68px;
+}
+/* line 760, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog .dialog_wrapper .dialog_content.with_scroll {
+  overflow-y: auto;
+  max-height: 70%;
+}
+/* line 765, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog .dialog_wrapper .dialog_content.spinner {
+  overflow: hidden;
+}
+/* line 766, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog .dialog_wrapper .dialog_content.spinner .dialog_subtitle,
+.dialog .dialog_wrapper .dialog_content.spinner form,
+.dialog .dialog_wrapper .dialog_content.spinner .dialog_buttons,
+.dialog .dialog_wrapper .dialog_content.spinner .dialog_sub_buttons {
+  visibility: hidden;
+}
+/* line 773, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog .dialog_wrapper .dialog_content.spinner .dialog_spinner {
+  display: block;
+}
+/* line 781, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog .dialog_wrapper .dialog_content.success .dialog_subtitle,
+.dialog .dialog_wrapper .dialog_content.success form,
+.dialog .dialog_wrapper .dialog_content.success .dialog_buttons {
+  visibility: hidden;
+}
+/* line 787, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog .dialog_wrapper .dialog_content.success .dialog_spinner {
+  display: none;
+}
+/* line 791, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog .dialog_wrapper .dialog_content.success .dialog_success {
+  display: block;
+}
+/* line 794, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog .dialog_wrapper .dialog_content.success .dialog_success .dialog_subtitle,
+.dialog .dialog_wrapper .dialog_content.success .dialog_success .dialog_buttons {
+  visibility: visible;
+}
+/* line 803, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog .dialog_wrapper .dialog_content.error .dialog_title p {
+  padding-left: 42px;
+  background: transparent url(../graphic/common/icon_warning_5.png) 0 50% no-repeat;
+  color: #e26363;
+}
+/* line 808, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog .dialog_wrapper .dialog_content.error .dialog_title p span {
+  border-color: #e5e5e5;
+}
+/* line 815, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog .dialog_wrapper .dialog_content.error .dialog_buttons a {
+  border-color: #e5e5e5;
+  color: #000;
+  -moz-transition-property: border-color, background-color, color;
+  -o-transition-property: border-color, background-color, color;
+  -webkit-transition-property: border-color, background-color, color;
+  transition-property: border-color, background-color, color;
+  -moz-transition-duration: 200ms;
+  -o-transition-duration: 200ms;
+  -webkit-transition-duration: 200ms;
+  transition-duration: 200ms;
+}
+/* line 821, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog .dialog_wrapper .dialog_content.error .dialog_buttons a:hover {
+  border-color: #00beff;
+  background-color: #00beff;
+  color: #fff;
+}
+/* line 830, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog .dialog_wrapper .dialog_content.plain_dialog {
+  background: none;
+  color: #fff;
+}
+/* line 836, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog .dialog_wrapper .dialog_content.plain_dialog .dialog_title p span {
+  border-color: #043a4f;
+}
+/* line 842, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog .dialog_wrapper .dialog_content.plain_dialog .dialog_subtitle {
+  font-size: 17px;
+  font-style: normal;
+  padding: 0 !important;
+  margin-bottom: 40px;
+}
+/* line 848, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog .dialog_wrapper .dialog_content.plain_dialog .dialog_subtitle p {
+  margin: 0;
+}
+/* line 856, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog .dialog_wrapper .dialog_content.plain_dialog .dialog_buttons ul li {
+  height: 78px;
+  line-height: 78px;
+}
+/* line 862, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog .dialog_wrapper .dialog_content.plain_dialog .dialog_buttons p {
+  height: 78px;
+  line-height: 78px;
+}
+/* line 867, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog .dialog_wrapper .dialog_content.plain_dialog .dialog_buttons a {
+  border: 2px solid #fff;
+  color: #fff;
+  font-size: 15px;
+}
+/* line 872, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog .dialog_wrapper .dialog_content.plain_dialog .dialog_buttons a:hover {
+  border-color: #00beff;
+  background-color: #00beff;
+}
+/* line 882, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog .dialog_wrapper .dangerousgoods {
+  padding: 35px 0 12px;
+  background: #ffffff;
+  /* Old browsers */
+  background: -moz-linear-gradient(top, #ffffff 70%, #fcfcfc 70%);
+  /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(70%, #ffffff), color-stop(70%, #fcfcfc));
+  /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, #ffffff 70%, #fcfcfc 70%);
+  /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, #ffffff 70%, #fcfcfc 70%);
+  /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, #ffffff 70%, #fcfcfc 70%);
+  /* IE10+ */
+  background: linear-gradient(to bottom, #ffffff 70%, #fcfcfc 70%);
+  /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#fcfcfc',GradientType=0 );
+  /* IE6-9 */
+}
+/* line 893, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog .dialog_wrapper .dangerousgoods .dialog_form {
+  padding: 0 30px;
+  width: 600px;
+  margin: 0 auto;
+}
+/* line 900, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog .dialog_wrapper .dangerousgoods .dialog_form .field.checkbox .field_wrapper label {
+  display: block;
+  text-align: center;
+}
+/* line 904, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog .dialog_wrapper .dangerousgoods .dialog_form .field.checkbox .field_wrapper label span {
+  display: inline-block;
+}
+/* line 911, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog .dialog_wrapper .dangerousgoods .dialog_title {
+  margin-bottom: 12px;
+  line-height: 33px;
+  text-align: center;
+}
+/* line 916, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog .dialog_wrapper .dangerousgoods .dialog_title p {
+  display: inline;
+  margin: 0;
+  font-family: "Proxima N W01 Thin Reg", "proxima-nova", sans-serif;
+  font-size: 21px;
+  font-weight: 100;
+  color: #00beff;
+}
+/* line 924, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog .dialog_wrapper .dangerousgoods .dialog_title p span {
+  padding-bottom: 5px;
+  border-bottom: none !important;
+}
+/* line 930, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog .dialog_wrapper .dangerousgoods .dialog_subtitle {
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 13px;
+  font-weight: 300;
+  line-height: 20px;
+  font-style: normal !important;
+  text-align: center;
+  color:   #666 !important;
+  letter-spacing: 0.3px !important;
+  padding: 0 50px;
+  margin-top: -15px;
+  margin-bottom: 25px;
+}
+/* line 943, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog .dialog_wrapper .dangerousgoods .dialog_subtitle p {
+  margin: 0;
+}
+/* line 948, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog .dialog_wrapper .dangerousgoods .dialog_buttons a:hover {
+  background-color: #00beff;
+  border-color: #00beff;
+  color: #fff;
+}
+/* line 954, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog .dialog_wrapper .dangerousgoods .center_separator {
+  border-bottom: 1px dotted #d4d4d4;
+  height: 1px;
+  margin: 0 40px;
+}
+/* line 961, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog .dialog_wrapper .dialog_content.xxl.lightbox_farefamily {
+  padding-top: 0;
+  padding-bottom: 0;
+  font-family: "Proxima N W01 Thin Reg", "proxima-nova", sans-serif;
+  font-size: 13px;
+  font-weight: 200;
+  color: #9B9B9B;
+}
+/* line 968, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog .dialog_wrapper .dialog_content.xxl.lightbox_farefamily .farefamily_row {
+  display: table;
+  width: 100%;
+  border-bottom: 1px solid #E0DDDD;
+}
+/* line 972, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog .dialog_wrapper .dialog_content.xxl.lightbox_farefamily .farefamily_row .left_cell,
+.dialog .dialog_wrapper .dialog_content.xxl.lightbox_farefamily .farefamily_row .right_cell {
+  display: table-cell;
+  vertical-align: middle;
+}
+/* line 977, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog .dialog_wrapper .dialog_content.xxl.lightbox_farefamily .farefamily_row .left_cell {
+  padding: 18px 0 18px 20px;
+}
+/* line 980, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog .dialog_wrapper .dialog_content.xxl.lightbox_farefamily .farefamily_row .left_cell .ctn_text_fare span {
+  font-size: 14px;
+  display: block;
+  font-weight: 200;
+}
+/* line 984, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog .dialog_wrapper .dialog_content.xxl.lightbox_farefamily .farefamily_row .left_cell .ctn_text_fare span.big_span {
+  font-size: 20px;
+}
+/* line 989, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog .dialog_wrapper .dialog_content.xxl.lightbox_farefamily .farefamily_row .left_cell span {
+  color: #000000;
+  font-weight: 200;
+  display: block;
+  text-transform: uppercase;
+}
+/* line 996, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog .dialog_wrapper .dialog_content.xxl.lightbox_farefamily .farefamily_row .right_cell {
+  padding: 18px 10px 18px 0;
+  width: 75%;
+}
+/* line 999, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog .dialog_wrapper .dialog_content.xxl.lightbox_farefamily .farefamily_row .right_cell ul {
+  display: table;
+  width: 100%;
+  height: 36px;
+  margin-bottom: 0;
+}
+/* line 1004, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog .dialog_wrapper .dialog_content.xxl.lightbox_farefamily .farefamily_row .right_cell ul li {
+  display: table-cell;
+  width: 15%;
+  vertical-align: middle;
+  text-align: center;
+  border-left: 1px solid #E0DDDD;
+}
+/* line 1010, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog .dialog_wrapper .dialog_content.xxl.lightbox_farefamily .farefamily_row .right_cell ul li span {
+  display: block;
+  line-height: 1.25;
+  margin: 0 5%;
+}
+/* line 1019, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog .dialog_wrapper .dialog_content.xxl.lightbox_farefamily .farefamily_row .right_cell ul.desc_wrapper.header_dialog li span {
+  font-family: "Source Sans Pro", sans-serif;
+  color: #000000;
+  font-weight: 400;
+}
+/* line 1024, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog .dialog_wrapper .dialog_content.xxl.lightbox_farefamily .farefamily_row .right_cell ul.desc_wrapper.header_dialog li .bagagge_wrapper {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+/* line 1028, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog .dialog_wrapper .dialog_content.xxl.lightbox_farefamily .farefamily_row .right_cell ul.desc_wrapper.header_dialog li .bagagge_wrapper .hand_lugagge, .dialog .dialog_wrapper .dialog_content.xxl.lightbox_farefamily .farefamily_row .right_cell ul.desc_wrapper.header_dialog li .bagagge_wrapper .bagagge {
+  display: inline-block;
+  background-image: url(../graphic/common/fare_icons.png);
+  height: 17px;
+  text-align: left;
+  padding-top: 4px;
+  margin: .25em .25em 0 .25em;
+}
+/* line 1036, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog .dialog_wrapper .dialog_content.xxl.lightbox_farefamily .farefamily_row .right_cell ul.desc_wrapper.header_dialog li .bagagge_wrapper .hand_lugagge {
+  background-position: 8px -1px;
+  width: 21px;
+}
+/* line 1040, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog .dialog_wrapper .dialog_content.xxl.lightbox_farefamily .farefamily_row .right_cell ul.desc_wrapper.header_dialog li .bagagge_wrapper .bagagge {
+  background-position: 8px -51px;
+  width: 25px;
+}
+/* line 1044, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog .dialog_wrapper .dialog_content.xxl.lightbox_farefamily .farefamily_row .right_cell ul.desc_wrapper.header_dialog li .bagagge_wrapper .hand_lugagge_disclaimer,
+.dialog .dialog_wrapper .dialog_content.xxl.lightbox_farefamily .farefamily_row .right_cell ul.desc_wrapper.header_dialog li .bagagge_wrapper .bagagge_disclaimer {
+  display: none;
+  color: white;
+  background-color: #4F5457;
+  padding: .5em;
+  position: absolute;
+  text-align: center;
+  border-radius: .25em;
+  text-transform: uppercase;
+  font-size: 12px;
+}
+/* line 1055, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog .dialog_wrapper .dialog_content.xxl.lightbox_farefamily .farefamily_row .right_cell ul.desc_wrapper.header_dialog li .bagagge_wrapper .hand_lugagge_disclaimer:before,
+.dialog .dialog_wrapper .dialog_content.xxl.lightbox_farefamily .farefamily_row .right_cell ul.desc_wrapper.header_dialog li .bagagge_wrapper .bagagge_disclaimer:before {
+  content: '';
+  background-image: url(../graphic/common/fare_icons.png);
+  background-position: 0px -687px;
+  background-repeat: no-repeat;
+  height: 11px;
+  width: 23px;
+  left: 50%;
+  margin-left: -11.5px;
+  display: inline-block;
+  position: absolute;
+  top: -9px;
+}
+/* line 1070, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog .dialog_wrapper .dialog_content.xxl.lightbox_farefamily .farefamily_row .right_cell ul.desc_wrapper.header_dialog li .bagagge_wrapper .hand_lugagge_disclaimer {
+  color: #FFFFFF;
+  width: 200px;
+  margin: 10px 0 0 -84px;
+  font-family: "Source Sans Pro", sans-serif;
+  font-weight: 400;
+}
+/* line 1078, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog .dialog_wrapper .dialog_content.xxl.lightbox_farefamily .farefamily_row .right_cell ul.desc_wrapper.header_dialog li .bagagge_wrapper .bagagge_disclaimer {
+  color: #FFFFFF;
+  font-family: "Source Sans Pro", sans-serif;
+  font-weight: 400;
+  width: 100px;
+  margin: 10px 0 0 -33px;
+}
+/* line 1087, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog .dialog_wrapper .dialog_content.xxl.lightbox_farefamily .farefamily_row .right_cell ul.desc_wrapper.header_dialog li .bagagge_wrapper:hover .hand_lugagge_disclaimer,
+.dialog .dialog_wrapper .dialog_content.xxl.lightbox_farefamily .farefamily_row .right_cell ul.desc_wrapper.header_dialog li .bagagge_wrapper:hover .bagagge_disclaimer {
+  display: block;
+}
+/* line 1098, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog .dialog_wrapper .dialog_content.xxl.lightbox_farefamily .footer_row {
+  padding: 20px 0;
+}
+/* line 1100, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog .dialog_wrapper .dialog_content.xxl.lightbox_farefamily .footer_row span {
+  text-align: center;
+  display: block;
+}
+/* line 1103, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog .dialog_wrapper .dialog_content.xxl.lightbox_farefamily .footer_row span a {
+  -moz-transition-property: background-color;
+  -o-transition-property: background-color;
+  -webkit-transition-property: background-color;
+  transition-property: background-color;
+  -moz-transition-duration: 300ms;
+  -o-transition-duration: 300ms;
+  -webkit-transition-duration: 300ms;
+  transition-duration: 300ms;
+  text-decoration: underline;
+  text-transform: uppercase;
+}
+/* line 1108, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog .dialog_wrapper .dialog_content.xxl.lightbox_farefamily .footer_row span a:hover {
+  color: #9B9B9B;
+}
+/* line 1118, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog.visible {
+  visibility: visible;
+  filter: progid:DXImageTransform.Microsoft.Alpha(enabled=false);
+  opacity: 1;
+}
+/* line 1123, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog.no_bg {
+  background-color: transparent;
+}
+/* line 1127, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog.no_bg .close {
+  z-index: 1;
+}
+/* line 1132, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog.no_bg .field_wrapper input {
+  color: #000 !important;
+}
+/* line 1140, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog.no_bg .radio.checked .field_wrapper label span {
+  background-position: 0 -78px;
+}
+/* line 1149, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog.no_bg .dialog_wrapper form {
+  display: block;
+}
+/* line 1157, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.dialog.no_opacity {
+  overflow: hidden;
+  background-color: #060d12;
+}
+
+/* line 1167, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.landing_login .dialog .dialog_wrapper .dialog_content {
+  padding: 40px 0 35px 0;
+  min-height: 532px;
+}
+/* line 1170, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.landing_login .dialog .dialog_wrapper .dialog_content .logo {
+  padding: 0px 50px 50px;
+}
+/* line 1173, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.landing_login .dialog .dialog_wrapper .dialog_content .dialog_title {
+  text-align: left;
+  padding: 0 50px;
+}
+/* line 1177, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.landing_login .dialog .dialog_wrapper .dialog_content .dialog_subtitle {
+  font-style: normal;
+  text-align: left;
+  margin-bottom: 60px;
+}
+/* line 1181, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.landing_login .dialog .dialog_wrapper .dialog_content .dialog_subtitle a {
+  color: #000000;
+  -moz-transition: color 250ms, background-color 250ms;
+  -o-transition: color 250ms, background-color 250ms;
+  -webkit-transition: color 250ms, background-color 250ms;
+  transition: color 250ms, background-color 250ms;
+  border-bottom: 1px solid #d9d9d9;
+}
+/* line 1185, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.landing_login .dialog .dialog_wrapper .dialog_content .dialog_subtitle a:hover {
+  color: #00beff;
+  border-color: #00beff;
+}
+/* line 1191, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.landing_login .dialog .dialog_wrapper .dialog_content .dialog_buttons {
+  padding: 0px 40px;
+}
+/* line 1193, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.landing_login .dialog .dialog_wrapper .dialog_content .dialog_buttons ul {
+  margin-bottom: 8px;
+}
+/* line 1195, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.landing_login .dialog .dialog_wrapper .dialog_content .dialog_buttons ul li {
+  height: 50px;
+  line-height: 50px;
+}
+/* line 1198, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.landing_login .dialog .dialog_wrapper .dialog_content .dialog_buttons ul li.single {
+  width: 100%;
+}
+/* line 1204, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.landing_login .dialog .dialog_wrapper .dialog_content .footer_logos {
+  padding: 0px 45px;
+  display: table;
+  margin: 50px 0 0 0;
+  width: 645px;
+}
+/* line 1209, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.landing_login .dialog .dialog_wrapper .dialog_content .footer_logos li {
+  display: table-cell;
+  vertical-align: middle;
+}
+/* line 1212, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.landing_login .dialog .dialog_wrapper .dialog_content .footer_logos li a {
+  float: left;
+}
+/* line 1214, content/airstatic/assets/style/widgets/ui_dialog.scss */
+.landing_login .dialog .dialog_wrapper .dialog_content .footer_logos li a.amazon {
+  margin-top: 10px;
+}

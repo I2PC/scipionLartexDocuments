@@ -10,7 +10,7 @@
    \begin{figure}[H]
   \centering 
   \captionsetup{width=.7\linewidth} 
-  \includegraphics[width=0.85\textwidth]{Images/sidechains}
+  \includegraphics[width=0.65\textwidth]{Images/sidechains}
   \caption{Naming convention in side chains explained in a lysine-tyrosine strand. Note that these two residues are from within a protein and thus have no terminal region.}
   \label{fig:emringer_chi1}
   \end{figure}
@@ -100,6 +100,8 @@
     \ttt{split \#1}\\
     \ttt{scipionwrite model \#1.1}\\
     
+    Remark that the model saved in \chimera command line includes both the aminoacid chain and the \ttt{HEME} group. In case you are interested in extracting only the aminoacid chain, you can use the protocol \scommand{atomstructutils - operator}, specifically designed to extract/add individual chains from/to an atomic structure (Atomic Structure Chain Operator; Appendix \ref{app:atomStructUtilsOperatorProtocol}).
+    
     \item Protocol \scommand{powerfit}:
     
     Open \powerfit protocol and follow the instructions above indicated. The structure saved in \chimera operate will replace this time our previous $model$ (\ffigure{fig:powerfit_protocol} (2)). Select \ttt{item 2} as best fit.\\
@@ -132,7 +134,7 @@
    \begin{figure}[H]
     \centering 
     \captionsetup{width=.7\linewidth} 
-    \includegraphics[width=0.90\textwidth]{Images/Fig38}
+    \includegraphics[width=0.70\textwidth]{Images/Fig38}
     \caption{$Model$ generated for \ttt{metHgb} $\alpha$ subunit superposed to published $\alpha$ chain of \ttt{5NI1} structure.}
     \label{fig:superpose_pdbs_chimera}
    \end{figure}
@@ -142,5 +144,5 @@
  
  A $model$ for \ttt{metHgb} $\alpha$ subunit has to be selected at the end of validation process. According to the statistics of \ttable{table:refmac_question_9} (Appendix \ref{app:solutions}; \textbf{Question \ref{seq:structurevalidation}\_2}), $model$ obtained in the last step of modeling workflow (\refmac after RSRAC (modified)) has been selected due to the smallest RMSD value, high value of \emringer \ttt{score}, quite high value of \ccmask and acceptable \molprobity statistics. Follow a similar process to validate and select the $model$ generated for \ttt{metHgb} $\beta$ subunit. Appendix \ref{app:solutions} \textbf{Question \ref{seq:structurevalidation}\_3} contains a statistics table for \ttt{metHgb} $\beta$ subunit, similar to that obtained for \ttt{metHgb} $\alpha$ subunit.\\
  
- In the real world, selected $models$ usually are the starting point to improve specific validation parameters by additional refinement. Since the improvement of certain parameters normally implies worsening of other parameters, a final compromise solution has to be taken.\\
+ In the real world selected $models$ usually are the starting point to improve specific validation parameters by additional refinement. Since the improvement of certain parameters normally implies worsening of other parameters, a final compromise solution has to be taken.\\
 

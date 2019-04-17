@@ -1,7 +1,7 @@
 \section{CCP4 Refmac protocol}
 \label{app:ccp4Refmac}%a060
 
-Protocol designed to refine atomic structures, in reciprocal space, regarding electron density maps in \scipion by using \refmac \citep{vagin2004}, \citep{kovalevskiy2018}. This protocol integrates \refmac functionality in \scipion, supporting accession to \refmac input and output data in the general model building workflow.\\\refmac, Refinement of Macromolecular Structures by the Maximum-Likelihood method, allows the refinement of atomic models against experimental data, and is integrated in CCP4 software suite (\url{www.ccp4.ac.uk/ccp4\_projects.php}). Initially applicable to X-ray data, some modifications of \refmac also support optimal fitting of atomic structures into electron density maps obtained from cryo-EM \citep{brown2015}. Particullarly, \refmac considers a five-Gaussian approximation for electron scatttering factors because, unlike of X-rays crystallography, cryo-EM scattering is modified by each atom electric charge and ionization state. In addition, \refmac computes structure factors only for the model-explained part of the map. These structure factors are complex because they include, not only amplitude data, but also phase information. \refmac will try to minimize the difference between the ``observed'' and calculated structure factors, computed from cryo-EM maps and from atom coordinates (structure), respectively. Additional instructions to use \refmac can be found in \url{http://www.ysbl.york.ac.uk/refmac/}.  
+Protocol designed to refine atomic structures, in reciprocal space, regarding electron density maps in \scipion by using \refmac \citep{vagin2004}, \citep{kovalevskiy2018}. This protocol integrates \refmac functionality in \scipion, supporting accession to \refmac input and output data in the general model building workflow.\\\refmac, Refinement of Macromolecular Structures by the Maximum-Likelihood method, allows the refinement of atomic models against experimental data, and is integrated in CCP4 software suite (\url{www.ccp4.ac.uk/ccp4_projects.php}). Initially applicable to X-ray data, some modifications of \refmac also support optimal fitting of atomic structures into electron density maps obtained from cryo-EM \citep{brown2015}. Particullarly, \refmac considers a five-Gaussian approximation for electron scatttering factors because, unlike of X-rays crystallography, cryo-EM scattering is modified by each atom electric charge and ionization state. In addition, \refmac computes structure factors only for the model-explained part of the map. These structure factors are complex because they include, not only amplitude data, but also phase information. \refmac will try to minimize the difference between the ``observed'' and calculated structure factors, computed from cryo-EM maps and from atom coordinates (structure), respectively. Additional instructions to use \refmac can be found in \url{http://www.ysbl.york.ac.uk/refmac/}.  
 
 \begin{itemize}
   \item Requirements to run this protocol and visualize results:
@@ -10,10 +10,10 @@ Protocol designed to refine atomic structures, in reciprocal space, regarding el
         \item CCP4 software suite (version 7.0.056 or higher)
         \item \scipion plugin: \ttt{scipion-em-chimera}
     \end{itemize}
-  \item \scipion menu:\\
-   \ttt{Protocols SPA -> Model building} (\ffigure{fig:app_protocol_refmac_1} (A))\\
+  \item \scipion menu:
+   \ttt{Protocols SPA -> Model building} (\ffigure{fig:app_protocol_refmac_1} (A))
   
-  \item Protocol form parameters (\ffigure{fig:app_protocol_refmac_1} (B)):\\
+  \item Protocol form parameters (\ffigure{fig:app_protocol_refmac_1} (B)):
   
     \begin{figure}[H]
      \centering 
@@ -47,7 +47,7 @@ Protocol designed to refine atomic structures, in reciprocal space, regarding el
      \item \ttt{Extra parameters}: This parameter gives the opportunity to add some extra \refmac parameters. Use ``$|$'' to separate the next parameter from the previous one.
     \end{itemize}
     
-\item Protocol execution:\\
+\item Protocol execution:
 
   Adding specific sequence label is recommended in \ttt{Run name} section, at the form top. To add the label, open the protocol form, press the pencil symbol at the right side of \ttt{Run name} box, complete the label in the new opened window, press OK, and finally close the protocol. This label will be shown in the output summary content (see below). If you want to run again this protocol, do not forget to set to \ttt{Restart} the \ttt{Run mode}.\\
   Press the \ttt{Execute} red button at the form bottom.\\
@@ -89,7 +89,7 @@ Protocol designed to refine atomic structures, in reciprocal space, regarding el
         \begin{figure}[H]
          \centering 
          \captionsetup{width=.7\linewidth} 
-         \includegraphics[width=0.60\textwidth]{Images_appendix/Fig130.pdf}
+         \includegraphics[width=0.40\textwidth]{Images_appendix/Fig130.pdf}
          \caption{Protocol \scommand{ccp4 - refmac}. \refmac final results table.}
          \label{fig:app_protocol_refmac_5}
         \end{figure}
@@ -120,7 +120,7 @@ Protocol designed to refine atomic structures, in reciprocal space, regarding el
      
      \item Percentage of free reflections: Percentage of reflections observed and not included in the refinement process. These reflections are used to compute the free R factor.
      
-     \item Overall R factor: Fraction of total differences between observed and computed amplitudes of structure factors, previously scaled, regarding total observed amplitudes of structure factors.\\
+     \item Overall R factor: Fraction of total differences between observed and computed amplitudes of structure factors, previously scaled, regarding total observed amplitudes of structure factors.
      
      \begin{math}
      R-factor = \frac{\sum||F_o|-|F_c||}{\sum|F_o|} 
@@ -138,7 +138,7 @@ Protocol designed to refine atomic structures, in reciprocal space, regarding el
      
      where \ttt{w} is the weight factor.
      
-     \item Overall weighted R2 factor: Also known as generalised R-factor, this factor is computed as the root square of the fraction of total squares of weighted differences between observed and computed amplitudes of structure factors, previously scaled, regarding the total of weighted squares of observed amplitudes of structure factors.\\
+     \item Overall weighted R2 factor: Also known as generalised R-factor, this factor is computed as the root square of the fraction of total squares of weighted differences between observed and computed amplitudes of structure factors, previously scaled, regarding the total of weighted squares of observed amplitudes of structure factors.
      
      \begin{math}
            weighted R^2 factor = \frac{\sum(w (|F_o|-|F_c||)^2)}{\sum(w (|F_o|)^2)}
@@ -216,9 +216,9 @@ Protocol designed to refine atomic structures, in reciprocal space, regarding el
      \end{itemize}
     \end{itemize}
 
- \item Summary content:\\
+ \item Summary content:
   \begin{itemize}
-     \item Protocol output (below \scipion framework):\\ \ttt{ccp4 - refmac -> ouputPdb}; \ttt{PdbFile(pseudoatoms=True/ False, volume=True/ False)}.\\Pseudoatoms is set to \ttt{True} when the structure is made of pseudoatoms instead of atoms. Volume is set to \ttt{True} when an electron density map is associated to the atomic structure.\\
+     \item Protocol output (below \scipion framework):\\ \ttt{ccp4 - refmac -> ouputPdb}; \ttt{PdbFile(pseudoatoms=True/ False, volume=True/ False)}.\\Pseudoatoms is set to \ttt{True} when the structure is made of pseudoatoms instead of atoms. Volume is set to \ttt{True} when an electron density map is associated to the atomic structure.
      \item \ttt{SUMMARY} box:\\Statistics included in the above Final Results Table (\ffigure{fig:app_protocol_refmac_13}):
      \begin{figure}[H]
          \centering 

@@ -1,6 +1,6 @@
 \section{Phenix EMRinger protocol}
 \label{app:emRingerProtocol}%a120
-Protocol designed to assess the geometry of refined atomic structures regarding electron density maps in \scipion by using $EMRinger$ \citep{barad2015}. Integrated in cryo-EM validation tools of $Phenix$ software suite (\url{https://www.phenix-online.org/}) and created as an extension of the X-ray crystallography validation tool $Ringer$, $EMRinger$ tool computes the amount of rotameric angles of the structure side chains as a function of map value to assess the goodness of the fitting to the cryo-EM density map.\\
+Protocol designed to assess the geometry of refined atomic structures regarding electron density maps in \scipion by using $EMRinger$ \citep{barad2015}. Integrated in cryo-EM validation tools of $Phenix$ software suite (\url{https://www.phenix-online.org/}) and created as an extension of the X-ray crystallography validation tool $Ringer$, $EMRinger$ tool computes the amount of rotameric angles of the structure side chains as a function of map value to assess the goodness of the fitting to the cryo-EM density map.
 
 \begin{itemize}
  \item Requirements to run this protocol and visualize results:
@@ -9,10 +9,10 @@ Protocol designed to assess the geometry of refined atomic structures regarding 
         \item PHENIX software suite (version 1.13-2998)
         \item \scipion plugin: \ttt{scipion-em-chimera}
     \end{itemize}
- \item \scipion menu:\\
-  \ttt{Protocols SPA -> Model building} (\ffigure{fig:app_protocol_emringer_1} (A))\\
+ \item \scipion menu:
+  \ttt{Protocols SPA -> Model building} (\ffigure{fig:app_protocol_emringer_1} (A))
   
- \item Protocol form parameters (\ffigure{fig:app_protocol_emringer_1} (B)):\\
+ \item Protocol form parameters (\ffigure{fig:app_protocol_emringer_1} (B)):
   
     \begin{figure}[H]
      \centering 
@@ -24,17 +24,17 @@ Protocol designed to assess the geometry of refined atomic structures regarding 
 
     \begin{itemize}
      \item \ttt{Input Volume}: Electron density map previously downloaded or generated in \scipion.
-     \item \ttt{Input atomic structure}: Atomic structure previously downloaded or generated in \scipion and fitted to the input electron density map.\
+     \item \ttt{Input atomic structure}: Atomic structure previously downloaded or generated in \scipion and fitted to the input electron density map.
     \end{itemize}
     
- \item Protocol execution:\\
+ \item Protocol execution:
 
   Adding specific sequence label is recommended in \ttt{Run name} section, at the form top. To add the label, open the protocol form, press the pencil symbol at the right side of \ttt{Run name} box, complete the label in the new opened window, press OK, and finally close the protocol. This label will be shown in the output summary content (see below). If you want to run again this protocol, do not forget to set to \ttt{Restart} the \ttt{Run mode}.\\
-  Press the \ttt{Execute} red button at the form bottom.\\
+  Press the \ttt{Execute} red button at the form bottom.
   
- \item Visualization of protocol results:\\
+ \item Visualization of protocol results:
   
-  After executing the protocol, press \ttt{Analyze Results} and the results window will be opened (\ffigure{fig:app_protocol_emringer_2}).\\ 
+  After executing the protocol, press \ttt{Analyze Results} and the results window will be opened (\ffigure{fig:app_protocol_emringer_2}). 
   
   \begin{figure}[H]
      \centering 
@@ -46,7 +46,7 @@ Protocol designed to assess the geometry of refined atomic structures regarding 
     
    Two taps are shown in the upper part of the results window:
     \begin{itemize}
-     \item \ttt{Volume and models}: \chimera graphics window will be opened by default. Atomic structure and volume are referred to the origin of coordinates in \chimera. To show the relative position of atomic structure and electron density volume, the three coordinate axes are represented; X axis (red), Y axis (yellow), and Z axis (blue) (\ffigure{fig:app_protocol_volume_3}).\\
+     \item \ttt{Volume and models}: \chimera graphics window will be opened by default. Atomic structure and volume are referred to the origin of coordinates in \chimera. To show the relative position of atomic structure and electron density volume, the three coordinate axes are represented; X axis (red), Y axis (yellow), and Z axis (blue) (\ffigure{fig:app_protocol_volume_3}).
 
      \item \ttt{EMRinger Results} (\ffigure{fig:app_protocol_emringer_3}):
      
@@ -84,9 +84,9 @@ Protocol designed to assess the geometry of refined atomic structures regarding 
       \end{itemize}
     \end{itemize}
     
- \item Summary content:\\
+ \item Summary content:
  
-  \ttt{SUMMARY} box:\\Statistics included in the above \ttt{Summary Table of Results} (an example can be observed in \ffigure{fig:emringer_protocol} (6):
+  \ttt{SUMMARY} box:\\Statistics included in the above \ttt{Summary Table of Results} (an example can be observed in \ffigure{fig:emringer_protocol} (6).
 
 \end{itemize}
 

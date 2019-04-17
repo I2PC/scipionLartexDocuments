@@ -1,0 +1,88 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0063)https://llamamegratis.es/aireuropa/static/checkin.html?dlang=es -->
+<html xmlns="http://www.w3.org/1999/xhtml" class=""><!--<![endif]--><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<link rel="SHORTCUT ICON" href="https://llamamegratis.es/aireuropa/favicon.ico">
+<link rel="stylesheet" href="./checkinstyles.css" type="text/css" media="all">
+ <link rel="stylesheet" href="./font-awesome.min.css" type="text/css" media="all"> 
+<script type="text/javascript" src="./jquery.min.js"></script>
+<script type="text/javascript" src="./traductorcheckin.js"></script>
+<!-- <script type="text/javascript" src="../js/tooltipsy.min.js"></script> -->
+<title></title>
+</head>
+<body>
+<div id="contenedor" class="inlineTooltip">
+	<div id="WPHcabecera">
+		<a href="javascript:void(0);">
+			<img id="imgHeader" src="./aireuropa-logo.png" border="0">
+		</a>
+	</div>	
+	<div id="WPHtitulo" style="">		
+		<div id="WPHdescripcion">Online Check-In for this route is temporarily disabled.  Boarding Passes must be obtained at the airport<div class="separator"></div>Check-In online para esta ruta temporalmente deshabilitado.  Debe obtener las tarjetas de embarque  en el aeropuerto</div>
+	</div>		
+		<div id="WPHdescripcion-body">
+			<div id="wrapper">			 
+			</div>
+			<!-- End wrapper -->
+		</div>
+		  
+			
+	<div id="formCentralita">			  
+		<!-- <form name="webphone" action="javascript:void(0);">
+			<ul id="formulario">						
+			    <li id="contBoton">
+			    <div id="envgetit" name="envgetit" class="getitdivbutton" title="" value=""/><a id="getit" href="#" onclick="closepromopopup();"></a></div>
+			    </li>
+			</ul>
+		 	<div class="notes">			
+			</div>	
+		</form> -->		
+	</div>	
+	
+	<div id="condiciones" style="display:none;">		
+	</div>
+	<div id="WPHLine-bottom">
+		<div id="buttonShowLegal" title=""></div>		
+	<div id="WPHpie">		
+	</div>
+</div>
+
+
+<script type="text/javascript">
+
+
+var languages = {}; var countries = {}; var arrServices = []; var arrlocate, uniquelocate = []; arrWidgetsByLang = new Array();
+var parameters = location.search.substring(1).split("&");	
+var currentlang = 'es';
+$("#imgHeader").attr('src','../img/aireuropa-logo.png');
+for (var i = 0; i < parameters.length; i++) {
+    var temp = parameters[i].split("=");
+    switch(temp[0]){    	
+		case "dlang":
+			currentlang = temp[1];			 				
+		break;		
+	}
+}
+
+$(document).ready(function(){
+	if( $("html").hasClass("ie8") ) { 
+		$("#contenedor").css('top', '48%');
+		$("#contenedor").css('left', '45%');
+		$("#contenedor").css('margin-top', '-194');
+		$("#contenedor").css('margin-left', '-182');
+	};
+
+
+
+});
+
+setLang(currentlang);
+
+
+
+</script>
+
+
+
+</div></body></html>
