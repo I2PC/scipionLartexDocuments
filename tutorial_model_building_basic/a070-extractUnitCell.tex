@@ -1,7 +1,7 @@
 \section{Extract unit cell protocol}
 \label{app:extractUnitCell}%a070
-Protocol designed to obtain the smallest asymmetric subunit of an electron density map having certain types of rotational symmetry.\\
-WARNING: This protocol requires the starting volume located in the center of coordinate axes.
+Protocol designed to obtain in \scipion the smallest asymmetric subunit of an electron density map having certain types of rotational symmetry.\\
+WARNING: This protocol requires the starting volume located in the center of coordinate axes to equal the center of symmetry with the origin of coordinates.
 
 \begin{itemize}
   \item Requirements to run this protocol and visualize results:
@@ -38,10 +38,10 @@ WARNING: This protocol requires the starting volume located in the center of coo
   \begin{itemize}
   \item Cyclic symmetry \ttt{Cn (Cn)}: Only one symmetry axis goes through the geometric center of the volume. Two more form parameters are shown when this type of symmetry is selected:
    \begin{itemize}
-    \item \ttt{Symmetry Order}: Number of times (\ttt{n}) in which a volume shows the same shape when the volume rotates around the symmetry axis from 0 to 360º. If the same shape is only obtained after turning 360º, \ttt{n = 1}, which means that the volume has no symmetry. \ttt{360º/n} determines the rotation angle. 
+    \item \ttt{Symmetry Order}: Number of times (\ttt{n}) in which a volume shows the same shape when the volume rotates around the symmetry axis from 0 to 360º. If the same shape is only obtained after turning 360º, then \ttt{n = 1}. This means that the volume has no symmetry. \ttt{360º/n} determines the rotation angle. 
 	\item \ttt{offset}: Starting angle around Z axis. 
    \end{itemize}
-  \item Dihedral symmetry \ttt{Dn (Dn)}: Two perpendicular symmetry axis go through the geometric center of the volume. As in the case of cyclic symmetry, two more form parameters are shown when this type of symmetry is selected:
+  \item Dihedral symmetry \ttt{Dn (Dn)}: Two perpendicular symmetry axes go through the geometric center of the volume. As in the case of cyclic symmetry, two more form parameters are shown when this type of symmetry is selected:
    \begin{itemize}
     \item \ttt{Symmetry Order}: Number of times (\ttt{n}) in which a volume shows the same shape when the volume rotates around both symmetry axes from 0 to 360º. Analogously, \ttt{360º/n} determines the rotation angle. 
 	\item \ttt{offset}: Starting angle around Z axis. 
@@ -52,14 +52,14 @@ WARNING: This protocol requires the starting volume located in the center of coo
   \end{itemize}
   
   \item \ttt{Inner Radius (px)}: Minimal distance from the geometric center that delimits inwards the part of the map electron density that will be included in the extracted volume. A wizard symbol on the right side of this parameter can be helpful to select this radius.
-  \item \ttt{Outer Radius (px)}: Maximal distance from the geometric center that delimits outwards the part of the map electron density to be included in the extracted volume. Again, the wizard symbol on the right side of this parameter can be helpful to select this radius.
+  \item \ttt{Outer Radius (px)}: Maximal distance from the geometric center that delimits outwards the part of the map electron density to be included in the extracted volume. In other words, the part extracted of the map electron density will be between the \ttt{Inner} and the \ttt{Outer Radius}. Again, the wizard symbol on the right side of this parameter can be helpful to select this radius.  
   \item \ttt{Expand Factor}: Additional fraction of the asymmetrical unit cell that will be included in the extracted volume.
   \end{itemize}
 
   \item Protocol execution:
   
   Press the \ttt{Execute} red button at the form bottom.\\
-  Adding specific extracted volume label is recommended in \ttt{Run name} section, at the form top. To add the label, open the protocol form, press the pencil symbol at the right side of \ttt{Run name} box, complete the label in the new opened window, press OK, and finally close the protocol. If you want to run again this protocol, do not forget to set to \ttt{Restart} the \ttt{Run mode}.
+  Adding specific extracted volume label is recommended in \ttt{Run name} section, at the form top. To add the label, open the protocol form, press the pencil symbol at the right side of \ttt{Run name} box, complete the label in the new opened window, press OK and, finally, close the protocol. If you want to run again this protocol, do not forget to set to \ttt{Restart} the \ttt{Run mode}.
   
   \item Visualization of protocol results:
   
@@ -76,17 +76,17 @@ WARNING: This protocol requires the starting volume located in the center of coo
    \begin{itemize}
    \item \ttt{chimera}: $Chimera$ graphics window
    
-   Initial whole volume and extracted volume appear referred to the origin of coordinates in \chimera. To show the relative position of the volume, the three coordinate axes are represented; X axis (red), Y axis (yellow), and Z axis (blue) (\ffigure{fig:app_protocol_volume_3}). Coordinate axes, initial volume, and extracted unit cell volume are model numbers \ttt{\#0}, \ttt{\#1} and \ttt{\#2}, respectively, in $Chimera$ \ttt{Model Panel}. Volume coordinates and pixel size can be checked in $Chimera$ main menu \ttt{Tools -> Volume Data -> Volume Viewer -> Features -> Coordinates: Origin index/ Voxel size}. Take into account that coordinates appear in pixels while they have been introduced in \AA.
+   Initial whole volume and extracted volume appear referred to the origin of coordinates in \chimera. To show the relative position of the volume, the three coordinate axes are represented; X axis (red), Y axis (yellow), and Z axis (blue) (\ffigure{fig:app_protocol_volume_3}). Coordinate axes, initial volume, and extracted unit cell volume are model numbers \ttt{\#0}, \ttt{\#1} and \ttt{\#2}, respectively, in $Chimera$ \ttt{Model Panel}. Volume coordinates and pixel size can be checked in $Chimera$ main menu \ttt{Tools -> Volume Data -> Volume Viewer -> Features -> Coordinates: Origin index/ Voxel size}. WARNING: Take into account that coordinates appear in pixels while they have been introduced in \AA.
    
   \item \ttt{slices}: $ShowJ$
    
    \url{https://github.com/I2PC/scipion/wiki/ShowJ}\\
-   Each volume can be independently visualized by selecting it in the upper menu as arrow indicates in \ffigure{fig:app_protocol_extractUnitCell_3}.
+   Each volume can be independently visualized by selecting it in the upper menu as the arrow indicates in \ffigure{fig:app_protocol_extractUnitCell_3}.
    
    \begin{figure}[H]
     \centering 
     \captionsetup{width=.7\linewidth} 
-    \includegraphics[width=0.75\textwidth]{Images_appendix/Fig109.pdf}
+    \includegraphics[width=0.70\textwidth]{Images_appendix/Fig109.pdf}
     \caption{Protocol \scommand{extract unit cell}. Volume selection with ShowJ.}
     \label{fig:app_protocol_extractUnitCell_3}
    \end{figure}

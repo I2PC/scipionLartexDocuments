@@ -49,7 +49,7 @@ Protocol designed to refine atomic structures, in reciprocal space, regarding el
     
 \item Protocol execution:
 
-  Adding specific sequence label is recommended in \ttt{Run name} section, at the form top. To add the label, open the protocol form, press the pencil symbol at the right side of \ttt{Run name} box, complete the label in the new opened window, press OK, and finally close the protocol. This label will be shown in the output summary content (see below). If you want to run again this protocol, do not forget to set to \ttt{Restart} the \ttt{Run mode}.\\
+  Adding specific map/structure label is recommended in \ttt{Run name} section, at the form top. To add the label, open the protocol form, press the pencil symbol at the right side of \ttt{Run name} box, complete the label in the new opened window, press OK and, finally, close the protocol. This label will be shown in the output summary content (see below). If you want to run again this protocol, do not forget to set to \ttt{Restart} the \ttt{Run mode}.\\
   Press the \ttt{Execute} red button at the form bottom.\\
   
   \item Visualization of protocol results:
@@ -118,19 +118,19 @@ Protocol designed to refine atomic structures, in reciprocal space, regarding el
      
      \item Percentage observed: Percentage of observed reflections.
      
-     \item Percentage of free reflections: Percentage of reflections observed and not included in the refinement process. These reflections are used to compute the free R factor.
+     \item Percentage of free reflections: Percentage of reflections observed and not included in the refinement process. These reflections are used to compute the \ttt{R factor free}.
      
-     \item Overall R factor: Fraction of total differences between observed and computed amplitudes of structure factors, previously scaled, regarding total observed amplitudes of structure factors.
+     \item Overall \ttt{R factor}: Fraction of total differences between observed and computed amplitudes of structure factors, previously scaled, regarding total observed amplitudes of structure factors.\\
      
      \begin{math}
-     R-factor = \frac{\sum||F_o|-|F_c||}{\sum|F_o|} 
+     R factor = \frac{\sum||F_o|-|F_c||}{\sum|F_o|} 
      \end{math}\\
      
      where $|F_o|$ is the observed amplitude of the structure factor and $|F_c|$ is the calculated amplitude of the structure factor.
      
-     \item Average Fourier shell correlation: FSC, cross-correlation between shells of two 3D volumes in Fourier space, calculated using complex Fourier coefficients, divided by the number of structure factors in a particular frequency (resolution) shell. \begin{math}FSC_{average}\end{math} has the advantage over FSC of being independent on weight (related with inverse variances of cryo-EM density maps) whenever resolution shells are thin enough that the number of structure factors in each shell is almost equal \citep{brown2015}.
+     \item Average Fourier shell correlation: \ttt{FSC}, cross-correlation between shells of two 3D volumes in Fourier space, calculated using complex Fourier coefficients, divided by the number of structure factors in a particular frequency (resolution) shell. \begin{math}FSC_{average}\end{math} has the advantage over \ttt{FSC} of being independent on weight (related with inverse variances of cryo-EM density maps) whenever resolution shells are thin enough that the number of structure factors in each shell is almost equal \citep{brown2015}.
      
-     \item Overall weighted R factor: Overall R factor that applies a weight factor to differences between observed and computed amplitudes of structure factors, and also applies that weight factor to the observed amplitudes of structure factors. As in the \begin{math}FSC_{average}\end{math}, the weight is related with inverse variances of cryo-EM density maps.\\
+     \item Overall weighted \ttt{R factor}: Overall \ttt{R factor} that applies a weight factor to differences between observed and computed amplitudes of structure factors, and also applies that weight factor to the observed amplitudes of structure factors. As in the \begin{math}FSC_{average}\end{math}, the weight is related with inverse variances of cryo-EM density maps.\\
      
      \begin{math}
            weighted R factor = \frac{\sum(w |F_o|-|F_c||)}{\sum(w |F_o|)}
@@ -138,7 +138,7 @@ Protocol designed to refine atomic structures, in reciprocal space, regarding el
      
      where \ttt{w} is the weight factor.
      
-     \item Overall weighted R2 factor: Also known as generalised R-factor, this factor is computed as the root square of the fraction of total squares of weighted differences between observed and computed amplitudes of structure factors, previously scaled, regarding the total of weighted squares of observed amplitudes of structure factors.
+     \item Overall weighted \ttt{R2 factor}: Also known as generalised \ttt{R factor}, this factor is computed as the root square of the fraction of total squares of weighted differences between observed and computed amplitudes of structure factors, previously scaled, regarding the total of weighted squares of observed amplitudes of structure factors.\\
      
      \begin{math}
            weighted R^2 factor = \frac{\sum(w (|F_o|-|F_c||)^2)}{\sum(w (|F_o|)^2)}
@@ -148,34 +148,34 @@ Protocol designed to refine atomic structures, in reciprocal space, regarding el
      
      \item Overall correlation coefficient: Correlation between observed and calculated structure factor amplitudes, taking into account only reflections included in the refinement process.
      
-     \item Cruickshank's DPI for coordinate error: Diffraction precision index, useful to estimate atomic placement precision. This factor is a function of the number of atoms and reflections included in the refinement, of the overall R-factor, of the maximum resolutions of reflections included in the refinement, as well as the completeness of the observed data.
+     \item Cruickshank's \ttt{DPI} for coordinate error: Diffraction precision index, useful to estimate atomic placement precision. This factor is a function of the number of atoms and reflections included in the refinement, of the overall \ttt{R factor}, of the maximum resolutions of reflections included in the refinement, as well as the completeness of the observed data.
      
      \item Overall figure of merit: $Cosine$ of the error of phases in radians; 1 indicates no error.
      
-     \item ML based su of positional parameters: Comprehensive standard uncertainties of positional parameters based on the maximum likelihood function.
+     \item \ttt{ML} based su of positional parameters: Comprehensive standard uncertainties of positional parameters based on the maximum likelihood function.
      
-     \item ML based su of thermal parameters: Comprehensive standard uncertainties of thermal parameters (B-values) based on the maximum likelihood function.
+     \item \ttt{ML} based su of thermal parameters: Comprehensive standard uncertainties of thermal parameters (B values) based on the maximum likelihood function.
      \end{itemize}
      
-     \item R-factor vs. iteration:
-     Plot to visualize R-factor and R-factor free regarding iterations (\ffigure{fig:app_protocol_refmac_8}):
+     \item \ttt{R factor} vs. iteration:
+     Plot to visualize \ttt{R factor} and \ttt{R factor free} regarding iterations (\ffigure{fig:app_protocol_refmac_8}):
         \begin{figure}[H]
          \centering 
          \captionsetup{width=.7\linewidth} 
          \includegraphics[width=0.60\textwidth]{Images_appendix/Fig133.pdf}
-         \caption{Protocol \scommand{ccp4 - refmac}. R-factors vs. cycle plot.}
+         \caption{Protocol \scommand{ccp4 - refmac}. \ttt{R factor} vs. cycle plot.}
          \label{fig:app_protocol_refmac_8}
         \end{figure}
-     \item FOM vs. iteration:
+     \item \ttt{FOM} vs. iteration:
      Plot to visualize Figure Of Merit regarding iterations (\ffigure{fig:app_protocol_refmac_9}):
         \begin{figure}[H]
          \centering 
          \captionsetup{width=.7\linewidth} 
          \includegraphics[width=0.60\textwidth]{Images_appendix/Fig134.pdf}
-         \caption{Protocol \scommand{ccp4 - refmac}. Figure Of Merit vs. cycle plot.}
+         \caption{Protocol \scommand{ccp4 - refmac}. \ttt{Figure Of Merit} vs. cycle plot.}
          \label{fig:app_protocol_refmac_9}
         \end{figure}
-     \item -LL vs. iteration:
+     \item \ttt{-LL} vs. iteration:
      Plot to visualize the log(Likelihood) regarding iterations. Likelihood indicates the probability of a refined model, given the specific observed data  (\ffigure{fig:app_protocol_refmac_10}):
         \begin{figure}[H]
          \centering 
@@ -184,7 +184,7 @@ Protocol designed to refine atomic structures, in reciprocal space, regarding el
          \caption{Protocol \scommand{ccp4 - refmac}. log(Likelihood) vs. cycle plot.}
          \label{fig:app_protocol_refmac_10}
         \end{figure}
-     \item -LLfree vs. iteration:
+     \item \ttt{-LLfree} vs. iteration:
      Same definition as -LL vs. iteration, although considering only ``free'' reflections not included in refinement
      (\ffigure{fig:app_protocol_refmac_11}):
         \begin{figure}[H]
@@ -204,15 +204,15 @@ Protocol designed to refine atomic structures, in reciprocal space, regarding el
          \label{fig:app_protocol_refmac_12}
         \end{figure}
      \begin{itemize}
-     \item rmsBOND: Root mean square of structure atom covalent bond lengths, computed in \AA, regarding ideal values of bond lengths. Selecting default weighting, rmsBOND values will be around 0.02.
+     \item \ttt{rmsBOND}: Root mean square of structure atom covalent bond lengths, computed in \AA, regarding ideal values of bond lengths. Selecting default weighting, \ttt{rmsBOND} values will be around 0.02.
      
-     \item zBOND: Number of standard deviations from the mean of covalent bond lengths. Selecting default weighting, zBOND values will be between 0.2 and 1.0.
+     \item \ttt{zBOND}: Number of standard deviations from the mean of covalent bond lengths. Selecting default weighting, \ttt{zBOND} values will be between 0.2 and 1.0.
      
-     \item rmsANGL: Root mean square of bond angles from refined structure, computed in degrees, regarding their ideal values. rmsANGL values should converge around 0.1.
+     \item \ttt{rmsANGL}: Root mean square of bond angles from refined structure, computed in degrees, regarding their ideal values. \ttt{rmsANGL} values should converge around 0.1.
      
-     \item zANGL: Number of standard deviations from the mean of bond angles. 
+     \item \ttt{zANGL}: Number of standard deviations from the mean of bond angles. 
      
-     \item rmsCHIRAL: Root mean square of chiral volumes from refined structure regarding their ideal values from dictionary. Chiral volumes are determined by four atoms that form a piramid, and may show positive or negative values. 
+     \item \ttt{rmsCHIRAL}: Root mean square of chiral volumes from refined structure regarding their ideal values. Chiral volumes are determined by four atoms that form a piramid, and may show positive or negative values. 
      \end{itemize}
     \end{itemize}
 

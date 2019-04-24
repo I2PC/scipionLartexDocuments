@@ -29,7 +29,7 @@ Protocol designed to assess the geometry of refined atomic structures regarding 
     
  \item Protocol execution:
 
-  Adding specific sequence label is recommended in \ttt{Run name} section, at the form top. To add the label, open the protocol form, press the pencil symbol at the right side of \ttt{Run name} box, complete the label in the new opened window, press OK, and finally close the protocol. This label will be shown in the output summary content (see below). If you want to run again this protocol, do not forget to set to \ttt{Restart} the \ttt{Run mode}.\\
+  Adding specific map/structure label is recommended in \ttt{Run name} section, at the form top. To add the label, open the protocol form, press the pencil symbol on the right side of \ttt{Run name} box, complete the label in the new opened window, press OK and, finally, close the protocol. This label will be shown in the output summary content (see below). If you want to run again this protocol, do not forget to set to \ttt{Restart} the \ttt{Run mode}.\\
   Press the \ttt{Execute} red button at the form bottom.
   
  \item Visualization of protocol results:
@@ -40,7 +40,7 @@ Protocol designed to assess the geometry of refined atomic structures regarding 
      \centering 
      \captionsetup{width=.7\linewidth} 
      \includegraphics[width=0.60\textwidth]{Images_appendix/Fig140.pdf}
-     \caption{Protocol \scommand{phenix - emringer}. Taps to visualize Volume and models or $EMRinger$ results.}
+     \caption{Protocol \scommand{phenix - emringer}. Taps to visualize Volume and models and $EMRinger$ results.}
      \label{fig:app_protocol_emringer_2}
     \end{figure}
     
@@ -69,7 +69,7 @@ Protocol designed to assess the geometry of refined atomic structures regarding 
          \begin{itemize}
           \item \ttt{Optimal Threshold}: \ttt{Electron Potential} cutoff value of the volume, in a range of 20, at which maximum values of \ttt{EMRinger Score} and \ttt{Percentage of Rotameric Residues} are reached. 
           \item \ttt{Rotamer-Ratio}: \ttt{Percentage of Rotameric Residues} at the \ttt{Optimal Threshold}.
-          \item \ttt{Max Zscore}: Z-score indicating the significance of the distribution at the \ttt{Optimal Threshold}; in other words, Probability of finding a certain number of rotameric residues, at a specific side chain dihedral angle, among the total number of map peaks found above the \ttt{Optimal Threshold}, assuming a binomial distribution of rotameric residues B(\ttt{n, p)} ($n$: total number of map peaks found above the \ttt{Optimal Threshold}; $p$: 39/72; with map sampling every 5º, 39 angle binds are considered rotameric from a total of 360/5 = 72).
+          \item \ttt{Max Zscore}: Z-score indicating the significance of the distribution at the \ttt{Optimal Threshold}; in other words, probability of finding a certain number of rotameric residues at a specific side chain dihedral angle, among the total number of map peaks found above the \ttt{Optimal Threshold}, assuming a binomial distribution of rotameric residues B(\ttt{n, p)} ($n$: total number of map peaks found above the \ttt{Optimal Threshold}; $p$: 39/72; with map sampling every 5º, 39 angle binds are considered rotameric from a total of 360/5 = 72).
           \item \ttt{Model Length}: Total number of residues of the model considered in EMRinger computation, non-$\gamma$-branched, non-proline aminoacids with a non-H $\gamma$ atom.
           \item \ttt{EMRinger Score}: Highest Z-score, rescaled regarding model length, across the range of \ttt{Electron Potential} thresholds. Since the Z-score is rescaled to the \ttt{EMRinger Score} according model length, \ttt{EMRinger Score} allows suitable comparisons among different model-map pairs. \ttt{EMRinger Score} of 1.0 is usual for initial models refined regarding 3.2-3.5\AA resolution maps. For high-quality models with high resolution, \ttt{EMRinger Score} values higher than 2 are expected.
          \end{itemize}

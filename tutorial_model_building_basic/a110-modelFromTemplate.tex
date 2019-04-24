@@ -29,13 +29,13 @@ WARNING: Working with \modeller requires a license key, which can be requested f
 
   \begin{itemize}
    \item \ttt{Atomic structure used as template}: Atomic structure previously downloaded in \scipion. This structure was selected by sequence homology, i.e. by looking for the structurally characterized sequence more similar (with higher identity) to the target sequence.
-   \item \ttt{Chain}: Specific monomer of the macromolecule that has to be used as structure template of the target sequence. Use the wizard at the right side of \ttt{Chain} parameter to select that chain.
-   \item \ttt{Target sequence}: Sequence previously downloaded in \scipion. This sequence has to be modeled following the structure skeleton of the selected template.
-   \item \ttt{Additional sequences to align?}: $Modeller$ provides structural models of the target sequence based on a sequence alignment, in which at least sequences of template and target have to be included. Set to "No" this form parameter if no more sequences are going to be included in the alignment. Nevertheless, set the parameter to "Yes" if you want to perform a multiple sequence alignment. Additional sequences, others than template and target sequences, are required to accomplish this multiple alignment. That's why a new form parameter appear with the option "Yes":
+   \item \ttt{Chain}: Specific monomer of the macromolecule that has to be used as structure \ttt{template} of the \ttt{target sequence}. Use the wizard on the right side of \ttt{Chain} parameter to select that chain.
+   \item \ttt{Target sequence}: Sequence previously downloaded in \scipion. This sequence has to be modeled following the structure skeleton of the selected \ttt{template}.
+   \item \ttt{Additional sequences to align?}: $Modeller$ provides structural models of the \ttt{target sequence} based on a sequence alignment, in which at least sequences of \ttt{template} and \ttt{target} have to be included. Set to "No" this form parameter if no more sequences are going to be included in the alignment. Nevertheless, set the parameter to "Yes" if you want to perform a multiple sequence alignment. Additional sequences, others than \ttt{template} and \ttt{target} sequences, are required to accomplish this multiple alignment. That's why a new form parameter appear with the option "Yes":
     \begin{itemize}
 	 \item \ttt{Other sequences to align}: Box to complete with the additional sequences used to perform the multiple sequence alignment. All of them were previously downloaded in \scipion.
 	\end{itemize}
-   \item \ttt{Multiple alignment tool}: Multiple option box to select an alignment program. Three possible options are given for pairwise alignments (\ttt{Bio.pairwise2, Clustal Omega, MUSCLE}) whereas only the two last ones are allowed for multiple sequence alignments.
+   \item \ttt{Multiple alignment tool}: Box to select an alignment program. Three possible options are given for pairwise alignments (\ttt{Bio.pairwise2, Clustal Omega, MUSCLE}) whereas only the two last ones are allowed for multiple sequence alignments.
    \end{itemize}
    
   \item \ttt{Help} section
@@ -45,15 +45,15 @@ WARNING: Working with \modeller requires a license key, which can be requested f
   \end{itemize}
   \item Protocol execution:
   
-  Adding specific template-target label is recommended in \ttt{Run name} section, at the form top. To add the label, open the protocol form, press the pencil symbol at the right side of \ttt{Run name} box, complete the label in the new opened window, press OK, and finally, close the protocol. This label will be shown in the output summary content (see below). If you want to run again this protocol, do not forget to set to \ttt{Restart} the \ttt{Run mode}.\\
+  Adding specific template-target label is recommended in \ttt{Run name} section, at the form top. To add the label, open the protocol form, press the pencil symbol on the right side of \ttt{Run name} box, complete the label in the new opened window, press OK and, finally, close the protocol. This label will be shown in the output summary content (see below). If you want to run again this protocol, do not forget to set to \ttt{Restart} the \ttt{Run mode}.\\
   Press the \ttt{Execute} red button at the form bottom.\\
   
-  Several \chimera windows will be opened after executing the protocol. The two more relevant are \chimera graphics window and the multiple alignment window. In both windows the template chain is shown highlighted (see an example of these windows in \ffigure{fig:chimera_alignment}). Main steps to follow ahead are:
+  Several \chimera windows will be opened after executing the protocol. The two more relevant ones are \chimera graphics window and the multiple alignment window. In both windows the template chain is shown highlighted (see an example of these windows in \ffigure{fig:chimera_alignment}). Main steps to follow ahead are:
   \begin{itemize}
    \item Edit the alignment if needed. Sequences can be renamed, added, deleted, etc.. in the upper menu of the multiple sequence alignment window (\ttt{Edit -> }).
    \item Send this alignment to $Modeller$ by selecting \ttt{Structure -> Modeller (homology ...)} in the upper menu of the multiple sequence alignment window. 
-   \item Complete the new window opened for \ttt{Comparative Modeling with Modeller} (\ffigure{fig:app_protocol_seqHomology_2} (A)) with \iii{target} sequence (1), \iii{template} (2), Modeller license key (3) and Advanced options like the number of models retrieved by \modeller (4), as well as $model$ inclusion of heteroatoms (5) or water molecules (6). By pressing \ttt{Apply} or \ttt{OK} (5) the computation starts without hiding and hiding this panel window, respectively. The status of the job can be checked in the lower left corner of \chimera graphics window.
-   \item After a while a new panel window will show retrieved models of the target sequence (\ffigure{fig:app_protocol_seqHomology_2} (B)). Two statistics assess these models: \ttt{GA341}, statistical potentials derived-score, (1) and \ttt{zDOPE}, normalized Discrete Optimized Protein Energy, atomic distance depending-score (2). Reliable models show GA341 values higher than 0.7, and negative zDOPE values correspond to better models. One of the retrieved models has to be selected. Selected model and the rest of models can be checked in \chimera \ttt{Favorites -> Model Panel}.
+   \item Complete the new window opened for \ttt{Comparative Modeling with Modeller} (\ffigure{fig:app_protocol_seqHomology_2} (A)) with \iii{target} sequence (1), \iii{template} (2), Modeller license key (3) and Advanced options like the number of models retrieved by \modeller (4), as well as $model$ inclusion of heteroatoms (5) or water molecules (6). By pressing \ttt{Apply} or \ttt{OK} (5) the computation starts without hiding or hiding this panel window, respectively. The status of the job can be checked in the lower left corner of \chimera graphics window.
+   \item After a while a new panel window will show retrieved models of the \ttt{target} sequence (\ffigure{fig:app_protocol_seqHomology_2} (B)). Two statistics assess these models: \ttt{GA341}, statistical potentials derived-score, (1) and \ttt{zDOPE}, normalized Discrete Optimized Protein Energy, atomic distance depending-score (2). Reliable models show \ttt{GA341} values higher than 0.7, and negative \ttt{zDOPE} values correspond to better models. One of the retrieved models has to be selected. Selected model and the rest of models can be checked in \chimera \ttt{Favorites -> Model Panel}.
    \item Save the retrieved model selected according to the model number (\ttt{\#n}) shown in \chimera \ttt{Favorites -> Model Panel} by writing in \chimera \ttt{Favorites -> Command Line}:\\\ttt{scipionwrite model \#n}.
   \end{itemize}
   
@@ -69,7 +69,7 @@ WARNING: Working with \modeller requires a license key, which can be requested f
   \item Visualization of protocol results:
   
   After executing the protocol, press \ttt{Analyze Results} and \chimera graphics window will be opened by default. 
-  Atomic structures are referred to the origin of coordinates in \chimera . To show the relative position of the atomic structure, the three coordinate axes are represented; X axis (red), Y axis (yellow), and Z axis (blue) (\ffigure{fig:app_protocol_volume_3}). Coordinate axes and imported atomic structure are model numbers \ttt{\#0} and \ttt{\#1}, respectively, in \chimera \ttt{Model Panel}.
+  Atomic structures are referred to the origin of coordinates in \chimera . To show the relative position of the atomic structure, the three coordinate axes are represented; X axis (red), Y axis (yellow), and Z axis (blue) (\ffigure{fig:app_protocol_volume_3}). Coordinate axes and selected atomic structure \ttt{model} are model numbers \ttt{\#0} and \ttt{\#1}, respectively, in \chimera \ttt{Model Panel}.
    
    \item Summary content:
     \begin{itemize}

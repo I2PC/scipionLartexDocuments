@@ -17,7 +17,7 @@ Protocol designed to obtain contacts favorable and unfavorable (clashes or close
      \centering 
      \captionsetup{width=.7\linewidth} 
      \includegraphics[width=0.90\textwidth]{Images_appendix/Fig155.pdf}
-     \caption{Protocol \scommand{chimera contacts}. (A) Protocol location in \scipion menu. (B) Protocol form. (C) Protocol form detailing \ttt{Chain Labelling} for \ttt{I222r} symmetry.}
+     \caption{Protocol \scommand{chimera contacts}. A: Protocol location in \scipion menu. B: Protocol form. C: Protocol form detailing \ttt{Chain Labelling} for \ttt{I222r} symmetry.}
      \label{fig:app_protocol_contacts_1}
     \end{figure}
 
@@ -33,15 +33,15 @@ Protocol designed to obtain contacts favorable and unfavorable (clashes or close
      \item \ttt{Symmetry}: If the user selects \ttt{Yes}, an additional protocol param box will interrogate about the type of symmetry. In order to reconstruct a macromolecule from a unit cell, symmetries allowed are cyclic (\ttt{Cn}), dihedral (\ttt{Dn}), tetrahedral (\ttt{T}), octahedral (\ttt{O}), and eight icosahedral symmetries (\ttt{I}). Each icosahedral symmetry shows its respective \chimera orientation (\url{https://www.cgl.ucsf.edu/chimera/current/docs/UsersGuide/midas/sym.html}):
             \begin{itemize}
             \item \ttt{I222}: \chimera orientation \ttt{222}; two-fold symmetry axes along the X, Y, and Z axes.
-            \item \ttt{I222r}: \chimera orientation \ttt{222r}; idem except rotated 90\degree about Z. 
+            \item \ttt{I222r}: \chimera orientation \ttt{222r}; \chimera orientation \ttt{222} rotated 90\degree about Z. 
             \item \ttt{In25}: \chimera orientation \ttt{n25}; two-fold symmetry along Y and 5-fold along Z. 
-            \item \ttt{In25r}: \chimera orientation \ttt{n25r}; idem except rotated 180\degree about X.
+            \item \ttt{In25r}: \chimera orientation \ttt{n25r}; \chimera orientation \ttt{n25} rotated 180\degree about X.
             \item \ttt{I2n3}: \chimera orientation \ttt{2n3}; two-fold symmetry along X and 3-fold along Z. 
-            \item \ttt{I2n3r}: \chimera orientation \ttt{2n3r}; idem except rotated 180\degree about Y.
+            \item \ttt{I2n3r}: \chimera orientation \ttt{2n3r}; \chimera orientation \ttt{2n3} rotated 180\degree about Y.
             \item \ttt{I2n5}: \chimera orientation \ttt{2n5}; two-fold symmetry along X and 5-fold along Z.
-            \item \ttt{I2n5r}: \chimera orientation \ttt{2n5r}; idem  except rotated 180\degree about Y.
+            \item \ttt{I2n5r}: \chimera orientation \ttt{2n5r}; \chimera orientation \ttt{2n5} rotated 180\degree about Y.
             \end{itemize}
-    \item \ttt{Symmetry Order}: After selecting \ttt{Cn} or \ttt{Dn} symmetries, an additional protocol param box will interrogate about the symmetry order. An positive integer has to be written here. If the integer is \ttt{1} no symmetry will be applied. 
+    \item \ttt{Symmetry Order}: After selecting \ttt{Cn} or \ttt{Dn} symmetries, an additional protocol param box will interrogate about the symmetry order. A positive integer has to be written here. If the integer is \ttt{1} no symmetry will be applied. 
     \item \ttt{Tetrahedral orientation}: After selecting \ttt{T} symmetry, an additional protocol param box will interrogate about the tetrahedral orientation. The two \chimera orientation have been included (\url{https://www.cgl.ucsf.edu/chimera/current/docs/UsersGuide/midas/sym.html}):
             \begin{itemize}
             \item \ttt{222}: Two-fold symmetry axes along the X, Y, and Z axes, a three-fold along axis (1,1,1).
@@ -57,14 +57,14 @@ Protocol designed to obtain contacts favorable and unfavorable (clashes or close
 
   \item Protocol execution:
   
-  Adding specific protocol label is recommended in \ttt{Run name} section, at the form top. To add the label, open the protocol form, press the pencil symbol at the right side of \ttt{Run name} box, complete the label in the new opened window, press OK, and finally, close the protocol. This label will be shown in the output summary content (see below). If you want to run again this protocol, do not forget to set to \ttt{Restart} the \ttt{Run mode}.\\
+  Adding specific structure label is recommended in \ttt{Run name} section, at the form top. To add the label, open the protocol form, press the pencil symbol at the right side of \ttt{Run name} box, complete the label in the new opened window, press OK and, finally, close the protocol. This label will be shown in the output summary content (see below). If you want to run again this protocol, do not forget to set to \ttt{Restart} the \ttt{Run mode}.\\
   Press the \ttt{Execute} red button at the form bottom.
   
   \item Visualization of protocol results:
-  After executing the protocol \scommand{chimera contacts} viewer window will be opened. This window includes three boxes (\ffigure{fig:contacts_results} (A)):
+  After executing the protocol, \scommand{chimera contacts} viewer window will be opened. This window includes three boxes (\ffigure{fig:contacts_results} (A)):
         \begin{itemize}
         \item \ttt{3D Visualization}: \chimera graphics window will be opened by selecting this option. The input atomic structure is shown, as well as the additional structure generated, if symmetry has been applied.
-        \item \ttt{Interacting chains}: A text file will be opened detailing the number of atomic contacts, the models and the chains involved in contacts. Two scenarios have are examined:
+        \item \ttt{Interacting chains}: A text file will be opened detailing the number of atomic contacts, the models and the chains involved in contacts. Two scenarios can be examined:
             \begin{itemize}
             \item If \ttt{Apply symmetry} was set to \ttt{Yes}: If no chain groups have been established, all contacts between any couple of chains within the input atomic structure will be shown. Besides,``non-redundant'' contacts between any chain of the input unit cell structure and any chain of the neighbor unit cells will also be shown. By ``non-redundant'' contacts we define all those contacts that cannot be inferred by symmetry. An example of this type of contacts is shown in \ffigure{fig:schema_contacts} (A). In addition, input atomic structure is model \ttt{\#0}, whereas models generated by symmetry will be \ttt{\#1}, if only one is generated, and \ttt{\#1.1, \#1.2, \#1.3} and so on, if several models are generated. Each one of these models is supposed to be a neighbor unit cell located at less than 3 \AA\ from the input one.\\
             WARNING: If no additional models are generated at less than 3 \AA\ from the input one, consider the possibility that the symmetry center of the input structure does not coincide with the center of coordinates.

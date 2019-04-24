@@ -88,7 +88,7 @@ Since the last step of A workflow (\ffigure{fig:workflows_contacts} (2)) require
             \chimera command line: \ttt{scipionwrite model \#1.4}
         \end{itemize}
         
-    Remark that, although \scommand{chimera operate} protocol might also be used to extract independtly aminoacid chains A, B, C and D, we have chosen above protocol \scommand{atomstructutils - operator} to exclude water molecules associated to aminoacid chains.
+    Remark that, although \scommand{chimera operate} protocol might also be used to extract independently aminoacid chains A, B, C and D, we have chosen the protocol \scommand{atomstructutils - operator} to exclude water molecules associated to aminoacid chains.
     
     \item Reconstruction of the unit cell of the human hemoglobin \ttt{metHgb} atomic structure (\ffigure{fig:workflows_contacts} (A; 1)):\
     Protocol \scommand{atomstructutils - operator} will be used to perform this task by selecting, in this case, \ttt{addChain} as operation option (\ffigure{fig:atomstructutils_addChain_1} (A; 2)).
@@ -104,9 +104,9 @@ Since the last step of A workflow (\ffigure{fig:workflows_contacts} (2)) require
     To the previously extracted chain A (\ffigure{fig:atomstructutils_addChain_1} (A; 1)) we add (2) its respective \ttt{HEM} group, as well as chain B and its respective \ttt{HEM} group (3). To visualize the reconstructed unit cell, open the \chimera viewer by clicking \scommand{Analyze Results}. Remark that the symmetry center is equal to the origin of coordinates and this allows to regenerate the whole molecule by applying symmetry (see Appendix \ref{app:chimeraContactsProtocol} for a deeper explanation).
     
     \item Reconstruction of the whole macromolecule of the human hemoglobin \ttt{metHgb} atomic structure (\ffigure{fig:workflows_contacts} (B; 3)):\
-    Analogously to the unit cell, protocol \scommand{atomstructutils - operator} will be used to build the whole macromolecule. In this case, however, by adding to chain A (\ffigure{fig:atomstructutils_addChain_1} (B; 4)) the same elements that we added to get the unit cell, as well as chains C and D and their respective \ttt{HEM} groups.\\
+    Analogously to the unit cell, protocol \scommand{atomstructutils - operator} will be used to build the whole macromolecule. In this case, besides adding to chain A (\ffigure{fig:atomstructutils_addChain_1} (B; 4)) the same elements that we added to get the unit cell, we have added chains C and D and their respective \ttt{HEM} groups.\\
         
-    Again, the reconstructed whole macromolecule can be also visualized with \chimera by clicking \scommand{Analyze Results}. The symmetry center of the macromolecule is set in the center of coordinates. Unlike with the unit cell, no symmetry will be applied to get contacts among chains. The location of the macromolecule is thus irrelevant to analyze the contacts.
+    Again, the reconstructed whole macromolecule can also be visualized with \chimera by clicking \scommand{Analyze Results}. The symmetry center of the macromolecule is set in the center of coordinates. Unlike with the unit cell, no symmetry will be applied to get contacts among chains. The location of the macromolecule is thus irrelevant to analyze the contacts.
     \end{itemize}
  
  \item CASE A: Contacts between any couple of members of the unit cell and  between one       member of the unit cell and another one from a neighbor unit cell (\ffigure{fig:workflows_contacts} (A; 2)):\\
@@ -126,7 +126,7 @@ This list of protein contacts was obtained in \scipion by running the protocol \
             \centering 
             \captionsetup{width=.7\linewidth} 
             \includegraphics[width=0.85\textwidth]{Images/Fig50}
-            \caption{Filling in the \scommand{chimera contacts} protocol form to get ``non-redundant`` atom contacts between couples of chains within the unit cell, and between a chain of the unit cell and another chain from a neighbor unit cell of the human hemoglobin \ttt{metHgb}.}
+            \caption{Filling in the \scommand{chimera contacts} protocol form to get atom contacts between couples of chains within the unit cell, and ``non-redundant`` contacts between a chain of the unit cell and another chain from a neighbor unit cell of the human hemoglobin \ttt{metHgb}.}
             \label{fig:contacts_unit cell}
         \end{figure}
   
@@ -136,11 +136,11 @@ This list of protein contacts was obtained in \scipion by running the protocol \
             \centering 
             \captionsetup{width=.7\linewidth} 
             \includegraphics[width=0.85\textwidth]{Images/Fig52}
-            \caption{(A) Display of results of ''non-redundant`` atom contacts between couples of chains within the unit cell, and between a chain of the unit cell and another chain from a neighbor unit cell, of the human hemoglobin \ttt{metHgb}. (B) \chimera view of input (blue) and symmetrical (pink) unit cells. (C) Summary of atom contacts between residues of input unit cell chain A and its respective \ttt{HEM} group. (D) Detail of the 21 atom contacts between the residue \ttt{His87} of chain A and its respective \ttt{HEM} group (yellow lines).}
+            \caption{(A) Display of results of atom contacts between couples of chains within the unit cell, and ''non-redundant`` contacts between a chain of the unit cell and another chain from a neighbor unit cell, of the human hemoglobin \ttt{metHgb}. (B) \chimera view of input (blue) and symmetrical (pink) unit cells. (C) Summary of atom contacts between residues of input unit cell chain A and its respective \ttt{HEM} group. (D) Detail of the 21 atom contacts between the residue \ttt{His87} of chain A and its respective \ttt{HEM} group (yellow lines).}
             \label{fig:contacts_results}
         \end{figure}
         
-  Models can be visualized with \chimera (\ffigure{fig:contacts_results} (A; 1)). (B) shows the model of the initial unit cell and the new unit cell, generated by symmetry regarding the origin of coordinates. This structure, combining both models, serves as starting point to compute atom contacts. The list that contains the six interacting chains can be displayed in \ffigure{fig:contacts_results} (A; 2), and each one of these interactions can be selected in \ffigure{fig:contacts_results} (A; 3). A text list details all atom contacts between chain A residues and its respective \ttt{HEM} group (A; 4). The higher number of atom contacts (21) involves the \ttt{His87} residue (framed in red). A detail of this interaction is shown in \ffigure{fig:contacts_results} (D). Analogously, the rest of atom contacts can be observed by selecting each one of the five remaining interactions.
+  Models can be visualized with \chimera (\ffigure{fig:contacts_results} (A; 1)). (B) shows the model of the initial unit cell and the new unit cell, generated by symmetry regarding the origin of coordinates. This structure, combining both models, serves as starting point to compute atom contacts. The list that contains the six couples of interacting chains can be displayed in \ffigure{fig:contacts_results} (A; 2), and each one of these interactions can be selected in \ffigure{fig:contacts_results} (A; 3). A text list details all atom contacts between the residues of chain A and its respective \ttt{HEM} group (A; 4). The higher number of atom contacts (21) involves the \ttt{His87} residue (framed in red). A detail of this interaction is shown in \ffigure{fig:contacts_results} (D). Analogously, the rest of atom contacts can be observed by selecting each one of the five remaining couples of interacting proteins.
   
  \item CASE B: Contacts between any couple of members of the whole macromolecule (\ffigure{fig:workflows_contacts} (B; 4)):\\
  This option allows to get all contacts between all couples of members of the macromolecule (\ffigure{fig:schema_contacts} (B)) by using the protocol \scommand{chimera contacts}. Similarly to case A, the protocol form has to be completed with the Atomic Structure (\ffigure{fig:contacts_whole_macromolecule} (1)), and the Chain Labelling (3) with help of the wizard (2). Unlike in case A, the option \ttt{No} in Apply symmetry has to be selected in this case (4). 
