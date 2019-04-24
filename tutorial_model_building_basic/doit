@@ -8,3 +8,12 @@ latexmk -pvc -pdf tutorial_model_building_basic.tex
 #-dPDFSETTINGS=/prepress output similar to Acrobat Distiller "Prepress Optimized" setting (300 dpi)
 #-dPDFSETTINGS=/printer selects output similar to the Acrobat Distiller "Print Optimized" setting (300 dpi)
 #-dPDFSETTINGS=/default selects output intended to be useful across a wide variety of uses, possibly at the expense of a larger output file
+
+# upload to tutorial
+# go to wiki scipion https://github.com/I2PC/scipion/wiki
+# the repository is at /home/marta/software/scipion.wiki in marta's computer
+# git pull
+# overwrite with new pdf file
+# cp ../../Documents/scipionLatexDocuments/tutorial_model_building_basic/output2.pdf tutorials/tutorial_model_building_basic.pdf 
+# git commit -m "for July course, added atomstructutils and contacts" tutorials/tutorial_model_building_basic.pdf
+# git push

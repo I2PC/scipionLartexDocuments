@@ -38,6 +38,8 @@
 \usepackage{xspace}
 \usepackage{rotating}
 \usepackage{gensymb}
+\usepackage{vhistory}
+
 %commands
 \newcommand{\ffigure}[1]{{Fig. {\ref{#1}}}\xspace}
 \newcommand{\ttable}[1]{{Table {\ref{#1}}}\xspace}
@@ -112,25 +114,30 @@
 \textsc{\LARGE National Center for Biotechnology}\\[0.5cm]
 \textsc{\Large Biocomputing Unit}\\[0.15cm]
 
-\HRule\\[0.4cm]
+\HRule\\[0.3cm]
 { \huge \bfseries Model Building Basic}\\ % Title of your document
-\HRule \\[0.5cm]
-%{\large \today}\\[3cbum] % Date, change the \today to a set date if you want to be precise
+\HRule \\[0.35cm]
+{\large \today}\\ % Date, change the \today to a set date if you want to be precise
 \begin{center}
 \includegraphics[width=0.70\textwidth]{{images/aadensity}}\\
-Density for amino acid side chains from an experimental electron density map at 1.5 \AA~resolution (http://people.mbi.ucla.edu/sawaya/m230d/Modelbuilding/modelbuilding.html)\end{center}
+Density for amino acid side chains from an experimental electron density map at 1.5 \AA~resolution \footnotesize{(http://people.mbi.ucla.edu/sawaya/m230d/Modelbuilding/modelbuilding.html)\end{center}
 
 %\vfill % Fill the rest of the page with whitespace
 %\begin{minipage}{0.4\textwidth}
 \begin{flushright}
  \large
 %\emph{Author:}\\
-  \textsc{Roberto Marabini AND Marta Martínez} % Your name
+  \textsc{Roberto Marabini \& Marta Martínez} % Your name
 \end{flushright}
 %\end{minipage}
 
 \end{titlepage}
 
+\begin{versionhistory}
+  \vhEntry{1.0}{15.11.2018}{MM|RM}{created for first model building workshop}
+  \vhEntry{1.1}{30.01.2019}{MM}{added appendices and minor fixes}
+  \vhEntry{1.2}{24.04.2019}{MM}{added atomstructutils, contacts and submission protocols}
+\end{versionhistory}\newpage
 
 %----------------------------------------------------------------------------------------
 %	OBJETIVOS
