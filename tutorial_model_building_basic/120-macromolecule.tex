@@ -58,11 +58,14 @@ To regenerate the whole human \ttt{metHgb} macromolecule, \chimera \ttt{operate}
     \label{fig:chimera_operate_vol_2}
    \end{figure}
   
-  \item To subtract this new model from the starting whole volume \ttt{EMD-3488}, write in \chimera command line:\\
+  \item To subtract this new model from the starting whole volume \ttt{EMD-3488}, write in \chimera the command line:
   
-  \ttt{vop subtract \#1 \#3 modelId \#4} \\
+  \begin{verbatim}
+     vop subtract #1 #3 modelId #4 minRMS true
+  \end{verbatim}
+  where the minRMS option scales model \#3 automatically to minimize the root-mean-square sum of the resulting (subtracted) values at grid points within the lowest contour of model \#1.
   
-  Resulting volume from this subtraction operation appears in \ffigure{fig:chimera_operate_vol_3} (\iii{Chimera model} \#4). From this result, we can conclude that most part of the initial density map has been traced, and there are no significant additional densities others than the four monomers and the four prosthetic groups that we have considered so far.
+  The resulting volume from this subtraction operation appears in \ffigure{fig:chimera_operate_vol_3} (\iii{Chimera model} \#4). From this result, we can conclude that most part of the initial density map has been traced, and there are no significant additional densities others than the four monomers and the four prosthetic groups that we have considered so far.
   
   \begin{figure}[H]
     \centering 
