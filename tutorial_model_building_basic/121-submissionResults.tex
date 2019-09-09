@@ -7,7 +7,7 @@ Once we have selected the best $model$ of the whole human \ttt{Hgb} and obtained
 
 Although submission of cryoEM maps and derived atomic structures to databases has to be done by direct online request (\url{https://deposit-pdbe.wwpdb.org/deposition/}), \scipion may contribute to organize the submission records. The protocol \scommand{export to EMDB} allows to perform this task (Appendix \ref{app:exportToEMDB}). By using this protocol we can save the basic files that have to be submitted to EMDB in a labelled folder. Basic files are the electron density map, the FSC file and the file of coordinates of the atomic structure. All these files will be saved in an appropriate format for submission.\\
 
-Open the \scommand{export to EMDB} protocol (\ffigure{fig:export_to_EMDB_protocol} (1)), and complete the form with the \scipion elements to export: \ttt{Volume} (2), \ttt{FSC} (3), and  \ttt{Atomic structure} (4). The three submission files will be saved in the \ttt{directory} selected (5). A directory name related with the submission (number, date, project,...) is recommended. 
+Open the \scommand{export to EMDB} protocol (\ffigure{fig:export_to_EMDB_protocol} (1)), and complete the form with the \scipion elements to export: \ttt{Volume} (2), \ttt{FSC} (3), \ttt{Atomic structure} (4) and \ttt{Mask} (5). All submission files will be saved in the \ttt{directory} selected (6). A directory name related with the submission (number, date, project,...) is recommended. 
  
  \begin{figure}[H]
   \centering 
@@ -17,13 +17,13 @@ Open the \scommand{export to EMDB} protocol (\ffigure{fig:export_to_EMDB_protoco
   \label{fig:export_to_EMDB_protocol}
   \end{figure}
   
-After executing the protocol, you can check that the three files are saved in the given directory. No additional visualization tools have been included in this protocol. 
+After executing the protocol, you can check that all files are saved in the given directory. No additional visualization tools have been included in this protocol. 
 
 \subsection*{Publication of results}
 
 Since the atomic interpretation of a certain macromolecule will be probably the starting point of relevant mechanistic or biomedical studies, summaring and organizing our results constitutes the first step to draw the conclusions that will be made public by journals and talks. Many different questions can be posed based on the atomic structure. Here we are wondering about interactions among members of the macromolecule. To answer this question we have included in \scipion the protocol \scommand{chimera contacts} to identify the residues involved in contacts between any couple of interacting molecules. ``contacts'' involve atoms within  favorable interaction distances. Unfavourable contacts or severe clashes, in which atoms are too close together, although discarded by default in the final list of `contacts'', may also be shown by using appropriate advanced parameters, as you can see in Appendix \ref{app:chimeraContactsProtocol}. \\
 
-As an example, in this tutorial we are going to learn how to get atom contacts of human hemoglobin \ttt{metHgb} atomic structure \ttt{5NI1}, associated to the starting map \ttt{EMD-3488}. This structure was already downloaded from \ttt{PDB} by using the protocol \scommand{import atomic structure}. According to the aim of the analysis, two possible scenarios and respective workflows can be considered to compute contacts, a) infering all contacts between any couple of members of the unit cell and between one member of the unit cell and another component from a neighbor unit cell (\ffigure{fig:workflows_contacts} (A; 2)), and b) infering all contacts between any couple of members of the whole macromolecule (\ffigure{fig:workflows_contacts} (B; 4)). 
+As an example, in this tutorial we are going to learn how to get atom contacts of human haemoglobin \ttt{metHgb} atomic structure \ttt{5NI1}, associated to the starting map \ttt{EMD-3488}. This structure was already downloaded from \ttt{PDB} by using the protocol \scommand{import atomic structure}. According to the aim of the analysis, two possible scenarios and respective workflows can be considered to compute contacts, a) infering all contacts between any couple of members of the unit cell and between one member of the unit cell and another component from a neighbor unit cell (\ffigure{fig:workflows_contacts} (A; 2)), and b) infering all contacts between any couple of members of the whole macromolecule (\ffigure{fig:workflows_contacts} (B; 4)). 
 
         \begin{figure}[H]
             \centering 
@@ -39,7 +39,7 @@ Since the last step of A workflow (\ffigure{fig:workflows_contacts} (2)) require
  \item Preprocessing:\
  In this step, the macromolecule constituted by four chains, each one containing a \ttt{HEM} group, will be transformed in a molecule of eight independent chains, four proteins and four \ttt{HEM} groups, with its symmetry center in the origin of coordinates. Two protocols already mentioned before are going to be used to move the structure and to extract proteins and ligands of the starting atomic structure, \scommand{atomstructutils - operator} protocol (Appendix \ref{app:atomStructUtilsOperatorProtocol}), and the protocol \scommand{chimera operate} (Appendix \ref{app:chimeraOperate}).\
     \begin{itemize}
-    \item Matching between symmetry center of human hemoglobin \ttt{metHgb} atomic structure \ttt{5NI1} and origin of coordinates (upper brown box in A and B workflows of \ffigure{fig:workflows_contacts}):\\
+    \item Matching between symmetry center of human haemoglobin \ttt{metHgb} atomic structure \ttt{5NI1} and origin of coordinates (upper brown box in A and B workflows of \ffigure{fig:workflows_contacts}):\\
     Open the protocol \scommand{chimera operate} and complete the form with \ttt{5NI1} as \ttt{Atomic structure} and the structure of the \ttt{Hgb} obtained by \scommand{phenix - real space refine} protocol as \ttt{Other atomic structures}. Follow the next intructions to fit the atomic structure \ttt{5NI1} to the refined \ttt{Hgb} $\alpha$ subunit when \chimera graphics window opens:
 
         \begin{itemize}
@@ -66,11 +66,11 @@ Since the last step of A workflow (\ffigure{fig:workflows_contacts} (2)) require
             \centering 
             \captionsetup{width=.7\linewidth} 
             \includegraphics[width=0.85\textwidth]{Images/Fig47}
-            \caption{Extraction of chain A of human hemoglobin \ttt{metHgb} with protocol \scommand{atomstructutils - operator}.}
+            \caption{Extraction of chain A of human haemoglobin \ttt{metHgb} with protocol \scommand{atomstructutils - operator}.}
             \label{fig:atomStructUtils_extractChain}
         \end{figure}
     
-    \item Independent extraction of \ttt{HEM} groups associated to each aminoacid chain from human hemoglobin \ttt{metHgb} atomic structure \ttt{5NI1} (lower brown box in workflows A and B of \ffigure{fig:workflows_contacts}):\
+    \item Independent extraction of \ttt{HEM} groups associated to each aminoacid chain from human haemoglobin \ttt{metHgb} atomic structure \ttt{5NI1} (lower brown box in workflows A and B of \ffigure{fig:workflows_contacts}):\
     Open the protocol \scommand{chimera operate} and complete the form with the atomic structure \ttt{5NI1} and follow these intructions when \chimera graphics window opens:
         \begin{itemize}
         \item Selection of \ttt{HEM} groups:\\
@@ -90,20 +90,20 @@ Since the last step of A workflow (\ffigure{fig:workflows_contacts} (2)) require
         
     Remark that, although \scommand{chimera operate} protocol might also be used to extract independently aminoacid chains A, B, C and D, we have chosen the protocol \scommand{atomstructutils - operator} to exclude water molecules associated to aminoacid chains.
     
-    \item Reconstruction of the unit cell of the human hemoglobin \ttt{metHgb} atomic structure (\ffigure{fig:workflows_contacts} (A; 1)):\
+    \item Reconstruction of the unit cell of the human haemoglobin \ttt{metHgb} atomic structure (\ffigure{fig:workflows_contacts} (A; 1)):\
     Protocol \scommand{atomstructutils - operator} will be used to perform this task by selecting, in this case, \ttt{addChain} as operation option (\ffigure{fig:atomstructutils_addChain_1} (A; 2)).
     
         \begin{figure}[H]
             \centering 
             \captionsetup{width=.7\linewidth} 
             \includegraphics[width=0.85\textwidth]{Images/Fig48}
-            \caption{Completing the protocol form to reconstruct the unit cell (A) and the whole macromolecule (B) of the human hemoglobin \ttt{metHgb} with protocol \scommand{atomstructutils - operator}.}
+            \caption{Completing the protocol form to reconstruct the unit cell (A) and the whole macromolecule (B) of the human haemoglobin \ttt{metHgb} with protocol \scommand{atomstructutils - operator}.}
             \label{fig:atomstructutils_addChain_1}
         \end{figure}
         
     To the previously extracted chain A (\ffigure{fig:atomstructutils_addChain_1} (A; 1)) we add (2) its respective \ttt{HEM} group, as well as chain B and its respective \ttt{HEM} group (3). To visualize the reconstructed unit cell, open the \chimera viewer by clicking \scommand{Analyze Results}. Remark that the symmetry center is equal to the origin of coordinates and this allows to regenerate the whole molecule by applying symmetry (see Appendix \ref{app:chimeraContactsProtocol} for a deeper explanation).
     
-    \item Reconstruction of the whole macromolecule of the human hemoglobin \ttt{metHgb} atomic structure (\ffigure{fig:workflows_contacts} (B; 3)):\
+    \item Reconstruction of the whole macromolecule of the human haemoglobin \ttt{metHgb} atomic structure (\ffigure{fig:workflows_contacts} (B; 3)):\
     Analogously to the unit cell, protocol \scommand{atomstructutils - operator} will be used to build the whole macromolecule. In this case, besides adding to chain A (\ffigure{fig:atomstructutils_addChain_1} (B; 4)) the same elements that we added to get the unit cell, we have added chains C and D and their respective \ttt{HEM} groups.\\
         
     Again, the reconstructed whole macromolecule can also be visualized with \chimera by clicking \scommand{Analyze Results}. The symmetry center of the macromolecule is set in the center of coordinates. Unlike with the unit cell, no symmetry will be applied to get contacts among chains. The location of the macromolecule is thus irrelevant to analyze the contacts.
@@ -116,17 +116,17 @@ Since the last step of A workflow (\ffigure{fig:workflows_contacts} (2)) require
             \centering 
             \captionsetup{width=.7\linewidth} 
             \includegraphics[width=0.85\textwidth]{Images/Fig49}
-            \caption{Schema of the human hemoglobin \ttt{metHgb} showing protein contacts obtained by applying symmetry to the unit cell (A), and contacts between couples of chains of the whole macromolecule (B).}
+            \caption{Schema of the human haemoglobin \ttt{metHgb} showing protein contacts obtained by applying symmetry to the unit cell (A), and contacts between couples of chains of the whole macromolecule (B).}
             \label{fig:schema_contacts}
         \end{figure}
         
-This list of protein contacts was obtained in \scipion by running the protocol \scommand{chimera contacts}. The protocol form opened (\ffigure{fig:contacts_unit cell} (1)) is completed with the input atomic structure of the human hemoglobin \ttt{metHgb} unit cell (2) and labelled each structure chain (3). With this labelling, a specific label is assigned to each chain in order to group chains with the same label (see Appendix \ref{app:chimeraContactsProtocol} for details). Since in this particular case we do not want to group chains, independent labels will be assigned to each chain ((\ffigure{fig:contacts_unit cell} (4)) with the help of the wizard (3). To apply symmetry to the input unit cell, we select \ttt{Yes} to the Apply Symmetry option (5). A panel with the different types of symmetry will be displayed to chose our specific Symmetry, cyclic (Cn) in our case, and our Symmetry Order (2). 
+This list of protein contacts was obtained in \scipion by running the protocol \scommand{chimera contacts}. The protocol form opened (\ffigure{fig:contacts_unit cell} (1)) is completed with the input atomic structure of the human haemoglobin \ttt{metHgb} unit cell (2) and labelled each structure chain (3). With this labelling, a specific label is assigned to each chain in order to group chains with the same label (see Appendix \ref{app:chimeraContactsProtocol} for details). Since in this particular case we do not want to group chains, independent labels will be assigned to each chain ((\ffigure{fig:contacts_unit cell} (4)) with the help of the wizard (3). To apply symmetry to the input unit cell, we select \ttt{Yes} to the Apply Symmetry option (5). A panel with the different types of symmetry will be displayed to chose our specific Symmetry, cyclic (Cn) in our case, and our Symmetry Order (2). 
 
         \begin{figure}[H]
             \centering 
             \captionsetup{width=.7\linewidth} 
             \includegraphics[width=0.85\textwidth]{Images/Fig50}
-            \caption{Filling in the \scommand{chimera contacts} protocol form to get atom contacts between couples of chains within the unit cell, and ``non-redundant`` contacts between a chain of the unit cell and another chain from a neighbor unit cell of the human hemoglobin \ttt{metHgb}.}
+            \caption{Filling in the \scommand{chimera contacts} protocol form to get atom contacts between couples of chains within the unit cell, and ``non-redundant`` contacts between a chain of the unit cell and another chain from a neighbor unit cell of the human haemoglobin \ttt{metHgb}.}
             \label{fig:contacts_unit cell}
         \end{figure}
   
@@ -136,7 +136,7 @@ This list of protein contacts was obtained in \scipion by running the protocol \
             \centering 
             \captionsetup{width=.7\linewidth} 
             \includegraphics[width=0.85\textwidth]{Images/Fig52}
-            \caption{(A) Display of results of atom contacts between couples of chains within the unit cell, and ''non-redundant`` contacts between a chain of the unit cell and another chain from a neighbor unit cell, of the human hemoglobin \ttt{metHgb}. (B) \chimera view of input (blue) and symmetrical (pink) unit cells. (C) Summary of atom contacts between residues of input unit cell chain A and its respective \ttt{HEM} group. (D) Detail of the 21 atom contacts between the residue \ttt{His87} of chain A and its respective \ttt{HEM} group (yellow lines).}
+            \caption{(A) Display of results of atom contacts between couples of chains within the unit cell, and ''non-redundant`` contacts between a chain of the unit cell and another chain from a neighbor unit cell, of the human haemoglobin \ttt{metHgb}. (B) \chimera view of input (blue) and symmetrical (pink) unit cells. (C) Summary of atom contacts between residues of input unit cell chain A and its respective \ttt{HEM} group. (D) Detail of the 21 atom contacts between the residue \ttt{His87} of chain A and its respective \ttt{HEM} group (yellow lines).}
             \label{fig:contacts_results}
         \end{figure}
         
@@ -149,7 +149,7 @@ This list of protein contacts was obtained in \scipion by running the protocol \
             \centering 
             \captionsetup{width=.7\linewidth} 
             \includegraphics[width=0.85\textwidth]{Images/Fig51}
-            \caption{Filling in the \scommand{chimera contacts} protocol form to get all atom contacts between couples of chains within the macromolecule of the human hemoglobin \ttt{metHgb}.}
+            \caption{Filling in the \scommand{chimera contacts} protocol form to get all atom contacts between couples of chains within the macromolecule of the human haemoglobin \ttt{metHgb}.}
             \label{fig:contacts_whole_macromolecule}
         \end{figure}
         

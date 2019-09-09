@@ -52,6 +52,7 @@
 \def\emringer{\textit{EMRinger}\xspace}
 \def\modeller{\textit{Modeller}\xspace}
 \def\molprobity{\textit{MolProbity}\xspace}
+\def\validationCryoEM{\textit{Validation CryoEM}\xspace}
 \def\phenix{\textit{PHENIX}\xspace}
 \def\powerfit{\textit{PowerFit}\xspace}
 \def\refmac{\textit{Refmac}\xspace}
@@ -120,7 +121,8 @@
 {\large \today}\\ % Date, change the \today to a set date if you want to be precise
 \begin{center}
 \includegraphics[width=0.70\textwidth]{{images/aadensity}}\\
-Density for amino acid side chains from an experimental electron density map at 1.5 \AA~resolution \footnotesize{(http://people.mbi.ucla.edu/sawaya/m230d/Modelbuilding/modelbuilding.html)\end{center}
+Density for amino acid side chains from an experimental electron density map at 1.5 \AA~resolution \footnotesize{(http://people.mbi.ucla.edu/sawaya/m230d/Modelbuilding/modelbuilding.html)}
+\end{center}
 
 %\vfill % Fill the rest of the page with whitespace
 %\begin{minipage}{0.4\textwidth}
@@ -134,9 +136,10 @@ Density for amino acid side chains from an experimental electron density map at 
 \end{titlepage}
 
 \begin{versionhistory}
-  \vhEntry{1.0}{15.11.2018}{MM|RM}{created for first model building workshop}
-  \vhEntry{1.1}{30.01.2019}{MM}{added appendices and minor fixes}
-  \vhEntry{1.2}{24.04.2019}{MM}{added atomstructutils, contacts and submission protocols}
+  \vhEntry{1.0}{11.15.2018}{MM|RM}{created for first model building workshop}
+  \vhEntry{1.1}{01.30.2019}{MM}{added appendices and minor fixes}
+  \vhEntry{1.2}{04.24.2019}{MM}{added atomstructutils, contacts and submission protocols}
+  \vhEntry{1.3}{09.10.2019}{MM}{added map preprocessing protocols (create mask, and compute local Resolution and sharpening) and \phenix validation cryoem}
 \end{versionhistory}\newpage
 
 %----------------------------------------------------------------------------------------
@@ -204,13 +207,17 @@ This tutorial requires, in addition to \scipion, USCF~\chimera (\url{https://www
 \input{a040-chimeraRigidFit.tex}
 \input{a050-ccp4CootRefinement.tex}
 \input{a060-ccp4Refmac.tex}
+\input{a061-create3DMask.tex}
 \input{a070-extractUnitCell.tex}
 \input{a080-importAtomicStructure.tex}
 \input{a090-importSequence.tex}
 \input{a100-importvolume.tex}
+\input{a101-localDeblurSharpening.tex}
+\input{a102-localMonoRes.tex}
 \input{a110-modelFromTemplate.tex}
 \input{a120-emRingerProtocol.tex}
 \input{a130-molprobityProtocol.tex}
+\input{a131-valCryoEMProtocol.tex}
 \input{a140-realSpaceRefineProtocol.tex}
 \input{a150-superposePdbsProtocol.tex}
 \input{a160-powerfitProtocol.tex}

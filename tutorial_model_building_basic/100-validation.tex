@@ -1,6 +1,6 @@
 \section{Structure validation and comparison}
 \label{seq:structurevalidation}
- At the end of the refinement process of \ttt{metHgb} $\alpha$ subunit (a similar one would be required for $\beta$ subunit), we need to assess the geometry of our $model$ regarding the starting volume to detect $model$ controversial elements or $model$ parameters that disagree with the map. Although each refinement program has their own tools to assess the progress of refinement (\coot \ttt{Validate} menu; \phenix \ttt{real space refine} real space correlations; \refmac \ttt{R factor} and \ttt{Rms BondLength}), in this tutorial section, two assessment tools will be described to obtain comparative validation values after using any protocol in the workflow:  Protocols \emringer (\scommand{phenix - emringer}, Appendix \ref{app:emRingerProtocol}, \citep{barad2015}) and \molprobity (\scommand{phenix - molprobity}, Appendix \ref{app:molprobityProtocol}, \citep{davis2004}). As in \phenix, correlation values in real space will be computed if a volume is provided with \molprobity protocol. Additionally, we are going to introduce the protocol \scommand{phenix - superpose pdbs} (Appendix \ref{app:superposePdbsProtocol}, \citep{zwartUrl}) useful to compare visually the geometry of two atomic structures.\\
+ At the end of the refinement process of \ttt{metHgb} $\alpha$ subunit (a similar one would be required for $\beta$ subunit), we need to assess the geometry of our $model$ regarding the starting volume to detect $model$ controversial elements or $model$ parameters that disagree with the map. Although each refinement program has their own tools to assess the progress of refinement (\coot \ttt{Validate} menu; \phenix \ttt{real space refine} real space correlations; \refmac \ttt{R factor} and \ttt{Rms BondLength}), in this tutorial section, three assessment tools will be described to obtain comparative validation values after using any protocol in the workflow:  Protocols \emringer (\scommand{phenix - emringer}, Appendix \ref{app:emRingerProtocol}, \citep{barad2015}), \molprobity (\scommand{phenix - molprobity}, Appendix \ref{app:molprobityProtocol}, \citep{davis2004}), and \validationCryoEM (\scommand{phenix - validation\_cryoem}, Appendix \ref{app:valCryoEMProtocol}, \citep{afonine2018b}). \validationCryoEM protocol will show \molprobity validation values as well as correlation coefficients in real space. Since old versions of \phenix (v. 1.13) do not include this tool, then correlation values in real space will be computed if a volume is provided with \molprobity protocol. Additionally, we are going to introduce the protocol \scommand{phenix - superpose pdbs} (Appendix \ref{app:superposePdbsProtocol}, \citep{zwartUrl}) useful to compare visually the geometry of two atomic structures.\\
 
 
  \subsection*{\emringer}
@@ -26,14 +26,14 @@
   \label{fig:emringer_protocol}
   \end{figure}
  
- Run \emringer protocol and determine the respective score after running \iii{PowerFit item2}, \chimera \ttt{rigid fit} ($model$ 2), \coot refinement, \phenix \ttt{real space refine} after \coot (default conditions and last modification of form parameters), and \refmac refinement with MASK before and after \phenix \ttt{real space refine}. Considering \emringer \ttt{score}, does our \ttt{metHgb} $\alpha$ subunit $models$ seem to be OK? (Answers in appendix \ref{app:solutions}; \textbf{Question \ref{seq:structurevalidation}\_1}). Try the same validation with $\beta$ subunit $models$. \\
+ Run \emringer protocol and determine the respective score after running \iii{PowerFit item2}, \chimera \ttt{rigid fit} ($model$ 2), \coot refinement, \phenix \ttt{real space refine} after \coot (default conditions and last modification of form parameters), and \refmac refinement with MASK before and after \phenix \ttt{real space refine}. Considering \emringer \ttt{score}, does our \ttt{metHgb} $\alpha$ subunit $models$ seem to be OK or, at least, have they been improved? (Answers in appendix \ref{app:solutions}; \textbf{Question \ref{seq:structurevalidation}\_1}). Try the same validation with $\beta$ subunit $models$. \\
  %[** EMringer results Roling windows does not work]
  
  \subsection*{\molprobity}
  
- The atomic structure validation web service \molprobity, with better reference data has been implemented in the open-source CCTBX portion of \phenix \citep{williams2018}. This widely used tool assesses $model$ geometry and quality at both global and local levels. Originally designed to evaluate structures coming from X-Ray diffraction and NMR, it does not take into account the quality of the fitting with a 3D density map.  The implementation in \phenix, nevertheless, includes the possibility of adding a volume and assessing the correlation in the real space.\\
+ The atomic structure validation web service \molprobity, with better reference data has been implemented in the open-source CCTBX portion of \phenix \citep{williams2018}. This widely used tool assesses $model$ geometry and quality at both global and local levels. Originally designed to evaluate structures coming from X-Ray diffraction and NMR, it does not take into account the quality of the fitting with a 3D density map.  The implementation of \molprobity in \phenix v. 1.13, nevertheless, includes the possibility of adding a volume and assessing the correlation in the real space.\\
  
- The assessment process that we have carried out with \emringer can also be done with \molprobity in \scipion. We are going to validate the geometry of \ttt{metHgb} $\alpha$ subunit $models$ that we have generated along the modeling workflow. In each case, open the \scommand{phenix - molprobity} protocol (\ffigure{fig:molprobity_protocol} (1)), load the extracted unit cell volume (initial or generated by \coot) (2) with its resolution (3) if you want to have real space correlation between map and $model$, load the $model$ atomic structure (4) and execute the protocol (5). In \ttt{Analyze results} (6) the same menu bars available in results section of \phenix \ttt{real space refine} protocol are shown here. \molprobity results bar include validation statistics. Protocol \ttt{SUMMARY} emphasizes the most relevant ones (7).\\
+ The assessment process that we have carried out with \emringer can also be done with \molprobity in \scipion. We are going to validate the geometry of \ttt{metHgb} $\alpha$ subunit $models$ that we have generated along the modeling workflow. In each case, open the \scommand{phenix - molprobity} protocol (\ffigure{fig:molprobity_protocol} (1)), load the extracted unit cell volume (initial or generated by \coot) (2) with its resolution (3) only if your \phenix version is 1.13 and you want to have real space correlation between map and $model$. For \phenix versions higher than 1.13 simply load the $model$ atomic structure (4) and execute the protocol (5). With \ttt{Analyze results} (6) menu bars are shown. \molprobity results bar include validation statistics. Protocol \ttt{SUMMARY} emphasizes the most relevant ones (7).\\
  
  \begin{figure}[H]
   \centering 
@@ -43,7 +43,23 @@
   \label{fig:molprobity_protocol}
   \end{figure}
   
-  Run \molprobity protocol to obtain its statistics after running \iii{PowerFit item2}, \chimera \ttt{rigid fit} ($model$ 2), \coot refinement, \phenix \ttt{real space refine} (default conditions and last modification of form parameters) after \coot, and \refmac refinement with MASK before and after \phenix \ttt{real space refine}. In order to compare validation results of $models$ obtained along the modeling workflow, fill in the next table (\ttable{table:empty}) including, in addition to \molprobity statistics, \emringer scores and \ccmask values obtained before. (Answers in appendix \ref{app:solutions}; \textbf{Question \ref{seq:structurevalidation}\_2}). The same table (\ttable{table:empty}) can be completed for \ttt{metHgb} $\beta$ subunit (Appendix \ref{app:solutions}; \textbf{Question \ref{seq:structurevalidation}\_3})\\
+  Run \molprobity protocol to obtain its statistics after running \iii{PowerFit item2}, \chimera \ttt{rigid fit} ($model$ 2), \coot refinement, \phenix \ttt{real space refine} (default conditions and last modification of form parameters) after \coot, and \refmac refinement with MASK before and after \phenix \ttt{real space refine}. 
+  
+  \subsection*{\validationCryoEM}
+  
+  \phenix versions higher than 1.13 combine multiple tools for validating cryo-EM maps and models into the single tool called \validationCryoEM (\citep{afonine2018b}). This tool has been implemented in \phenix versions higher than 1.13.\\
+  
+  To carry out the global validation of maps and models obtained from cryo-EM data, open the protocol \scommand{phenix - validation\_cryoem} in \scipion (\ffigure{fig:validationCryoEM_protocol} (1)), load the map (initial or generated by \coot) (2) with its resolution (3), load the $model$ atomic structure (4) and execute the protocol (5). \ttt{Analyze results} shows the same menu bars available in results section of \phenix \ttt{real space refine} protocol. \molprobity results bar include validation statistics. Protocol \ttt{SUMMARY} emphasizes the most relevant ones.\\
+  
+  \begin{figure}[H]
+    \centering 
+    \captionsetup{width=.7\linewidth} 
+    \includegraphics[width=0.90\textwidth]{Images/Fig60}
+    \caption{Filling in \phenix \validationCryoEM protocol form.}
+    \label{fig:validationCryoEM_protocol}
+    \end{figure}
+  
+  In order to compare validation results of $models$ obtained along the modeling workflow, fill in the next table (\ttable{table:empty}) including, in addition to \molprobity statistics, \emringer scores and \ccmask values obtained before. (Answers in appendix \ref{app:solutions}; \textbf{Question \ref{seq:structurevalidation}\_2}). The same table (\ttable{table:empty}) can be completed for \ttt{metHgb} $\beta$ subunit (Appendix \ref{app:solutions}; \textbf{Question \ref{seq:structurevalidation}\_3})\\
   
   \begin{sidewaystable}
    \caption{Validation statistics of human \ttt{metHgb} $\alpha$ subunit $model$. \ttt{RSRAC} stands for \ttt{Real Space Refine} after \coot. \ttt{Rama} stands for \ttt{Ramachandran}.}
@@ -110,11 +126,11 @@
     Open again \chimera \ttt{rigid fit} protocol and, following already indicated instructions, include this time \ttt{item 2}, the last fitted structure obtained with \powerfit (\ffigure{fig:chimera_rigid_fit} (3)). After finishing the rigid fit of the extracted unit cell and \ttt{metHgb} $\alpha$ subunit from 5NI1 structure, you can save this fitted structure writing in \chimera command line:\\
     \ttt{scipionwrite model \#2 refmodel \#1 saverefmodel 0}\\
     
-    \item{Validation protocols \scommand{phenix - emringer} and \scommand{phenix - molprobity}}:
+    \item{Validation protocols \scommand{phenix - emringer} and \scommand{phenix - validation\_cryoem} (\scommand{phenix - molprobity} for \phenix version 1.13)}:
     
     Compute validation statistics with these two protocols for \ttt{metHgb} $\alpha$ subunit from \ttt{PDB} structure \ttt{5NI1}, write respective values in the previous table (\ttable{table:empty}), and compare them with the statistics of our $models$.
     
-    Considering results shown in appendix \ref{app:solutions} (\textbf{Question \ref{seq:structurevalidation}\_2}) for \ttt{metHgb} $\alpha$ subunit, we can conclude that published structures are not perfect and we are not very far from this published one. In fact, we have overcome every statistic except \ccmask. Then, the three different $models$ generated after \coot refinement could be acceptable. \\
+    Considering results shown in appendix \ref{app:solutions} (\textbf{Question \ref{seq:structurevalidation}\_2}) for \ttt{metHgb} $\alpha$ subunit, we can conclude that published structures are not perfect and we are not very far from this published one. In fact, we have overcome every statistic except \ccmask. Nevertheless, the different $models$ generated after \coot refinement can still be improved by iterative refinement processes. Validation statistics thus allow to follow the quality improvement of atomic models.\\
 
  
   \subsection*{Comparison of atomic structures}
