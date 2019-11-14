@@ -1,0 +1,208 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Design based on a template by Roberto and following the format of
+% the xmipp tutorials. In turn, they seem to be based on a template
+% from http://www.latextemplates.com
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[12pt]{article} % Default font size is 12pt, it can be changed here
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{listings} % To include source code
+\usepackage{caption}
+\usepackage[htt]{hyphenat}
+\usepackage{geometry} % Required to change the page size to A4
+%\geometry{a4paper} % Set the page size to be A4 as opposed to the default US Letter
+\usepackage{framed}
+\usepackage{url}
+\usepackage{graphicx} % Required for including pictures
+\usepackage{natbib}
+\usepackage{float} % Allows putting an [H] in \begin{figure} to specify the exact location of the figure
+%\usepackage{hyperref}
+\usepackage{menukeys}
+\usepackage{array}
+\usepackage{fancyhdr}
+\usepackage{marvosym}%smileys\Smiley{} \Frowny{}
+\usepackage{etoolbox}
+\usepackage{listings}
+\usepackage{makecell}
+\usepackage{marginnote}
+\usepackage{soul}
+\usepackage[toc,page]{appendix}
+\usepackage{caption}
+\usepackage{menukeys}
+\usepackage{fancybox,framed}
+\usepackage{xspace}
+\usepackage{rotating}
+\usepackage{gensymb}
+\usepackage{vhistory}
+
+%commands
+\newcommand{\ffigure}[1]{{Fig. {\ref{#1}}}\xspace}
+\newcommand{\ttable}[1]{{Table {\ref{#1}}}\xspace}
+\newcommand{\scommand}[1]{{{\keys{#1}}}\xspace}
+%definitions
+\def\ccmask{CC\textsubscript{MASK}\xspace}
+\def\ccp4{\textit{CCP4}\xspace}
+\def\chimera{\textit{Chimera}\xspace}
+\def\coot{\textit{Coot}\xspace}
+\def\emringer{\textit{EMRinger}\xspace}
+\def\modeller{\textit{Modeller}\xspace}
+\def\molprobity{\textit{MolProbity}\xspace}
+\def\validationCryoEM{\textit{Validation CryoEM}\xspace}
+\def\phenix{\textit{PHENIX}\xspace}
+\def\powerfit{\textit{PowerFit}\xspace}
+\def\refmac{\textit{Refmac}\xspace}
+\def\scipion{\textit{Scipion}\xspace}
+
+\sethlcolor{yellow}
+
+%\renewcommand{\hl}[1]{#1}
+%pdflatex -jobname=students '\def\student{}\input{main}'
+%pdflatex -jobname=teachers '\def\teachers{}\input{main}'
+%  \ifdef{\teachers}
+%  {Content for teachers}
+%  {Content for students} 
+\newcommand{\ttt}[1]{\texttt{#1}}
+\newcommand{\iii}[1]{\textit{#1}}
+\newcommand{\ra}{$\rightarrow$}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[RO]{{Image Processing}}
+\fancyhead[LO]{Scipion}
+%\fancyhead[RO]{{\leftmark}}
+\fancyfoot[RO]{\thepage}
+
+\linespread{1.2} % Line spacing
+
+%\setlength\parindent{0pt} % Uncomment to remove all indentation from paragraphs
+
+\newenvironment{command}{\tt\begin{quote}}{\end{quote}}
+\newcommand{\comm}[1]{\texttt{#1}}
+
+\newcommand{\imgfig}[3]{\begin{figure}[H]\centering \
+\includegraphics[scale=#2]{images/#1} \caption{#3} \end{figure}}
+
+\newcommand{\proto}[1]{\textit{\textbf{#1}}}
+\newcommand{\popt}[1]{\textit{#1}}
+\newcommand{\pval}[1]{\texttt{#1}}
+
+\newcommand\tstrut{\rule{0pt}{2.4ex}}
+\newcommand\bstrut{\rule[-1.0ex]{0pt}{0pt}}
+
+\def \humanAdenoMap {7034}%5172
+
+\begin{document}
+
+%----------------------------------------------------------------------------------------
+%	TITLE PAGE
+%----------------------------------------------------------------------------------------
+
+\begin{titlepage}
+
+% New command for horizontal lines. Change thickness here.
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+
+\center % Center everything on the page
+
+\includegraphics{images/scipion_logo}
+
+{\large Scipion Tutorial Series}\\[1.0cm]
+
+\textsc{\LARGE National Center for Biotechnology}\\[0.5cm]
+\textsc{\Large Biocomputing Unit}\\[0.15cm]
+
+\HRule\\[0.3cm]
+{ \huge \bfseries Image Processing}\\ % Title of your document
+\HRule \\[0.35cm]
+{\large \today}\\ % Date, change the \today to a set date if you want to be precise
+
+\begin{center}
+\includegraphics[width=0.50\textwidth]{{images/Cover_apoferritin.pdf}}\\
+Cryo-EM map of apoferritin at 1.54 \AA~resolution \footnotesize{(EMD-9865)}
+\end{center}
+
+%\vfill % Fill the rest of the page with whitespace
+%\begin{minipage}{0.4\textwidth}
+\begin{flushright}
+ \large
+%\emph{Author:}\\
+  \textsc{Carlos Oscar S. Sorzano \& Marta Martínez} % Your name
+\end{flushright}
+%\end{minipage}
+
+\end{titlepage}
+
+\begin{versionhistory}
+  \vhEntry{1.0}{11.18.2019}{MM}{Initial draft created for Stanford Image Processing Workshop}
+\end{versionhistory}\newpage
+
+%----------------------------------------------------------------------------------------
+%	OBJETIVOS
+%----------------------------------------------------------------------------------------
+
+
+\subsection*{Intended audience}
+The recent rapid development of single-particle electron cryo-microscopy (cryo-EM) allows structures to be solved by this method at almost atomic resolutions.  Providing a basic introduction to image processing, this tutorial shows the basic workflow aimed at obtaining high-quality density maps from cryo-EM data by using \scipion software framework. %tomography in  electron microscopy with special emphasis in basic image processing. The tutorial requires matlab but does not assume any programing skills. 
+
+
+\subsection*{We'd like to hear from you}
+
+We have tested and verified the different steps described in this demo
+to the best of our knowledge, but since our programs are in continuous
+development you may find inaccuracies and errors in this text. Please
+let us know about any errors, as well as your suggestions for
+future editions, by writing to
+scipion@cnb.csic.es.
+
+
+\subsection*{Requirements}
+
+This tutorial requires, in addition to \scipion, \textit{cryoSPARC2} (\url{https://cryosparc.com/}).
+
+\newpage
+
+
+%----------------------------------------------------------------------------------------
+%	TABLE OF CONTENTS
+%----------------------------------------------------------------------------------------
+
+\tableofcontents % Include a table of contents
+
+\newpage % Begins on a new page instead of on the same page as the table of contents
+
+
+\input{010-introduction.tex}
+\input{020-problem2solve.tex}
+\input{030-fromMoviesToMicrographs.tex}
+\input{040-CTFEstimation.tex}
+\input{050-ParticlePicking.tex}
+\input{060-ExtractParticles.tex}
+\input{070-2DClassification.tex}
+\input{080-InitialVolume.tex}%%%
+\input{090-3DClassification.tex}
+\input{100-3DRefinement.tex}
+
+% \input{130-install.tex}
+% \input{140-todo.tex}
+
+\bibliographystyle{elsart-harv}
+\bibliography{../tutorial_common/em}
+
+
+
+
+%\marginnote{swissmodel}[1cm]
+%When predicting by homology a structure is constructed by aligning a target protein sequence with known template structures. The protein sequence can be obtained from many sources, for example NCBI or UniProt. The quality of a structure depends upon the similarity between the target sequence and the database sharing highest similarity is aligned. 
+
+%Esto es otro parrafo
+
+
+\end{document}
+
+% NOTES
+% to be implemented map2model (phenix)
+%       chimera (see building parts of a protein without using a template)
