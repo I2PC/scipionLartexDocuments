@@ -1,4 +1,12 @@
 \section{CTF estimation}
+ \begin{figure}[H]
+  \centering
+  \captionsetup{width=.8\linewidth} 
+  \includegraphics[width=0.55\textwidth]
+  {{images/workflow_2.pdf}}
+  \caption{CTF estimation workflow (Blue color).}
+  \label{fig:workflow_2}
+  \end{figure}
 Since in focus images of biological specimens embedded in vitreous ice generate very little contrast, we take our movie-frames out of focus, and retrieve systematically distorted images of our specimens. The alteration observed is due to the different transference of contrast for each frequency. In an ideal microscope all the frequencies are transferred with total contrast (+1). In a normal one, some frequencies are transferred with contrast 0 or even -1. The CTF (Contrast transfer function) indicates how much contrast is transferred to the image as a function of the spatial frequency. The estimation of the CTF is the first step to correct it, repair its negative effect and retrieve our specimens undistorted.\\
 
 How to estimate the CTF?\\
@@ -38,10 +46,10 @@ The three algorithms estimate the PSD of the micrographs and the parameters of t
 
 After executing each one of these three protocols, results can be observed by pressing \scommand{Analyze results}. A table will be opened showing the image of the CTF computed of each micrographs, as well as other CTF parameters. CTFs of good micrographs typically display multiple concentric rings extending from the image center towards its edges. Bad micrographs, however, might lack rings or show very few of them that hardly extend from the image center. Micrographs like these will be discarded, likewise micrographs showing strongly asymmetric rings (astigmatic) or rings that attenuate in a particular direction (drifted). To discard a particular micrographs, select it, clik the mouse right button and choose \ttt{Disable}. If you want to see the CTF profile, choose the option \ttt{Show CTF profile}, and a new window will be opened to show the CTF profile. \ttt{Recalculate CTFs} and \ttt{Micrographs} are additional options of \scommand{Analyze results} menu that can be used after selecting specific micrographs. \ttt{Recalculate CTFs} allows to estimate again the CTF when the algorithm has previously failed to find the rings, even they can be seen by eye. The option \ttt{Micrographs} allows to create a new subset of selected micrographs.\\
 
-Concerning some differences among protocols, we remark that micrographs with CTF estimated with \scommand{grigoriefflab-ctffind4} display a hole in the center because in some cases they have very much power and avoid appreciate what is underneath. In the particular case of \scommand{xmipp3-ctf estimation} four different images of micrographs. Besides the PSD, this last protocol displays the enhanced PSD, the CTF model by quadrants and half plane.\\
+Concerning some differences among protocols, we remark that micrographs with CTF estimated with \scommand{grigoriefflab-ctffind4} display a hole in the center because, in some cases, they have very much power and avoid appreciate what is underneath. In the particular case of \scommand{xmipp3-ctf estimation} four different images of micrographs are shown. Besides the PSD, this last protocol displays the enhanced PSD, the CTF model by quadrants and half plane.\\
 
 \subsection*{CTF consensus}
-The CTF estimation process concludes by applying a consensus protocol to assess differences among the output of the algorithms \ttt{Gctf} and \ttt{Xmipp CTF estimation}. The consensus protocol \scommand{xmipp3-ctf consensus} allows to perform this task (\ffigure{fig:xmipp3-ctf_consensus_1}. This protocol allows to screen micrographs according meaningful CTF estimations based on defocus values, astigmatism, resolution and other \ttt{Xmipp} criteria (second tap in the protocol form), which will only be used in case any of the CTFs computed is estimated by \scommand{xmipp3-ctf estimation}.\\
+The CTF estimation process concludes by applying a consensus protocol to assess differences among the output of the algorithms \ttt{Gctf} and \ttt{Xmipp CTF estimation}. We are going to use \scommand{xmipp3-ctf consensus} to perform this task (\ffigure{fig:xmipp3-ctf_consensus_1}). This protocol allows to screen micrographs according meaningful CTF estimations based on defocus values, astigmatism, resolution and other \ttt{Xmipp} criteria (second tap in the protocol form), which will only be used in case that any of the CTFs computed is estimated by \scommand{xmipp3-ctf estimation}.\\
 
 \begin{figure}[H]
   \centering
