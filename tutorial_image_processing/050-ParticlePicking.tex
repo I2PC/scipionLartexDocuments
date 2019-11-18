@@ -49,7 +49,7 @@ The protocol \scommand{xmipp3- manual-picking (step1)} (\ffigure{fig:xmipp_manua
    \item You can apply filters in the micrographs to see the particles better. Select those filters in the menu \ttt{Filters}. 
   \end{itemize}
 
-  In the manual/supervised step, we start picking manually a few of micrographs (5 in this case) and then clik the \ttt{Active training} button. At this point, the program will train a classifier based on machine learning and will propose some coordinates automatically. You can ``correct'' the proposal of the classifier by adding missing particles or removing wrongly picked ones. After training with a few more micrographs, we can register the output coordinates by clicking the \ttt{Coordinates} red button.\\
+  In the manual/supervised step, we start picking manually a few micrographs (5 in this case) and then clik the \ttt{Active training} button. At this point, the program will train a classifier based on machine learning and will propose some coordinates automatically. You can ``correct'' the proposal of the classifier by adding missing particles or removing wrongly picked ones. After training with a few more micrographs, we can register the output coordinates by clicking the \ttt{Coordinates} red button.\\
   
   After manual picking, we can close the GUI and open the protocol \scommand{xmipp3- auto-picking (step 2)} (\ffigure{fig:xmipp_autopicking_step2}). Select as inputs the previous manual/supervised execution and all micrographs (\ttt{Micrographs to pick}: \ttt{Other}). The method will pick the rest of micrographs automatically. At the end, we can review the picking coordinates and we still have the chance to add/remove particles.
   
