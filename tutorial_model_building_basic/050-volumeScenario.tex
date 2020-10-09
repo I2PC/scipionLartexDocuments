@@ -93,7 +93,7 @@ After two iterations, the sharpening algorithm reaches the convergence criterion
   \label{fig:localdeblur_2}
   \end{figure}
   
-The sharpened map obtained after the second iteration, $i.e.$ the \ttt{last} map will be used in the next step of map preprocessing, the extraction of the unit cell. This map can also be visualized and compared with the initial one in \chimera (\ffigure{fig:localdeblur_3}) by clicking \ttt{Analyze Results} (\ffigure{fig:localdeblur_1} (6)).
+Additionally, the sharpened map obtained after the second iteration, $i.e.$ the \ttt{last} map, can also be visualized and compared with the initial one in \chimera (\ffigure{fig:localdeblur_3}) by clicking \ttt{Analyze Results} (\ffigure{fig:localdeblur_1} (6)).
 
 
 \begin{figure}[H]
@@ -105,9 +105,9 @@ The sharpened map obtained after the second iteration, $i.e.$ the \ttt{last} map
   \label{fig:localdeblur_3}
   \end{figure}
  
-\subsubsection*{b) Sharpening with $DeepEMHancer$}
+\subsubsection*{b) Sharpening with $DeepEMhancer$}
 
-$DeepEMHancer$ is an alternative automatic sharpening method based on deep learning (\citep{Sanchez-Garcia2020.06.12.148296}), implemented in \scipion in the protocol \scommand{xmipp3 - deepEMhancer} (Appendix \ref{app:deepEMhancerSharpening}). Open this protocol (\ffigure{fig:deepEMHancer_1} (1)) and complete it as indicated. Since only the refined map is available, we are not going to use half maps (2). Include your map (3), the type of normalization desired (4) and the deep learning mode to use (5), in this particular case \ttt{highRes} due to the map high resolution.
+$DeepEMhancer$ is an alternative automatic sharpening method based on deep learning (\citep{Sanchez-Garcia2020.06.12.148296}), implemented in \scipion in the protocol \scommand{xmipp3 - deepEMhancer} (Appendix \ref{app:deepEMhancerSharpening}). Open this protocol (\ffigure{fig:deepEMHancer_1} (1)) and complete it as indicated. Since only the refined map is available, we are not going to use half maps (2). Include your map (3), the type of normalization desired (4) and the deep learning mode to use (5), in this particular case \ttt{highRes} due to the map high resolution.
 
  
  \begin{figure}[H]
@@ -115,47 +115,53 @@ $DeepEMHancer$ is an alternative automatic sharpening method based on deep learn
   \captionsetup{width=.9\linewidth} 
   \includegraphics[width=0.95\textwidth]
   {Images/Fig63}
-  \caption{Filling in the protocol to generate a sharpened map with $DeepEMHancer$.}
+  \caption{Filling in the protocol to generate a sharpened map with $DeepEMhancer$.}
   \label{fig:deepEMHancer_1}
   \end{figure}
 
-After executing the protocol (\ffigure{fig:deepEMHancer_1} (6)), we can check the results (7). \chimera viewer will open showing the sharpened map compared with the initial one (\ffigure{fig:deepEMHancer_2}).
+After executing the protocol (\ffigure{fig:deepEMHancer_1} (6)), we can check the results (7). \chimera viewer will open and show the sharpened map compared with the initial one (\ffigure{fig:deepEMHancer_2}).
 
 \begin{figure}[H]
   \centering 
   \captionsetup{width=.7\linewidth} 
   \includegraphics[width=0.65\textwidth]
   {Images/Fig65}
-  \caption{$DeepEMHancer$ sharpened map (yellow surface) and input map (grey mesh) in \chimera.}
+  \caption{$DeepEMhancer$ sharpened map (yellow surface) and input map (grey mesh) in \chimera.}
   \label{fig:deepEMHancer_2}
   \end{figure}
   
 \subsection*{Comparison of maps}
+Realize that at this point we have generated two optimized maps derived from the initial one. Additionally, some other maps could have been obtained using other map optimization methods. A comparison among them would be interesting to consider which one(s) of them should be used as input in next steps of the modeling workflow. The ideal map for tracing the atomic structure should include as many details and connections as possible and, at the same time, preserve the density areas of the initial map. In other words, we can use the best sharpened map (with higher resolution) corroborating that it does not make up new densities, absent in the starting map. Nevertheless, choose ``the best'' sharpened map could be difficult sometimes, especially if the map is very big or there are some regions optimized in one of the sharpened maps and other areas optimized in the other one. In that case, you can use several maps at the same time, having all of them perfectly aligned according to the same origin of coordinates.
+
+In the tiny example shown in this tutorial we are working with a high resolution map and there are almost no differences in resolution between the starting map and the two derived sharpened maps, although this is not usually the case in real life. In this quite uncommon case the initial unsharpened map would be enough to trace the atomic structure. However, in order to detail the method, the starting map and their two sharpened ones will be used simultaneously.
+
+
+
 
 \subsection*{Extraction of the map asymmetric unit}
-Since smaller volumes usually include lower number of individual structural elements, making easier fitting models in maps and simplifying modeling process, the volume chosen will always be the smaller asymmetrical subunit of the starting loaded volume, also known as asymmetric unit (ASU). The size of the ASU thus depends on the symmetry order of the initial volume. The higher the symmetry order, the smaller the ASU. The atomic structure of the whole volume will be obtained straight forward by simply repetition of the ASU structure according to the symmetry order. Then, the first step to simplify the complexity of the initial volume is extracting the ASU. This task can be accomplished by using the \scipion protocol \scommand{xmipp3 - extract unit cell} that extracts the geometrical ASU of the map. 
+Since smaller volumes usually include lower number of individual structural elements, making easier fitting models in maps and simplifying modeling process, the part of the map chosen to work with will always be the smaller asymmetrical subunit of the starting loaded map, also known as asymmetric unit (ASU). The size of the ASU thus depends on the symmetry order of the initial volume. The higher the symmetry order, the smaller the ASU. The atomic structure of the whole volume will be obtained straight forward by simply repetition of the ASU structure according to the symmetry order. Then, the first step to simplify the complexity of the initial volume is extracting the ASU. This task can be accomplished by using the \scipion protocol \scommand{xmipp3 - extract unit cell} that extracts the geometrical ASU of the map. 
 
-\ffigure{fig:extract_unit_cell} shows how to fill in this protocol form (1). Since \ttt{metHgb} macromolecule shows symmetry C2, we have selected cyclic symmetry (Cn) as type of symmetry, and 2 as symmetry order. The angle offset selected (-45º) turns around the z axis the mask used to create the unit cell. 
+\ffigure{fig:extract_unit_cell} shows how to fill in this protocol form (1). Consider that in this particular case the protocol will be run three times, one with each map (the initial one and the two sharpened derived ones). Include each map in \ffigure{fig:extract_unit_cell} (2). Since \ttt{metHgb} macromolecule shows symmetry C2, we have selected cyclic symmetry (Cn) as type of symmetry (3), and 2 as symmetry order (4). The angle offset selected (5) turns -45º around the z axis the mask used to create the ASU. 
 %Remark the relevance of including the offset in order to extract a unit cell able to reconstruct by symmetry the whole volume regarding the symmetry axes. 
-The extracted fraction of the initial volume will include the volume comprised between the coordinate origin (inner radius 0.0) and the maximum radius (outer radius 50.0), and will be slightly higher than the unit cell (expand factor 0.2). % We use an expanded unit cell  to favor the modeling of each individual structure edges. 
-Again, the respective tutorial appendix \ref{app:extractUnitCell} includes a comprehensive explanation of the meaning of parameters. 
+The two wizards on the right (6, 7) help you to select the radii to delimit a fraction of the map comprised between the coordinate origin (inner radius 0.0) and the maximum radius (outer radius 50.0). The final extracted volume will be slightly higher than the ASU due to the expand factor 0.2 (8). % We use an expanded unit cell  to favor the modeling of each individual structure edges. 
+The respective tutorial appendix \ref{app:extractUnitCell} includes a comprehensive explanation of the meaning of parameters. 
 
  \begin{figure}[H]
   \centering 
-  \captionsetup{width=.7\linewidth} 
-  \includegraphics[width=0.90\textwidth]
+  \captionsetup{width=.9\linewidth} 
+  \includegraphics[width=1\textwidth]
   {Images/Fig7}
-  \caption{Extracting the unit cell volume.}
+  \caption{Extracting the map asymmetric unit (ASU).}
   \label{fig:extract_unit_cell}
   \end{figure}
   
-After executing the protocol (\ffigure{fig:extract_unit_cell}(2)), the resulting expanded unit cell can be observed (3) with \chimera (\ffigure{fig:chimera_visualization_unit_cell}). Note the additional expanded volume of the  unit cell on the left side of the figure. The unit cell itself, on the right side, constitutes the half volume. Since the total volume contains the structure of four proteins, we can predict that this smaller asymmetrical subunit of the initial volume contains two proteins, one $\alpha$ and one $\beta$ \ttt{metHbg} subunits. Then, the respective structures of these two proteins will be fitted in the unit cell volume in successive modeling workflow steps. 
+After executing the protocol (\ffigure{fig:extract_unit_cell}(9)), the resulting expanded ASU can be observed (10) with \chimera (\ffigure{fig:chimera_visualization_unit_cell}). Note the additional expanded volume of the  ASU on the left side of the figure. The ASU itself, on the right side, constitutes the half volume. Since the total volume contains the structure of four proteins, we can anticipate that this smaller asymmetrical subunit of the initial volume contains two proteins, one $\alpha$ and one $\beta$ \ttt{metHbg} subunits. Then, the respective structures of these two proteins will be fitted in the map ASU in successive modeling workflow steps. 
   
  \begin{figure}[H]
   \centering 
   \captionsetup{width=.7\linewidth} 
   \includegraphics[width=0.80\textwidth]
   {Images/Fig8}
-  \caption{Expanded unit cell (green-blue) and initial volume (gray) visualized with $Chimera$. The purple broken line delimits the unit cell (right) and its expanded volume (left).}
+  \caption{Expanded ASU (green-blue) and initial volume (gray) visualized with $ChimeraX$. The purple broken line delimits the ASU (right) and its expanded volume (left).}
   \label{fig:chimera_visualization_unit_cell}
   \end{figure}
