@@ -49,7 +49,7 @@ Besides \iii{target} and \iii{template} sequence, other sequences are needed to 
   \label{fig:model_from_template_protocol}
   \end{figure}
  
- /chimera will be open including this time the multiple sequence alignment together with the \chimera graphics window (\ffigure{fig:chimera_alignment}). The \iii{template} selected chain is shown green-highlighted in both windows. As you may observe in the alignment, \ttt{Hgb} $\alpha$ subunit is a quite conserved macromolecule; there is only one gap in the alignment because \ttt{PRO} (Proline) 47 residue has disappeared throughout the evolutionary process. 
+ \chimera will be open including this time the multiple sequence alignment together with the \chimera graphics window (\ffigure{fig:chimera_alignment}). The \iii{template} selected chain is shown green-highlighted in both windows. As you may observe in the alignment, \ttt{Hgb} $\alpha$ subunit is a quite conserved macromolecule; there is only one gap in the alignment because \ttt{PRO} (Proline) 47 residue has disappeared throughout the evolutionary process. 
  %Human \ttt{Hgb} $\alpha$ subunit is closer to the protein in mammals (horse, rabbit) than to the protein in unrelated organisms, as we would have anticipated. Corroborate this point by checking the identity percentage \%ID  between human sequence and the other sequences in \ffigure{fig:modeller} (B). 
  
  \begin{figure}[H]
@@ -61,31 +61,39 @@ Besides \iii{target} and \iii{template} sequence, other sequences are needed to 
   \end{figure}
 \end{itemize}
 
-%rename #3.2 id #4
-%scipionwrite #4 prefix modeller_3_2_
+%In case you'd like edit the name or the order of the sequences, add,  delete or realign sequences, ..., go to the upper menu of the multiple sequence alignment (\ttt{Edit -> }). In particular, we are going to change the name of the \iii{target} sequence from \ttt{P69905} to \ttt{HBA\_HUMAN} in \ttt{Edit -> Edit Sequence Name...} (\ffigure{fig:modeller} (A)).
+To complete the form that will allow us to get any atomic model of the \iii{target} sequence in \modeller web service, we have two possibilities: a) to select \ttt{Tools} (\ffigure{fig:chimera_alignment}, red arrow) \ttt{-> Sequence -> Modeller Comparative}, or b) clicking with the right mouse inside the \ttt{Seqview} box (\ffigure{fig:chimera_alignment}, green arrow) and selecting \ttt{Structure -> Modeller Comparative Modeling...} in the pop up window. A new window of \ttt{Modeller Comparative} will be open (\ffigure{fig:modeller} (A)), that we have to fill in. \ttt{Sequence alignments} (1) should include the \iii{template} sequence. In \ttt{Target sequences} section (2) we should include the \iii{target} sequence that we would like to model, \ttt{HBA\_HUMAN\_P69905} in this particular case. Modeller license key has to be included here (3). The number of output models, 5 by default, can be also specified (4). Since the target sequence that we would like to model should include \ttt{non-water HETATM residues} (\ttt{HEME} group) we are going to select this as \ttt{Advance option} (5). Finally, press \ttt{OK} (6) to start the computation of potential models for your \iii{target} sequence.\\
 
-In case you'd like edit the name or the order of the sequences, add,  delete or realign sequences, ..., go to the upper menu of the multiple sequence alignment (\ttt{Edit -> }). In particular, we are going to change the name of the \iii{target} sequence from \ttt{P69905} to \ttt{HBA\_HUMAN} in \ttt{Edit -> Edit Sequence Name...} (\ffigure{fig:modeller} (A)). To get possible atomic models of the \iii{target} sequence in \modeller web service, we have to select \ttt{Structure -> Modeller (homology ...)} in the same upper menu. A new window for Comparative Modeling with Modeller will be open (\ffigure{fig:modeller} (B)), that we have to fill in selecting \iii{target} sequence (1) and \iii{template} (2). Modeller license key has to be included here (3). The number of output models can be specified in Advanced Options (5 by default). Finally, press Apply to start the computation without hiding the panel (4), or press OK to start the computation hiding it. In \chimera main graphics window, lower left corner, you may see the status of your job. After a while, five possible atomic structures, from now ahead \iii{models}, are retrieved for the \iii{target} sequence (\ffigure{fig:modeller} (C)) together with their assessment scores. Column \ttt{GA341} of Modeller Results indicates the score derived from statistical potentials (values in \ttt{[0,1]}; \ttt{> 0.7} for reliable \iii{models}). Column \ttt{zDOPE} (normalized Discrete Optimized Protein Energy) score depends on the atomic distance (negative values for the better \iii{models}). Let's select \iii{model} \ttt{\#2.1}. You can check every model numbers in \chimera's main menu (\ttt{Favorites -> Model Panel}).
- 
   \begin{figure}[H]
   \centering 
   \captionsetup{width=.7\linewidth} 
-  \includegraphics[width=0.80\textwidth]{Images/Fig15}
-  \caption{(A) Sequence edition. (B) Completing the form to access to homology modeling with \modeller. (C) Resulting \iii{model scores}.}
+  \includegraphics[width=0.7\textwidth]{Images/Fig15}
+  \caption{(A) Completing the form to access to homology modeling with \modeller. (B) Resulting \iii{model scores}. (C) \chimera \ttt{Model panel}}
   \label{fig:modeller}
   \end{figure}
- 
- Comparing your selected \iii{model} of human \ttt{metHgb} $\alpha$ subunit with \ttt{1PBX\_A} \iii{template}, we observe that the selected \iii{model} \ttt{\#2.1} does not contain the \ttt{HEME} prosthetic group (\ffigure{fig:chimera_model} (A)). Before saving the \iii{model}, the \iii{template} \ttt{HEME} group will thus be added to your \iii{model} in \chimera. With this aim, open \chimera's command line; from \chimera main menu (\ttt{Favorites -> Command Line}) and delete every atom of \ttt{1PBX} \iii{template}, except the \ttt{HEME} group associated to chain \ttt{A}. To preserve residue 144 (\ttt{HEME} group) in chain \ttt{A}, write the next command line (\ffigure{fig:chimera_model} (A)(1)):
+
+In \chimera main graphics window, lower left corner, you may see the status of your job. After a while, five possible atomic structures, from now ahead \iii{models}, are retrieved for the \iii{target} sequence (\ffigure{fig:modeller} (B)) together with their assessment scores. Column \ttt{GA341} of Modeller Results indicates the score derived from statistical potentials (values in \ttt{[0,1]}; \ttt{> 0.7} for reliable \iii{models}). Column \ttt{zDOPE} (normalized Discrete Optimized Protein Energy) score depends on the atomic distance (negative values for the better \iii{models}). You can check every model numbers in \chimera's main menu (\ttt{Tools -> Models} (C)).
+
+For this tutorial we are going to select \iii{model} \ttt{\#3.2}  (\ffigure{fig:modeller} (B), green arrow). Renaming this model is the first step to save it. We can rename the model by typing in the \chimera command line:
  \begin{verbatim}
-     delete #1:0-143.A, 145-.A, .B
- or
-     delete #1:0-143.A
-     delete #1:145-.A
-     delete #1:.B
+     rename #3.2 id #4
+ \end{verbatim}
+The renamed atomic structure will appear in the \ttt{Models} panel (\ffigure{fig:modeller} (C), green arrow). To track this new atomic structure in the \scipion workflow, we can write in the \chimera command line:
+\begin{verbatim}
+     scipionwrite #4 prefix model_from_modeller_3_2_
  \end{verbatim}
  
- Go to the Model Panel and select models \ttt{\#1} and \ttt{\#2.1} simultaneously, then press \ttt{Copy/Combine} on the right side column (\ffigure{fig:chimera_model} (B)(2)). Model Panel shows the new \iii{model} created \ttt{\#3} (3), that we can save in the command line (4) writing:\\
+In case that the \ttt{Advanced option} \ttt{'Include non-water non-water HETATM residues from template'} was temporally disabled ((\ffigure{fig:modeller} (A, 5)), an alternative option to have the model with the \ttt{HEME} group (residue 144 from the atomic structure #2 chain A) could be:
+\begin{verbatim}
+     rename #3.2 id #4
+     select #4
+     select add #2/A:144
+     save /tmp/tmp.cif format mmcif models #2,4 selectedOnly true
+     open /tmp/tmp.cif
+     scipionwrite #5 prefix model_from_modeller_3_2_
+ \end{verbatim}
 
- \ttt{scipionwrite model \#3}\\
+
  
  \begin{figure}[H]
   \centering 
