@@ -1,5 +1,12 @@
 \section{Moving from sequence to atomic structure scenario}
-
+\ffigure{fig:scipion_workflow_from_sequence} shows the \scipion workflow that we are going to detail in this section.
+\begin{figure}[H]
+  \centering 
+  \captionsetup{width=.9\linewidth} 
+  \includegraphics[width=1\textwidth]{Images/Fig66}
+  \caption{\scipion framework detailing the workflow to generate the first model of human \ttt{Hgb} $\alpha$ subunit.}
+  \label{fig:scipion_workflow_from_sequence}
+  \end{figure}
 \subsubsection*{Downloading the atomic structure}
   
   Once identified the \iii{template} that we are going to use as structural skeleton of our sequence, we import it into \scipion with the protocol \scommand{import atomic structure} (see \ffigure{fig:import_atomic_structure} (1) and Appendix \ref{app:importAtomicStructure}). Select the option for importing the atomic structure from ID (2), write the \ttt{PDB} accession code (3) and execute the protocol (4). 
@@ -62,7 +69,7 @@ Besides \iii{target} and \iii{template} sequence, other sequences are needed to 
 \end{itemize}
 
 %In case you'd like edit the name or the order of the sequences, add,  delete or realign sequences, ..., go to the upper menu of the multiple sequence alignment (\ttt{Edit -> }). In particular, we are going to change the name of the \iii{target} sequence from \ttt{P69905} to \ttt{HBA\_HUMAN} in \ttt{Edit -> Edit Sequence Name...} (\ffigure{fig:modeller} (A)).
-To complete the form that will allow us to get any atomic model of the \iii{target} sequence in \modeller web service, we have two possibilities: a) to select \ttt{Tools} (\ffigure{fig:chimera_alignment}, red arrow) \ttt{-> Sequence -> Modeller Comparative}, or b) clicking with the right mouse inside the \ttt{Seqview} box (\ffigure{fig:chimera_alignment}, green arrow) and selecting \ttt{Structure -> Modeller Comparative Modeling...} in the pop up window. A new window of \ttt{Modeller Comparative} will be open (\ffigure{fig:modeller} (A)), that we have to fill in. \ttt{Sequence alignments} (1) should include the \iii{template} sequence. In \ttt{Target sequences} section (2) we should include the \iii{target} sequence that we would like to model, \ttt{HBA\_HUMAN\_P69905} in this particular case. Modeller license key has to be included here (3). The number of output models, 5 by default, can be also specified (4). Since the target sequence that we would like to model should include \ttt{non-water HETATM residues} (\ttt{HEME} group) we are going to select this as \ttt{Advance option} (5). Finally, press \ttt{OK} (6) to start the computation of potential models for your \iii{target} sequence.\\
+To complete the form that will allow us to get any atomic model of the \iii{target} sequence in \modeller web service, we have two possibilities: a) to select \ttt{Tools} (\ffigure{fig:chimera_alignment}, red arrow) \ttt{-> Sequence -> Modeller Comparative}, or b) clicking with the right mouse inside the \ttt{Seqview} box (\ffigure{fig:chimera_alignment}, green arrow) and selecting \ttt{Structure -> Modeller Comparative Modeling...} in the pop up window. A new window of \ttt{Modeller Comparative} will be open (\ffigure{fig:modeller} (A)), that we have to fill in. \ttt{Sequence alignments} (1) should include the \iii{template} sequence. In \ttt{Target sequences} section (2) we should include the \iii{target} sequence that we would like to model, \ttt{HBA\_HUMAN\_P69905} in this particular case. Modeller license key has to be included here (3). The number of output models, 5 by default, can be also specified (4). Since the target sequence that we would like to model should include \ttt{non-water HETATM residues} (\ttt{HEME} group) we are going to select this as \ttt{Advanced option} (5). Finally, press \ttt{OK} (6) to start the computation of potential models for your \iii{target} sequence.\\
 
   \begin{figure}[H]
   \centering 
@@ -93,21 +100,18 @@ In case that the \ttt{Advanced option} \ttt{'Include non-water non-water HETATM 
      scipionwrite #5 prefix model_from_modeller_3_2_
  \end{verbatim}
 
-
+After closing \chimera, you can visualize (\ffigure{fig:model_from_template_protocol} (8)) your full predicted \iii{model} (\ffigure{fig:chimera_model}) that includes the \ttt{HEME} group (1). 
  
  \begin{figure}[H]
   \centering 
   \captionsetup{width=.7\linewidth} 
   \includegraphics[width=0.80\textwidth]{Images/Fig16}
-  \caption{\iii{Model} selection in \chimera. (A) Selected \iii{model} \ttt{\#2.1}. (B) Creation of full final \iii{model} of human \ttt{metHgb} $\alpha$ subunit, including \ttt{HEME} group.}
+  \caption{Initial \iii{model} of human \ttt{metHgb} $\alpha$ subunit, including the \ttt{HEME} group.}
   \label{fig:chimera_model}
   \end{figure}
- 
- After closing \chimera, you can visualize (\ffigure{fig:model_from_template_protocol} (8)) your full predicted \iii{model}. In a similar process, you can also obtain human \ttt{metHgb} $\beta$ subunit. %Remark that in this case, the \ttt{HEME} group will be kept with the next \chimera command line: \\
- %\ttt{delete \#1:.A, 0-147.B, 149-.B}\\ or \\
- %\ttt{delete \#1:.A}\\ \ttt{delete \#1:0-147.B}\\ \ttt{delete \#1:149-.B}\\
- Use this time a direct way of keeping the \ttt{HEME} group in your $model$ of \ttt{metHgb} $\beta$ subunit: Select the advanced option \ttt{Include non-water HETATM residues from template} included in  \ttt{Comparative Modeling with Modeller} window (\ffigure{fig:modeller} (B)).\\
   
+In a similar process, you can also obtain human \ttt{metHgb} $\beta$ subunit.\\
+
 If for any reason you decide to go back and check a different \iii{model} from the five \iii{models} initially provided by \modeller, you can do it by using \scommand{chimera restore session} protocol (Appendix \ref{app:chimeraRestoreSession}). This protocol may be used whenever \chimera session had been saved, specifically after using protocols \chimera \ttt{rigid fit}, \chimera \ttt{operate}, and \chimera \ttt{model from template}. In addition to the \chimera command line \ttt{scipionss}, command line \ttt{scipionwrite} also saves \chimera session by default. So, if you want to restore a previous session just open the form (\ffigure{fig:restore_session_protocol}, 1), and include the session that you'd like to restore (2).
 
  \begin{figure}[H]
