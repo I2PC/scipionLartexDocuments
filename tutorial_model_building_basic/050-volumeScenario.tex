@@ -82,7 +82,7 @@ Local resolution values of the input map allow to compute the sharpened map by t
   \label{fig:localdeblur_1}
   \end{figure}
   
-After two iterations, the sharpening algorithm reaches the convergence criterion, $i.e.$ a difference between two successive iterations lower than 1 \%, and stops. The two maps obtained in the respective iterations can be observed with $ShowJ$ by clicking the black arrow shown in \ffigure{fig:localdeblur_1} (7) with the right mouse botton and selecting \ttt{Open with DataViewer}. Resulting map for each iteration will be shown, as indicated in \ffigure{fig:localdeblur_2}.  Visualization in \chimera is also possible selecting \ttt{Open with ChimeraX} in the menu option \ttt{File} (\ffigure{fig:localdeblur_2} (1)). 
+After two iterations, the sharpening algorithm reached the convergence criterion, $i.e.$ a difference between two successive iterations lower than 1 \%, and stopped. The two maps obtained in the respective iterations can be observed with $ShowJ$ by clicking the black arrow shown in \ffigure{fig:localdeblur_1} (7) with the right mouse botton and selecting \ttt{Open with DataViewer}. Resulting map for each iteration will be shown, as indicated in \ffigure{fig:localdeblur_2}.  Visualization in \chimera is also possible selecting \ttt{Open with ChimeraX} in the menu option \ttt{File} (\ffigure{fig:localdeblur_2} (1)). 
 
 \begin{figure}[H]
   \centering 
@@ -93,7 +93,7 @@ After two iterations, the sharpening algorithm reaches the convergence criterion
   \label{fig:localdeblur_2}
   \end{figure}
   
-Additionally, the sharpened map obtained after the second iteration, $i.e.$ the \ttt{last} map, can also be visualized and compared with the initial one in \chimera (\ffigure{fig:localdeblur_3}) by clicking \ttt{Analyze Results} (\ffigure{fig:localdeblur_1} (6)).
+Additionally, by clicking \ttt{Analyze Results} (\ffigure{fig:localdeblur_1} (6)) the sharpened map obtained after the second iteration, $i.e.$ the \ttt{last} map, can be also visualized and compared with the initial one in \chimera (\ffigure{fig:localdeblur_3}).
 
 
 \begin{figure}[H]
@@ -131,7 +131,7 @@ After executing the protocol (\ffigure{fig:deepEMHancer_1} (6)), we can check th
   \end{figure}
   
 \subsection*{Comparison of maps}
-Realize that at this point we have generated two optimized maps derived from the initial one. Additionally, some other maps could have been obtained using other map optimization methods. A comparison among them would be interesting to consider which one(s) of them should be used as input in next steps of the modeling workflow. The ideal map for tracing the atomic structure should include as many details and connections as possible and, at the same time, preserve the density areas of the initial map. In other words, we can use the best sharpened map (with higher resolution) corroborating that it does not make up new densities, absent in the starting map. Nevertheless, choose ``the best'' sharpened map could be difficult sometimes, especially if the map is very big or there are some regions optimized in one of the sharpened maps and other areas optimized in the other one. In that case, you can use several maps at the same time, having all of them perfectly aligned according to the same origin of coordinates.
+Realize that at this point we have generated two optimized maps derived from the initial one. Additionally, some other maps could have been obtained using other map optimization methods. A comparison among them would be interesting to consider which one(s) of them should be used as input in next steps of modeling workflow. The ideal map for tracing the atomic structure should include as many details and connections as possible and, at the same time, preserve the density areas of the initial map. In other words, we can use the best sharpened map (with higher resolution) corroborating that it does not make up new densities, absent in the starting map. Nevertheless, choose ``the best'' sharpened map could be difficult sometimes, especially if the map is very big or there are some regions optimized in one of the sharpened maps and other areas optimized in the other one. In that case, you can use several maps at the same time, having all of them perfectly aligned according to the same origin of coordinates.
 
 In the tiny example shown in this tutorial we are working with a high resolution map and there are almost no differences in resolution between the starting map and the two derived sharpened maps, although this is not usually the case in real life. In this quite uncommon case the initial unsharpened map would be enough to trace the atomic structure. However, in order to detail the method, the starting map and their two sharpened ones will be used simultaneously.
 
@@ -162,6 +162,6 @@ After executing the protocol (\ffigure{fig:extract_unit_cell}(9)), the resulting
   \captionsetup{width=.7\linewidth} 
   \includegraphics[width=0.80\textwidth]
   {Images/Fig8}
-  \caption{Expanded ASU (green-blue) and initial volume (gray) visualized with $ChimeraX$. The purple broken line delimits the ASU (right) and its expanded volume (left).}
+  \caption{Expanded ASU (yellow-green-blue) and initial volume (gray) visualized with $ChimeraX$. The purple broken line on the right delimits the ASU (right) and its expanded volume (left).}
   \label{fig:chimera_visualization_unit_cell}
   \end{figure}
