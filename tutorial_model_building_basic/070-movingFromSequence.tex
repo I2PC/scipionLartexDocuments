@@ -4,7 +4,7 @@
   \centering 
   \captionsetup{width=.9\linewidth} 
   \includegraphics[width=1\textwidth]{Images/Fig66}
-  \caption{\scipion framework detailing the workflow to generate the first model of human \ttt{Hgb} $\alpha$ subunit.}
+  \caption{\scipion framework detailing the workflow to generate the first model of the human \ttt{Hgb} $\alpha$ subunit.}
   \label{fig:scipion_workflow_from_sequence}
   \end{figure}
 \subsubsection*{Downloading the atomic structure}
@@ -23,7 +23,7 @@
   \centering 
   \captionsetup{width=.8\linewidth} 
   \includegraphics[width=0.80\textwidth]{Images/Fig11}
-  \caption{Atomic structure \ttt{1PBX} visualized with Chimera. \ttt{Hgb} $\alpha$ subunit (chain \ttt{A}) is shown green-highlighted.}
+  \caption{Atomic structure \ttt{1PBX} visualized with Chimera. \ttt{Hgb} $\alpha$ subunit (selected chain \ttt{A}) is shown green-highlighted.}
   \label{fig:chimera_visualization_structure}
   \end{figure}
   
@@ -69,7 +69,7 @@ Besides \iii{target} and \iii{template} sequence, other sequences are needed to 
 \end{itemize}
 
 %In case you'd like edit the name or the order of the sequences, add,  delete or realign sequences, ..., go to the upper menu of the multiple sequence alignment (\ttt{Edit -> }). In particular, we are going to change the name of the \iii{target} sequence from \ttt{P69905} to \ttt{HBA\_HUMAN} in \ttt{Edit -> Edit Sequence Name...} (\ffigure{fig:modeller} (A)).
-To complete the form that will allow us to get any atomic model of the \iii{target} sequence in \modeller web service, we have two possibilities: a) to select \ttt{Tools} (\ffigure{fig:chimera_alignment}, red arrow) \ttt{-> Sequence -> Modeller Comparative}, or b) clicking with the right mouse inside the \ttt{Seqview} box (\ffigure{fig:chimera_alignment}, green arrow) and selecting \ttt{Structure -> Modeller Comparative Modeling...} in the pop up window. A new window of \ttt{Modeller Comparative} will be open (\ffigure{fig:modeller} (A)), that we have to fill in. \ttt{Sequence alignments} (1) should include the \iii{template} sequence. In \ttt{Target sequences} section (2) we should include the \iii{target} sequence that we would like to model, \ttt{HBA\_HUMAN\_P69905} in this particular case. Modeller license key has to be included here (3). The number of output models, 5 by default, can be also specified (4). Since the target sequence that we would like to model should include \ttt{non-water HETATM residues} (\ttt{HEME} group) we are going to select this as \ttt{Advanced option} (5). Finally, press \ttt{OK} (6) to start the computation of potential models for your \iii{target} sequence.\\
+To complete the form that will allow us to get any atomic model of the \iii{target} sequence in \modeller web service, we have two possibilities: a) to select \ttt{Tools} (\ffigure{fig:chimera_alignment}, red arrow) \ttt{-> Sequence -> Modeller Comparative}, or b) clicking with the right mouse inside the \ttt{Seqview} box (\ffigure{fig:chimera_alignment}, green arrow) and selecting \ttt{Structure -> Modeller Comparative Modeling...} in the pop up window. A new window of \ttt{Modeller Comparative} will be open (\ffigure{fig:modeller} (A)), that we have to fill in. \ttt{Sequence alignments} (1) should include the \iii{template} sequence. In the \ttt{Target sequences} section (2) we should include the \iii{target} sequence that we would like to model, \ttt{HBA\_HUMAN\_P69905} in this particular case. Modeller license key has to be included here (3). The number of output models, 5 by default, can be also specified (4). Since the target sequence that we would like to model should include \ttt{non-water HETATM residues} (\ttt{HEME} group) we are going to select this choice as \ttt{Advanced option} (5). Finally, press \ttt{OK} (6) to start the computation of potential models for your \iii{target} sequence.\\
 
   \begin{figure}[H]
   \centering 
@@ -90,13 +90,13 @@ The renamed atomic structure will appear in the \ttt{Models} panel (\ffigure{fig
      scipionwrite #4 prefix model_from_modeller_3_2_
  \end{verbatim}
  
-In case that the \ttt{Advanced option} \ttt{'Include non-water non-water HETATM residues from template'} was temporally disabled ((\ffigure{fig:modeller} (A, 5)), an alternative option to have the model with the \ttt{HEME} group (residue 144 from the atomic structure #2 chain A) could be:
+In case that the \ttt{Advanced option} \ttt{'Include non-water non-water HETATM residues from template'} was temporally disabled ((\ffigure{fig:modeller} (A, 5)), an alternative option to have the model with the \ttt{HEME} group (residue 144 from the atomic structure \#2 chain A) could be:
 \begin{verbatim}
      rename #3.2 id #4
-     select #4
-     select add #2/A:144
-     save /tmp/tmp.cif format mmcif models #2,4 selectedOnly true
-     open /tmp/tmp.cif
+     select #2
+     select subtract #2/A:144
+     del sel
+     scipioncombine models #2,4
      scipionwrite #5 prefix model_from_modeller_3_2_
  \end{verbatim}
 
@@ -110,7 +110,7 @@ After closing \chimera, you can visualize (\ffigure{fig:model_from_template_prot
   \label{fig:chimera_model}
   \end{figure}
   
-In a similar process, you can also obtain human \ttt{metHgb} $\beta$ subunit.\\
+In a similar process, you can also obtain the human \ttt{metHgb} $\beta$ subunit.\\
 
 If for any reason you decide to go back and check a different \iii{model} from the five \iii{models} initially provided by \modeller, you can do it by using \scommand{chimera restore session} protocol (Appendix \ref{app:chimeraRestoreSession}). This protocol may be used whenever \chimera session had been saved, specifically after using protocols \chimera \ttt{rigid fit}, \chimera \ttt{operate}, and \chimera \ttt{model from template}. In addition to the \chimera command line \ttt{scipionss}, command line \ttt{scipionwrite} also saves \chimera session by default. So, if you want to restore a previous session just open the form (\ffigure{fig:restore_session_protocol}, 1), and include the session that you'd like to restore (2).
 
