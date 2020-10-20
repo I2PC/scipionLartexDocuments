@@ -140,7 +140,7 @@ Density for amino acid side chains from an experimental electron density map at 
   \vhEntry{1.1}{01.30.2019}{MM}{added appendices and minor fixes}
   \vhEntry{1.2}{04.24.2019}{MM}{added atomstructutils, contacts and submission protocols}
   \vhEntry{1.3}{09.10.2019}{MM}{added map preprocessing protocols (create mask, and compute local Resolution and Sharpening) and \phenix validation cryoEM}
-  \vhEntry{1.4}{10.10.2020}{MM}{migration to python3 and adaptation to \scipion version 3.0, replacement of Chimera by ChimeraX, added \phenix dock-in-map protocol, removed singularities for \phenix version 1.13, removed \powerfit protocol}
+  \vhEntry{1.4}{30.10.2020}{MM}{migration to python3 and adaptation to \scipion version 3.0, replacement of Chimera by ChimeraX (new functionalities in model from template and map subtract), added other preprocessing tools ($DeepEMhancer$), added \phenix dock-in-map protocol, removed singularities for \phenix version 1.13, removed \powerfit protocol}
 \end{versionhistory}\newpage
 
 %----------------------------------------------------------------------------------------
@@ -209,6 +209,7 @@ This tutorial requires, in addition to \scipion, USCF~\chimera (\url{https://www
 \input{a050-ccp4CootRefinement.tex}
 \input{a060-ccp4Refmac.tex}
 \input{a061-create3DMask.tex}
+\input{a062-deepEMhancerSharpening.tex}
 \input{a070-extractUnitCell.tex}
 \input{a080-importAtomicStructure.tex}
 \input{a090-importSequence.tex}
@@ -216,7 +217,6 @@ This tutorial requires, in addition to \scipion, USCF~\chimera (\url{https://www
 \input{a100-importvolume.tex}
 \input{a101-localDeblurSharpening.tex}
 \input{a102-localMonoRes.tex}
-\input{a103-deepEMhancerSharpening.tex}
 \input{a110-modelFromTemplate.tex}
 \input{a120-emRingerProtocol.tex}
 \input{a130-molprobityProtocol.tex}
@@ -224,8 +224,9 @@ This tutorial requires, in addition to \scipion, USCF~\chimera (\url{https://www
 \input{a140-realSpaceRefineProtocol.tex}
 \input{a150-superposePdbsProtocol.tex}
 \input{a160-dockInMapProtocol.tex}
+\input{a161-asignOrigAndSampling.tex}
 \input{a170-exportToEMDB.tex}
-\input{a180-asignOrigAndSampling.tex}
+
 
 
 
