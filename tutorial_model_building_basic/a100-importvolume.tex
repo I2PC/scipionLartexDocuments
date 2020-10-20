@@ -5,6 +5,7 @@ Protocol designed to import electron density maps in \scipion from a file of use
  \begin{itemize}
   \item Requirements to run this protocol and visualize results:
     \begin{itemize}
+        \item \scipion plugin: \ttt{scipion-em}
         \item \scipion plugin: \ttt{scipion-em-chimera}
     \end{itemize}
   \item \scipion menu:
@@ -25,12 +26,30 @@ Protocol designed to import electron density maps in \scipion from a file of use
   
 
   \begin{itemize}
-   \item \ttt{Files directory}: Folder that contain one or several volumes (a set of volumes) that you'd like to import. By clicking the folder symbol right to the \ttt{Files directory} box, a browser will be opened to allow you look for the volume(s)-containing file in your computer. Click the volume that you want to select, if only one volume is going to be loaded. If a set of volumes from the same folder are going to be loaded, click the respective folder.
-   \item \ttt{Pattern}: In case you'd like to import a set of volumes, you can include here the common name pattern to all of them. Read \ttt{Help} section (question mark) of this parameter and the previous parameter \ttt{Files directory} to know about wildcard characters that can be used to generalize patterns.
+   \item \ttt{Import from}: Maps can be stored in EMDB or in your own computer. Select thus between these two options:
+    \begin{itemize}
+    \item \ttt{local file}: Select this option if the map is stored in your computer. Several params will appear in this case:\\
+       \begin{itemize}
+        \item \ttt{Files directory}: Folder that contain one or several volumes (a set of volumes) that you'd like to import. By clicking the folder symbol right to the \ttt{Files directory} box, a browser will be opened to allow you look for the volume(s)-containing file in your computer. Click the volume that you want to select, if only one volume is going to be loaded. If a set of volumes from the same folder are going to be loaded, click the respective folder.
+        \item \ttt{Pattern}: In case you'd like to import a set of volumes, you can include here the common name pattern to all of them. Read \ttt{Help} section (question mark) of this parameter and the previous parameter \ttt{Files directory} to know about wildcard characters that can be used to generalize patterns.
+        \item \ttt{Set half maps}: In case you woudn't like to associate half maps as attributes to your map, select the default option \ttt{``No''}. Otherwise select the option \ttt{``Yes''}. If this is the case, complete the next couple of params by looking for each half map in the browser on the right:\\
+            \begin{itemize}
+            \item \ttt{Path half map1}
+            \item \ttt{Path half map2}
+            \end{itemize}
+        \item \ttt{Pixel size (``sampling rate'')} (\AA/px): The size of building blocks (the smallest units) of images depend on the microscope camera and magnification conditions used to get the data.
+        \item \ttt{Set origin of coordinates}: You have to choose between setting the default origin of coordinates (option ``No'') or another origin of coordinates (``Yes''). The option by default sets the center of the electron density map in the origin of coordinates. This is the preferred option in case you want to run afterwards programs that require symmetry regarding the origin of coordinates, like the extract unit cell protocol. If the selected origin of coordinates differs from the map header's one, then a copy of the original map will be generated with the new origin of coordinates in its header. If you decide to set your own origin of coordinates (option ``Yes''), a new form parameter (\ttt{Offset}) will appear below:
+            \begin{itemize}
+            \item \ttt{Offset}: Write here x, y, and z coordinates of your preference (in \AA). Suggestions for coordinates can be obtained by pressing the wizard symbol located on the right side of the \ttt{Offset} parameter. In map files with format .mrc, suggested coordinates will be read from the map header.
+            \end{itemize}
+       \end{itemize}
+    \item \ttt{EMDBid}: Select this option if you want to import the density map directly from EMDB. A couple of param will appear in this case:\\
+     \begin{itemize}
+     \item \ttt{EMDB map ID (integer)}: Write the number of the map EMDB accession.
+     \item \ttt{Offset}: Write here x, y, and z coordinates of your preference (in \AA). Suggestions for coordinates can be obtained by pressing the wizard symbol located on the right side of the \ttt{Offset} parameter. In map files with format .mrc, suggested coordinates will be read from the map header.
+     \end{itemize}
+   \end{itemize}
    \item \ttt{Copy files?}: Advanced parameter set to ``No'' by default because copy density maps unnecessarily duplicates disk space occupied by them, space that could be quite big. Then, by default, volumes will be downloaded by a symbolic link to the file location in your computer. Set this parameter to ``Yes'' only if you plan to transfer the project to other computers in order to preserve map data in the \scipion project.
-   \item \ttt{Pixel size (``sampling rate'')} (\AA/px): The size of building blocks (the smallest units) of images depend on the microscope camera and magnification conditions used to get the data.
-   \item \ttt{Set origin of coordinates}: You have to choose between setting the default origin of coordinates (option ``No'') or another origin of coordinates (``Yes''). The option by default sets the center of the electron density map in the origin of coordinates. This is the preferred option in case you want to run afterwards programs that require symmetry regarding the origin of coordinates, like the extract unit cell protocol. If you decide to set your own origin of coordinates (option ``Yes''), a new form parameter (\ttt{Offset}) will appear below.
-   \item \ttt{Offset}: Write here x, y, and z coordinates of your preference (in \AA). Suggestions for coordinates can be obtained by pressing the wizard symbol located on the right side of the \ttt{Offset} parameter. In map files with format .mrc, suggested coordinates will be read from the map header.
    \end{itemize}
    
   \item \ttt{Streaming} section
@@ -45,12 +64,12 @@ Protocol designed to import electron density maps in \scipion from a file of use
   
   \item Visualization of protocol results:
   
-  After executing the protocol, press \ttt{Analyze Results} and a small window will be opened (\ffigure{fig:app_protocol_volume_2}). This window allows you to select between \ttt{chimera} ($Chimera$ graphics window) and \ttt{slices} ($ShowJ$, the default \scipion viewer), to visualize the volume.
+  After executing the protocol, press \ttt{Analyze Results} and a small window will be opened (\ffigure{fig:app_protocol_volume_2}). This window allows you to select between \ttt{chimerax} ($Chimera$ graphics window) and \ttt{slices} ($ShowJ$, the default \scipion viewer), to visualize the volume.
    
    \begin{itemize}
-   \item \ttt{chimera}: $Chimera$ graphics window
+   \item \ttt{chimerax}: $ChimeraX$ graphics window
    
-   Volumes are referred to the origin of coordinates in \chimera. To show the relative position of the volume, the three coordinate axes are represented; X axis (red), Y axis (yellow), and Z axis (blue) (\ffigure{fig:app_protocol_volume_3}). Coordinate axes and imported volume are model numbers \ttt{\#0} and \ttt{\#1}, respectively, in $Chimera$ \ttt{Model Panel}. Volume coordinates and pixel size can be checked in $Chimera$ main menu \ttt{Tools -> Volume Data -> Volume Viewer -> Features -> Coordinates: Origin index/ Voxel size}. WARNING: Take into account that coordinates appear in pixels while they have been introduced in \AA.
+   Volumes are referred to the origin of coordinates in \chimera. To show the relative position of the volume, the three coordinate axes are represented; X axis (red), Y axis (yellow), and Z axis (blue) (\ffigure{fig:app_protocol_volume_3}). Coordinate axes and imported volume are model numbers \ttt{\#1} and \ttt{\#2}, respectively, in $ChimeraX$ \ttt{Model Panel}. Volume coordinates and pixel size can be checked in $ChimeraX$ main menu \ttt{Tools -> Volume Data -> Map coordinates: Origin index/ Voxel size}. WARNING: Take into account that coordinates appear in pixels while they have been introduced in \AA.
    
   \item \ttt{slices}: $ShowJ$
    
@@ -70,7 +89,7 @@ Protocol designed to import electron density maps in \scipion from a file of use
    \item Summary content:
     
     \begin{itemize}
-     \item Protocol output (below \scipion framework):\\ \ttt{scipion - import volumes -> ouputVolume}; \ttt{Volume (x, y, and z dimensions, sampling rate)}.
+     \item Protocol output (below \scipion framework):\\ \ttt{pwem - import volumes -> ouputVolume};\\ \ttt{Volume (x, y, and z dimensions, sampling rate)}.
      \item \ttt{SUMMARY} box:\\Path from which the volume has been downloaded.\\Sampling rate.
     \end{itemize}
   
