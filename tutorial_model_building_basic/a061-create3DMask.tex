@@ -1,11 +1,12 @@
 \section{Create 3D Mask protocol}
 \label{app:create3DMask}%a061
 
-Protocol designed to create a mask, $i.e.$, a wrapping surface able to delimit a volume or subunit of interest, in order to modify the density values within or outside it. This mask can be created with a given geometrical shape (sphere, cube, cylinder...) or obtained from operating on a 3d volume or a previous mask.
+Protocol designed to create a mask, $i.e.$, a wrapping surface able to delimit a volume or subunit of interest, in order to modify the density values within or outside it. This mask can be created with a given geometrical shape (sphere, cube, cylinder...) or obtained from operating on a 3D volume or a previous mask.
 
 \begin{itemize}
  \item Requirements to run this protocol and visualize results:
     \begin{itemize}
+        \item \scipion plugin: \ttt{scipion-em}
         \item \scipion plugin: \ttt{scipion-em-xmipp}
     \end{itemize}
  \item \scipion menu:\\
@@ -24,7 +25,7 @@ Protocol designed to create a mask, $i.e.$, a wrapping surface able to delimit a
     \begin{itemize}
      \item \ttt{Mask generation}
      \begin{itemize}
-      \item \ttt{Mask source}: Selection of one of the two possible types of sources for the mask, the map volume provided by the user or a specific geometrical design.\\If a volume is selected:
+      \item \ttt{Mask source}: Selection of one of the next three possible types of sources for the mask, the map volume provided by the user, a specific geometrical design or a feature file.\\If a volume is selected:
         \begin{itemize}
         \item \ttt{Input volume}: Electron density map previously downloaded or generated in \scipion.
         \item \ttt{Operation}: Approach applied to generate the mask, besides methods that can be selected in Postprocessing, such as establishing a particular density \ttt{threshold}, a segmentation process according to the number of voxels, number of aminoacids, atomic mass (Daltons) or automatic.
