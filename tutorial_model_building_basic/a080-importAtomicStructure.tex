@@ -5,6 +5,7 @@ Protocol designed to import an atomic structure in \scipion from PDB database or
  \begin{itemize}
   \item Requirements to run this protocol and visualize results:
     \begin{itemize}
+        \item \scipion plugin: \ttt{scipion-em}
         \item \scipion plugin: \ttt{scipion-em-chimera}
     \end{itemize}
   \item \scipion menu:
@@ -42,13 +43,13 @@ Protocol designed to import an atomic structure in \scipion from PDB database or
   
   \item Visualization of protocol results:
   
-  After executing the protocol, press \ttt{Analyze Results} and $Chimera$ graphics window will be opened by default (\ffigure{fig:app_protocol_volume_3}). 
-  Atomic structures are referred to the origin of coordinates in \chimera. To show the relative position of the atomic structure, the three coordinate axes are represented; X axis (red), Y axis (yellow), and Z axis (blue). Coordinate axes and imported atomic structure are model numbers \ttt{\#0} and \ttt{\#1}, respectively, in $Chimera$ \ttt{Model Panel}. If a volume has been associated to the atomic structure, coordinate axes and imported atomic structure are model numbers \ttt{\#1} and \ttt{\#2}, respectively, in $Chimera$ \ttt{Model Panel}, whereas structure-associated volume has model number \ttt{\#0}. Volume coordinates and pixel size can be checked in $Chimera$ main menu \ttt{Tools -> Volume Data -> Volume Viewer -> Features -> Coordinates: Origin index/ Voxel size}. WARNING: Take into account that coordinates appear in pixels while they have been introduced in \AA.
+  After executing the protocol, press \ttt{Analyze Results} and $ChimeraX$ graphics window will be opened by default (\ffigure{fig:app_protocol_volume_3}). 
+  Atomic structures are referred to the origin of coordinates in \chimera. To show the relative position of the atomic structure, the three coordinate axes are represented; X axis (red), Y axis (yellow), and Z axis (blue). Coordinate axes and imported atomic structure are model numbers \ttt{\#1} and \ttt{\#2}, respectively, in $ChimeraX$ \ttt{Model Panel}. If a volume has been associated to the atomic structure, coordinate axes and imported atomic structure are model numbers \ttt{\#2} and \ttt{\#3}, respectively, in $ChimeraX$ \ttt{Model Panel}, whereas structure-associated volume has model number \ttt{\#1}. Volume coordinates and pixel size can be checked in $ChimeraX$ main menu \ttt{Tools -> Volume Data -> Map Coordinates: Origin index/ Voxel size}. WARNING: Take into account that coordinates appear in pixels.
    
    \item Summary content:
     \begin{itemize}
-     \item Protocol output (below \scipion framework):\\ \ttt{scipion - import structure -> ouputPdb}; \ttt{AtomStruct (pseudoatoms=True/ False, volume=True/ False)}.\\Pseudoatoms is set to \ttt{True} when the structure is made of pseudoatoms instead of atoms. Volume is set to \ttt{True} when an electron density map is associated to the atomic structure.
-     \item \ttt{SUMMARY} box:\\Atomic structure imported from ID / file: \ttt{PDB accession ID / path}
+     \item Protocol output (below \scipion framework):\\ \ttt{pwem - import atomic structure -> ouputPdb};\\ \ttt{AtomStruct (pseudoatoms=True/ False, volume=True/ False)}.\\Pseudoatoms is set to \ttt{True} when the structure is made of pseudoatoms instead of atoms. Volume is set to \ttt{True} when an electron density map is associated to the atomic structure.
+     \item \ttt{SUMMARY} box:\\Atomic structure imported from ID: / file: \ttt{PDB accession ID / path}
     \end{itemize}
 
   \end{itemize}

@@ -6,39 +6,71 @@ WARNING: Working with \modeller requires a license key, which can be requested f
    
  \begin{itemize}
   \item Requirements to run this protocol and visualize results:
-    \begin{itemize}
-        \item \scipion plugin: \ttt{scipion-em-chimera}
-        \item Multiple sequence alignment tools: \ttt{Clustal Omega}, \ttt{MUSCLE}
-    \end{itemize}
+            \begin{itemize}
+                \item \scipion plugin: \ttt{scipion-em}
+                \item \scipion plugin: \ttt{scipion-em-chimera}
+                \item Multiple sequence alignment tools: \ttt{Clustal Omega}, \ttt{MUSCLE}
+            \end{itemize}
   \item \scipion menu:
-  \ttt{Model building -> Initial model} (\ffigure{fig:app_protocol_seqHomology_1} (A))
+            \ttt{Model building -> Initial model} (\ffigure{fig:app_protocol_seqHomology_1} (A))
   
   \item Protocol form parameters (\ffigure{fig:app_protocol_seqHomology_1} (B)):
   
-  \begin{figure}[H]
-    \centering 
-    \captionsetup{width=.7\linewidth} 
-    \includegraphics[width=0.90\textwidth]{Images_appendix/Fig111.pdf}
-    \caption{Protocol \scommand{model from template}. A: Protocol location in \scipion menu. B: Protocol form.}
-    \label{fig:app_protocol_seqHomology_1}
-   \end{figure}
-  
-  \begin{itemize}
-   \item \ttt{Input} section
+            \begin{figure}[H]
+                \centering 
+                \captionsetup{width=.7\linewidth} 
+                \includegraphics[width=0.90\textwidth]{Images_appendix/Fig111.pdf}
+                \caption{Protocol \scommand{model from template}. A: Protocol location in \scipion menu. B: Protocol form: Option ``template available''. C: Protocol form: Option ``looking for template''.}
+                \label{fig:app_protocol_seqHomology_1}
+            \end{figure}
+            
+            \begin{itemize}
+                    \item \ttt{Input} section
   
 
-  \begin{itemize}
-   \item \ttt{Atomic structure used as template}: Atomic structure previously downloaded in \scipion. This structure was selected by sequence homology, i.e. by looking for the structurally characterized sequence more similar (with higher identity) to the target sequence.
-   \item \ttt{Chain}: Specific monomer of the macromolecule that has to be used as structure \ttt{template} of the \ttt{target sequence}. Use the wizard on the right side of \ttt{Chain} parameter to select that chain.
-   \item \ttt{Target sequence}: Sequence previously downloaded in \scipion. This sequence has to be modeled following the structure skeleton of the selected \ttt{template}.
-   \item \ttt{Additional sequences to align?}: $Modeller$ provides structural models of the \ttt{target sequence} based on a sequence alignment, in which at least sequences of \ttt{template} and \ttt{target} have to be included. Set to "No" this form parameter if no more sequences are going to be included in the alignment. Nevertheless, set the parameter to "Yes" if you want to perform a multiple sequence alignment. Additional sequences, others than \ttt{template} and \ttt{target} sequences, are required to accomplish this multiple alignment. That's why a new form parameter appear with the option "Yes":
-     \begin{itemize}
-	 \item \ttt{Other sequences to align}: Box to complete with the additional sequences used to perform the multiple sequence alignment. All of them were previously downloaded in \scipion.
-     \end{itemize}
-   \item \ttt{Multiple alignment tool}: Box to select an alignment program. Three possible options are given for pairwise alignments (\ttt{Bio.pairwise2, Clustal Omega, MUSCLE}) whereas only the two last ones are allowed for multiple sequence alignments.
-   \end{itemize}
-   
-  \item \ttt{Help} section
+                        \begin{itemize}
+                        \item \ttt{Do you already have a template?}: Select \ttt{``Yes''} if you have found your \iii{template} in a previous similarity searching step. Select \ttt{``No''} if you do not have any \iii{template} to start the homology modeling and you would like to search for one.
+                        \item Option \ttt{``Yes''} (\ffigure{fig:app_protocol_seqHomology_1} (B))
+                                        \begin{itemize}
+                                                \item \ttt{Atomic structure used as template}: Atomic structure previously downloaded in \scipion. This structure was selected by sequence homology, i.e. by looking for the structurally characterized sequence more similar (with higher identity) to the target sequence.
+                                                \item \ttt{Chain}: Specific monomer of the macromolecule that has to be used as structure \iii{template} of the \ttt{target sequence}. Use the wizard on the right side of \ttt{Chain} parameter to select that chain.
+                                                \item \ttt{Target sequence}: Sequence previously downloaded in \scipion. This sequence has to be modeled following the structure skeleton of the selected \iii{template}.
+                                                \item \ttt{Options to improve the alignment}: $Modeller$ provides structural models of the \iii{target sequence} based on a sequence alignment, in which at least sequences of \iii{template} and \iii{target} have to be included. Three options can be considered:
+                                                \begin{enumerate}
+                                                \item \ttt{None}: No more sequences are going to be included in the alignment. 
+                                                \item \ttt{Additional sequences to align} if you want to perform a multiple sequence alignment adding other sequences already downloaded in \scipion. Additional sequences, others than \ttt{template} and \ttt{target} sequences, are required to accomplish this multiple alignment. 
+                                                     ***\ttt{Other sequences to align}: Box to complete with the additional sequences used to perform the multiple sequence alignment. All of them were previously downloaded in \scipion.
+                                                \item \ttt{Provide your own sequence alignment}: If you want to include other sequences in the alignment by providing your own sequence alignment. 
+                                                    ***\ttt{Sequence alignment input}: Complete this box with the help of the right side browser including the sequence alignment file that you already have saved in your computer. Different alignment formats are available (\url{https://www.cgl.ucsf.edu/chimerax/docs/user/commands/open.html}).\\
+                                                    Example: \ttt{alignment.fasta}
+                                                            \begin{quote}
+                                                            \begin{verbatim}
+                                                                    >3bp5__0_B
+                                                                    ------------------MLFTVTAPKEVYTVDVGSSVSLECDFDRRECTELEGIRASLQ
+                                                                    --------------KVENDTSLQSERATLLEEQLPLGKALFHIPSVQVRDSGQYRCLVIC
+                                                                    GAAWDYKYLTVKVKASYMRIDTRILEV-PGTGEVQLTCQARGYPLAEVSWQNVSV-----
+                                                                    
+                                                                    >Q2LC89
+                                                                    -----------LQLHQIAALFTVTVPKELYIIEHGSNVTLECNFDTGSHVNLGAITASLQ
+                                                                    --------------KVENDTSPHRERATLLEEQLPLGKASFHIPQVQVRDEGQYQCIIIY
+                                                                    GVAWDYKYLTLKVKASYRKINTHILKV-PETDEVELTCQATGYPLAEVSWPNVSV-----
+                                                                    
+                                                                    >Q9BQ51
+                                                                    MIFLLLMLSLELQLHQIAALFTVTVPKELYIIEHGSNVTLECNFDTGSHVNLGAITASLQ
+                                                                    --------------KVENDTSPHRERATLLEEQLPLGKASFHIPQVQVRDEGQYQCIIIY
+                                                                    GVAWDYKYLTLKVKASYRKINTHILKV-PETDEVELTCQATGYPLAEVSWPNVSV-----      
+                                                            \end{verbatim}
+                                                            \end{quote}
+                                                \end{enumerate}
+                                                    
+                                                    
+                                                    
+                                                \item \ttt{Multiple alignment tool}: Box to select an alignment program. Three possible options are given for pairwise alignments (\ttt{Bio.pairwise2, Clustal Omega, MUSCLE}) whereas only the two last ones are allowed for multiple sequence alignments.
+                                        \end{itemize}
+                                        
+                            \end{itemize}
+                
+                \item \ttt{Help} section
   
   Follow this section steps to run $Modeller$ via web service in \chimera and to select and save one of the retrieved models in \scipion framework.
   
