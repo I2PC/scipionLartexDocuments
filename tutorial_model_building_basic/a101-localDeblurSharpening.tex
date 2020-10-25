@@ -6,7 +6,9 @@ Protocol designed to apply $LocalDeblur$, the automatic local resolution-based m
 \begin{itemize}
  \item Requirements to run this protocol and visualize results:
     \begin{itemize}
+        \item \scipion plugin: \ttt{scipion-em}
         \item \scipion plugin: \ttt{scipion-em-xmipp}
+        \item \scipion plugin: \ttt{scipion-em-chimera}
     \end{itemize}
  \item \scipion menu:\\
   \ttt{Model building -> Preprocess map} (\ffigure{fig:app_localdeblur_1} (A))
@@ -34,11 +36,15 @@ Protocol designed to apply $LocalDeblur$, the automatic local resolution-based m
   
   \item Visualization of protocol results:
   
-  After executing the protocol, press \ttt{Analyze Results} and a menu window will be opened with $ShowJ$ (\url{https://github.com/I2PC/scipion/wiki/ShowJ}), the default \scipion viewer, including the maps generated in each independent iteration before getting convergence. The sharpening algorithm stops when the difference between two successive iterations is lower than 1\%, thus generating variable number of maps before stopping. The $ShowJ$ window menu (\ttt{File -> Open with Chimera}) allows to open the selected map in $Chimera$ graphics window.
+  To visualize the total number of sharpened maps generated according to the number of iterations until convergence, press with the right mouse the black arrow placed in the lower part of the \scipion framework (Protocol output:\\ \ttt{xmipp3 - localdeblur sharpening -> ouputVolumes}). The option \ttt{Open with DataViewer} will appear, select it. The sharpened map epochs will be detailed. The sharpening algorithm stops when the difference between two successive iterations is lower than 1\%, thus generating a variable number of maps before stopping. You can select any of them and visualize the slices with $ShowJ$ (\url{https://github.com/I2PC/scipion/wiki/ShowJ}), the default \scipion viewer. To visualize the slices press the symbol that appears below \ttt{File} in the main menu. The $ShowJ$ window menu (\ttt{File -> Open with Chimera}) allows to open the selected map in $ChimeraX$ graphics window.
+  
+  Nevertheless, the $ChimeraX$ graphics window can also be opened to compare the input and the last iteration sharpened map. After executing the protocol, press \ttt{Analyze Results} and the $ChimeraX$ graphics window will be opened. Volumes are referred to the origin of coordinates in \chimera. To show the relative position of the volumes, the three coordinate axes are represented; X axis (red), Y axis (yellow), and Z axis (blue) (\ffigure{fig:app_protocol_volume_3}). Coordinate axes, the imported volume and the last sharpened one (\ttt{sharpenedMap\_last.mrc}) are model numbers \ttt{\#1}, \ttt{\#2} and \ttt{\#3}, respectively, in $ChimeraX$ \ttt{Model Panel}. Volume coordinates and pixel size can be checked in $ChimeraX$ main menu \ttt{Tools -> Volume Data -> Map coordinates: Origin index/ Voxel size}. 
+
+  
   
   \item Summary content:
   \begin{itemize}
-     \item Protocol output (below \scipion framework):\\ \ttt{xmipp3 - localdeblur sharpening -> ouputVolumes}; SetOfVolumes (number of items, x, y, and z dimensions, sampling rate).
+     \item Protocol output (below \scipion framework):\\ \ttt{xmipp3 - localdeblur sharpening -> ouputVolumes};\\ SetOfVolumes (number of items, x, y, and z dimensions, sampling rate).
      \item \ttt{SUMMARY} box:\\ \ttt{LocalDeblur Map}.
   \end{itemize}
     

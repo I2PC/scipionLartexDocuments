@@ -6,6 +6,7 @@ Protocol designed to apply the $MonoRes$ method \citep{vilas2018} in \scipion. $
 \begin{itemize}
  \item Requirements to run this protocol and visualize results:
     \begin{itemize}
+        \item \scipion plugin: \ttt{scipion-em}
         \item \scipion plugin: \ttt{scipion-em-xmipp}
         \item \scipion plugin: \ttt{scipion-em-chimera}
     \end{itemize}
@@ -23,15 +24,15 @@ Protocol designed to apply the $MonoRes$ method \citep{vilas2018} in \scipion. $
     \end{figure}
     
     \begin{itemize}
-        \item \ttt{Would you like to use half volumes?}: Option ``No'' has been selected by default, with the box \ttt{Input Volume} to fill in with the volume, imported or generated in \scipion. However, since the noise estimation needed to determine the local resolution is performed based on half volumes, select ``Yes'' when half volumes are available. A couple of boxes will thus be opened to select both half volumes, \ttt{Volume Half 1} and \ttt{Volume Half 2}.
+        \item \ttt{Would you like to use half volumes?}: Option ``No'' has been selected by default, with the box \ttt{Input Volume} to fill in with the volume, imported or generated in \scipion. However, since the noise estimation needed to determine the local resolution is based on half volumes, select ``Yes'' when half volumes are available. A couple of boxes will thus be opened to select both half volumes, \ttt{Volume Half 1} and \ttt{Volume Half 2}.
         \item \ttt{Binary Mask}: Mask that will be overlapped to the map volume in order to indicate which points of the map are specimen and which are not.
+         \item \ttt{Exclude area}: Advanced parameter to select part of the specimen that should be excluded from the estimation of local resolution, for example in viruses to exclude the inner genetic material or in membrane proteins to exclude fosfolipids. Remark that we are talking about part of the specimen (signal and not noise) in which we are simply not interested. 
         \item \ttt{Extra parameters}:
         \begin{itemize}
-            \item \ttt{Resolution Range (\AA)}: Interval of resolution expected, from the maximum resolution (\ttt{High} = 0.0 by default), to the minimal resolution (\ttt{Low}) of the map volume. This parameter is empty by default and $MonoRes$ will try to estimate it. \ttt{Step} is an advanced parameter that indicates the fraction of resolution of each interval in the range contained between the maximum and minimal resolution. 
+            \item \ttt{Resolution Range (\AA)}: Interval of resolution expected, from the maximum resolution (\ttt{High} = 0.0 by default), to the minimal resolution (\ttt{Low}) of the map volume. This parameter is empty by default and $MonoRes$ will try to estimate it. \ttt{Step} is an advanced parameter that indicates the fraction of resolution of each interval in the range contained between the max and min resolution. 
             \item \ttt{Significance}: Advanced parameter that determines the significance of the hypothesis test computed to calculate the resolution (0.95 by default).
-            \item \ttt{Mask threshold}: Advanced parameter that indicates the density value required to get a binary mask in case it is not (0.5 by default). Density values below the threshold will be changed to 0 and values above the threshold will be changed to 1.
-            \item \ttt{Is the original premasked?}: ``No'' by default has to be changed to ``Yes'' if the original volume is already masked inside a spherical mask. The respective wizard will allow to specify the spherical mask radius (in pixels). By default, the half of the map volume size will be considered as radius. If the original is premasked, the noise will only be estimated in the volume contained between this premask and the binary mask provided before.
-            \item \ttt{Filter input volume with local resolution?}: This parameter allows filtering the input volume using the local resolution (``No'' by default).
+            \item \ttt{Mask threshold}: Advanced parameter that indicates the density value required to get a binary mask in case there is not one (0.5 by default). Density values below the threshold will be changed to 0 and values above the threshold will be changed to 1.
+            \item \ttt{Consider noise gaussian?}: ``No'' by default has to be changed to ``Yes'' if you prefer to establish the premise that the noise follows a gaussian distribution. 
         \end{itemize}
     \end{itemize}
   \item Protocol execution:\\
@@ -56,19 +57,26 @@ Protocol designed to apply the $MonoRes$ method \citep{vilas2018} in \scipion. $
      \item \ttt{Show resolution histogram}: Number of map voxels that show a certain resolution.
      \item \ttt{Colored resolution Slices and Volumes}: Box that allows to display local resolution of map and slices according to a specific color code.
      \begin{itemize}
-        \item \ttt{Color map}: Color to apply to the local resolution map (\url{http://matplotlib.org/1.3.0/examples/color/colormaps_reference.html}).
-        \item \ttt{Slice axis}: Axis perpendicular to the screen.
+        \item \ttt{Slice axis}: Select the perpendicular axis to visualize the slices. The \ttt{Z} axis is perpendicular to the screen.
         \item \ttt{Show colored slices}: Map slices 34, 45, 56 and 67 of local resolution along the axis selected previously.
         \item \ttt{Show selected slice}: Advanced parameter to show by default the 51 local resolution slide, or any other selected along the axis selected previously.
-        \item \ttt{Show slice number}: Slice number to be shown by \ttt{Show selected slice}.
-        \item \ttt{Show Resolution map in Chimera}: The resolution map is shown using $Chimera$. Left hand bar indicates resolution colour code. 
+        \item \ttt{Show slice number}:  Advanced parameter to select the slice number to be shown by \ttt{Show selected slice}.
+        \item \ttt{Show Resolution map in ChimeraX}: The resolution map is shown using $ChimeraX$. Left hand bar indicates resolution colour code.
+        \item
+        \begin{itemize}
+            \item \ttt{Color scale options}: Highest value of the resolution range.
+            \item \ttt{Lowest}: Lowest value of the resolution range.
+            \item \ttt{Intervals}: Number of resolution intervals from the highest to the lowest range value.
+            \item \ttt{Color set}: Color to apply to the local resolution map (\url{http://matplotlib.org/1.3.0/examples/color/colormaps_reference.html}).
+        \end{itemize}  
+        \ttt{Note}: Remark that on the right side you have a wizard to control color params.
      \end{itemize}
    \end{itemize} 
 
 
  \item Summary content:
   \begin{itemize}
-     \item Protocol output (below \scipion framework):\\ \ttt{xmipp3 - local MonoRes -> resolution\_Volume}; Volume (x, y, and z dimensions, sampling rate).
+     \item Protocol output (below \scipion framework):\\ \ttt{xmipp3 - local MonoRes -> resolution\_Volume};\\ Volume (x, y, and z dimensions, sampling rate).
      \item \ttt{SUMMARY} box:\\ \ttt{Highest resolution} and \ttt{Lowest resolution}.
     \end{itemize}
     
