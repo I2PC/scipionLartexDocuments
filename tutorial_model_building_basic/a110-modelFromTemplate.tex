@@ -35,23 +35,23 @@ WARNING: Working with \modeller requires a license key, which can be requested f
                                                 \item \ttt{Atomic structure used as template}: Atomic structure previously downloaded in \scipion. This structure was selected by sequence homology, i.e. by looking for the structurally characterized sequence more similar (with higher identity) to the target sequence.
                                                 \item \ttt{Chain}: Specific monomer of the macromolecule that has to be used as structure \iii{template} of the \ttt{target sequence}. Use the wizard on the right side of \ttt{Chain} parameter to select that chain.
                                                 \item \ttt{Target sequence}: Sequence previously downloaded in \scipion. This sequence has to be modeled following the structure skeleton of the selected \iii{template}.
-                                                \item \ttt{Options to improve the alignment}: $Modeller$ provides structural models of the \iii{target sequence} based on a sequence alignment, in which at least sequences of \iii{template} and \iii{target} have to be included. Three options can be considered:
+                                                \item \ttt{Options to improve the alignment}: $Modeller$ provides structural models of the \iii{target sequence} based on a sequence alignment, in which at least sequences of \iii{template} and \iii{target} have to be included. Three options can be considered to improve this alignment:
                                                 \begin{enumerate}
-                                                \item \ttt{None}: No more sequences are going to be included in the alignment. Correlative param:\\
-                                                     ***\ttt{Alignment tool for two sequences}: Select one of the three available methods, \ttt{Bio.parirwise2} (by default), \ttt{Clustal Omega}, \ttt{MUSCLE}.
+                                                \item \ttt{None}: No more sequences are going to be included in the alignment except \iii{model} and \iii{target} sequences. Correlative param:\\
+                                                     *** \ttt{Alignment tool for two sequences}: Select one of the three available alignment methods, \ttt{Bio.parirwise2} (by default), \ttt{Clustal Omega}, \ttt{MUSCLE}.
                                                 \item \ttt{Additional sequences to align} if you want to perform a multiple sequence alignment adding other sequences already downloaded in \scipion. Additional sequences, others than \ttt{template} and \ttt{target} sequences, are required to accomplish this multiple alignment. Correlative params:\\
-                                                     ***\ttt{Other sequences to align}: Box to complete with the additional sequences used to perform the multiple sequence alignment. All of them were previously downloaded in \scipion.
-                                                     ***\ttt{Multiple alignment tool}: Select between \ttt{Clustal Omega} and \ttt{MUSCLE} methods.
+                                                     *** \ttt{Other sequences to align}: Box to complete with the additional sequences used to perform the multiple sequence alignment. All of them were previously downloaded in \scipion.\\
+                                                     *** \ttt{Multiple alignment tool}: Select between \ttt{Clustal Omega} and \ttt{MUSCLE} methods.
                                                 \item \ttt{Provide your own sequence alignment}: If you want to include other sequences in the alignment by providing your own sequence alignment. Correlative param:\\
-                                                    ***\ttt{Sequence alignment input}: Complete this box with the help of the right side browser including the sequence alignment file that you already have saved in your computer. Different alignment formats are available (\url{https://www.cgl.ucsf.edu/chimerax/docs/user/commands/open.html}).Un example of alignment in \ttt{fasta} format can be seen below (use case bla bla).
+                                                    *** \ttt{Sequence alignment input}: Complete this box with the help of the right side browser including the sequence alignment file that you already have saved in your computer. Different alignment formats are available (\url{https://www.cgl.ucsf.edu/chimerax/docs/user/commands/open.html}). An example of alignment in \ttt{fasta} format can be seen below (Use case 3).
                                                 \end{enumerate}
                                                 \item \ttt{Additional target sequence to include?}: Select \ttt{``Yes''} if you'd like to obtain a multimer \iii{model} by using two \iii{target} sequences and the same multimer \iii{template}. The params to complete the option \ttt{``Yes''} are identical to those already shown, with the exception of the \ttt{Atomic structure used as template}, already completed. However, no one of those params will appear in case you select \ttt{``No''} in order to obtain a \iii{model} by using only one \iii{target} sequence.
                                         \end{itemize}
                         \item Option \ttt{``No''} (\ffigure{fig:app_protocol_seqHomology_1} (C)) 
                                         \begin{itemize}
-                                                \item \ttt{Target sequence}: Sequence previously downloaded in \scipion. This sequence has to be modeled following the structure skeleton of the \iii{template} that you are going to select from the retrieved ones by the similarity searching tool.
-                                                \item \ttt{Protein sequence database}: Select one of the two suggested protein sequence databases, PDB and NR. Press the \ttt{``?''} symbol on the right to see the meaning of each one.
-                                                \item \ttt{Similarity matrix}: Select one of the ``substitution matrix'' to assign a score in the alignment of any couple of residues (\url{https://www.ncbi.nlm.nih.gov/blast/html/sub_matrix.html}).
+                                                \item \ttt{Target sequence}: Sequence previously downloaded in \scipion. This sequence has to be modeled following the structure skeleton of the \iii{template} that you are going to select among the retrieved entries found by the similarity searching tool.
+                                                \item \ttt{Protein sequence database}: Select one of the two suggested protein sequence databases, PDB and NR. Press the \ttt{``?''} symbol on the right to see the meaning of each one. Remark that the NR database allows you to get entries with as well as without atomic structure associated. These ones, which do not provide \iii{templates}, could be useful to build a better sequence alignment.
+                                                \item \ttt{Similarity matrix}: Select one of the ``substitution matrix'' to assign a score to any couple of residues in the alignment (\url{https://www.ncbi.nlm.nih.gov/blast/html/sub_matrix.html}).
                                                 \item \ttt{cutoff evalue}: Maximum statistic value required to include a retrieved element in the hit list.
                                                 \item \ttt{Maximum number of sequences} that you'd like to retrieve from the database. 
                                         \end{itemize}
@@ -70,34 +70,24 @@ WARNING: Working with \modeller requires a license key, which can be requested f
   Several \chimera windows will be opened after executing the protocol with different contents according to the distinct form param options. Although we are going to detail some of them through several use cases (see below), designed to ilustrate different applications of this protocol, as well as the procedure to follow in each case, in general we can predict the opening of \chimera graphics window and a sequence alignment window. Usually, in both windows the \iii{template} sequence is green highlighted (see an example of these windows in \ffigure{fig:chimera_alignment}). Main steps to follow ahead are:
             \begin{itemize}
             \item Ask for model(s) to $Modeller$ by selecting \ttt{Tools -> Sequence -> Modeller Comparative} in the main menu of \chimera graphics window. 
-            \item Complete the new window opened for \ttt{Modeller Comparative} with the sequence alignment that includes the \iii{template} and with the \iii{target}(s) sequence(s), Modeller license key, multichain model, number of models retrieved by \modeller, and \ttt{Advanced} options like the building of models with hydrogens, as well as $model$ inclusion of heteroatoms or water molecules. An example of completed $Modeller$ window can be observed in \ffigure{fig:modeller} (A). By pressing \ttt{OK} the computation starts. The status of the job can be checked in the lower left corner of \chimera graphics window.
+            \item Complete the new window opened for \ttt{Modeller Comparative} with the sequence alignment that includes the \iii{template} and with the \iii{target}(s) sequence(s), $Modeller$ license key, multichain model, number of models retrieved by \modeller, and \ttt{Advanced} options like the building of models with hydrogens, as well as $model$ inclusion of heteroatoms or water molecules. An example of completed $Modeller$ window can be observed in \ffigure{fig:modeller} (A). By pressing \ttt{OK} the computation starts. The status of the job can be checked in the lower left corner of \chimera graphics window.
             \item After a while a new panel window will show retrieved models of the \ttt{target} sequence (\ffigure{fig:modeller} (B)). Two statistics assess these models: \ttt{GA341}, statistical potentials derived-score, and \ttt{zDOPE}, normalized Discrete Optimized Protein Energy, atomic distance depending-score. Reliable models show \ttt{GA341} values higher than 0.7, and negative \ttt{zDOPE} values correspond to better models.  Retrieved models can be checked in \chimera \ttt{Tools -> Models}. One of them should be selected (\ffigure{fig:modeller} (C)).
-            \item Rename the selected model, for example \ttt{\#3.2} to \ttt{\#4} with the command line:\\ \ttt{rename \#3.2 id \#4}
-            \item Save the retrieved model selected according to the new model number (\ttt{\#n}) shown in \chimera \ttt{Tools -> Models} by writing in \chimera command line:\\\ttt{scipionwrite \#n}.
+            \item Rename the selected model, for example \ttt{\#n\_initial} to \ttt{\#n\_final} with the command line:\\ \ttt{rename \#n\_initial id \#n\_final}
+            \item Save the retrieved model selected according to the new model number (\ttt{\#n\_final}) shown in \chimera \ttt{Tools -> Models} by writing in \chimera command line:\\\ttt{scipionwrite \#n\_final}.
             \end{itemize}
   
   
-  
-  
-  
- 
-  \begin{figure}[H]
-  \centering 
-  \captionsetup{width=.7\linewidth} 
-  \includegraphics[width=0.80\textwidth]{Images_appendix/Fig112.pdf}
-  \caption{(A) Form to access to homology modeling with \modeller. (B) Panel window of \modeller retrieved models.}
-  \label{fig:app_protocol_seqHomology_2}
-  \end{figure}
 
   \item Visualization of protocol results:
   
   After executing the protocol, press \ttt{Analyze Results} and \chimera graphics window will be opened by default. 
-  Atomic structures are referred to the origin of coordinates in \chimera . To show the relative position of the atomic structure, the three coordinate axes are represented; X axis (red), Y axis (yellow), and Z axis (blue) (\ffigure{fig:app_protocol_volume_3}). Coordinate axes and selected atomic structure \ttt{model} are model numbers \ttt{\#0} and \ttt{\#1}, respectively, in \chimera \ttt{Model Panel}.
+  Atomic structures are referred to the origin of coordinates in \chimera . To show the relative position of the atomic structure, the three coordinate axes are represented; X axis (red), Y axis (yellow), and Z axis (blue) (\ffigure{fig:app_protocol_volume_3}). Coordinate axes and selected atomic structure \ttt{model} are model numbers \ttt{\#1} and \ttt{\#2}, respectively, in \chimera \ttt{Models} panel.
    
    \item Summary content:
     \begin{itemize}
-     \item Protocol output (below \scipion framework):\\ \ttt{scipion - model from template -> ouputPdb\_01}; \ttt{AtomStruct (pseudoatoms=True/ False, volume=True/ False)}.\\Pseudoatoms is set to \ttt{True} when the structure is made of pseudoatoms instead of atoms. Volume is set to \ttt{True} when an electron density map is associated to the atomic structure.
-     \item \ttt{SUMMARY} box:\\Produced files:\\chimeraOut0001.pdb\\we have some result
+     \item Protocol output (below \scipion framework):\\ \ttt{chimerax - model from template -> name of the new atomic structure};\\
+     \ttt{AtomStruct (pseudoatoms=True/ False, volume=True/ False)}.\\Pseudoatoms is set to \ttt{True} when the structure is made of pseudoatoms instead of atoms. Volume is set to \ttt{True} when an electron density map is associated to the atomic structure.
+     \item \ttt{SUMMARY} box:\\Produced files:\\we have some result
     \end{itemize}
   
   \end{itemize}
@@ -106,5 +96,50 @@ WARNING: Working with \modeller requires a license key, which can be requested f
 
 \subsubsection*{USE CASES}
 \begin{itemize}
-                \item \ttt{Use Case 1: Input atomic structure, 1 target sequence, None options to improve the alignment}
+                \item \ttt{Use Case 1: Input atomic structure as template, 1 target sequence, Option ``None'' to improve the alignment}\\
+                Aim: To model a \iii{target} sequence using one chain of a homologous atomic structure as \iii{template} using only the sequences of \iii{target} and \iii{template} in the sequence alignment.
+
+                            \begin{figure}[H]
+                            \centering 
+                            \captionsetup{width=.9\linewidth} 
+                            \includegraphics[width=.9\textwidth]{Images_appendix/Fig305.pdf}
+                            \caption{(A) Protocol form of \scommand{model from template}. (B) \chimera view of the \iii{template} atomic structure, highlighted in green the \ttt{chain B} selected to perform the modeling. (C) \chimera sequence view panel showing the sequence alignment between the \iii{template} \ttt{chain B} sequence, greeen highlighted, and the \iii{target} sequence. (D) Upper part of the \chimera \ttt{Modeller comparative} panel showing the sequence alignment selected, shown in (C), and the selected \iii{target} sequence.}  
+                            \label{fig:app_protocol_seqHomology_2}
+                            \end{figure}
+                            
+                \item \ttt{Use Case 2: Input atomic structure as template, 2 target sequences, Option ``Additional sequences to align'' to improve the alignment, multichain modeling option in Modeller}\\
+                Aim: To model simultaneously two \iii{target} sequences to obtain a multichain model using two chains of a homologous atomic structure as \iii{templates} using other additional sequences than \iii{target} and \iii{template} in the sequence alignment.
+
+ 
+                            \begin{figure}[H]
+                            \centering 
+                            \captionsetup{width=.9\linewidth} 
+                            \includegraphics[width=.9\textwidth]{Images_appendix/Fig306.pdf}
+                            \caption{(A) Protocol form of \scommand{model from template}. (B) \chimera view of the \iii{template} atomic structure, highlighted in green the \ttt{chain B} selected to perform the modeling. (C) \chimera sequence view panel showing the sequence alignment between the \iii{template} \ttt{chain B} sequence, greeen highlighted, and the \iii{target} sequence. (D) Upper part of the \chimera \ttt{Modeller comparative} panel showing the sequence alignment selected, shown in (C), and the selected \iii{target} sequence.}  
+                            \label{fig:app_protocol_seqHomology_3}
+                            \end{figure}
+                            
+                \item \ttt{Use Case 3: Input atomic structure as template, 2 target sequences, Option ``Provide your own sequence alignment'' to improve the alignment, multichain modeling option in Modeller}\\
+                Aim: To model simultaneously two \iii{target} sequences to obtain a multichain model using two chains of a homologous atomic structure as \iii{templates} using your own sequence alignment.
+
+ 
+                            \begin{figure}[H]
+                            \centering 
+                            \captionsetup{width=.9\linewidth} 
+                            \includegraphics[width=.9\textwidth]{Images_appendix/Fig307.pdf}
+                            \caption{(A) Form to access to homology modeling with \modeller. (B) Panel window of \modeller retrieved models.}
+                            \label{fig:app_protocol_seqHomology_4}
+                            \end{figure}
+                            
+                \item \ttt{Use Case 4: Input 1 target sequence, PDB searching database}
+
+ 
+                            \begin{figure}[H]
+                            \centering 
+                            \captionsetup{width=.9\linewidth} 
+                            \includegraphics[width=.9\textwidth]{Images_appendix/Fig308.pdf}
+                            \caption{(A) Form to access to homology modeling with \modeller. (B) Panel window of \modeller retrieved models.}
+                            \label{fig:app_protocol_seqHomology_5}
+                            \end{figure}
+                            
 \end{itemize}
