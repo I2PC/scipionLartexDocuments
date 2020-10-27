@@ -73,7 +73,7 @@ WARNING: Working with \modeller requires a license key, which can be requested f
             \item Complete the new window opened for \ttt{Modeller Comparative} with the sequence alignment that includes the \iii{template} and with the \iii{target}(s) sequence(s), $Modeller$ license key, multichain model, number of models retrieved by \modeller, and \ttt{Advanced} options like the building of models with hydrogens, as well as $model$ inclusion of heteroatoms or water molecules. An example of completed $Modeller$ window can be observed in \ffigure{fig:modeller} (A). By pressing \ttt{OK} the computation starts. The status of the job can be checked in the lower left corner of \chimera graphics window.
             \item After a while a new panel window will show retrieved models of the \ttt{target} sequence (\ffigure{fig:modeller} (B)). Two statistics assess these models: \ttt{GA341}, statistical potentials derived-score, and \ttt{zDOPE}, normalized Discrete Optimized Protein Energy, atomic distance depending-score. Reliable models show \ttt{GA341} values higher than 0.7, and negative \ttt{zDOPE} values correspond to better models.  Retrieved models can be checked in \chimera \ttt{Tools -> Models}. One of them should be selected (\ffigure{fig:modeller} (C)).
             \item Rename the selected model, for example \ttt{\#n\_initial} to \ttt{\#n\_final} with the command line:\\ \ttt{rename \#n\_initial id \#n\_final}
-            \item Save the retrieved model selected according to the new model number (\ttt{\#n\_final}) shown in \chimera \ttt{Tools -> Models} by writing in \chimera command line:\\\ttt{scipionwrite \#n\_final}.
+            \item Save the retrieved model selected according to the new model number in the \scipion track system (\ttt{\#n\_final}) shown in \chimera \ttt{Tools -> Models} by writing in \chimera command line:\\\ttt{scipionwrite \#n\_final prefix user\_defined\_name\_}
             \end{itemize}
   
   
@@ -81,7 +81,7 @@ WARNING: Working with \modeller requires a license key, which can be requested f
   \item Visualization of protocol results:
   
   After executing the protocol, press \ttt{Analyze Results} and \chimera graphics window will be opened by default. 
-  Atomic structures are referred to the origin of coordinates in \chimera . To show the relative position of the atomic structure, the three coordinate axes are represented; X axis (red), Y axis (yellow), and Z axis (blue) (\ffigure{fig:app_protocol_volume_3}). Coordinate axes and selected atomic structure \ttt{model} are model numbers \ttt{\#1} and \ttt{\#2}, respectively, in \chimera \ttt{Models} panel.
+  Atomic structures are referred to the origin of coordinates in \chimera . To show the relative position of the atomic structure, the three coordinate axes are represented; X axis (red), Y axis (yellow), and Z axis (blue) (\ffigure{fig:app_protocol_volume_3}). Coordinate axes and selected atomic structure \ttt{model} are model numbers \ttt{\#1} and \ttt{\#2}, respectively, in \chimera \ttt{Models} panel if only one structure has been saved.
    
    \item Summary content:
     \begin{itemize}
@@ -101,11 +101,15 @@ WARNING: Working with \modeller requires a license key, which can be requested f
 
                             \begin{figure}[H]
                             \centering 
-                            \captionsetup{width=.9\linewidth} 
+                            \captionsetup{width=.8\linewidth} 
                             \includegraphics[width=.9\textwidth]{Images_appendix/Fig305.pdf}
                             \caption{(A) Protocol form of \scommand{model from template}. (B) \chimera view of the \iii{template} atomic structure, highlighted in green the \ttt{chain B} selected to perform the modeling. (C) \chimera sequence view panel showing the sequence alignment between the \iii{template} \ttt{chain B} sequence, greeen highlighted, and the \iii{target} sequence. (D) Upper part of the \chimera \ttt{Modeller comparative} panel showing the sequence alignment selected, shown in (C), and the selected \iii{target} sequence.}  
                             \label{fig:app_protocol_seqHomology_2}
                             \end{figure}
+                Protocol execution: Complete the protocol form as indicated in \ffigure{fig:app_protocol_seqHomology_2} (A). Follow the general procedure shown above (Protocol execution section). Windows (B) and (C) will appear. Open and complete the \ttt{Modeller Comparative} panel as indicated in (D) and wait for a while. After getting the retrieved models, if you want to select, for example, the \iii{target} model \ttt{\#3.2}, write in the command line:\\
+                \ttt{rename \#3.2 id \#4}\\
+                \ttt{scipionwrite \#4 prefix model\_3\_2\_}\\
+                And \chimera \ttt{Quit} to close the protocol. Visualize your results.
                             
                 \item \ttt{Use Case 2: Input atomic structure as template, 2 target sequences, Option ``Additional sequences to align'' to improve the alignment, multichain modeling option in Modeller}\\
                 Aim: To model simultaneously two \iii{target} sequences to obtain a multichain model using two chains of a homologous atomic structure as \iii{templates} using other additional sequences than \iii{target} and \iii{template} in the sequence alignment.
@@ -113,11 +117,16 @@ WARNING: Working with \modeller requires a license key, which can be requested f
  
                             \begin{figure}[H]
                             \centering 
-                            \captionsetup{width=.9\linewidth} 
+                            \captionsetup{width=.8\linewidth} 
                             \includegraphics[width=.9\textwidth]{Images_appendix/Fig306.pdf}
-                            \caption{(A) Protocol form of \scommand{model from template}. (B) \chimera view of the \iii{template} atomic structure, highlighted in green the \ttt{chain B} selected to perform the modeling. (C) \chimera sequence view panel showing the sequence alignment between the \iii{template} \ttt{chain B} sequence, greeen highlighted, and the \iii{target} sequence. (D) Upper part of the \chimera \ttt{Modeller comparative} panel showing the sequence alignment selected, shown in (C), and the selected \iii{target} sequence.}  
+                            \caption{(A) Protocol form of \scommand{model from template}. Remark that two additional sequences other than \iii{template} and \iii{target} sequences have been selected to improve both alignments. (B) Upper part of the \chimera \ttt{Modeller comparative} panel showing the two sequence alignment selected, shown in (D) and (E), and the two selected \iii{target} sequences.(C) \chimera view of the \iii{template} atomic structure, highlighted in yellow the \ttt{chain A} and in green the \ttt{chain B} selected to perform the modeling. (D) \chimera sequence view panel showing the sequence alignment between the \iii{template} \ttt{chain A} sequence, greeen highlighted, the \iii{target} sequence (\ttt{Q15116}) and two more additional sequences. (E) \chimera sequence view panel showing the sequence alignment between the \iii{template} \ttt{chain B} sequence, greeen highlighted, the \iii{target} sequence (\ttt{Q12LC89}) and two more additional sequences.}  
                             \label{fig:app_protocol_seqHomology_3}
                             \end{figure}
+                            
+                 Protocol execution: Complete the protocol form as indicated in \ffigure{fig:app_protocol_seqHomology_3} (A). Follow the general procedure shown above (Protocol execution section). Windows (C), (D) and (E) will appear. Open and complete the \ttt{Modeller Comparative} panel as indicated in (B) and wait for a while. After getting the retrieved models, if you want to select, for example, the \iii{target} model \ttt{\#3.2}, write in the command line:\\
+                \ttt{rename \#3.2 id \#4}\\
+                \ttt{scipionwrite \#4 prefix model\_3\_2\_}\\
+                And \chimera \ttt{Quit} to close the protocol. Visualize your results.
                             
                 \item \ttt{Use Case 3: Input atomic structure as template, 2 target sequences, Option ``Provide your own sequence alignment'' to improve the alignment, multichain modeling option in Modeller}\\
                 Aim: To model simultaneously two \iii{target} sequences to obtain a multichain model using two chains of a homologous atomic structure as \iii{templates} using your own sequence alignment.
@@ -125,21 +134,34 @@ WARNING: Working with \modeller requires a license key, which can be requested f
  
                             \begin{figure}[H]
                             \centering 
-                            \captionsetup{width=.9\linewidth} 
+                            \captionsetup{width=.8\linewidth} 
                             \includegraphics[width=.9\textwidth]{Images_appendix/Fig307.pdf}
-                            \caption{(A) Form to access to homology modeling with \modeller. (B) Panel window of \modeller retrieved models.}
+                            \caption{(A) Protocol form of \scommand{model from template}. Remark that your own sequence alignment containing the sequences of \iii{template} and \iii{target}, among others, have been selected. (B) Example of sequence alignment in \ttt{fasta} format (file ``aligned\_2.fasta) that includes the \iii{template} \ttt{chain B} sequence, the \iii{target} sequence (\ttt{Q12LC89}) and two more additional sequences.}  
                             \label{fig:app_protocol_seqHomology_4}
                             \end{figure}
                             
-                \item \ttt{Use Case 4: Input 1 target sequence, PDB searching database}
+                Protocol execution: Complete the protocol form as indicated in \ffigure{fig:app_protocol_seqHomology_4} (A). Follow the general procedure shown above (Protocol execution section). Remark that you already have a sequence alignment file for each \iii{target} saved in your computer. An example can be seen in \ffigure{fig:app_protocol_seqHomology_4} (B). Windows (C), (D) and (E) of previous \ffigure{fig:app_protocol_seqHomology_3} will appear. Open and complete the \ttt{Modeller Comparative} panel as indicated in (B) and wait for a while. After getting the retrieved models, if you want to select, for example, the \iii{target} model {\#3.2}, write in the command line:\\
+                \ttt{rename \#3.2 id \#4}\\
+                \ttt{scipionwrite \#4 prefix model\_3\_2\_}\\
+                And \chimera \ttt{Quit} to close the protocol. Visualize your results.
+                            
+                \item \ttt{Use Case 4: Input 1 target sequence, PDB searching database}\\
+                Aim: To model a \iii{target} sequence without previous information of a possible atomic structure \iii{template}.
 
  
                             \begin{figure}[H]
                             \centering 
-                            \captionsetup{width=.9\linewidth} 
+                            \captionsetup{width=.8\linewidth} 
                             \includegraphics[width=.9\textwidth]{Images_appendix/Fig308.pdf}
-                            \caption{(A) Form to access to homology modeling with \modeller. (B) Panel window of \modeller retrieved models.}
-                            \label{fig:app_protocol_seqHomology_5}
+                            \caption{(A) Protocol form of \scommand{model from template} that includes the \iii{target} sequence that we'd like to model. (B) Upper part of the \chimera \ttt{Modeller comparative} panel showing the sequence alignment and the \iii{target} sequence selected. (C) \chimera graphics window empty before opening the \iii{template} atomic structure. (D) \chimera sequence view panel showing the \iii{target} sequence. (E) \chimera BlastProtein panel showing the retrieved results from PDB database}
+                            \label{fig:app_protocol_seqHomology_5} 
                             \end{figure}
+                            
+                Protocol execution: Complete the protocol form as indicated in \ffigure{fig:app_protocol_seqHomology_5} (A). Follow the general procedure shown above (Protocol execution section). Remark that in this case there is no \iii{template} atomic structure. Instead, an empty \chimera graphics window will appear (C) together with the \iii{target} sequence that we'd like to model and \ttt{BLASTP} retrieved results (E). Note that it could take some seconds the opening of the \ttt{BlastProtein} panel. Have a look to these results and select one of them as possible \ttt{template} of your \ttt{target} sequence. In this particular case, for example, we are going to choose the first one (\ttt{5WT9}). Open this atomic structure en \chimera by writing in the command line:\\
+                \ttt{open 5wt9}\\
+                At this point, open the \ttt{Modeller Comparative} panel and complete it as indicated in \ffigure{fig:app_protocol_seqHomology_5} (B). Wait for a while. After getting the retrieved models, if you want to select, for example, the \iii{target} model {\#3.2}, write in the command line:\\
+                \ttt{rename \#3.2 id \#4}\\
+                \ttt{scipionwrite \#4 prefix model\_3\_2\_}\\
+                And \chimera \ttt{Quit} to close the protocol. Visualize your results.
                             
 \end{itemize}
