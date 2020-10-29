@@ -143,6 +143,8 @@
 \begin{versionhistory}
 %  \vhEntry{1.0}{10.15.2020}{MM|RM}{created for first developers workshop}
   \vhEntry{1.0}{10.15.2020}{RM}{created for first developers workshop}
+  \vhEntry{1.1}{10.29.2020}{RM}{Fixed a few inconsistencies detected in the workshop}
+  
 \end{versionhistory}\newpage
 
 %----------------------------------------------------------------------------------------
@@ -213,7 +215,7 @@ Before going ahead I would like to warn you that, in \scipion,  the word ``image
 \begin{figure}[H]
 \centering 
 \includegraphics[scale=1]{images/proj.png} 
-\caption{Galley of 10 noisy projections along the same projection direction.} 
+\caption{Gallery of 10 noisy projections along the same projection direction.} 
 \label{fig:proj}
 \end{figure}
 
@@ -292,9 +294,9 @@ The steps you will need to fulfill are:
  \item execute the test, it will complain that the images \ttt{average.mrc} and \ttt{variance.mrc} do not exists
  \item modify the code as described in the following steps so that this two files are created
  \item get the \ttt{setOfImages} from the input parameters (self.inputParticles.get())
- \item get image dimensions and number of images (\ttt{self.inputParticles.getDim()} and \ttt{self.inputParticles.getSize()} are your friend here)
+ \item get image dimensions and number of images (\ttt{self.inputParticles.get().getDim()} and \ttt{self.inputParticles.get().getSize()} are your friend here)
  \item create two numpy arrays for the average and variance images. (\ttt{numpy.zeros([xdim, ydim]), numpy.float32})
- \item iterate through all particles (\ttt{for particle in self.inputParticles:})
+ \item iterate through all particles (\ttt{for particle in self.inputParticles.get():})
  \item using particle \ttt{ ImageHandler().read(particle.getLocation())} read image and extract matrix (\ttt{getData}).
  \item the value of the average image at pixel $(i,j)$ is $\mu(i,j)=\frac {1}{N}\sum _{n=1}^{N}x_n(i,j)$. Where $N$ is the number of images and $x_n(i,j)$ the value of the pixel $(i,j)$ for the image $x_n$.
  \item the value of the variance image at pixel $(i,j)$ is\\ $\sigma^2_n(i,j)={ {{\frac {1}{N}}\sum _{n=1}^{N}\left(x_n(i,j)-{\mu(i,j)}\right)^{2}}}$. (see appendix~\ref{app:variance} for an algorithm to compute the variance in a computationally efficient way).
@@ -374,9 +376,8 @@ partSet = self.protocol._createSetOfParticles()
 outFileName = self._getExtraPath('out.stk')
 
 for index, p1 in enumerate(self.inputParticles.get())
-    # convert image code
+    # some code
     ...
-    # threshold code
     ...
     # create output setOfParticles  
     p2 = Particle()
@@ -385,7 +386,7 @@ for index, p1 in enumerate(self.inputParticles.get())
 \end{lstlisting}
 
 You may have noticed that even if the thumbnails are being produced and you can visualize then the test fails. This is because it is testing if the attribute 
-\ttt{protThreshold.setPart.thumbnail\_size} exists. \scipion objects may incorporate any arbitrary attribute, as \ttt{size}, providing is an object of a class defined by \scipion. \ttt{size} type is \ttt{Float}, a class that can store a float number and knows how to persist it in \scipion database. Just add the line \ttt{setPartOut.thumbnail\_size = self.size} in \ttt{createOutputStep}
+\ttt{setPart.thumbnail\_size} exists. \scipion objects may incorporate any arbitrary attribute, as \ttt{size}, providing is an object of a class defined by \scipion. \ttt{size} type is \ttt{Float}, a class that can store a float number and knows how to persist it in \scipion database. Just add the line \ttt{setPartOut.thumbnail\_size = self.size} in \ttt{createOutputStep}
 and the object \ttt{setPartOut} will be persisted with the attribute \ttt{thumbnail\_size}.
 
 That will be all for today ;-). Remember  that the solution to this exercise can be browsed in github.com project scipion-em:scipion-em-template selecting the tag \ttt{3\_3.All\_solved}.
