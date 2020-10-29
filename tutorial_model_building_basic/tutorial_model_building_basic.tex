@@ -79,7 +79,6 @@
 \linespread{1.2} % Line spacing
 
 %\setlength\parindent{0pt} % Uncomment to remove all indentation from paragraphs
-
 \newenvironment{command}{\tt\begin{quote}}{\end{quote}}
 \newcommand{\comm}[1]{\texttt{#1}}
 
@@ -200,6 +199,8 @@ This tutorial requires, in addition to \scipion, USCF~\chimera (\url{https://www
 
 
 \begin{appendices}
+\renewcommand\thesection{\arabic{section}} 
+%\renewcommand\thesection{\AlphAlph{\value{section}}
 \input{a010-answers.tex}
 \input{a011-atomStructUtilsOperatorProtocol.tex}
 \input{a012-chimeraContacts.tex}
@@ -226,7 +227,7 @@ This tutorial requires, in addition to \scipion, USCF~\chimera (\url{https://www
 \input{a150-superposePdbsProtocol.tex}
 \input{a160-dockInMapProtocol.tex}
 \input{a161-asignOrigAndSampling.tex}
-%\input{a170-exportToEMDB.tex}
+\input{a170-exportToEMDB.tex}
 
 
 
