@@ -34,7 +34,9 @@ Once we have the predicted \ttt{model} of any structural element included in our
  
  \subsection*{ Completing rigid fit with \chimera \ttt{rigid fit}}
  
- Open the protocol \scommand{chimerax - rigid fit}, include again the map of the asymmetrical unit (2), and the just fitted \iii{model} of the human \ttt{metHgb} $\alpha$ subunit (3), and execute the protocol (4).
+ \ttt{Note before starting!!!}: As we already advised previously, we are going to use a \chimera-derived protocol (\scommand{chimerax - rigid fit}, Appendix \ref{app:chimeraRigidFit}). Remark that this use of \chimera is completely different from the use of \chimera as a visualization tool. By using the \chimera graphics window, opening it from the \scipion bottom \ttt{Analyze Results}, we can observe protocol results but we CANNOT save anything in \scipion. However, using \chimera as a tool, as it is the case in \scipion \chimera-derived protocols, we can perform different tasks, taking advantage of the available \chimera tools and, finally, we CAN save the obtained results and the working session in \scipion.\\  
+ 
+ To complete the rigid fitting of the \iii{model} generated in the previous step, open the protocol \scommand{chimerax - rigid fit}, include again the map of the asymmetrical unit (2), and the just fitted \iii{model} of the human \ttt{metHgb} $\alpha$ subunit (3), and execute the protocol (4).
  
  \begin{figure}[H]
   \centering 
@@ -46,19 +48,19 @@ Once we have the predicted \ttt{model} of any structural element included in our
   
   Once opened the \chimera graphical window, we can complete the fitting of the \iii{model} to the \iii{map}, by \chimera command line or through the \chimera GUI. 
     \begin{itemize}
-     \item By \chimera command line, considering that \iii{map} and iii{model} have \iii{ID} numbers \ttt{\#2} and \ttt{\#3} (\ffigure{fig:chimera_fit_in_map} (B)):\\
+     \item By \chimera command line, considering that \iii{map} and \iii{model} have \iii{ID} numbers \ttt{\#2} and \ttt{\#3} (\ffigure{fig:chimera_fit_in_map} (B)):\\
             \ttt{fitmap \#3 inMap \#2}\\
     \item By the \chimera GUI: Select in the upper main menu \ttt{Tools -> Volume Data -> Fit in Map}. A small window will be opened (\ffigure{fig:chimera_fit_in_map} (A)). Select the appropriate \iii{model} to fit in the \iii{map and press} \ttt{Fit} (1) to allow the automatic rigid fitting.
     \end{itemize}
 
-  A slight movement to the right perfectly fits \iii{map} and \iii{model}, as can be observed in (\ffigure{fig:chimera_fit_in_map} (B)). To facilitate the visual inspection of the fitting we can replace the \ttt{surface} view of the map by \ttt{mesh} as indicated in (A). Observe this time the right placement of the \ttt{HEME} gorup in the \iii{map} density.\\
-  To use the side view as additional tool to observe the fitting select in the upper main menu \ttt{Tools -> General -> Side View}.
+  A slight movement to the right perfectly fits \iii{map} and \iii{model}, as can be observed in (\ffigure{fig:chimera_fit_in_map} (B)). To facilitate the visual inspection of the fitting we can replace the \ttt{surface} view of the map by \ttt{mesh} as indicated in (A). Observe this time the right placement of the \ttt{HEME} group in the \iii{map} density.\\
+  To use the side view as additional tool to observe the fit, select in the upper main menu \ttt{Tools -> General -> Side View}.
   
   \begin{figure}[H]
   \centering 
   \captionsetup{width=.7\linewidth} 
   \includegraphics[width=0.85\textwidth]{Images/Fig22}
-  \caption{Fitting in map with \chimera.}
+  \caption{Fit in map with \chimera.}
   \label{fig:chimera_fit_in_map}
   \end{figure}
   

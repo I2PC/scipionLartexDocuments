@@ -1,6 +1,18 @@
 \section{Structure validation and comparison}
 \label{seq:structurevalidation}
- At the end of the refinement process of \ttt{metHgb} $\alpha$ subunit (a similar one would be required for $\beta$ subunit), we need to assess the geometry of our $model$ regarding the starting volume to detect $model$ controversial elements or $model$ parameters that disagree with the map. Although each refinement program has their own tools to assess the progress of refinement (\coot \ttt{Validate} menu; \phenix \ttt{real space refine} real space correlations; \refmac \ttt{R factor} and \ttt{Rms BondLength}), in this tutorial section, three assessment tools will be described to obtain comparative validation values after using any protocol in the workflow:  Protocols \emringer (\scommand{phenix - emringer}, Appendix \ref{app:emRingerProtocol}, \citep{barad2015}), \molprobity (\scommand{phenix - molprobity}, Appendix \ref{app:molprobityProtocol}, \citep{davis2004}), and \validationCryoEM (\scommand{phenix - validation\_cryoem}, Appendix \ref{app:valCryoEMProtocol}, \citep{afonine2018b}). \validationCryoEM protocol will show \molprobity validation values as well as correlation coefficients in real space. Since old versions of \phenix (v. 1.13) do not include this tool, then correlation values in real space will be computed if a volume is provided with \molprobity protocol. Additionally, we are going to introduce the protocol \scommand{phenix - superpose pdbs} (Appendix \ref{app:superposePdbsProtocol}, \citep{zwartUrl}) useful to compare visually the geometry of two atomic structures.\\
+ At the end of the refinement process of \ttt{metHgb} $\alpha$ subunit (a similar one would be required for $\beta$ subunit), we need to assess the geometry of our $model$ regarding the starting volume to detect $model$ controversial elements or $model$ parameters that disagree with the map. Although each refinement program has their own tools to assess the progress of refinement (\coot \ttt{Validate} menu; \phenix \ttt{real space refine} real space correlations; \refmac \ttt{R factor} and \ttt{Rms BondLength}), in this tutorial section, three assessment tools will be described to obtain comparative validation values after using any protocol in the workflow:  Protocols \emringer (\scommand{phenix - emringer}, Appendix \ref{app:emRingerProtocol}, \citep{barad2015}), \molprobity (\scommand{phenix - molprobity}, Appendix \ref{app:molprobityProtocol}, \citep{davis2004}), and \validationCryoEM (\scommand{phenix - validation\_cryoem}, Appendix \ref{app:valCryoEMProtocol}, \citep{afonine2018b}). \validationCryoEM protocol will show \molprobity validation values as well as correlation coefficients in real space. Old versions of \phenix (v. 1.13) do not include this tool. Correlation values in real space will thus be computed if a map is provided in \molprobity protocol. Additionally, we are going to introduce the protocol \scommand{phenix - superpose pdbs} (Appendix \ref{app:superposePdbsProtocol}, \citep{zwartUrl}) useful to compare visually the geometry of two atomic structures.\\
+ 
+ Observe some validation steps in the modeling \scipion workflow in \ffigure{fig:scipion_workflow_validation}.
+
+ \begin{figure}[H]
+  \centering 
+  \captionsetup{width=.9\linewidth} 
+  \includegraphics[width=1\textwidth]{Images/Fig69}
+  \caption{\scipion framework detailing the workflow to validate the model of the human \ttt{Hgb} $\alpha$ subunit.}
+  \label{fig:scipion_workflow_validation}
+  \end{figure}
+ 
+ \ttt{Note}: Structure validation is a model building step that you have to perform recursively during the refinement process to assess if you are improving your structure or not. Once you finish the refinement process you'll obtain the final assessment values. These values should be in a certain range if you want to submit the atomic structure to databases. These final validation scores should be computed regarding the density map that you submit as main map, although during the recursive process you might have used the sharpened maps for refinement/validation.
 
 
  \subsection*{\emringer}
@@ -9,14 +21,14 @@
 
    \begin{figure}[H]
   \centering 
-  \captionsetup{width=.7\linewidth} 
+  \captionsetup{width=.9\linewidth} 
   \includegraphics[width=0.65\textwidth]{Images/sidechains}
   \caption{Naming convention in side chains explained in a lysine-tyrosine strand. Note that these two residues are within a protein and thus have no terminal region.}
   \label{fig:emringer_chi1}
   \end{figure}
 
   
- We can start assessing with \emringer the \ttt{metHgb} $\alpha$ subunit $models$ that we have generated along the modeling workflow. In each case, open the \scommand{phenix - emringer} protocol ((\ffigure{fig:emringer_protocol} (1)), load the extracted unit cell volume (initial or saved with \coot) (2) and the atomic structure that you'd like to validate in relation to the volume (3), execute the program (4) and analyze results (5). A menu to check results in detail will be opened (bar \ttt{EMRinger results}). \iii{Phenix EMRinger} plots with density thresholds, with rolling window for each chain, as well as dihedral angles for each residue are shown here. The most relevant results, especially the \emringer score, will also be written in the protocol \ttt{SUMMARY} (6). 
+ We can start assessing with \emringer the \ttt{metHgb} $\alpha$ subunit $models$ that we have generated along the modeling workflow. In each case, open the \scommand{phenix - emringer} protocol ((\ffigure{fig:emringer_protocol} (1)), load the extracted map asymmetric unit (initial or saved with \coot) (2) and the atomic structure that you'd like to validate in relation to the map (3), execute the program (4) and analyze results (5). A menu to check results in detail will be opened (bar \ttt{EMRinger results}). \iii{Phenix EMRinger} plots with density thresholds, with rolling window for each chain, as well as dihedral angles for each residue are shown here. The most relevant results, especially the \emringer score, will also be written in the protocol \ttt{SUMMARY} (6). 
  
   \begin{figure}[H]
   \centering 
@@ -26,7 +38,7 @@
   \label{fig:emringer_protocol}
   \end{figure}
  
- Run \emringer protocol and determine the respective score after running \iii{PowerFit item2}, \chimera \ttt{rigid fit} ($model$ 2), \coot refinement, \phenix \ttt{real space refine} after \coot (default conditions and last modification of form parameters), and \refmac refinement with MASK before and after \phenix \ttt{real space refine}. Considering \emringer \ttt{score}, does our \ttt{metHgb} $\alpha$ subunit $models$ seem to be OK or, at least, have they been improved? (Answers in appendix \ref{app:solutions}; \textbf{Question \ref{seq:structurevalidation}\_1}). Try the same validation with $\beta$ subunit $models$. \\
+ Run \emringer protocol and determine the respective score after running \chimera \ttt{rigid fit} , \coot refinement, \phenix \ttt{real space refine} (form parameters indicated in \ffigure{fig:phenix_real_space_refine_protocol}) after \coot, and \refmac refinement with MASK before and after \phenix \ttt{real space refine}. Considering \emringer \ttt{score}, does our \ttt{metHgb} $\alpha$ subunit $models$ seem to be OK or, at least, have they been improved? (Answers in appendix \ref{app:solutions}; \textbf{Question \ref{seq:structurevalidation}\_1}). Try the same validation with $\beta$ subunit $models$. \\
  %[** EMringer results Roling windows does not work]
  
  \subsection*{\molprobity}
@@ -43,13 +55,13 @@
   \label{fig:molprobity_protocol}
   \end{figure}
   
-  Run \molprobity protocol to obtain its statistics after running \iii{PowerFit item2}, \chimera \ttt{rigid fit} ($model$ 2), \coot refinement, \phenix \ttt{real space refine} (default conditions and last modification of form parameters) after \coot, and \refmac refinement with MASK before and after \phenix \ttt{real space refine}. 
+  Run \molprobity protocol to obtain its statistics after running \chimera \ttt{rigid fit}, \coot refinement, \phenix \ttt{real space refine} (form parameters indicated in \ffigure{fig:phenix_real_space_refine_protocol}) after \coot, and \refmac refinement with MASK before and after \phenix \ttt{real space refine}. 
   
   \subsection*{\validationCryoEM}
   
   \phenix versions higher than 1.13 combine multiple tools for validating cryo-EM maps and models into the single tool called \validationCryoEM (\citep{afonine2018b}). This tool has been implemented in \phenix versions higher than 1.13.\\
   
-  To carry out the global validation of maps and models obtained from cryo-EM data, open the protocol \scommand{phenix - validation\_cryoem} in \scipion (\ffigure{fig:validationCryoEM_protocol} (1)), load the map (initial or generated by \coot) (2) with its resolution (3), load the $model$ atomic structure (4) and execute the protocol (5). \ttt{Analyze results} shows the same menu bars available in results section of \phenix \ttt{real space refine} protocol. \molprobity results bar include validation statistics. Protocol \ttt{SUMMARY} emphasizes the most relevant ones.\\
+  To carry out the global validation of maps and models obtained from cryo-EM data, open the protocol \scommand{phenix - validation\_cryoem} in \scipion (\ffigure{fig:validationCryoEM_protocol} (1)), load the map (initial or generated by \coot) (2) with its resolution (3), load the $model$ atomic structure (4) and execute the protocol (5). \ttt{Analyze results} (6) shows the same menu bars available in results section of \phenix \ttt{real space refine} protocol. \molprobity results bar include validation statistics. Protocol \ttt{SUMMARY} (7) emphasizes the most relevant ones.\\
   
   \begin{figure}[H]
     \centering 
@@ -61,12 +73,12 @@
   
   In order to compare validation results of $models$ obtained along the modeling workflow, fill in the next table (\ttable{table:empty}) including, in addition to \molprobity statistics, \emringer scores and \ccmask values obtained before. (Answers in appendix \ref{app:solutions}; \textbf{Question \ref{seq:structurevalidation}\_2}). The same table (\ttable{table:empty}) can be completed for \ttt{metHgb} $\beta$ subunit (Appendix \ref{app:solutions}; \textbf{Question \ref{seq:structurevalidation}\_3})\\
   
-  \begin{sidewaystable}
+ \begin{table}[H]
    \caption{Validation statistics of human \ttt{metHgb} $\alpha$ subunit $model$. \ttt{RSRAC} stands for \ttt{Real Space Refine} after \coot. \ttt{Rama} stands for \ttt{Ramachandran}.}
    \centering\footnotesize
-   \begin{tabular}{l c c c c c c c c}
+   \begin{tabular}{l c c c c c c }
    \hline\hline
-   Statistic &  \thead{\powerfit\\ $item$ \#2} & \thead{\chimera\\ $model$ \#2} & \coot & \thead{\phenix\\ \ttt{RSRAC}\\(default)} & \thead{\phenix\\ \ttt{RSRAC}\\(modified)} & \thead{\refmac\\ after \coot} & \thead{\refmac\\ after \ttt{RSRAC}\\(modified)} & \ttt{5NI1}\\ [0.5ex]
+   Statistic &  \chimera & \coot & \thead{\phenix\\ \ttt{RSRAC}} & \thead{\refmac\\ after \coot} & \thead{\refmac\\ after \ttt{RSRAC}} & \ttt{5NI1}\\ [0.5ex]
    \hline
    \ccmask \\
    \emringer \ttt{score} \\
@@ -83,10 +95,10 @@
    \hline
    \end{tabular}
    \label{table:empty}
-   \end{sidewaystable}
+   \end{table}
  
  
- Results compiled in this table indicate that statistics are uncorrelated. From the point of view of correlation in real space, the best $model$ was obtained from \phenix \ttt{real space refine} (last modification of form parameters) after \coot. Considering \emringer \ttt{score}, the best $model$ derives from the whole workflow \coot \ttt{->} \phenix \ttt{real space refine} (default conditions). With \molprobity \ttt{Overall score} as validation rule, the last step in the workflow could be suppressed because the best value was obtained after \coot \ttt{->} \phenix \ttt{real space refine} (last modification of parameters). We'd like to select the best $model$ and continue refining it in order to improve it as much as possible. Assuming that no one $model$ is perfect, how can we select the best one?\\ 
+ Results compiled in this table indicate that statistics are uncorrelated. From the point of view of correlation in real space, the best $model$ was obtained from \phenix \ttt{real space refine} after \coot. Considering \emringer \ttt{score}, the best $model$ derives from the whole workflow \coot \ttt{->} \phenix \ttt{real space refine}. With \molprobity \ttt{Overall score} as validation rule, the last step in the workflow could be suppressed because the best value was obtained after \coot \ttt{->} \phenix \ttt{real space refine} (last modification of parameters). We'd like to select the best $model$ and continue refining it in order to improve it as much as possible. Assuming that no one $model$ is perfect, how can we select the best one?\\ 
 
 
  \subsection*{$Model$ Comparison}
@@ -113,10 +125,19 @@
     \end{figure}
     
     The \chimera graphics window will be opened with the structure \ttt{5NI1} as model number \#1. To save independently the structure of human \ttt{metHgb} $\alpha$ subunit (chain A), write in \chimera command line:\\
-    \ttt{split \#1}\\
-    \ttt{scipionwrite model \#1.1}\\
+    \ttt{split \#2}\\
+    \ttt{rename \#2.1 id \#3}\\
+    \ttt{scipionwrite \#3 prefix 5ni1\_chainA\_}\\
     
-    Remark that the model saved in \chimera command line includes both the aminoacid chain and the \ttt{HEME} group. In case you are interested in extracting only the aminoacid chain, you can use the protocol \scommand{atomstructutils - operator}, specifically designed to extract/add individual chains from/to an atomic structure (Atomic Structure Chain Operator; Appendix \ref{app:atomStructUtilsOperatorProtocol}).
+    Remark that the model saved in \chimera command line includes both the aminoacid chain and the \ttt{HEME} group. In case you are interested in extracting only the aminoacid chain, you can use the protocol \scommand{atomstructutils - operator}, specifically designed to extract/add individual chains from/to an atomic structure (Atomic Structure Chain Operator; Appendix \ref{app:atomStructUtilsOperatorProtocol}). Compare the results of protocols \chimera \ttt{operate} and Atomic Structure Chain Operator in \ffigure{fig:chimera_operate_protocol_2}. The red arrow points at \ttt{HEME} group.
+    
+    \begin{figure}[H]
+    \centering 
+    \captionsetup{width=.9\linewidth} 
+    \includegraphics[width=0.75\textwidth]{Images/Fig70}
+    \caption{Comparison of results obtained with the protocols \chimera \ttt{operate} (left) and Atomic Structure Chain Operator (right).}
+    \label{fig:chimera_operate_protocol_2}
+    \end{figure}
     
     \item Protocol \scommand{powerfit}:
     

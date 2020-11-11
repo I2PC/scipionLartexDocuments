@@ -31,6 +31,8 @@ In this section we are going to obtain the initial \iii{model} of our \iii{targe
 
  \modeller \citep{sali1993} is one of the computational web services used by \chimera, which provides the interface to run the program. Working with \modeller requires a license key, which is provided free of charge for academic users. \modeller allows two types of modeling computations to generate theoretical models, \iii{template}-based (sequence homology) and \iii{template}-free (\iii{de novo}, only for missing segments). In this tutorial we are going to consider the first one: structure prediction by sequence homology. Requirements for this type of modeling are the \iii{template} structure and a sequence alignment including sequences of \iii{target} and \iii{template}. 
  
+ \ttt{Note before starting!!!}: We are going to use a \chimera-derived protocol for the first time in this tutorial (\scommand{chimerax - model from template}, Appendix \ref{app:modelFromTemplate}). Remark that this use of \chimera is completely different from the use of \chimera as a visualization tool, as we have done previously. By using the \chimera graphics window, opening it from the \scipion bottom \ttt{Analyze Results} we can observe protocol results but we CANNOT save anything. However, using \chimera as a tool, as it is the case in \scipion \chimera-derived protocols, we can perform different tasks, taking advantage of the available \chimera tools and, finally, we CAN save the obtained results and the working session.    
+ 
  \begin{itemize}
  \item Preparing your sequence alignment:\\
 In addition to the ways to obtain the \iii{target-template} sequence alignment using \chimera, this alignment can be also generated in the \scipion protocol \scommand{chimerax - model from template} (Appendix \ref{app:modelFromTemplate}). This protocol allows selecting between pairwise and multiple sequence alignments. Besides producing more reliable alignments, especially for more distantly related sequences, multiple sequence alignments provide more structural information than pairwise alignments; they locate conserved regions in the molecule, thus improving predictions of structural arrangements due to mutant residues or residues that differ between \iii{template} and \iii{target} sequences \citep{pearson2013}. For this reason, in this tutorial we are going to perform a multiple sequence alignment. Additionally, you can also test the available tools to perform pairwise alignments.\\
@@ -97,20 +99,22 @@ In case that the \ttt{Advanced option} \ttt{``Include non-water HETATM residues 
      save /tmp/HEME.cif format mmcif models #2 selectedOnly true 
      open /tmp/HEME.cif
      scipioncombine #4,5 
+     scipionwrite #6 prefix Hgb_alpha_
  \end{verbatim}
  \ttt{Note}: We have saved the \ttt{HEME} group of the \iii{template} \ttt{chain A} in a new file that will be open as \iii{model} \ttt{\#5}. Finally, the combination of \iii{models} \ttt{\#4} (retrieved aminoacid \iii{model} of the \iii{target} sequence) and \ttt{\#5} (\ttt{HEME} group of the \iii{template} \ttt{chain A}) generates a new model \ttt{\#6} that will be saved in \scipion. A different \ttt{model ID} could be selected by the user adding to the last command line \ttt{modelid n}.\\
 
-After closing \chimera, you can visualize (\ffigure{fig:model_from_template_protocol} (8)) your full predicted \iii{model} (\ffigure{fig:chimera_model}) that includes the \ttt{HEME} group (1). 
+
+After closing \chimera, you can visualize (\ffigure{fig:model_from_template_protocol} (8)) your full predicted \iii{model} (\ffigure{fig:chimera_model}) that includes the \ttt{HEME} group (1).  The string that we have included as \ttt{prefix} in the command line \ttt{scipionwrite} will allow us to follow the atomic structure in a more simple manner. You can check the \ttt{prefix} in the the name of the saved atomic structure (\ttt{Hgb\_alpha\_Atom\_struct\_6\_006815}) in the \ttt{Models} panel of \ffigure{fig:chimera_model} (1). Interestingly, the suffix number of the saved atomic structure (\ttt{006815}) stands for the ID protocol number.
  
  \begin{figure}[H]
   \centering 
   \captionsetup{width=.7\linewidth} 
   \includegraphics[width=0.80\textwidth]{Images/Fig16}
-  \caption{Initial \iii{model} of human \ttt{metHgb} $\alpha$ subunit, including the \ttt{HEME} group (blue). Atomic structures of the retrieved aminoacid \iii{model} of the \iii{target} sequence and the \ttt{HEME} group of the \iii{template} \ttt{chain A} appear in pink and green, respectively, behind the blue one.}
+  \caption{Initial \iii{model} of human \ttt{metHgb} $\alpha$ subunit, including the \ttt{HEME} group (blue).}
   \label{fig:chimera_model}
   \end{figure}
   
-In a similar process, you can also obtain the human \ttt{metHgb} $\beta$ subunit.\\
+In a similar process, you can also obtain the initial atomic structure of the human \ttt{metHgb} $\beta$ subunit.\\
 
 \subsubsection*{Additional exercises for practising}
 Since the protocol \scommand{chimerax - model from template} allows to use other options, inspect by your own the possible result obtained by:\\
