@@ -45,7 +45,7 @@ Protocol designed to manually fit atomic structures to electron density maps in 
   \begin{itemize}
    \item If density map and atomic structure are quite close to each other:\\Go to \chimera main menu and select \ttt{Tools -> Volume Data-> Fit in Map}. A small \ttt{Fit in Map} window will be opened. Once the right atomic structure and the electron density volume have been selected, fit them by clicking \ttt{Fit}.\\
    \ttt{Note}: The same result can be obtained by typing in the command line \ttt{fitmap \#n1 inMap \#n2}, with \ttt{\#n1} and \ttt{\#n2} \chimera model numbers of \iii{model} and \iii{map}.
-   \item If \iii{model} and \iii{map} are far to each other, start the fitting process interactively activating and inactivating \chimera objects alternatively to finally get \iii{map} and \iii{model} close enough to go to the previous step. Otherwise, consider tha possibility of running before the \phenix \ttt{dock in map} protocol.
+   \item If \iii{model} and \iii{map} are far from each other, start the fitting process interactively activating and inactivating \chimera objects alternatively to finally get \iii{map} and \iii{model} close enough to go to the previous step. Otherwise, consider tha possibility of running before the \phenix \ttt{dock in map} protocol.
    \item Save fitted \iii{model} regarding the \iii{map} by writing in \chimera command line:\\ \ttt{scipionwrite \#n prefix userString\_}.\\Replace \ttt{\#n} by model numbers shown in \chimera \ttt{Models} panel. \ttt{prefix} + string preferred by the user to easily identify the atomic structure is optional, although quite recomendable.
    \item Close \chimera graphics window.
   \end{itemize}

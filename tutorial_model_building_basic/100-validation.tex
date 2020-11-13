@@ -2,7 +2,7 @@
 \label{seq:structurevalidation}
  At the end of the refinement process of \ttt{metHgb} $\alpha$ subunit (a similar one would be required for $\beta$ subunit), we need to assess the geometry of our $model$ regarding the starting volume to detect $model$ controversial elements or $model$ parameters that disagree with the map. Although each refinement program has their own tools to assess the progress of refinement (\coot \ttt{Validate} menu; \phenix \ttt{real space refine} real space correlations; \refmac \ttt{R factor} and \ttt{Rms BondLength}), in this tutorial section, three assessment tools will be described to obtain comparative validation values after using any protocol in the workflow:  Protocols \emringer (\scommand{phenix - emringer}, Appendix \ref{app:emRingerProtocol}, \citep{barad2015}), \molprobity (\scommand{phenix - molprobity}, Appendix \ref{app:molprobityProtocol}, \citep{davis2004}), and \validationCryoEM (\scommand{phenix - validation\_cryoem}, Appendix \ref{app:valCryoEMProtocol}, \citep{afonine2018b}). \validationCryoEM protocol will show \molprobity validation values as well as correlation coefficients in real space. Old versions of \phenix (v. 1.13) do not include this tool. Correlation values in real space will thus be computed if a map is provided in \molprobity protocol. Additionally, we are going to introduce the protocol \scommand{phenix - superpose pdbs} (Appendix \ref{app:superposePdbsProtocol}, \citep{zwartUrl}) useful to compare visually the geometry of two atomic structures.\\
  
- Observe some validation steps in the modeling \scipion workflow in \ffigure{fig:scipion_workflow_validation}.
+ Observe the first validation steps in the modeling \scipion workflow in \ffigure{fig:scipion_workflow_validation}.
 
  \begin{figure}[H]
   \centering 
@@ -107,13 +107,21 @@
     
   \subsubsection*{Comparison of validation statistics}
   
-  Validation statistics of \ttt{metHgb} $\alpha$ subunit of \ttt{PDB} structure \ttt{5NI1} should be obtained as first step to compare them with validation statistics of our $models$. With this aim we are going to follow the next workflow:
+  Validation statistics of \ttt{metHgb} $\alpha$ subunit of \ttt{PDB} structure \ttt{5NI1} should be obtained as first step to compare them with validation statistics of our $models$. With this aim we are going to follow the workflow remarked in the \ffigure{fig:scipion_workflow_validation_2}:
+  
+  \begin{figure}[H]
+  \centering 
+  \captionsetup{width=.9\linewidth} 
+  \includegraphics[width=1\textwidth]{Images/Fig72}
+  \caption{\scipion framework detailing the last part of the validation workflow.}
+  \label{fig:scipion_workflow_validation_2}
+  \end{figure}
   
   \begin{itemize}
     \item Protocol \scommand{import atomic structure}:\\
     Download from \ttt{PDB} structure \ttt{5NI1}\\
     
-    \item Protocol \scommand{chimera operate} (Appendix \ref{app:chimeraOperate}):\\
+    \item Protocol \scommand{chimerax - operate} (Appendix \ref{app:chimeraOperate}):\\
     Similar to \chimera \ttt{rigid fit}, \chimera \ttt{operate} protocol allows to perform operations with atomic structures. We are going to use this protocol to save independently in \scipion the \ttt{metHgb} $\alpha$ subunit. Open the protocol  (\ffigure{fig:chimera_operate_protocol} (1)), complete the parameter \ttt{PDBx/mmCIF} including the atomic structure \ttt{5NI1} previously imported (2), and execute the protocol (3).      
     
     \begin{figure}[H]
@@ -124,7 +132,8 @@
     \label{fig:chimera_operate_protocol}
     \end{figure}
     
-    The \chimera graphics window will be opened with the structure \ttt{5NI1} as model number \#1. To save independently the structure of human \ttt{metHgb} $\alpha$ subunit (chain A), write in \chimera command line:\\
+    The \chimera graphics window will be opened with the structure \ttt{5NI1} as model number \ttt{\#2}. To save independently the structure of human \ttt{metHgb} $\alpha$ subunit (chain A), write in \chimera command line:\\
+    
     \ttt{split \#2}\\
     \ttt{rename \#2.1 id \#3}\\
     \ttt{scipionwrite \#3 prefix 5ni1\_chainA\_}\\
@@ -139,15 +148,25 @@
     \label{fig:chimera_operate_protocol_2}
     \end{figure}
     
-    \item Protocol \scommand{powerfit}:
+    \item Protocol \scommand{phenix - dock in map}:
     
-    Open \powerfit protocol and follow the instructions above indicated. The structure saved in \chimera operate will replace this time our previous $model$ (). Select \ttt{item 2} as best fit.\\
+    Open \phenix \ttt{dock in map} protocol and follow the instructions above indicated. The structure saved in \chimera \ttt{operate} will replace this time our previous $model$. Results can be observed in \ffigure{fig:chimera_operate_protocol_3}.\\
+    
+    \begin{figure}[H]
+    \centering 
+    \captionsetup{width=.9\linewidth} 
+    \includegraphics[width=0.70\textwidth]{Images/Fig71}
+    \caption{Results view of \scommand{phenix - dock in map} protocol.}
+    \label{fig:chimera_operate_protocol_3}
+    \end{figure}
     
     \item Protocol \scommand{chimera rigid fit}:
-    Open again \chimera \ttt{rigid fit} protocol and, following already indicated instructions, include this time \ttt{item 2}, the last fitted structure obtained with \powerfit (\ffigure{fig:chimera_rigid_fit} (3)). After finishing the rigid fit of the extracted unit cell and \ttt{metHgb} $\alpha$ subunit from 5NI1 structure, you can save this fitted structure writing in \chimera command line:\\
-    \ttt{scipionwrite model \#2 refmodel \#1 saverefmodel 0}\\
+    Open again \chimera \ttt{rigid fit} protocol and, following the already indicated instructions, include this time the atomic structure \ttt{placed\_model.cif} generated in the previous step. To fit the \ttt{metHgb} $\alpha$ subunit from 5NI1 structure in the extracted asymmetric unit and save the fitting write in \chimera command line:\\
     
-    \item{Validation protocols \scommand{phenix - emringer} and \scommand{phenix - validation\_cryoem} (\scommand{phenix - molprobity} for \phenix version 1.13)}:
+    \ttt{fitmap \#3 inMap \#2}\\
+    \ttt{scipionwrite \#3 prefix 5ni1\_chainA\_fitted\_}\\
+    
+    \item{Validation protocols \scommand{phenix - emringer} and \scommand{phenix - validation\_cryoem}}:
     
     Compute validation statistics with these two protocols for \ttt{metHgb} $\alpha$ subunit from \ttt{PDB} structure \ttt{5NI1}, write respective values in the previous table (\ttable{table:empty}), and compare them with the statistics of our $models$.
     
@@ -156,30 +175,29 @@
  
   \subsection*{Comparison of atomic structures}
   
-  \phenix protocol \scommand{phenix - superpose pdbs} allows to compare two atomic structures by overlapping them. Root mean square deviation (RMSD) between the fixed structure (the published one) and one of our $models$ supports the classification of $models$ according to its proximity to the published model. Open \phenix \ttt{superpose pdbs} protocol form (\ffigure{fig:superpose_pdbs_protocol} (1)), include the published structure of the \ttt{metHgb} $\alpha$ subunit as fixed structure (2), each one of the $models$ generated along the worflow (3) and execute the protocol (4). Finally, complete the \ttable{table:empty} with the value of RMSD obtained for each $model$. (Answers in appendix \ref{app:solutions}; \textbf{Question \ref{seq:structurevalidation}\_2}).
+  \phenix protocol \scommand{phenix - superpose pdbs} allows to compare two atomic structures by overlapping them. Root mean square deviation (RMSD) between the fixed structure (the published one) and one of our $models$ supports the classification of $models$ according to its proximity to the published model. Open \phenix \ttt{superpose pdbs} protocol form (\ffigure{fig:superpose_pdbs_protocol} (1)), include the published structure of the \ttt{metHgb} $\alpha$ subunit as fixed structure (2), each one of the $models$ generated along the worflow (3), execute the protocol (4) and check results by pressing \ttt{Analyze results} (5). Arrows of \ffigure{fig:superpose_pdbs_chimera} remark differing parts between the atomic structure of the \ttt{metHgb} $\alpha$ subunit from \ttt{PDB} structure \ttt{5NI1} (green) and our $model$ generated by automatic refinement with \phenix {real space refine} protocol (pink). By opening these structures in \coot you can see the differences between them. Finally, complete the \ttable{table:empty} with the value of \ttt{RMSD (final)} (6) obtained for each $model$. (Answers in appendix \ref{app:solutions}; \textbf{Question \ref{seq:structurevalidation}\_2}).
   
   \begin{figure}[H]
     \centering 
-    \captionsetup{width=.7\linewidth} 
+    \captionsetup{width=.9\linewidth} 
     \includegraphics[width=0.90\textwidth]{Images/Fig37}
     \caption{Completing \phenix \ttt{superpose pdbs} protocol form.}
     \label{fig:superpose_pdbs_protocol}
     \end{figure}
-    
-  You can check in \chimera the fitted $model$ to the published structure by pressing \ttt{Analyze results} (\ffigure{fig:superpose_pdbs_protocol} (5)). Arrows of \ffigure{fig:superpose_pdbs_chimera} remark differing parts between both atomic structures. By opening these structures in \coot you can see the difference between them.
+
  
    \begin{figure}[H]
     \centering 
-    \captionsetup{width=.7\linewidth} 
-    \includegraphics[width=0.70\textwidth]{Images/Fig38}
-    \caption{$Model$ generated for \ttt{metHgb} $\alpha$ subunit superposed to published $\alpha$ chain of \ttt{5NI1} structure.}
+    \captionsetup{width=.9\linewidth} 
+    \includegraphics[width=0.50\textwidth]{Images/Fig38}
+    \caption{$Model$ generated for \ttt{metHgb} $\alpha$ subunit superposed to the published $\alpha$ chain of \ttt{5NI1} structure.}
     \label{fig:superpose_pdbs_chimera}
    \end{figure}
   
   
   \end{itemize}
  
- A $model$ for \ttt{metHgb} $\alpha$ subunit has to be selected at the end of validation process. According to the statistics of \ttable{table:refmac_question_9} (Appendix \ref{app:solutions}; \textbf{Question \ref{seq:structurevalidation}\_2}), $model$ obtained in the last step of modeling workflow (\refmac after RSRAC (modified)) has been selected due to the smallest RMSD value, high value of \emringer \ttt{score}, quite high value of \ccmask and acceptable \molprobity statistics. Follow a similar process to validate and select the $model$ generated for \ttt{metHgb} $\beta$ subunit. Appendix \ref{app:solutions} \textbf{Question \ref{seq:structurevalidation}\_3} contains a statistics table for \ttt{metHgb} $\beta$ subunit, similar to that obtained for \ttt{metHgb} $\alpha$ subunit.\\
+ A $model$ for \ttt{metHgb} $\alpha$ subunit has to be selected at the end of validation process. According to the statistics of \ttable{table:refmac_question_9} (Appendix \ref{app:solutions}; \textbf{Question \ref{seq:structurevalidation}\_2}), the $model$ obtained in the last step of modeling workflow (\refmac after RSRAC) has been selected due to the smallest RMSD value, high value of \emringer \ttt{score}, quite high value of \ccmask and acceptable \molprobity statistics. Follow a similar process to validate and select the $model$ generated for \ttt{metHgb} $\beta$ subunit. Appendix \ref{app:solutions} \textbf{Question \ref{seq:structurevalidation}\_3} contains a statistics table for \ttt{metHgb} $\beta$ subunit, similar to that obtained for \ttt{metHgb} $\alpha$ subunit.\\
  
- In the real world selected $models$ usually are the starting point to improve specific validation parameters by additional refinement. Since the improvement of certain parameters normally implies worsening of other parameters, a final compromise solution has to be taken.\\
+ In the real world the selected $models$ usually are the starting point to improve specific validation parameters by additional refinement. Since the improvement of certain parameters normally implies worsening of other parameters, a final compromise solution has to be taken.\\
 

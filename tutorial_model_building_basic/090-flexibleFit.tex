@@ -94,6 +94,16 @@ Observe the new steps in the modeling \scipion workflow in \ffigure{fig:scipion_
  In its interactive way, \scommand{ccp4 - coot refinement} protocol can be launched again whenever you want in \scipion, and the last atomic structure saved will be loaded in \coot graphics window. This functionality of \scipion allows to stop the interactive refinement and continue the process in the last refinement step, maintaining each one of the intermediate refined structures saved in order in the \scipion tutorial folder \ttt{/Runs/000XXX\_CootRefine/extra} (\ffigure{fig:coot_summary} (B)). Remark that if you want to continue with the refinement process you have to select the \ttt{Run mode} option \ttt{Continue} when you edit the \coot refinement protocol. In this way, to go again to intermediate refined structures is also possible. Finally, when you reach the final refined structure save it, and you may press \keys{e} to fully stop the \coot protocol.\\
  
  A similar refinement process to that followed in \coot for \ttt{metHgb} $\alpha$ subunit chain \ttt{A}, has to be carried out for the \ttt{metHgb} $\beta$ subunit.\\
+ \\
+ \ttt{Note for the refinement process of chains other than the first one}: Take into account the name of the chains. Check that the first chain has been called \ttt{A}. Since by default, every chain will be called \ttt{A} you have to change the name of all of them in this step, before saving in \scipion the atomic structure refined by \coot. Let's suppose that we are refining in \coot the \ttt{metHgb} $\beta$ subunit. To change the name of the chain go to the \coot main menu and select the option \ttt{Edit} (\ffigure{fig:chimerax_asymm_unit_2} (A)(1)) and then \ttt{Change chain IDs} and select the current name of the chain \ttt{A} (\ffigure{fig:chimerax_asymm_unit_2} (B)(2)) by the new one, \ttt{B} (3).
+ 
+ \begin{figure}[H]
+  \centering 
+  \captionsetup{width=.9\linewidth} 
+  \includegraphics[width=0.5\textwidth]{Images/Fig74}
+  \caption{A. \coot main menu. B. \coot window to change chain IDs.}
+  \label{fig:chimerax_asymm_unit_2}
+  \end{figure}
  
  
  \subsection*{\phenix Real Space Refine}
@@ -140,6 +150,8 @@ that you can see in the \ttt{Summary} of the \scipion framework after changing t
   The conclusion of this part of refinement in real space is that \coot and \phenix \ttt{real space refine} might perform complementary tasks. The usage of both protocols may improve the result, especially when partial processing or big arrangements of molecules are involved. Now, to take advantage of $model$ improvements performed with \coot, run \phenix \ttt{real space refine} after \coot. When you finish, check again the above values of correlation. Have they changed? (Answer in appendix \ref{app:solutions}; \textbf{Question \ref{refinementFlexibleFitting}\_2})\\
   
   Before finishing our refinement workflow with \refmac, we can ask ourselves how can we improve correlations in real space by modifying the \ttt{Advanced} parameters in the protocol form. Will the correlation values change if we set to ``yes'' optimization parameters previously set to ``no'', and increase the number of macro cycles from 5 to 30? Take into account that this process takes much more time (around 6 times more) than the previous one. (Answer in appendix \ref{app:solutions}; \textbf{Question \ref{refinementFlexibleFitting}\_3})\\
+  
+  \ttt{Note}: An interesting application of the \phenix \ttt{real space refine} visualization tools is the possibility of load \coot from the \phenix viewer and correct the structure of outliers residues and classhes. A recurively use of \phenix \ttt{real space refine} and \coot protocols is thus possible.
   
   \subsection*{\ccp4  \refmac}
   
