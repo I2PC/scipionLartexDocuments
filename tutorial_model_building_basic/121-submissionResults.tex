@@ -44,17 +44,95 @@ After executing the protocol (9), you can check that all files are saved in the 
 
 Since the atomic interpretation of a certain macromolecule will be probably the starting point of relevant mechanistic or biomedical studies, summaring and organizing our results constitutes the first step to draw the conclusions that will be made public by journals and talks. Many different questions can be posed based on the atomic structure. Here we are wondering about interactions among members of the macromolecule. To answer this question we have included in \scipion the protocol \scommand{chimerax - contacts} to identify the residues involved in contacts between any couple of interacting molecules. ``contacts'' involve atoms within  favorable interaction distances. Unfavourable contacts or severe clashes, in which atoms are too close together, although discarded by default in the final list of `contacts'', may also be shown by using appropriate advanced parameters, as you can see in Appendix \ref{app:chimeraContactsProtocol}. \\
 
-As an example, in this tutorial we are going to learn how to get atom contacts of human haemoglobin \ttt{metHgb} atomic structure \ttt{5NI1}, associated to the starting map \ttt{EMD-3488}. This structure was already downloaded from \ttt{PDB} by using the protocol \scommand{import atomic structure}. According to the aim of the analysis, two possible scenarios and respective workflows can be considered to compute contacts, a) infering all contacts between any couple of members of the asymmetric unit, and between one member of the asymmetric unit and another component from a neighbor asymmetric unit (\ffigure{fig:workflows_contacts} (A; 2)), and b) infering all contacts between any couple of members of the whole macromolecule (\ffigure{fig:workflows_contacts} (B; 4)). 
+As an example, in this tutorial we are going to learn how to get atom contacts of human haemoglobin \ttt{metHgb} atomic structure \ttt{5NI1}, associated to the starting map \ttt{EMD-3488}. This structure was already downloaded from \ttt{PDB} by using the protocol \scommand{import atomic structure} (\ffigure{fig:workflows_contacts} (1)). According to the aim of the analysis, two possible scenarios and the respective workflows can be considered to compute contacts: a) infering all contacts between any couple of members of the whole macromolecule (\ffigure{fig:workflows_contacts} (3)); b) infering all contacts between any couple of members of the asymmetric unit, and between one member of the asymmetric unit and another component from a neighbor asymmetric unit (\ffigure{fig:workflows_contacts} (5)). 
 
         \begin{figure}[H]
             \centering 
             \captionsetup{width=.9\linewidth} 
             \includegraphics[width=0.9\textwidth]{Images/Fig46}
-            \caption{\scipion workflows to get contacts between any two chains of the unit cell and between any chain of the unit cell and a chain of a neighbor unit cell (A, bold lines), and to get contacts between any two chains of a macromolecule (B, bold lines).}
+            \caption{\scipion workflows inside the red box to get contacts between any two chains of a macromolecule (3) and between any two chains of the asymmetric unit, and between any chain of the asymmetric unit and a chain of a neighbor asymmetric unit (5).}
             \label{fig:workflows_contacts}
         \end{figure}
         
-Since the last step of A workflow (\ffigure{fig:workflows_contacts} (2)) requires applying symmetry, the first step involves to move the structure to match its symmetry center to the origin of coordinates. Besides this preprocesing step, and because protocol \scommand{chimerax - contacts} only computes contacts between independent chains and not whitin the same chain, an additional preprocessing step has to be performed to separate \ttt{HEM} groups in independent chains to get contacts between proteins and ligands (\ttt{HEM} groups).
+Since the penultimate step of the second workflow (\ffigure{fig:workflows_contacts} (4)) requires applying symmetry, we are going to start moving the structure to match its symmetry center to the origin of coordinates using the protocol \scommand{phenix - dock in map} as we did previously (\ffigure{fig:dockInMap_protocol}), including the whole starting map of the human \ttt{metHgb} and the imported atomic structure \ttt{5NI1} as \ttt{Input map} and \ttt{Input atom structure}, respectively.\\
+
+Secondly, we are going to extract the structure of the asymmetric unit of the docked \ttt{5NI1} structure using the protocol \scommand{chimerax - operator} as it is indicated in \ffigure{fig:workflows_contacts} (4). Complete the protocol form including the last docked structure \ttt{5NI1} as \ttt{Atomic structure}. After executing the protocol, the \chimera graphics window will open. You can select and save the atomic structure of the map asymmetric unit writing in the \chimera command line:\\
+ \\
+ \ttt{select \#2/A,B}\\
+ \ttt{save /tmp/chainAB.cif format mmcif models \#2 selectedOnly true}\\
+ \ttt{open /tmp/chainAB.cif}\\
+ \ttt{scipionwrite \#3 chainAB\_}\\
+ \ttt{exit}\\
+
+    \begin{itemize}
+    
+\item CASE A: Contacts between any couple of members of the whole macromolecule (\ffigure{fig:workflows_contacts} (3)):\\
+ This option allows to get all contacts between all couples of members of the macromolecule. In the case of the human \ttt{metHgb} we have depicted all those possible contacts in the \ffigure{fig:schema_contacts} (A).
+ 
+ \begin{figure}[H]
+            \centering 
+            \captionsetup{width=.9\linewidth} 
+            \includegraphics[width=0.9\textwidth]{Images/Fig49}
+            \caption{Schema of the human haemoglobin \ttt{metHgb} showing protein contacts between couples of chains of the whole macromolecule (A) and contacts obtained by applying symmetry to the asymmetric unit (B).}
+            \label{fig:schema_contacts}
+        \end{figure}
+ 
+ 
+ The protocol \scommand{chimerax - contacts} can be used to obtain the contacts depicted. Open this protocol (\ffigure{fig:contacts_unit cell} (1)) and fill in the first \ttt{Input} (2) in which no symmetry will be applied. Include the docked \ttt{5NI1} structure (4) as \ttt{Atomic structure}. Use the wizard on the right to label the molecule chains (5) as they appear in the adjacent window, and execute the protocol. 
+ 
+  \begin{figure}[H]
+            \centering 
+            \captionsetup{width=.9\linewidth} 
+            \includegraphics[width=0.9\textwidth]{Images/Fig50}
+            \caption{Filling in the \scommand{chimerax - contacts} protocol form with two different inputs: (2) to get atom contacts between couples of chains within the whole \ttt{metHgb}; (3) to get contacts between any couple of chains within the asymmetric unit, and ``non-redundant`` contacts between the asymmetric unit and another chain of a neighbor asymmetric unit of the human haemoglobin \ttt{metHgb}.}
+            \label{fig:contacts_unit cell}
+        \end{figure}
+        
+After executing the protocol, all atom contacts between the couples of proteins indicated in \ffigure{fig:schema_contacts} (A) can be visualized by clicking \scommand{Analyze Results} (\ffigure{fig:contacts_results} (A)).
+ 
+ \begin{figure}[H]
+            \centering 
+            \captionsetup{width=.9\linewidth} 
+            \includegraphics[width=0.9\textwidth]{Images/Fig52}
+            \caption{(A) Display of results of atom contacts between couples of chains within the whole \ttt{metHgb}; (B) Display of results of atom contacts between couples of chains within the asymmetric unit, and ''non-redundant`` contacts between a chain of the asymmetric unit and another chain from a neighbor asymmetric unit of the human haemoglobin \ttt{metHgb}.}
+            \label{fig:contacts_results}
+        \end{figure}
+
+The viewer window of the protocol \chimera \ttt{contacts} display different results (\ffigure{fig:contacts_results}(A)):
+    \begin{itemize}
+    \item \ttt{3D Visualization} box: Final atomic structure considered to compute contacts that can be visualized with \chimera. Press the eye (1) to open the structure shown on the right.
+    \item \ttt{Interacting chains} box: Summary list of all interacting chains, similar to the list shown on the right of the \ffigure{fig:schema_contacts} (A). Press the eye to open it (2).
+    \item \ttt{Contacts between interacting chains} box: In addition to the possibility of changing the order of the interacting chains in the display, as well as the maximal distance between residues to group them, this box allows to select couples of interacting chains (4) and inspect in detail the contacts between them pressing the eye on the right (3).
+    \end{itemize}
+ 
+ 
+ 
+\item CASE B: Contacts between any couple of members of the asymmetric unit and ''non-redundant`` contacts between one member of the asymmetric unit and another one from the neighbor asymmetric unit (\ffigure{fig:workflows_contacts} (5)). This second asymmetric unit has been obtained by applying symmetry with the protocol \scommand{chimerax - contacts}. Then, ``non-redundant'' interaction means any interaction that can not be inferred by symmetry. The  \ffigure{fig:schema_contacts} (B) shows the total number of interactions of our example. The interactions between the chain \ttt{B} of the asymmetric unit (model \ttt{\#1.1}) and the chain \ttt{A} of the neighbor asymmetric unit (model \ttt{\#1.2}) are symmetric to the interactions between chain \ttt{A} of the asymmetric unit (model \ttt{\#1.1}) and chain \ttt{B} of the neighbor asymmetric unit (model \ttt{\#1.2}). Since those interactions can thus be inferred by symmetry, they are ``redundant'' and are absent of the final list of contacts.\\  
+       
+Similarly to the case A, the protocol form has to be open (\ffigure{fig:contacts_unit cell} (1) ) and completed as indicated in the second \ttt{Input} (3). Include the asymmetric unit structure saved with the protocol \chimera \ttt{operate} (6), use the wizard on the right (7) to label the chains as it is shown on the right and, finally, include the respective type of symmetry of the human \ttt{metHgb} (8).\\ 
+        
+Like in the case A, after executing the protocol all non-redundant atom contacts between any couple of proteins indicated in \ffigure{fig:schema_contacts} (B) can be visualized by clicking \scommand{Analyze Results} (\ffigure{fig:contacts_results} (B)). Besides the lower number of contacts displayed, remark that a relevant difference between the results of the case A and the case B is the final atomic structure visualized with \chimera, which discriminates between the starting asymmetric unit and the second one generated by symmetry.\\
+ 
+\\
+\ttt{Note}: This second possibility of getting protein contacts observed in the case B is extremely useful when you have a big asymmetric unit, for example of a virus, and you are interested in contacts among proteins within the asymmetric unit and with other adjacent asymmetric units.
+\end{itemize}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\begin{comment}
+Besides this preprocesing step, and because protocol \scommand{chimerax - contacts} only computes contacts between independent chains and not whitin the same chain, an additional preprocessing step has to be performed to separate \ttt{HEM} groups in independent chains to get contacts between proteins and ligands (\ttt{HEM} groups).
 
 \begin{itemize}
  \item Preprocessing:\
@@ -173,7 +251,7 @@ This list of protein contacts was obtained in \scipion by running the protocol \
  After executing the protocol, resulting contacts can be checked similarly to case A. 
 \end{itemize}
 
-
+\end{comment}
 
  
 

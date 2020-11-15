@@ -1,10 +1,11 @@
 \section{Atomic Structure Chain Operator protocol}
 \label{app:atomStructUtilsOperatorProtocol}%a011
-Protocol designed to perform two types of operations with chains from atomic structures in \scipion: a) Chain extraction: An individual chain will be extracted from a polymeric atomic structure. The extracted chain will be saved as monomer in a new atomic structure. b) Chain addition: One or several chains will be added to a reference atomic structure. The resulting addition will be saved as a new polymeric atomic structure. 
+Protocol designed to perform two types of operations with chains from atomic structures in \scipion: a) Chain extraction: An individual chain will be extracted from a polymeric atomic structure. The extracted chain will be saved as monomer in a new atomic structure and will not include HETATM and water molecules. b) Chain addition: One or several chains will be added to a reference atomic structure. The resulting addition will be saved as a new polymeric atomic structure. 
 
 \begin{itemize}
  \item Requirements to run this protocol and visualize results:
     \begin{itemize}
+        \item \scipion plugin: \ttt{scipion-em}
         \item \scipion plugin: \ttt{scipion-em-atomstructutils}
         \item \scipion plugin: \ttt{scipion-em-chimera}
     \end{itemize}
@@ -15,7 +16,7 @@ Protocol designed to perform two types of operations with chains from atomic str
  
  \begin{figure}[H]
      \centering 
-     \captionsetup{width=.7\linewidth} 
+     \captionsetup{width=.9\linewidth} 
      \includegraphics[width=0.90\textwidth]{Images_appendix/Fig154.pdf}
      \caption{Protocol \scommand{atomstructutils - operator}. A: Protocol location in \scipion menu. B: Protocol form to extract a chain from an atomic structure. C: Protocol form to add one or several chains to an atomic structure.}
      \label{fig:app_protocol_atomstructutils_operator_1}
@@ -44,7 +45,7 @@ Protocol designed to perform two types of operations with chains from atomic str
   
  \item Visualization of protocol results:
  
- After executing the protocol, press \ttt{Analyze Results} and \chimera graphics window will be opened by default. Atomic structures and volumes are referred to the origin of coordinates in \chimera. To show the relative position of atomic structure and electron density volume, the three coordinate axes are represented; X axis (red), Y axis (yellow), and Z axis (blue) (\ffigure{fig:app_protocol_volume_3}).  Coordinate axes and the new atomic structure generated are model numbers \ttt{\#0} and \ttt{\#1}, respectively, in \chimera \ttt{Model Panel}. Write in \chimera command line:\\
+ After executing the protocol, press \ttt{Analyze Results} and \chimera graphics window will be opened by default. Atomic structures and volumes are referred to the origin of coordinates in \chimera. To show the relative position of atomic structure and electron density volume, the three coordinate axes are represented; X axis (red), Y axis (yellow), and Z axis (blue) (\ffigure{fig:app_protocol_volume_3}).  Coordinate axes and the new atomic structure generated are model numbers \ttt{\#1} and \ttt{\#2}, respectively, in \chimera \ttt{Models} panel. Write in \chimera command line:\\
     \ttt{split \#1}\\
  to check the individual chains included in the new atomic structure generated.
     
@@ -53,7 +54,7 @@ Protocol designed to perform two types of operations with chains from atomic str
 
     \begin{itemize}
      \item Protocol output (below \scipion framework):\\
-      \ttt{atomstructutils - operator -> ouputPdb}; \ttt{AtomStruct (pseudoatoms=True/ False, volume=True/ False)}.\\Pseudoatoms is set to \ttt{True} when the structure is made of pseudoatoms instead of atoms. Volume is set to \ttt{True} when an electron density map is associated to the atomic structure.
+      \ttt{atomstructutils - operator -> ouputPdb};\\ \ttt{AtomStruct (pseudoatoms=True/ False, volume=True/ False)}.\\Pseudoatoms is set to \ttt{True} when the structure is made of pseudoatoms instead of atoms. Volume is set to \ttt{True} when an electron density map is associated to the atomic structure.
      \item \ttt{SUMMARY} box:\\No summary information.\\
     \end{itemize}
 \end{itemize}
