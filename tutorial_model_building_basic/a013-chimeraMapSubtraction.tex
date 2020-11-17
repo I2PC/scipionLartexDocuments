@@ -94,7 +94,7 @@
                             \centering 
                             \captionsetup{width=.9\linewidth} 
                             \includegraphics[width=.9\textwidth]{Images_appendix/Fig310.pdf}
-                            \caption{(A) \scipion workflow showing protocols 1, 2, 3 and 4. (B) Adenovirus map image. (C) Map geometrical asymmetric unit extracted from the adenovirus map. (D) Adenovirus atomic structure of the biological asymmetric unit overlapped to the geometrical map unit. }  
+                            \caption{(A) \scipion workflow showing protocols 1, 2, 3 and 4. (B) Adenovirus HAdV-F41 map image. (C) Map geometrical asymmetric unit extracted from the adenovirus map. (D) Adenovirus atomic structure of the biological asymmetric unit overlapped to the geometrical map unit. }  
                             \label{fig:app_usecase_mapsubtract_1}
                             \end{figure}
                 To look for remnant densities in the penton area we have to complete the \scommand{chimerax - subtraction} protocol with the indicated params (\ffigure{fig:app_usecase_mapsubtract_2}. Remark that in this case we have selected half of input \ttt{3D Map} resolution (4 \AA) although other values could be tested. The only chain of the penton in the atomic structure of the asymmetric structure is the chain \ttt{M}, inside the dotted blue circle of \ffigure{fig:app_usecase_mapsubtract_1} (D), and 8 residues will be removed as a control of density levels. In addition, icosahedral \ttt{I222r} symmetry will be applied to the selected chain in order to complete the five units of the penton. In order to visualize better the map difference, a map fraction around the atomic structure is selected.
@@ -106,7 +106,7 @@
                             \caption{Completing the protocol \scommand{chimerax - subtraction} to find renmant densities in the penton area of the adenovirus map.}  
                             \label{fig:app_usecase_mapsubtract_2}
                             \end{figure}
-                Protocol execution: Follow the general procedure shown above (Protocol execution section) and the \chimera graphics window will open. At this point several maps and atomic structures will be shown, as the \ttt{Models} panel indicates (\ffigure{fig:app_usecase_mapsubtract_3} (C, top)). Have a look to each map and structure to identify them and play with the density levels to maximize the differences between the input \ttt{3D Map} restricted to the penton area (\ttt{zone\_Map}) and the penton atomic structure-derived map (\ttt{molmap\_chainM\_Map}). The \ffigure{fig:app_usecase_mapsubtract_3} images A and B show the difference \ttt{filtered\_Map} in the penton side (A) and upper (B) views, respectively, according to the density level observed on the \ttt{Volume Viewer} panel (C, middle). Red arrows point at the densities associated to the removed residues used as a density control. The adjacent ten residues to the removed ones upstream and downstream are green-highlighted. The penton upper view (B) was obtained opening the \chimera main menu (\ttt{Tools -> General -> Side View} and setting the view as indicated (C, botton). 
+                Protocol execution: Follow the general procedure shown above (Protocol execution section) and the \chimera graphics window will open. At this point several maps and atomic structures will be shown, as the \ttt{Models} panel indicates (\ffigure{fig:app_usecase_mapsubtract_3} (C, top)). Have a look to each map and structure to identify them and play with the density levels to maximize the differences between the input \ttt{3D Map} restricted to the penton area (\ttt{zone\_Map}) and the penton atomic structure-derived map (\ttt{molmap\_chainM\_Map}). The \ffigure{fig:app_usecase_mapsubtract_3} images A and B show the difference \ttt{filtered\_Map} in the penton side (A) and upper (B) views, respectively, according to the density level observed on the \ttt{Volume Viewer} panel (C, middle). Red arrows point at the densities associated to the removed residues used as a density control. The adjacent ten residues to the removed ones upstream and downstream are green-highlighted. The penton upper view (B) was obtained opening the \chimera main menu (\ttt{Tools -> General -> Side View} and setting the view as indicated (C, botton). From these results we can conclude that a remnant density in the upper part of the penton, if exits, it is not so evident.
                             \begin{figure}[H]
                             \centering 
                             \captionsetup{width=.9\linewidth} 
@@ -158,13 +158,13 @@
                         HAdV-C5 adenovirus chain \ttt{X} can be visualized as \iii{model} \ttt{\#6}.  
                         
                         
-                        The red arrow (C) points at the density associated to the removed residues used as a density control. The adjacent ten residues to the removed ones upstream and downstream are green-highlighted. The penton upper view (B) was obtained opening the \chimera main menu (\ttt{Tools -> General -> Side View} and setting the view as indicated (C, botton). 
+                        The results, described in \ffigure{fig:app_usecase_mapsubtract_6}, doesn't demonstrate a clear continuous density in the proximity of the HAdV-C5 adenovirus chain \ttt{X}. Although not very evident, it could be there. Then we cannot conclude that it doesn't exit, only that we were unable to identify it.
                             
                             \begin{figure}[H]
                             \centering 
                             \captionsetup{width=.9\linewidth} 
                             \includegraphics[width=.9\textwidth]{Images_appendix/Fig315.pdf}
-                            \caption{(A) Gaussian filtered difference map (grey). (B) Upper view. (C) From top to bottom, \chimera \ttt{Models} panel, \ttt{Volume Viewer} panel, specified for the gaussian filtered difference map, and \ttt{Side View} panel, respectively.}  
+                            \caption{(A) Gaussian filtered difference map (grey) of adenovirus HAdV-F41 asymmetric unit (top) and \ttt{Models} panel of items loaded in \chimera including the \iii{model} \ttt{\#6} (bottom). (B) Zoom in on the subtracted area with the map density level indicated in the \ttt{Volume Viewer} below . (C) Idem with a higher cleaning of the background. The red arrow points at the control density. The green arrow points at the HAdV-C5 adenovirus chain \ttt{X}. The purple arrow points at one of the adenovirus HAdV-F41 small chains previously traced.}  
                             \label{fig:app_usecase_mapsubtract_6}
                             \end{figure}
                 

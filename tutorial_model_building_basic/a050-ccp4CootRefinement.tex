@@ -5,8 +5,9 @@ Protocol designed to interactively fit and refine atomic structures, in real spa
 \begin{itemize}
   \item Requirements to run this protocol and visualize results:
     \begin{itemize}
+        \item \scipion plugin: \ttt{scipion-em}
         \item \scipion plugin: \ttt{scipion-em-ccp4}
-        \item CCP4 software suite (version 7.0.056 or higher)
+        \item CCP4 software suite (from version 7.0.056 to 7.1)
         \item \scipion plugin: \ttt{scipion-em-chimera}
     \end{itemize}
   \item \scipion menu:\\
@@ -16,7 +17,7 @@ Protocol designed to interactively fit and refine atomic structures, in real spa
   
     \begin{figure}[H]
      \centering 
-     \captionsetup{width=.7\linewidth} 
+     \captionsetup{width=.9\linewidth} 
      \includegraphics[width=0.90\textwidth]{Images_appendix/Fig119.pdf}
      \caption{Protocol \scommand{ccp4 - coot refinement}. A: Protocol location in \scipion menu. B: Protocol form.}
      \label{fig:app_protocol_coot_1}
@@ -26,9 +27,9 @@ Protocol designed to interactively fit and refine atomic structures, in real spa
      \item \ttt{Input} section
 
     \begin{itemize}
-     \item \ttt{Input Volume/s}: One or several electron density maps previously downloaded or generated in \scipion. The density volume regarding to which an atomic structure has to be modeled has to be included in this volume list.
+     \item \ttt{Input Volume/s}: At least one or several electron density maps previously downloaded or generated in \scipion. The density volume regarding to which an atomic structure has to be modeled has to be included in this volume list.
      \item \ttt{Normalize}: Parameter set to ``Yes'' by default to perform normalization of map electron density levels according to $Coot$ requirements ([0, 1]). This normalization approximates cryo-EM density data to maps obtained from X-ray crystallography because it diminishes Z-score (number of standard deviations) variation of map values.  
-     \item \ttt{Atomic structure to be refined}: Atomic structure previously downloaded or generated in \scipion. This structure will be fitted and refined according to a particular density volume.
+     \item \ttt{Atomic structure to be refined}: Mandatory param to load an atomic structure previously downloaded or generated in \scipion. This structure will be fitted and refined according to a particular density volume.
      \item \ttt{Other reference atomic structures}: Additional atomic structures previously downloaded or generated in \scipion that may be helpful in the refinement process.
     \end{itemize}
     \item \ttt{Help} section
@@ -55,12 +56,12 @@ Protocol designed to interactively fit and refine atomic structures, in real spa
      Save \ttt{coot.ini} text file after its modification. Go to the residue position indicated in \ttt{aaNumber}, initialize global variables with \ttt{``U''}, and pres \ttt{``z''} or \ttt{``Z''} in the keyboard to refine those \ttt{aaNumber} residues upstream or downstream, respectively.
      \item Printing \coot environment:\\ Press \ttt{``E''} in the keyboard.
      \item Saving an atomic structure after an interactive working session with $Coot$:\\
-     \ttt{Coot Python Scripting} window will be opened with $Coot$ main menu \ttt{Calculate -> Scripting... -> Python...} (\ffigure{fig:app_protocol_coot_2} (A)). By writing \ttt{scipion\_write()}, molecule \ttt{\#0} will be saved by default in \scipion. Molecule number can be checked in $Coot$ main menu \ttt{Display Manager} (\ffigure{fig:app_protocol_coot_2} (B, red arrow)). Saving the molecule this way is equivalent to press \ttt{``w''} in the keyboard.\\The number \ttt{\#n} of the specific molecule has to be written in brackets to save any other molecule than \ttt{\#0}.\\Although the name of the saved atomic structure is \ttt{cootOut0001.pdb} by default, other names/labels of your preference are also allowed. That name/label has to be introduced with \ttt{scipion\_write()} command, as it is detailed in the example (\ffigure{fig:app_protocol_coot_2} (A)). The addition of \ttt{.pdb} extension is not required.\\If no more interactive sessions with $Coot$ are planned, after saving the atomic structure, $Coot$ will be definitively closed by pressing \ttt{``e''} in the keyboard.     
+     \ttt{Coot Python Scripting} window will be opened with $Coot$ main menu \ttt{Calculate -> Scripting... -> Python...} (\ffigure{fig:app_protocol_coot_2} (A)). By writing \ttt{scipion\_write()}, molecule \ttt{\#0} will be saved by default in \scipion. Molecule number can be checked in $Coot$ main menu \ttt{Display Manager} (\ffigure{fig:app_protocol_coot_2} (B, red arrow)). Saving the molecule this way is equivalent to press \ttt{``w''} in the keyboard.\\The number \ttt{\#n} of the specific molecule has to be written in brackets to save any other molecule than \ttt{\#0}.\\Although the name of the saved atomic structure is \ttt{coot\_XXXXXX\_Imol\_YYYY\_version\_ZZZZ.pdb} by default (\ttt{XXXXXX} is the protocol box number, \ttt{YYYY} the $model$ number and \ttt{ZZZZ} the number of times that the molecule has been saved), other names/labels of your preference are also allowed. That name/label has to be introduced with \ttt{scipion\_write()} command, as it is detailed in the example (\ffigure{fig:app_protocol_coot_2} (A)). The addition of \ttt{.pdb} extension is not required.\\If no more interactive sessions with $Coot$ are planned, after saving the atomic structure, $Coot$ will be definitively closed by pressing \ttt{``e''} in the keyboard.     
      
       \begin{figure}[H]
        \centering 
-       \captionsetup{width=.7\linewidth} 
-       \includegraphics[width=0.80\textwidth]{Images_appendix/Fig120.pdf}
+       \captionsetup{width=.9\linewidth} 
+       \includegraphics[width=0.65\textwidth]{Images_appendix/Fig120.pdf}
        \caption{Protocol \scommand{ccp4 - coot refinement}. A: Saving labeled atomic structure with \ttt{Coot Python Scripting} window. B: \ttt{Display Manager} window.}
        \label{fig:app_protocol_coot_2}
       \end{figure}
@@ -86,8 +87,8 @@ Protocol designed to interactively fit and refine atomic structures, in real spa
    
       \begin{figure}[H]
        \centering 
-       \captionsetup{width=.7\linewidth} 
-       \includegraphics[width=0.80\textwidth]{Images_appendix/Fig121.pdf}
+       \captionsetup{width=.9\linewidth} 
+       \includegraphics[width=0.70\textwidth]{Images_appendix/Fig121.pdf}
        \caption{Protocol \scommand{ccp4 - coot refinement}. \ttt{Refinement and regularization Parameters} window.}
        \label{fig:app_protocol_coot_3}
       \end{figure}
@@ -97,7 +98,7 @@ Protocol designed to interactively fit and refine atomic structures, in real spa
   Once those basic parameters are set, some steps to follow in refinement process are:
   \begin{itemize}
      \item Check validation parameter windows to have an idea of controversial areas and quality of the fitting:\\
-     Go to \coot main menu \ttt{Validation -> Ramachandran Plot}, \ttt{Validation -> Density fit analysis} and \ttt{Validation -> Rotamer analysis}. Validation windows have to be checked throughout the refinement process.
+     Go to \coot main menu \ttt{Validation -> Ramachandran Plot}, \ttt{Validation -> Density fit analysis} and \ttt{Validate -> Rotamer analysis}. Validation windows have to be checked throughout the refinement process.
      \item Refine the ends of each chain. Basic interactive refinement process requires several steps:
       \begin{itemize}
       \item First, go to an atom included in the area that is going to be refined:\\
@@ -108,7 +109,7 @@ Protocol designed to interactively fit and refine atomic structures, in real spa
      
       \begin{figure}[H]
        \centering 
-       \captionsetup{width=.7\linewidth} 
+       \captionsetup{width=.9\linewidth} 
        \includegraphics[width=0.80\textwidth]{Images_appendix/Fig122.pdf}
        \caption{Protocol \scommand{ccp4 - coot refinement}. (A) Interactive refinement of the chain fragment between residues 2 and 9. (B) Accepting refinement window.}
        \label{fig:app_protocol_coot_4}
@@ -125,7 +126,7 @@ Protocol designed to interactively fit and refine atomic structures, in real spa
         2.- Inspect one by one, and fit to the volume density, every residue from the small auxiliary chain.\\
         3.- Accept the refinement.\\
        
-      \item Check validation parameters to focus refinement in specific chain areas (\coot main menu \ttt{Validation ->  Density fit analysis}).
+      \item Check validation parameters to focus refinement in specific chain areas (\coot main menu \ttt{Validate ->  Density fit analysis}).
      \end{itemize} 
     \item After finishing refinement of every chain, save the structure (press \ttt{``e''} if \coot has to be definitively closed and not interactive anymore).
     \item Close \coot graphics window.
@@ -134,11 +135,11 @@ Protocol designed to interactively fit and refine atomic structures, in real spa
   
   \item Visualization of protocol results:
   
-  After executing the protocol, press \ttt{Analyze Results} and \chimera graphics window will be opened by default. Atomic structures and volumes are referred to the origin of coordinates in \chimera. To show the relative position of atomic structures and electron density volumes, the three coordinate axes are represented; X axis (red), Y axis (yellow), and Z axis (blue) (\ffigure{fig:app_protocol_volume_3}). Coordinate axes, volume, and first atomic structure are model numbers \ttt{\#0}, \ttt{\#1}, \ttt{\#2}, respectively, in \chimera \ttt{Model Panel}. Every atomic structure saved during \coot refinement process will appear in \ttt{Model Panel} (\ffigure{fig:app_protocol_coot_5}). If you want to \underline{visualize results in \coot graphics window} you only have to open the protocol \underline{in the last point} that you let it before and \underline{set to \ttt{Continue}} the \ttt{Run mode}. Close the \coot protocol without saving anything in this case. 
+  After executing the protocol, press \ttt{Analyze Results} and \chimera graphics window will be opened by default. Atomic structures and volumes are referred to the origin of coordinates in \chimera. To show the relative position of atomic structures and electron density volumes, the three coordinate axes are represented; X axis (red), Y axis (yellow), and Z axis (blue) (\ffigure{fig:app_protocol_volume_3}). Coordinate axes, volume, and first atomic structure are model numbers \ttt{\#1}, \ttt{\#2}, \ttt{\#3}, respectively, in \chimera \ttt{Model Panel}. Every atomic structure saved during \coot refinement process will appear in \ttt{Model Panel} (\ffigure{fig:app_protocol_coot_5}). If you want to \underline{visualize results in \coot graphics window} you only have to open the protocol \underline{in the last point} that you let it before and \underline{set to \ttt{Continue}} the \ttt{Run mode}. Close the \coot protocol without saving anything in this case. 
   
   \begin{figure}[H]
     \centering 
-    \captionsetup{width=.7\linewidth} 
+    \captionsetup{width=.9\linewidth} 
     \includegraphics[width=0.80\textwidth]{Images_appendix/Fig123.pdf}
     \caption{Protocol \scommand{ccp4 - coot refinement}. \coot results visualized in \chimera.}
     \label{fig:app_protocol_coot_5}
@@ -148,7 +149,7 @@ Protocol designed to interactively fit and refine atomic structures, in real spa
   
   \begin{figure}[H]
     \centering 
-    \captionsetup{width=.7\linewidth}  
+    \captionsetup{width=.9\linewidth}  
     \includegraphics[width=0.80\textwidth]{Images_appendix/Fig124.pdf}
     \caption{Protocol \scommand{ccp4 - coot refinement}. Browse content after several runs of interactive \coot protocol.}
     \label{fig:app_protocol_coot_6}
@@ -156,7 +157,7 @@ Protocol designed to interactively fit and refine atomic structures, in real spa
    
    \begin{figure}[H]
     \centering 
-    \captionsetup{width=.7\linewidth} 
+    \captionsetup{width=.9\linewidth} 
     \includegraphics[width=0.50\textwidth]{Images_appendix/Fig125.pdf}
     \caption{Protocol \scommand{ccp4 - coot refinement}. \scipion window that allows to select any of \coot partially refined structures.}
     \label{fig:app_protocol_coot_7}
@@ -165,8 +166,12 @@ Protocol designed to interactively fit and refine atomic structures, in real spa
   \item Summary content:
   
    \begin{itemize}
-     \item Protocol output (below \scipion framework) for each \coot intermediate atomic structure partially refined (\ttt{\#n}):\\ \ttt{ccp4 - coot refinement -> cootOut000\#n}; \ttt{PdbFile (pseudoatoms=False, volume=False)}.\\Pseudoatoms is set to \ttt{False} because the structure is made of atoms instead of pseudoatoms. Volume is set to \ttt{False} because no electron density map is associated to the atomic structure.
-     \item \ttt{SUMMARY} box for each \coot intermediate atomic structure partially refined (\ttt{\#n}):\\\ttt{cootOut000\#n}:
+     \item Protocol output (below \scipion framework):
+     \begin{itemize}
+     \item Each \coot intermediate atomic structure partially refined (\ttt{\#n}):\\ \ttt{ccp4 - coot refinement ->} label name selected by the user or common output \coot name (\ttt{coot\_XXXXXX\_Imol\_YYYY\_version\_ZZZZ.pdb});\\ \ttt{AtomStruct (pseudoatoms=False, volume=False)}.\\Pseudoatoms is set to \ttt{False} because the structure is made of atoms instead of pseudoatoms. Volume is set to \ttt{False} because no electron density map is associated to the atomic structure.
+     \item Each \coot input map (saved by default):\\ \ttt{ccp4 - coot refinement -> output3DMap\_XXXX};\\ \ttt{Volume (x, y, and z dimensions, sampling rate)}.\\
+     \item \ttt{SUMMARY} box for each \coot intermediate atomic structure partially refined:\\ label name selected by the user or common output \coot name (\ttt{coot\_XXXXXX\_Imol\_YYYY\_version\_ZZZZ.pdb})\\ Idem for maps.
+    \end{itemize}
     \end{itemize}
     
 \end{itemize}
