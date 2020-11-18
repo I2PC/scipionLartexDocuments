@@ -1,12 +1,13 @@
 \section{Phenix MolProbity protocol}
 \label{app:molprobityProtocol}%a130
-Protocol designed to assess in \scipion the geometry of refined atomic structures without considering electron density maps by using $MolProbity$ \citep{davis2004}. Integrated in cryo-EM validation tools of $Phenix$ software suite (\url{https://www.phenix-online.org/}), $MolProbity$ tool validates geometry and dihedral-angle combinations of atomic structures. $MolProbity$ scores can guide the refinement process of the atomic structure to get a good fitting of the atomic structure to the cryo-EM density map. Adding a volume as input in \ttt{Phenix MolProbity} protocol is possible for \phenix v. 1.13 and\ttt{Real Space Correlation} coefficients between map and model-derived map will thus be calculated. Additionally, experimental electron density maps give sense to the interpretation of geometry outliers.
+Protocol designed to assess in \scipion the geometry of refined atomic structures without considering electron density maps by using $MolProbity$ \citep{davis2004}. Integrated in cryo-EM validation tools of $Phenix$ software suite (\url{https://www.phenix-online.org/}), $MolProbity$ tool validates geometry and dihedral-angle combinations of atomic structures. $MolProbity$ scores can guide the refinement process of the atomic structure to get a good fitting of the atomic structure to the cryo-EM density map. Adding a volume as input in \ttt{Phenix MolProbity} protocol is possible for \phenix v. 1.13 and \ttt{Real Space Correlation} coefficients between map and model-derived map will thus be calculated. Additionally, experimental electron density maps give sense to the interpretation of geometry outliers.
 
 \begin{itemize}
  \item Requirements to run this protocol and visualize results:
     \begin{itemize}
+        \item \scipion plugin: \ttt{scipion-em}
         \item \scipion plugin: \ttt{scipion-em-phenix}
-        \item PHENIX software suite 
+        \item PHENIX software suite (tested for versions 1.13-2998, 1.16-3549, 1.17.1-3660 and 1.18.2-3874)
         \item \scipion plugin: \ttt{scipion-em-ccp4}
         \item CCP4 software suite 
         \item \scipion plugin: \ttt{scipion-em-chimera}
@@ -18,7 +19,7 @@ Protocol designed to assess in \scipion the geometry of refined atomic structure
   
     \begin{figure}[H]
      \centering 
-     \captionsetup{width=.7\linewidth} 
+     \captionsetup{width=.9\linewidth} 
      \includegraphics[width=0.90\textwidth]{Images_appendix/Fig143.pdf}
      \caption{Protocol \scommand{phenix - molprobity}. A: Protocol location in \scipion menu. B: Protocol form.}
      \label{fig:app_protocol_molprobity_1}
@@ -40,8 +41,8 @@ Protocol designed to assess in \scipion the geometry of refined atomic structure
   
   \begin{figure}[H]
      \centering 
-     \captionsetup{width=.7\linewidth} 
-     \includegraphics[width=0.55\textwidth]{Images_appendix/Fig144.pdf}
+     \captionsetup{width=.9\linewidth} 
+     \includegraphics[width=0.50\textwidth]{Images_appendix/Fig144.pdf}
      \caption{Protocol \scommand{phenix - molprobity}. Taps to visualize $MolProbity$  and Real space correlation results. \ttt{Real-space correlation} tap only appears with \phenix v. 1.13.}
      \label{fig:app_protocol_molprobity_2}
     \end{figure}
@@ -52,8 +53,8 @@ Protocol designed to assess in \scipion the geometry of refined atomic structure
      \item \ttt{MolProbity results} (\ffigure{fig:app_protocol_molprobity_3}):
         \begin{figure}[H]
          \centering 
-         \captionsetup{width=.7\linewidth} 
-         \includegraphics[width=0.55\textwidth]{Images_appendix/Fig145.pdf}
+         \captionsetup{width=.9\linewidth} 
+         \includegraphics[width=0.50\textwidth]{Images_appendix/Fig145.pdf}
          \caption{Protocol \scommand{phenix - molprobity}. $MolProbity$ results.}
          \label{fig:app_protocol_molprobity_3}
         \end{figure}
@@ -105,8 +106,8 @@ Protocol designed to assess in \scipion the geometry of refined atomic structure
       \item \ttt{Real-space correlation}: (This tap will only appear with \phenix v. 1.13 in case you include a electron density volume as input of the protocol) (\ffigure{fig:app_protocol_molprobity_4}):
        \begin{figure}[H]
          \centering 
-         \captionsetup{width=.7\linewidth} 
-         \includegraphics[width=0.65\textwidth]{Images_appendix/Fig146.pdf}
+         \captionsetup{width=.9\linewidth} 
+         \includegraphics[width=0.50\textwidth]{Images_appendix/Fig146.pdf}
          \caption{Protocol \scommand{phenix - molprobity}. Real-space correlation results.}
          \label{fig:app_protocol_molprobity_4}
         \end{figure}
@@ -136,8 +137,8 @@ Protocol designed to assess in \scipion the geometry of refined atomic structure
       \item \ttt{Atomic properties} (\ffigure{fig:app_protocol_molprobity_5}): Atom numerical properties:
        \begin{figure}[H]
          \centering 
-         \captionsetup{width=.7\linewidth} 
-         \includegraphics[width=0.65\textwidth]{Images_appendix/Fig147.pdf}
+         \captionsetup{width=.9\linewidth} 
+         \includegraphics[width=0.50\textwidth]{Images_appendix/Fig147.pdf}
          \caption{Protocol \scommand{phenix - molprobity}. Atomic properties results.}
          \label{fig:app_protocol_molprobity_5}
         \end{figure}

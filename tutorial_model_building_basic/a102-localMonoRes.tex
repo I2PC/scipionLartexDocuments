@@ -17,7 +17,7 @@ Protocol designed to apply the $MonoRes$ method \citep{vilas2018} in \scipion. $
   
     \begin{figure}[H]
      \centering 
-     \captionsetup{width=.7\linewidth} 
+     \captionsetup{width=.9\linewidth} 
      \includegraphics[width=0.90\textwidth]{Images_appendix/Fig207}
      \caption{Protocol \scommand{xmipp3 - local MonoRes}. A: Protocol location in \scipion menu. B: Protocol form.}
      \label{fig:app_localMonoRes_1}
@@ -31,7 +31,7 @@ Protocol designed to apply the $MonoRes$ method \citep{vilas2018} in \scipion. $
         \begin{itemize}
             \item \ttt{Resolution Range (\AA)}: Interval of resolution expected, from the maximum resolution (\ttt{High} = 0.0 by default), to the minimal resolution (\ttt{Low}) of the map volume. This parameter is empty by default and $MonoRes$ will try to estimate it. \ttt{Step} is an advanced parameter that indicates the fraction of resolution of each interval in the range contained between the max and min resolution. 
             \item \ttt{Significance}: Advanced parameter that determines the significance of the hypothesis test computed to calculate the resolution (0.95 by default).
-            \item \ttt{Mask threshold}: Advanced parameter that indicates the density value required to get a binary mask in case there is not one (0.5 by default). Density values below the threshold will be changed to 0 and values above the threshold will be changed to 1.
+            \item \ttt{Mask threshold}: Advanced parameter that indicates the density value required to get a binary mask in case there is none (0.5 by default). Density values below the threshold will be changed to 0 and values above the threshold will be changed to 1.
             \item \ttt{Consider noise gaussian?}: ``No'' by default has to be changed to ``Yes'' if you prefer to establish the premise that the noise follows a gaussian distribution. 
         \end{itemize}
     \end{itemize}
@@ -45,7 +45,7 @@ Protocol designed to apply the $MonoRes$ method \citep{vilas2018} in \scipion. $
   
   \begin{figure}[H]
      \centering 
-     \captionsetup{width=.7\linewidth} 
+     \captionsetup{width=.9\linewidth} 
      \includegraphics[width=0.70\textwidth]{Images_appendix/Fig209.pdf}
      \caption{Protocol \scommand{xmipp3 - local MonoRes}. Menu to visualize results.}
      \label{fig:app_localMonoRes_2}
