@@ -25,7 +25,7 @@ Observe the new steps in the modeling \scipion workflow in \ffigure{fig:scipion_
   \end{figure}
   
 
-  To check the objects downloaded in \coot, go to the second bar of the main menu and select \ttt{Display Manager}. Maps (numbers \ttt{\#2}, \ttt{\#3} and \ttt{\#4}) and model \ttt{Hgb\_alpha\_Atom\_struct\_\_3\_007124.cif} (number \ttt{\#0}) are displayed on the left (\ffigure{fig:coot_density_fit_analysis} (A)). Remark that you have bottoms to display a particular map (1) and to increase or reduce map density scrolling it (2). In this case, since we have selected the display of the unsharpened map asymmetric unit, we can only observe this \iii{map} together with the \iii{model}. If you want to check any of the sharpened maps, select it and scroll it. Note that all maps should be aligned. Try to see differences in details and connectivity of the map to assess if the sharpened maps really optimize the map density compared to the unsharpened one. If this is the case, try to follow the refinement according to the density of the best map (the most optimized one) checking the reliability of the density according to the unsharpened map, specially in the most controversial areas. Since you count on several sharpening maps you can also take advantage of the different map optimizations that you could have in the distinct areas of the map.\\  
+  To check the objects downloaded in \coot, go to the second bar of the main menu and select \ttt{Display Manager}. Maps (numbers \ttt{\#1}, \ttt{\#2} and \ttt{\#3}) and model \ttt{Hgb\_alpha\_Atom\_struct\_\_3\_007124.cif} (number \ttt{\#0}) are displayed on the left (\ffigure{fig:coot_density_fit_analysis} (A)). Remark that you have bottoms to display a particular map (1) and to increase or reduce map density scrolling it (2). In this case, since we have selected the display of the unsharpened map asymmetric unit, we can only observe this \iii{map} together with the \iii{model}. If you want to check any of the sharpened maps, select it and scroll it. Note that all maps should be aligned. Try to see differences in details and connectivity of the map to assess if the sharpened maps really optimize the map density compared to the unsharpened one. If this is the case, try to follow the refinement according to the density of the best map (the most optimized one) checking the reliability of the density according to the unsharpened map, specially in the most controversial areas. Since you count on several sharpening maps you can also take advantage of the different map optimizations that you could have in the distinct areas of the map.\\  
   
   To start with the refinement process, we are going to identify the part of $model$ misfitted to the density map. Visual inspection would clarify this point in some cases, although direct observation of the \ttt{Density fit analysis} might be a shorter way. With this aim, go to the main menu of \coot graphical window and select \ttt{Validate -> Density fit analysis}. The density fit will be analyzed regarding a specific map. To select any of them, go to the \coot right side menu (\ffigure{fig:coot_density_fit_analysis} (B)(3)) and open the \ttt{Select Map for Fitting} window (C). This density analysis, that you can see for the three map asymmetric units in (\ffigure{fig:coot_density_fit_analysis} (D)) shows that residues 1, 51, 73, 138-142 do not fit perfectly to the density map. The color range scale goes from green color (good fit) to red color (bad fit). There are some differences among maps and, as it was expected, the sharpened maps display higher restraints and show additional residues partially misfitted.
  
@@ -37,7 +37,7 @@ Observe the new steps in the modeling \scipion workflow in \ffigure{fig:scipion_
   \label{fig:coot_density_fit_analysis}
   \end{figure}
   
-  According to \ffigure{fig:coot_density_fit_analysis} (B), \ttt{MET} residue of the new chain \ttt{A} does not fit to the map density. Maybe this residue has been processed post-translationally, as we have anticipated in \textbf{Starting Input data} section. To solve this question, go to \coot main menu and select \ttt{Draw -> Go To Atom... -> Chain A -> A 1 MET} (\ffigure{fig:coot_go_to_atom} (A)). \ttt{MET} residue will be located in the center of \coot graphics window. Check if this residue is surrounded by any electron density. As \ffigure{fig:coot_go_to_atom} (B)(1) shows, no density associates to the first chain residue. \ttt{MET} will thus be deleted. Then go to the lower right side menu and select the symbol to delete items (B)(2). Select \ttt{Residue/Monomer} in the opened \ttt{Delete item} window, and click the \ttt{MET} residue that you want to delete. Go again to \ttt{Validate -> Density fit analysis} and check that the orange bar shown in \ttt{MET} residue \ffigure{fig:coot_density_fit_analysis} (B) has disappeared.
+  According to \ffigure{fig:coot_density_fit_analysis} (B), \ttt{MET} residue of the new chain \ttt{A} does not fit to the map density. Maybe this residue has been processed post-translationally, as we have anticipated in \textbf{Starting Input data} section. To solve this question, go to \coot main menu and select \ttt{Draw -> Go To Atom... -> Chain A -> A 1 MET} (\ffigure{fig:coot_go_to_atom} (A)). \ttt{MET} residue will be located in the center of \coot graphics window. Check if this residue is surrounded by any electron density. As \ffigure{fig:coot_go_to_atom} (B)(1) shows, no density associates to the first chain residue. \ttt{MET} will thus be deleted. Then go to the lower right side menu and select the symbol to delete items (B)(2). Select \ttt{Residue/Monomer} in the opened \ttt{Delete item} window, and click the \ttt{MET} residue that you want to delete. Go again to \ttt{Validate -> Density fit analysis} and check if the orange bar shown in \ttt{MET} residue \ffigure{fig:coot_density_fit_analysis} (B) disappeared.
   
   \begin{figure}[H]
   \centering 
@@ -91,7 +91,7 @@ Observe the new steps in the modeling \scipion workflow in \ffigure{fig:scipion_
   \label{fig:coot_summary}
   \end{figure}
  
- In its interactive way, \scommand{ccp4 - coot refinement} protocol can be launched again whenever you want in \scipion, and the last atomic structure saved will be loaded in \coot graphics window. This functionality of \scipion allows to stop the interactive refinement and continue the process in the last refinement step, maintaining each one of the intermediate refined structures saved in order in the \scipion tutorial folder \ttt{/Runs/000XXX\_CootRefine/extra} (\ffigure{fig:coot_summary} (B)). Remark that if you want to continue with the refinement process you have to select the \ttt{Run mode} option \ttt{Continue} when you edit the \coot refinement protocol. In this way, to go again to intermediate refined structures is also possible. Finally, when you reach the final refined structure save it, and you may press \keys{e} to fully stop the \coot protocol.\\
+ In its interactive way, \scommand{ccp4 - coot refinement} protocol can be launched again whenever you want in \scipion, and the last atomic structure saved will be loaded in \coot graphics window. This functionality of \scipion allows to stop the interactive refinement and continue the process in the last refinement step, maintaining each one of the intermediate refined structures saved in order in the \scipion tutorial folder \ttt{/Runs/000XXX\_CootRefine/extra} (\ffigure{fig:coot_summary} (B)). Remark that if you want to continue with the refinement process you have to select the \ttt{Run mode} option \ttt{Continue} when you edit the \coot refinement protocol. In this way, to go again to intermediate refined structures is also possible. Finally, when you reach the final refined structure, save it, and you may press \keys{e} to fully stop the \coot protocol.\\
  
  A similar refinement process to that followed in \coot for \ttt{metHgb} $\alpha$ subunit chain \ttt{A}, has to be carried out for the \ttt{metHgb} $\beta$ subunit.\\
  \\
@@ -109,16 +109,16 @@ Observe the new steps in the modeling \scipion workflow in \ffigure{fig:scipion_
  \subsection*{\phenix Real Space Refine}
  
  In order to compare the previous \coot interactive refinement with an automatic refinement, we are going to use the
- \scommand{phenix - real space refine} protocol in parallel. This protocol implements in \scipion the \iii{phenix.real\_space\_refine} program developed to address cryo-EM structure-refinement requirements. Following a workflow similar to the \phenix reciprocal-space refinement program \iii{phenix.refine}, basically devoted to crystallography, \iii{phenix.real\_space\_refine} program, mainly used in cryo-EM, is able to refine in real space atomic models against maps, which are the experimental data.\\
+ \scommand{phenix - real space refine} protocol in parallel, as indicated in \ffigure{fig:scipion_workflow_flexiblefit} (1). In addition, we can assess if the automatic refinement obtained with the protocol \scommand{phenix - real space refine} is able to complement and improve the result of the \coot manual refinement (\ffigure{fig:scipion_workflow_flexiblefit} (2)). Protocol \scommand{phenix - real space refine} implements in \scipion the \iii{phenix.real\_space\_refine} program developed to address cryo-EM structure-refinement requirements. Following a workflow similar to the \phenix reciprocal-space refinement program \iii{phenix.refine}, basically devoted to crystallography, \iii{phenix.real\_space\_refine} program, mainly used in cryo-EM, is able to refine in real space atomic models against maps, which are the experimental data.\\
  
- Start working by opening \scommand{phenix - real space refine} protocol (\ffigure{fig:phenix_real_space_refine_protocol} (1)), load as input volume the map asymmetric unit saved in \coot that you consider the most optimized one (2, the $deepEMhancer$ sharpened map in this case), write the volume resolution (3), and load the atomic structure ($model$ \ttt{new\_label\_HBA\_HUMAN}, (4)). After executing the protocol (6), results can be checked (7). Try to compare the \ttt{MolProbity statistics}
+ Start working by opening \scommand{phenix - real space refine} protocol (\ffigure{fig:phenix_real_space_refine_protocol} (1)), load as input volume the map asymmetric unit saved in \coot that you consider the most optimized one (2, the $deepEMhancer$ sharpened map in this case), write the volume resolution (3), and load the atomic structure ($model$ \ttt{Hgb\_alpha\_atom\_struct\_\_3\_007124}  in the case 1 of \ffigure{fig:scipion_workflow_flexiblefit} or $model$ \ttt{new\_label\_HBA\_HUMAN} in the case 2 (4)). After executing the protocol (6), results can be checked (7). Try to compare the \ttt{MolProbity statistics}
 that you can see in the \ttt{Summary} of the \scipion framework after changing the \ttt{Advanced} parameter \ttt{Local grid search} (5) from \ttt{Yes} to \ttt{No} (default value). 
 
  \begin{figure}[H]
   \centering 
   \captionsetup{width=.9\linewidth} 
   \includegraphics[width=1\textwidth]{Images/Fig29}
-  \caption{Completing \phenix Real Space Refine protocol.}
+  \caption{Completing \phenix Real Space Refine protocol (Case 2 of \ffigure{fig:scipion_workflow_flexiblefit}).}
   \label{fig:phenix_real_space_refine_protocol}
   \end{figure}
  
@@ -128,11 +128,11 @@ that you can see in the \ttt{Summary} of the \scipion framework after changing t
   \centering 
   \captionsetup{width=.9\linewidth} 
   \includegraphics[width=0.65\textwidth]{Images/Fig30}
-  \caption{\chimera visualization of refined $model$ of \ttt{metHgb} $\alpha$ subunit by \phenix Real Space Refine protocol.}
+  \caption{\chimera visualization of refined $model$ of \ttt{metHgb} $\alpha$ subunit by \phenix Real Space Refine protocol (Case 2 of \ffigure{fig:scipion_workflow_flexiblefit}).}
   \label{fig:phenix_real_space_refine_chimera}
   \end{figure}
   
-  The rest of tabs detail different statistics useful to compare the quality of distinct $models$ such as $MolProbity$ statistics and \ttt{Real-space} correlations. $MolProbity$ results will be discussed in the next section of validation and comparison. Regarding \ttt{Real-space} correlations, different $models$ can be compared by using the global number of \ccmask, that indicates the correlation $model$-to-$map$ calculated considering the map region masked around the $model$. You can check also individual correlation values for each residue.  Remark that residues with lower correlation values might be susceptible to improve by additional refinement in \coot. Have a look to those correlation values and answer the following questions: (Answers in appendix \ref{app:solutions}; \textbf{Question \ref{refinementFlexibleFitting}\_1}) \\
+  The rest of tabs detail different statistics useful to compare the quality of distinct $models$ such as $MolProbity$ statistics and \ttt{Real-space} correlations. $MolProbity$ results will be discussed in the next section of validation and comparison. Regarding \ttt{Real-space} correlations, different $models$ can be compared by using the global number of \ccmask, which indicates the correlation $model$-to-$map$ calculated considering the map region masked around the $model$. You can check also individual correlation values for each residue.  Remark that residues with lower correlation values might be susceptible to improve by additional refinement in \coot. Have a look to those correlation values in the case 1 of \ffigure{fig:scipion_workflow_flexiblefit} and answer the following questions: (Answers in appendix \ref{app:solutions}; \textbf{Question \ref{refinementFlexibleFitting}\_1}) \\
   
   \begin{minipage}{\linewidth}
   \begin{framed}
@@ -147,7 +147,9 @@ that you can see in the \ttt{Summary} of the \scipion framework after changing t
   \end{framed}
   \end{minipage}\\
   
-  The conclusion of this part of refinement in real space is that \coot and \phenix \ttt{real space refine} might perform complementary tasks. The usage of both protocols may improve the result, especially when partial processing or big arrangements of molecules are involved. Now, to take advantage of $model$ improvements performed with \coot, run \phenix \ttt{real space refine} after \coot. When you finish, check again the above values of correlation. Have they changed? (Answer in appendix \ref{app:solutions}; \textbf{Question \ref{refinementFlexibleFitting}\_2})\\
+  
+  Now, compare these results with those obtained in the case 2 of \ffigure{fig:scipion_workflow_flexiblefit}, in which we have run \phenix \ttt{real space refine} after \coot. Have the above values of correlation changed? (Answer in appendix \ref{app:solutions}; \textbf{Question \ref{refinementFlexibleFitting}\_2})\\
+  \\The conclusion of this part of refinement in real space is that \coot and \phenix \ttt{real space refine} might perform complementary tasks. The usage of both protocols may improve the result, especially when partial processing or big rearrangements of molecules are involved.\\
   
   Before finishing our refinement workflow with \refmac, we can ask ourselves how can we improve correlations in real space by modifying the \ttt{Advanced} parameters in the protocol form. Will the correlation values change if we set to ``yes'' optimization parameters previously set to ``no'', and increase the number of macro cycles from 5 to 30? Take into account that this process takes much more time (around 6 times more) than the previous one. (Answer in appendix \ref{app:solutions}; \textbf{Question \ref{refinementFlexibleFitting}\_3})\\
   
@@ -155,25 +157,25 @@ that you can see in the \ttt{Summary} of the \scipion framework after changing t
   
   \subsection*{\ccp4  \refmac}
   
-  As in the case of \coot, \refmac (from maximum-likelihood Refinement of Macromolecules) was initially developed to optimize models obtained by X-ray crystallography methods but, unlike \coot, automatically and in reciprocal space. The $models$ refined in the real space with \coot and \phenix \ttt{real space refine}, successively, will be used as input to perform a second refinement step in the Fourier space with \refmac protocol \scommand{ccp4 - refmac}. Firstly, open the \refmac protocol form (\ffigure{fig:refmac_protocol} (1)), load the volume generated by \coot (2), the atomic structure obtained with \phenix \ttt{real space refine} (3), and the volume resolution as maximum resolution (4). Execute the protocol (5) and when it finishes, analyze the results (6).
+  As in the case of \coot, \refmac (from maximum-likelihood Refinement of Macromolecules) was initially developed to optimize models obtained by X-ray crystallography methods but, unlike \coot, automatically and in reciprocal space. The $models$ refined in the real space with \coot and \phenix \ttt{real space refine}, successively, will be used as inputs to perform a second refinement step in the Fourier space with \refmac protocol \scommand{ccp4 - refmac}. Firstly, open the \refmac protocol form (\ffigure{fig:refmac_protocol} (1)), load the volume generated by \coot (2), the atomic structure obtained with \coot (case 3 of \ffigure{fig:scipion_workflow_flexiblefit}) (3) or with \phenix \ttt{real space refine} after \coot (case 4 of \ffigure{fig:scipion_workflow_flexiblefit}), and the volume resolution as maximum resolution (4). Execute the protocol (5) and when it finishes, analyze the results (6).
   
   \begin{figure}[H]
   \centering 
   \captionsetup{width=.9\linewidth} 
   \includegraphics[width=1\textwidth]{Images/Fig31}
-  \caption{Filling in \refmac protocol.}
+  \caption{Filling in \refmac protocol (Case 3 of \ffigure{fig:scipion_workflow_flexiblefit}).}
   \label{fig:refmac_protocol}
   \end{figure}
   %[**ROB mask display in chimera is not centered **]
   Clicking the first item in the display menu of results (\ffigure{fig:refmac_display_results} (1)), \chimera graphics window will be opened showing the input volume, the initial $model$ (\ttt{new\_label\_HBA\_HUMAN} obtained with \coot (\ffigure{fig:refmac_chimera}, pink), and the final \refmac refined $model$ (\ffigure{fig:refmac_chimera}, green). By clicking the third item in the display menu of results (\ffigure{fig:refmac_display_results} (2)), a summary of \refmac results are shown. Check if values of \ttt{R factor} and \ttt{Rms BondLength} have improved with this refinement process in these three cases:
   
   \begin{itemize}
-   \item Running \refmac after \phenix \ttt{real space refine}:\\
-   Why the improvement seems to be very small? (Answers in appendix \ref{app:solutions}; \textbf{Question \ref{refinementFlexibleFitting}\_4})\\
    \item Running \refmac after \coot:\\
-   Would you have seen a higher improvement running \refmac immediately after \coot, thus ignoring $model$ improvements generated by \phenix \ttt{real space refine}? (Answers in appendix \ref{app:solutions}; \textbf{Question \ref{refinementFlexibleFitting}\_5})\\
-   \item Running \refmac after \coot and after \phenix \ttt{real space refine} using a mask:\\
-   Compare \refmac results (after \coot and \phenix \ttt{real space refine}) with those obtained selecting the option \ttt{No} in the protocol form parameter \ttt{Generate masked volume}. Use two different volumes, the one generated by \coot protocol, and the one generated by the \ttt{extract asymmetric unit} protocol. Are there any differences? Why? (Answers in appendix \ref{app:solutions}; \textbf{Question \ref{refinementFlexibleFitting}\_6})\\
+   Can you see an improvement running \refmac immediately after \coot, thus ignoring $model$ improvements generated by \phenix \ttt{real space refine}? (Answers in appendix \ref{app:solutions}; \textbf{Question \ref{refinementFlexibleFitting}\_4})\\
+   \item Running \refmac after \phenix \ttt{real space refine} after \coot:\\
+   Why the improvement seems to be very small? (Answers in appendix \ref{app:solutions}; \textbf{Question \ref{refinementFlexibleFitting}\_5})\\
+   \item Running \refmac after \phenix \ttt{real space refine} without a mask:\\
+   Compare previous \refmac results (after \coot and \phenix \ttt{real space refine}) with those obtained selecting the option \ttt{No} in the protocol form parameter \ttt{Generate masked volume}. Use two different volumes, the one generated by \coot protocol, and the one generated by the \ttt{extract asymmetric unit} protocol. Are there any differences? Why? (Answers in appendix \ref{app:solutions}; \textbf{Question \ref{refinementFlexibleFitting}\_6})\\
   \end{itemize}
   
   \begin{figure}[H]
@@ -188,9 +190,12 @@ that you can see in the \ttt{Summary} of the \scipion framework after changing t
   \centering 
   \captionsetup{width=.9\linewidth} 
   \includegraphics[width=0.50\textwidth]{Images/Fig33}
-  \caption{\chimera visualization of refined $model$ of \ttt{metHgb} $\alpha$ subunit by \refmac.}
+  \caption{\chimera visualization of refined $model$ of \ttt{metHgb} $\alpha$ subunit by \refmac (Case 3 of \ffigure{fig:scipion_workflow_flexiblefit}).}
   \label{fig:refmac_chimera}
   \end{figure}
   
-  Have a look to the rest of items in the display window of results. 
+  Have a look to the rest of items in the display window of results.
+  
+  \subsection*{The best refinement workflow}
+  At this point we wonder about the optimal steps to follow in the refinement process. Should we have to use \coot first, then \phenix, then \refmac?, or maybe, with a different \iii{map} and \iii{model}, should we start with the automatic refinement and then go to the manual one? The right answer is that there is no a unique answer. The strategies and the number of steps of refinement might differ and the only requirement is that the next step in refinement should generate a better structure than the previous one. This premise requires to apply common validation criteria to assess the progressive improvement of our \iii{model}.
   

@@ -1,5 +1,5 @@
 \section{Merging 3D Maps and Atomic Structures: Rigid Fitting}
-Once we have the predicted \ttt{model} of any structural element included in our map, to fit that \ttt{model} in the volume constitutes the next step in the modeling workflow. Two protocols have been included in \scipion with this purpose, \scommand{phenix - dock in map} (Appendix \ref{app:dockInMapProtocol}, \citep{Liebschner2019}) and \scommand{chimerax - rigid fit} (Appendix \ref{app:chimeraRigidFit}). The first one allows automatic fitting of models in maps, while the second one only does it when model and map are quite close, thus requiring manual fitting in advance. Although there is no a general rule to fit \iii{map} and \iii{model}, because it will depend on the particular problem and on our previous knowledge, in this tutorial we are going to use \phenix \ttt{dock in map} application first, followed by the final \ttt{Fit in Map} in \chimera \ttt{rigid fit}. Observe these two new steps in the modeling \scipion workflow in \ffigure{fig:scipion_workflow_rigidfit}.
+Once we have the predicted \iii{model} of any structural element included in our map, to fit that \iii{model} in the volume constitutes the next step in the modeling workflow. Two protocols have been included in \scipion with this purpose, \scommand{phenix - dock in map} (Appendix \ref{app:dockInMapProtocol}, \citep{Liebschner2019}) and \scommand{chimerax - rigid fit} (Appendix \ref{app:chimeraRigidFit}). The first one allows automatic fitting of \iii{models} in \iii{maps}, while the second one only does it when \iii{model} and \iii{map} are quite close, thus requiring manual fitting in advance. Although there is no a general rule to fit \iii{map} and \iii{model}, because it will depend on the particular problem and on our previous knowledge, in this tutorial we are going to use \phenix \ttt{dock in map} application first, followed by the final \ttt{Fit in Map} in \chimera \ttt{rigid fit}. Observe these two new steps in the modeling \scipion workflow in \ffigure{fig:scipion_workflow_rigidfit}.
 
  \begin{figure}[H]
   \centering 
@@ -50,7 +50,7 @@ Once we have the predicted \ttt{model} of any structural element included in our
     \begin{itemize}
      \item By \chimera command line, considering that \iii{map} and \iii{model} have \iii{ID} numbers \ttt{\#2} and \ttt{\#3} (\ffigure{fig:chimera_fit_in_map} (B)):\\
             \ttt{fitmap \#3 inMap \#2}\\
-    \item By the \chimera GUI: Select in the upper main menu \ttt{Tools -> Volume Data -> Fit in Map}. A small window will be opened (\ffigure{fig:chimera_fit_in_map} (A)). Select the appropriate \iii{model} to fit in the \iii{map and press} \ttt{Fit} (1) to allow the automatic rigid fitting.
+    \item By the \chimera GUI: Select in the upper main menu \ttt{Tools -> Volume Data -> Fit in Map}. A small window will be opened (\ffigure{fig:chimera_fit_in_map} (A)). Select the appropriate \iii{model} to fit in the \iii{map} and press \ttt{Fit} (1) to allow the automatic rigid fitting.
     \end{itemize}
 
   A slight movement to the right perfectly fits \iii{map} and \iii{model}, as can be observed in (\ffigure{fig:chimera_fit_in_map} (B)). To facilitate the visual inspection of the fitting we can replace the \ttt{surface} view of the map by \ttt{mesh} as indicated in (A). Observe this time the right placement of the \ttt{HEME} group in the \iii{map} density.\\
@@ -64,7 +64,7 @@ Once we have the predicted \ttt{model} of any structural element included in our
   \label{fig:chimera_fit_in_map}
   \end{figure}
   
-  To track the \chimera fitted model in \scipion we have to save it as fitted $model$ of the \ttt{metHgb} $\alpha$ subunit in the \chimera command line before closing the \chimera window:\\
+  To track the \chimera fitted \iii{model} in \scipion we have to save it as fitted $model$ of the \ttt{metHgb} $\alpha$ subunit in the \chimera command line before closing the \chimera window:\\
   \ttt{scipionwrite \#3 prefix Hgb\_alpha\_}\\
   \ttt{exit}\\
   
@@ -72,7 +72,7 @@ Once we have the predicted \ttt{model} of any structural element included in our
   
   \begin{figure}[H]
   \centering 
-  \captionsetup{width=.7\linewidth} 
+  \captionsetup{width=.9\linewidth} 
   \includegraphics[width=0.85\textwidth]{Images/Fig23}
   \caption{View in \chimera graphics window of the initial \iii{model} of human \ttt{Hgb} $\alpha$ subunit fitted to the asymmetrical unit of the 3D map.}
   \label{fig:chimera_fit_results_2}
