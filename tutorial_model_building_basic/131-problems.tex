@@ -1,0 +1,19 @@
+\section{How to solve some problems that you can find during the execution of the modeling workflow}
+\label{problems}
+
+\begin{itemize}
+ 
+ \item \chimera command lines involving \scipion communication (\ttt{scipionwrite}, \ttt{scipionss}, \ttt{scipionrs} and \ttt{scipioncombine}) do not work:\\
+ As indicated in \url{https://github.com/scipion-em/scipion-em-chimera/blob/devel/FAQ.rst}, these commands are \chimerax plugins installed by the scipion-em-chimera setup. Firstly, check the right installation of the plugin just opening \chimera and executing the command line:\\ 
+ \\ \ttt{help scipionwrite}\\ 
+ \\If it is installed, a help page will appear. Otherwise, type in the command line:\\ \\ \ttt{devel install /path\_to\_scipion3\_plugins/scipion-em-chimera/chimera/Bundles/scipion}\\ 
+ \\where path\_to\_scipion3\_plugins is the path to the directory that contains Scipion3 plugins.
+
+ \item \ttt{Maxit} installation
+        \begin{itemize}
+        \item Remember: \ttt{Maxit} requires \ttt{flex} and \ttt{bison}. Install them with sudo apt-get
+        \item 
+        \end{itemize}
+
+ 
+\end{itemize}
