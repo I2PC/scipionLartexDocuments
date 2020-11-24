@@ -147,18 +147,14 @@
                         Protocol execution: Follow the general procedure shown above (Protocol execution section) and the \chimera graphics window will open. At this point several maps and atomic structures will be shown, as the \ttt{Models} panel indicates (\ffigure{fig:app_usecase_mapsubtract_6} (A, bottom)), except the \iii{model} \ttt{\#6}. Have a look to each map and structure to identify them and play with the density levels to maximize the differences between the input \ttt{3D Map} (\ttt{output\_volume.mrc}) and the \ttt{6YBA} atomic structure-derived map (\ttt{molmap\_Map}). The \ffigure{fig:app_usecase_mapsubtract_6} (A) show the difference \ttt{filtered\_Map} obtained. The zoom in on the framed area displays in detail the difference considering two different map levels (B and C). To have this view, besides select the molecules to show according to the \ttt{Models} panel (A, bottom), write in \chimera command line:\\
                         \\
                         \ttt{volume \#2 transparency 0.8}\\
-                        \\
                         \ttt{select \#4/X}\\
-                        \\
                         \ttt{save /tmp/6b1t\_chainX.cif format mmcif models \#4 selectedOnly true}\\
-                        \\
                         \ttt{open  /tmp/6b1t\_chainX.cif }\\
                         \\
-                        \ttt
                         HAdV-C5 adenovirus chain \ttt{X} can be visualized as \iii{model} \ttt{\#6}.  
                         
                         
-                        The results, described in \ffigure{fig:app_usecase_mapsubtract_6}, doesn't demonstrate a clear continuous density in the proximity of the HAdV-C5 adenovirus chain \ttt{X}. Although not very evident, it could be there. Then we cannot conclude that it doesn't exit, only that we were unable to identify it.
+                        The result, described in \ffigure{fig:app_usecase_mapsubtract_6}, doesn't demonstrate a clear continuous density in the proximity of the HAdV-C5 adenovirus chain \ttt{X}. Although not very evident, it could be there. Then we cannot conclude that it doesn't exit, only that we were unable to identify it.
                             
                             \begin{figure}[H]
                             \centering 

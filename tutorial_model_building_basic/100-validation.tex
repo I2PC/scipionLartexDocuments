@@ -134,8 +134,9 @@
     
     The \chimera graphics window will be opened with the structure \ttt{5NI1} as model number \ttt{\#2}. To save independently the structure of human \ttt{metHgb} $\alpha$ subunit (chain A), write in \chimera command line:\\
     
-    \ttt{split \#2}\\
-    \ttt{rename \#2.1 id \#3}\\
+    \ttt{select \#2/A}\\
+    \ttt{save /tmp/5ni1\_chainA.cif format mmcif models \#2 selectedOnly true}\\
+    \ttt{open /tmp/5ni1\_chainA.cif}\\
     \ttt{scipionwrite \#3 prefix 5ni1\_chainA\_}\\
     
     Remark that the model saved in \chimera command line includes both the aminoacid chain and the \ttt{HEME} group. In case you are interested in extracting only the aminoacid chain, you can use the protocol \scommand{atomstructutils - operator}, specifically designed to extract/add individual chains from/to an atomic structure (Atomic Structure Chain Operator; Appendix \ref{app:atomStructUtilsOperatorProtocol}). Compare the results of protocols \chimera \ttt{operate} and Atomic Structure Chain Operator in \ffigure{fig:chimera_operate_protocol_2}. The red arrow points at \ttt{HEME} group.
@@ -160,7 +161,7 @@
     \label{fig:chimera_operate_protocol_3}
     \end{figure}
     
-    \item Protocol \scommand{chimera rigid fit}:
+    \item Protocol \scommand{chimerax - rigid fit}:
     Open again \chimera \ttt{rigid fit} protocol and, following the already indicated instructions, include this time the atomic structure \ttt{placed\_model.cif} generated in the previous step. To fit the \ttt{metHgb} $\alpha$ subunit from 5NI1 structure in the extracted asymmetric unit and save the fitting write in \chimera command line:\\
     
     \ttt{fitmap \#3 inMap \#2}\\

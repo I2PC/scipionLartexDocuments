@@ -31,7 +31,7 @@ In this section we are going to obtain the initial \iii{model} of our \iii{targe
 
  \modeller \citep{sali1993} is one of the computational web services used by \chimera, which provides the interface to run the program. Working with \modeller requires a license key, which is provided free of charge for academic users. \modeller allows two types of modeling computations to generate theoretical models, \iii{template}-based (sequence homology) and \iii{template}-free (\iii{de novo}, only for missing segments). In this tutorial we are going to consider the first one: structure prediction by sequence homology. Requirements for this type of modeling are the \iii{template} structure and a sequence alignment including sequences of \iii{target} and \iii{template}. 
  
- \ttt{Note before starting!!!}: We are going to use a \chimera-derived protocol for the first time in this tutorial (\scommand{chimerax - model from template}, Appendix \ref{app:modelFromTemplate}). Remark that this use of \chimera is completely different from the use of \chimera as a visualization tool, as we have done previously. By using the \chimera graphics window, opening it from the \scipion bottom \ttt{Analyze Results} we can observe protocol results but we CANNOT save anything. However, using \chimera as a tool, as it is the case in \scipion \chimera-derived protocols, we can perform different tasks, taking advantage of the available \chimera tools and, finally, we CAN save the obtained results and the working session.    
+ \ttt{Note before starting!!!}: We are going to use a \chimera-derived protocol for the first time in this tutorial (\scommand{chimerax - model from template}, Appendix \ref{app:modelFromTemplate}). Remark that this use of \chimera is completely different from the use of \chimera as a visualization tool, as we have done previously. By using the \chimera graphics window, opening it from the \scipion button \ttt{Analyze Results} we can observe protocol results but we CANNOT save anything. However, using \chimera as a tool, as it is the case in \scipion \chimera-derived protocols, we can perform different tasks, taking advantage of the available \chimera tools and, finally, we CAN save the obtained results and the working session.    
  
  \begin{itemize}
  \item Preparing your sequence alignment:\\
@@ -92,13 +92,16 @@ The renamed atomic structure will appear in the \ttt{Models} panel (\ffigure{fig
      scipionwrite #4 prefix model_from_modeller_3_2_
  \end{verbatim}
  
-In case that the \ttt{Advanced option} \ttt{``Include non-water HETATM residues from template''} ((\ffigure{fig:modeller} (A, 5)) was temporally disabled and your model does not include the \ttt{HEME} group, an alternative option to have the model with the \ttt{HEME} group (residue 144 from the atomic structure \ttt{\#2} chain A) could be:
+In case that the \ttt{Advanced option} \ttt{``Include non-water HETATM residues from template''} ((\ffigure{fig:modeller} (A, 5)) didn't include the \ttt{HEME} group in the retrieved models, an alternative option to have the model with the \ttt{HEME} group (residue 144 from the atomic structure \ttt{\#2} chain A) could be:
 \begin{verbatim}
      rename #3.2 id #4
+     save /tmp/chainA.cif format mmcif models #4
+     open /tmp/chainA.cif
      select #2/A:144
      save /tmp/HEME.cif format mmcif models #2 selectedOnly true 
      open /tmp/HEME.cif
-     scipioncombine #4,5 
+     scipioncombine #4,5
+
      scipionwrite #6 prefix Hgb_alpha_
  \end{verbatim}
  \ttt{Note}: We have saved the \ttt{HEME} group of the \iii{template} \ttt{chain A} in a new file that will be open as \iii{model} \ttt{\#5}. Finally, the combination of \iii{models} \ttt{\#4} (retrieved aminoacid \iii{model} of the \iii{target} sequence) and \ttt{\#5} (\ttt{HEME} group of the \iii{template} \ttt{chain A}) generates a new model \ttt{\#6} that will be saved in \scipion. A different \ttt{model ID} could be selected by the user adding to the last command line \ttt{modelid n}.\\
@@ -114,7 +117,25 @@ After closing \chimera, you can visualize (\ffigure{fig:model_from_template_prot
   \label{fig:chimera_model}
   \end{figure}
   
-In a similar process, you can also obtain the initial atomic structure of the human \ttt{metHgb} $\beta$ subunit.\\
+In a similar process, you can also obtain the initial atomic structure of the human \ttt{metHgb} $\beta$ subunit. Take into account that in this last case the HEME group is the residue \ttt{148} of the chain \ttt{B}. The command lines are similar to the previous case of the \ttt{metHgb} $\alpha$ subunit if you also select the \iii{model} \ttt{\#3.2}. 
+\begin{verbatim}
+     rename #3.2 id #4
+     save /tmp/chainB.cif format mmcif models #4
+     open /tmp/chainB.cif
+     select #2/B:148
+     save /tmp/HEME_B.cif format mmcif models #2 selectedOnly true 
+     open /tmp/HEME_B.cif
+     scipioncombine #4,5
+     setattr #6/A c chain_id B
+     scipionwrite #6 prefix Hgb_alpha_
+ \end{verbatim}\\
+ 
+ In addition, we have included a command to change the chain \ttt{id} of the second polypeptide from \ttt{A} to \ttt{B}. In general, to change the chain \ttt{ID} you have to write:
+ \begin{verbatim}
+  setattr #model_number/old_ID c chain_id new_ID
+  setattr #model_number/old_ID r chain_id new_ID
+ \end{verbatim}
+
 
 \subsubsection*{Additional exercises for practising}
 Since the protocol \scommand{chimerax - model from template} allows to use other options, inspect by your own the possible result obtained by:\\

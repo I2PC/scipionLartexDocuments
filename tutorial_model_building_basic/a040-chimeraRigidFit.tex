@@ -44,7 +44,7 @@ Protocol designed to manually fit atomic structures to electron density maps in 
   \chimera graphics window will be opened after executing the protocol. The electron density map and the atomic structure are shown. Main steps to complete the rigid body fitting are:
   \begin{itemize}
    \item If density map and atomic structure are quite close to each other:\\Go to \chimera main menu and select \ttt{Tools -> Volume Data-> Fit in Map}. A small \ttt{Fit in Map} window will be opened. Once the right atomic structure and the electron density volume have been selected, fit them by clicking \ttt{Fit}.\\
-   \ttt{Note}: The same result can be obtained by typing in the command line \ttt{fitmap \#n1 inMap \#n2}, with \ttt{\#n1} and \ttt{\#n2} \chimera model numbers of \iii{model} and \iii{map}.
+   \ttt{Note}: The same result can be obtained by typing in the command line \ttt{fit \#n1 inMap \#n2}, with \ttt{\#n1} and \ttt{\#n2} \chimera model numbers of \iii{model} and \iii{map}.
    \item If \iii{model} and \iii{map} are far from each other, start the fitting process interactively activating and inactivating \chimera objects alternatively to finally get \iii{map} and \iii{model} close enough to go to the previous step. Otherwise, consider the possibility of running before the \phenix \ttt{dock in map} protocol.
    \item To combine two or more atomic structures:\\
                             Write in \chimera command line:\\
