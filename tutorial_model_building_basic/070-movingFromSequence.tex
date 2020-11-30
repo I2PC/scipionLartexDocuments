@@ -104,7 +104,8 @@ In case that the \ttt{Advanced option} \ttt{``Include non-water HETATM residues 
 
      scipionwrite #6 prefix Hgb_alpha_
  \end{verbatim}
- \ttt{Note}: We have saved the \ttt{HEME} group of the \iii{template} \ttt{chain A} in a new file that will be open as \iii{model} \ttt{\#5}. Finally, the combination of \iii{models} \ttt{\#4} (retrieved aminoacid \iii{model} of the \iii{target} sequence) and \ttt{\#5} (\ttt{HEME} group of the \iii{template} \ttt{chain A}) generates a new model \ttt{\#6} that will be saved in \scipion. A different \ttt{model ID} could be selected by the user adding to the last command line \ttt{modelid n}.\\
+ 
+ \ttt{Note}: We have saved the \ttt{HEME} group of the \iii{template} \ttt{chain A} in a new file that will be open as \iii{model} \ttt{\#5}. Finally, the combination of \iii{models} \ttt{\#4} (retrieved aminoacid \iii{model} of the \iii{target} sequence) and \ttt{\#5} (\ttt{HEME} group of the \iii{template} \ttt{chain A}) generates a new model \ttt{\#6} that will be saved in \scipion. A different \ttt{model ID} could be selected by the user adding to the last command line \ttt{modelid n}.
 
 
 After closing \chimera, you can visualize (\ffigure{fig:model_from_template_protocol} (8)) your full predicted \iii{model} (\ffigure{fig:chimera_model}) that includes the \ttt{HEME} group (1).  The string that we have included as \ttt{prefix} in the command line \ttt{scipionwrite} will allow us to follow the atomic structure in a more simple manner. You can check the \ttt{prefix} in the the name of the saved atomic structure (\ttt{Hgb\_alpha\_Atom\_struct\_6\_006815}) in the \ttt{Models} panel of \ffigure{fig:chimera_model} (1). Interestingly, the suffix number of the saved atomic structure (\ttt{006815}) stands for the ID protocol number.
@@ -128,7 +129,7 @@ In a similar process, you can also obtain the initial atomic structure of the hu
      scipioncombine #4,5
      setattr #6/A c chain_id B
      scipionwrite #6 prefix Hgb_alpha_
- \end{verbatim}\\
+ \end{verbatim}
  
  In addition, we have included a command to change the chain \ttt{id} of the second polypeptide from \ttt{A} to \ttt{B}. In general, to change the chain \ttt{ID} you have to write:
  \begin{verbatim}
