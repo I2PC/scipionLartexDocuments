@@ -24,7 +24,7 @@ Protocol designed to apply the $MonoRes$ method \citep{vilas2018} in \scipion. $
     \end{figure}
     
     \begin{itemize}
-        \item \ttt{Would you like to use half volumes?}: Option ``No'' has been selected by default, with the box \ttt{Input Volume} to fill in with the volume, imported or generated in \scipion. However, since the noise estimation needed to determine the local resolution is based on half volumes, select ``Yes'' when half volumes are available. A couple of boxes will thus be opened to select both half volumes, \ttt{Volume Half 1} and \ttt{Volume Half 2}.
+        \item \ttt{Would you like to use half volumes?}: Option ``No'' has been selected by default, with the box \ttt{Input Volume} to fill in with the volume, imported or generated in \scipion. However, since the noise estimation needed to determine the local resolution is based on half volumes, select ``Yes'' whenever half volumes are available. A couple of boxes will thus be opened to select both half volumes, \ttt{Volume Half 1} and \ttt{Volume Half 2}. If you want an appropriate computation of local resolution try to use half maps, or raw average maps otherwise. Avoid using postprocessed or sharpened maps. 
         \item \ttt{Binary Mask}: Mask that will be overlapped to the map volume in order to indicate which points of the map are specimen and which are not.
          \item \ttt{Exclude area}: Advanced parameter to select part of the specimen that should be excluded from the estimation of local resolution, for example in viruses to exclude the inner genetic material or in membrane proteins to exclude fosfolipids. Remark that we are talking about part of the specimen (signal and not noise) in which we are simply not interested. 
         \item \ttt{Extra parameters}:
