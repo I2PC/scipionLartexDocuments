@@ -26,7 +26,7 @@ Before starting with the \ttt{3D} classification properly, a refinement step wil
 After executing, a refined map of 3.3 \AA\ of final resolution was obtained as output, with the same size and sampling rate that we had in the inputs. Press \scommand{Analyze Results} to visualize the FSC, the volume or the set of particles. With our initial volume and set of particles we can see that it nicely converge in a good 3D structure, however, we do not know if all the particles that we have used are consistent with that structure and we also do not know if the parameters of those have been correctly identified. These would be tried to be solved in the next section.
 
 \subsection*{3D classification}
-To continue with the refinement process to obtain a better resolution and to answer the first question, if all the particles belong to that structure, we start executing two independent times the same algorithm of $Relion$ \ttt{3D classification} that we have implemented in the protocol \scommand{relion-3D classification} (\ffigure{fig:relion_3Dclassification}). In the tap \ttt{Input} we include the particles derived from executing the previous protocol \scommand{cryosparc2-homogeneous refinement}. The volume derived from this protocol will be the \ttt{Input volume(s)} in the tap \ttt{Reference 3D map} and will be low-pass filtered by 15\AA\. The optimization params appear in the tap \ttt{Optimization}: 2 \ttt{Number of classes} and 25 \ttt{Number of iterations}. As \ttt{Regularisation parameter T} values as 3-4 are common for \ttt{3D} classification.
+To continue with the refinement process to obtain a better resolution and to answer the first question, if all the particles belong to that structure, we start executing two independent times the same algorithm of $Relion$ \ttt{3D classification} that we have implemented in the protocol \scommand{relion-3D classification} (\ffigure{fig:relion_3Dclassification}). In the tap \ttt{Input} we include the particles derived from executing the previous protocol \scommand{cryosparc2-homogeneous refinement}. The volume derived from this protocol will be the \ttt{Input volume(s)} in the tap \ttt{Reference 3D map} and will be low-pass filtered by 15\AA\ . The optimization params appear in the tap \ttt{Optimization}: 2 \ttt{Number of classes} and 25 \ttt{Number of iterations}. As \ttt{Regularisation parameter T} values as 3-4 are common for \ttt{3D} classification.
 
 \begin{figure}[H]
   \centering
@@ -39,8 +39,8 @@ To continue with the refinement process to obtain a better resolution and to ans
   
 The output of each one of these two \scommand{relion-3D classification} protocols are 2 maps with the initial size and sampling rate, reconstructed from different groups of reclassified particles. By pressing \scommand{Analyze Results} and \ttt{Particles/ Show classification in Scipion}, a table will be opened showing the projection representative of each map and the number of particles contributing to its reconstruction:
 \begin{itemize}
- \item 2428 and 787 in the first classification.
- \item 2460 and 755 in the second one.
+ \item 2,428 and 787 in the first classification.
+ \item 2,460 and 755 in the second one.
 \end{itemize}
 
 The results of the first and second \ttt{3D} classifications are similar, in both cases the first class contains most of the particles. In order to have a consensus of these results, we execute the protocol \scommand{xmipp3-consensus classes 3D} that compares several sets of \ttt{3D} classes and return the intersection of the input classes (\ffigure{fig:consensus_classes}).
@@ -54,112 +54,70 @@ The results of the first and second \ttt{3D} classifications are similar, in bot
   \label{fig:consensus_classes}
   \end{figure}
   
-By pressing \scommand{Analysis Results} you can visualize the 4 intersection \ttt{3D} classes with the number of particles assigned to each one. The first of these classes derive from about 1944 particles (aprox. 60\% of total particles). Once inspected the different classes, by selecting the classes that we are interested in (only the first one) and pressing \scommand{Particles}, a new set of 1944 particles will be created included in the box \ttt{goodParticles}.\\
+By pressing \scommand{Analysis Results} you can visualize the 4 intersection \ttt{3D} classes with the number of particles assigned to each one. The first of these classes derive from about 1,944 particles (aprox. 60\% of total particles). Once inspected the different classes, by selecting the classes that we are interested in (only the first one) and pressing \scommand{Particles}, a new subset of 1,944 particles will be created included in the box \ttt{goodParticles}.
 
-\subsection*{Final refinement iterations with $Xmipp$ \ttt{highres}}
- \begin{figure}[H]
-  \centering
-  \captionsetup{width=.8\linewidth} 
-  \includegraphics[width=0.7\textwidth]
-  {{images/workflow_8.pdf}}
-  \caption{Map final refinement (Light green color).}
-  \label{fig:workflow_8}
-  \end{figure}
-  
-From now ahead several steps of refinement will be accomplished using the above mentioned protocol \scommand{xmipp3-highres}. The input of the first round of refinement includes the particles extracted with the previous protocol and the volume generated by the same algorithm before performing the \ttt{3D} classification step (\ffigure{fig:highres_fullsize}). In the \ttt{Angular assignment} tap, we select \ttt{Global} for the \ttt{Image alignment} param, 1 as \ttt{Number of iterations} and 3 as \ttt{Max. Target Resolution}.
+\subsection*{Refinement}
 
- \begin{figure}[H]
+For a further refinement step, we will use again the protocol \scommand{cryosparc2-homogeneous refinement} (\ffigure{fig:cryosparc_refine2}) and $Relion$ algorithm \ttt{3D auto-refine} that we have implemented in the protocol \scommand{relion-3D auto-refine} (\ffigure{fig:relion_3Dautorefine}). As input, we include the set of good particles that were consistently assigned to the same class and the initial volume computed in the step before.   
+
+\begin{figure}[H]
   \centering
   \captionsetup{width=.8\linewidth} 
   \includegraphics[width=0.95\textwidth]
-  {{images/highres_fullsize.pdf}}
-  \caption{$Xmipp$ \ttt{highres} map global refinement (Iteration 1).}
-  \label{fig:highres_fullsize}
+  {{images/9e_cryosparc2_3Drefinement2.pdf}}
+  \caption{Completing params of protocol \scommand{cryosparc2-homogeneous refinement}.}
+  \label{fig:cryosparc_refine2}
   \end{figure}
   
-The output resampled volume generated can be seen by pressing \scommand{Analyze results}, as well as the particles from which it derives.\\
-
-The second run of refinement continues from the previous one, as it is selected in the \ttt{Input} tap. The particles derived from the first round of refinement are included as input params. The same params have been selected in the \ttt{Angular assignment} tap (\ffigure{fig:highres_fullsize2}).
-
+ The algorithm of $Relion$ \ttt{auto\_refine}, is based on an empirical Bayesian approach. This procedure employs the so-called gold-standard Fourier Shell Correlation (FSC) to estimate the resolution. Combined with a novel procedure to estimate the accuracy of the angular assignments, the algorithm converges. In the \ttt{Input} tap of this protocol form we include the subset of good particles selected previously. The initial volume in the \ttt{Reference 3D map} tap and as we trust our previous map we do not need to filter it much so we apply a \ttt{Initial low pass-filter (A)} of 10.0 \AA\ .  This tap gives you the possibility of using \ttt{Reference mask (optional)}.
+ 
  \begin{figure}[H]
   \centering
   \captionsetup{width=.8\linewidth} 
   \includegraphics[width=0.95\textwidth]
-  {{images/highres_fullsize2.pdf}}
-  \caption{$Xmipp$ \ttt{highres} map global refinement (Iteration 2).}
-  \label{fig:highres_fullsize2}
-  \end{figure}
+  {{images/9f_relion_3Dautorefine.pdf}}
+  \caption{Completing params of protocol \scommand{relion-3D auto-refine} .}
+  \label{fig:relion_3Dautorefine}
+  \end{figure} 
+  
+There are three questions in the tab \ttt{CTF}: 
+\begin{itemize}
+ \item \ttt{Do CTF correction?}, set to \ttt{Yes} to perform full phase + amplitude CTF correction.
+ \item \ttt{Has reference been CTF-corrected?}, set to \ttt{No} because the Fourier transforms of the reference projections are not multiplied by the \ttt{CTF} in the first iteration. 
+ \item \ttt{Do manual grouping ctfs?}, set to \ttt{No} because we have enough number of particles that we do not need to group them.
+\end{itemize}
 
-A new output resampled volume has been obtained that move from 1.20 \AA/px to 1.00 \AA/px).\\
+The \ttt{Angular sampling interval (deg)} option in the tab \ttt{Auto-Sampling} will be used only in the first few iterations. Later, the algorithm will automatically increase its value until convergence. For symmetries lower than octahedral or icosahedral we use the default values of \ttt{Angular sampling interval (deg)} and \ttt{Local search from auto-sampling (deg)}.\\
 
-Once we have finished the global refinement, we continue with the local refinement in the third round of refinement (\ffigure{fig:highres_fullsize3}). Again, we use the particles derived from the previous iteration. In this case, we select \ttt{Local} for the \ttt{Image alignment} param and 2.5 for the \ttt{Max. Target Resolution} of tap \ttt{Angular assignment}. \ttt{Shifts} and \ttt{angles} will be also optimized.
+After executing both protocols, by looking to the resolution \ttt{FSC} plots, a refined map of 2.8-3\AA\ of final resolution was obtained as output, with the same size and sampling rate that we had in the inputs. Press \scommand{Analyze Results} and by comparing the output volumes same slices, we can visually see the difference between the two maps obtained by the two protocols. In this particular case, we observe haze on top of relion output volume and this typically is coming from badly align particles. To identify these badly align particles, we can compare the angular assignment of relion and cryosparc protocols using \scommand{xmipp3-compare angles} protocol  (\ffigure{fig:xmipp_compareAngles}). As we have an octahedral symmetry we do not have to align the volumes. If needed, you can use \scommand{xmipp3-align volume and particles} protocol.
 
  \begin{figure}[H]
   \centering
   \captionsetup{width=.8\linewidth} 
   \includegraphics[width=0.95\textwidth]
-  {{images/highres_fullsize3.pdf}}
-  \caption{$Xmipp$ \ttt{highres} map local refinement (Iteration 3).}
-  \label{fig:highres_fullsize3}
-  \end{figure}
-
-The output resampled volume obtained (0.83 \AA/px) derives from a set of particles slightly smaller (5,201). The table of particles can be also observed by pressing \scommand{Analyze results}. We can select particles according to the value of the \ttt{\_xmipp\_cost} param. Choosing values higher than 0.15, a total of 696 particles (13.4\%) of the input set has been removed. The remaining 4,505 particles will be used as inputs of the fourth round of refinement (\ffigure{fig:highres_fullsize4}). Params from \ttt{Angular assignment} tap will remain unchanged except the \ttt{Optimization} ones. In addition to \ttt{shifts} and \ttt{angles}, \ttt{scale} and \ttt{defocus} will be also optimized.
-
-\begin{figure}[H]
-  \centering
-  \captionsetup{width=.8\linewidth} 
-  \includegraphics[width=0.95\textwidth]
-  {{images/highres_fullsize4.pdf}}
-  \caption{$Xmipp$ \ttt{highres} map local refinement (Iteration 4).}
-  \label{fig:highres_fullsize4}
-  \end{figure}
+  {{images/9g_xmipp3_compareangles.pdf}}
+  \caption{Completing params of protocol \scommand{xmipp3-compare angles} .}
+  \label{fig:xmipp_compareAngles}
+  \end{figure} 
   
-The new map, based on the last set of particles, appears in the output. These particles are included in the input of the fifth round of local refinement (\ffigure{fig:highres_fullsize5}). This time, we reduce the value of the \ttt{Max. Target Resolution} param to 2.25 and set to \ttt{Yes} all the \ttt{Optimization} params.
-
-\begin{figure}[H]
-  \centering
-  \captionsetup{width=.8\linewidth} 
-  \includegraphics[width=0.95\textwidth]
-  {{images/highres_fullsize5.pdf}}
-  \caption{$Xmipp$ \ttt{highres} map local refinement (Iteration 5).}
-  \label{fig:highres_fullsize5}
-  \end{figure}
+  The results given is a set of particles sorted by the angular difference, and for every particle we have its angular difference (average of the Euler angles) and the shift difference. As they are sorted, if we plot the column of angular difference we can observe that most are around 1 degree difference. However, there are others that the angular error is much bigger and those are the particles that their angular assignment is not so convincing. If we select the ones below 2 degree differences, sort by angular shift, repeat the process and select those below 1 pixel shift, we will create a new subset (1,903) whose particles have an angular assignment consistent between two algorithms (relion and cryosparc) with different implementations. Then, we proceed to make the angular reassignment of this new subset of particles to our refined map of protocol \scommand{cryosparc2-homogeneous refinement} (\ffigure{fig:cryosparc_refine}) using the $Xmipp$ algorithm \ttt{highres} \citep{sorzano2018new} that we have implemented in the protocol \scommand{xmipp3-highres} (\ffigure{fig:xmipp_highres_1}).\\ 
   
-Before continuing with the sixth round of refinement we are going to assess the output resampled map (0.75\AA/px) regarding soft alignability and overfitting of particles and \ttt{3D} map. Two protocols are going to be independently executed: \scommand{xmipp3-multireference alignability} (\ffigure{fig:multireference_alignability}) and \scommand{xmipp3-validate overfitting} (\ffigure{fig:validate_overfitting}). The input of both protocols requires map and particles generated in the last refinement iteration. 
-
-\begin{figure}[H]
+ This method computes a weight for each particle and performs both global or local alignment. Iterations can be performed one by one, removing particles that worse fit the map from one iteration to the next one. This \ttt{3D} refinement protocol uses as input the refined map obtained from $Cryosparc$ \ttt{homogenous refinement} and the subset of particles created before. The \ttt{Symmetry group} has been also included in the \ttt{Input} tap. In the \ttt{Angular assignment} tap we choose \ttt{Local} as \ttt{Image alignment} as we have a previous estimated assignment computed before, and 1 \ttt{Number of iterations} with 2 \AA\ as \ttt{Max. Target Resolution}. In this particular case, as we have few data it is not recommended to optimize the scale, the grey values or the defocus. 
+ 
+  \begin{figure}[H]
   \centering
   \captionsetup{width=.8\linewidth} 
   \includegraphics[width=0.95\textwidth]
-  {{images/multireference_alignability.pdf}}
-  \caption{Completing the form of the protocol \scommand{xmipp3-multireference alignability}.}
-  \label{fig:multireference_alignability}
+  {{images/9h_xmipp3_highres.pdf}}
+  \caption{$Xmipp$ \ttt{highres} map local refinement.}
+  \label{fig:xmipp_highres_1}
   \end{figure}
-  
-\begin{figure}[H]
-  \centering
-  \captionsetup{width=.8\linewidth} 
-  \includegraphics[width=0.95\textwidth]
-  {{images/validate_overfitting.pdf}}
-  \caption{Filling in the form of the protocol \scommand{xmipp3-validate overfitting}.}
-  \label{fig:validate_overfitting}
-  \end{figure}
-
-The output values of particle alignment, precision and accuracy, generated by \scommand{xmipp3-multireference alignability} (press \scommand{Analyze Results} to check table columns \ttt{\_xmipp\_scoreAlignabilityAccuracy} and \ttt{\_xmipp\_scoreAlignabilityPrecission}) allow us to discard particles with worse alignment. In this case, 1,020 particles (22.6\% of the total input) are rejected. In order to improve the refined map resolution, the remaining 3,485 particles will be used to perform the sixth local refinement iteration with $Xmipp$ \ttt{highres} algorithm. The protocol params will remain unchanged compared with the fifth iteration.
-
-\begin{figure}[H]
-  \centering
-  \captionsetup{width=.8\linewidth} 
-  \includegraphics[width=0.95\textwidth]
-  {{images/highres_fullsize6.pdf}}
-  \caption{$Xmipp$ \ttt{highres} map local refinement (Iteration 6).}
-  \label{fig:highres_fullsize6}
-  \end{figure}
-
-The sampling of the output map is the same than in the previous iteration, despite the selection of best aligned particles. We have thus achieved convergence and we can compute the global or local resolution. The local resolution can be calculated with the protocol \scommand{xmipp3-local MonoRes} \citep{vilas2018monores}. To have an overview of protocol and function of \ttt{MonoRes} see our \scipion tutorial in Model Building (download from \url{https://github.com/I2PC/scipion/wiki/tutorials/tutorial_model_building_basic.pdf}).       
+ 
+This protocol generates one map as output with the initial size and sampling rate. Press \scommand{Analyze Results} to check the results. Particles and map can be visualized. We can observe that no particles have been rejected. The output resolution by displaying the FSC, is around 3.2\AA . We can select particles according to the value of the \ttt{\_xmipp\_cost} param and we can observe the angular distribution. The output volume obtained looks very good, we get rid off the haze and if we can appreciate more details in the 3D structure. In the next section, we will see how to validate our processing and to enhance the volume obtained with this workflow.\\
 
   For more information: 
 \begin{itemize}
    \item \textbf{Video tutorial}:  \url{https://www.youtube.com/watch?v=ial95OZJXU0&list=PLQjWIcrmtc4JjyC-_BM99_XW-VsDa4_i3&index=29}.
    \item \textbf{Theoretical lecture}:  \url{https://www.youtube.com/watch?v=taCREkFAPoE&list=PLQjWIcrmtc4JjyC-_BM99_XW-VsDa4_i3&index=36}.
-  \end{itemize}            
+  \end{itemize}           
+

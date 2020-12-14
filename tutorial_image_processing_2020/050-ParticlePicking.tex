@@ -10,9 +10,10 @@
 
 Since the reconstruction of the 3D density map of the macromolecule is based on images of individual single particles, the next step is essential in the image processing workflow. With the particle picking step we will retrieve the coordinates of each single particle.\\
 
-Because manual picking can be very tedious, some tools have been designed to help in this task. We have integrated in \scipion different picking tools that can be used individually or in combination to obtain the final coordinates. Currently, we have tools available from \ttt{Eman2}, \ttt{Relion}, \ttt{Bsoft}, \ttt{Sphire} and \ttt{Xmipp}. In this tutorial we are going to use four different protocols that integrate tools from \ttt{Relion} (\scommand{relion-auto-picking LoG} \citep{relion32018}), \ttt{Eman2 (\scommand{eman2-sparx gaussian picker})}, \ttt{Sphire} (\scommand{sphire-cryolo picking} \citep{cryolo2019}) and \ttt{Xmipp} (\scommand{xmipp3- manual-picking (step1)} and \scommand{xmipp3-auto-picking (step 2)} \citep{sorzano2013semiautomatic}). The reason for that is that different pickers have different properties and different errors.\\
+Because manual picking can be very tedious, some tools have been designed to help in this task. We have integrated in \scipion different picking tools that can be used individually or in combination to obtain the final coordinates. Currently, we have tools available from \ttt{Eman2}, \ttt{Relion}, \ttt{Bsoft}, \ttt{Sphire} and \ttt{Xmipp}. In this tutorial we are going to use four different protocols that integrate tools from \ttt{Relion} (\scommand{relion-auto-picking LoG} \citep{relion32018}), \ttt{Eman2 (\scommand{eman2-sparx gaussian picker})}, \ttt{Sphire} (\scommand{sphire-cryolo picking} \citep{cryolo2019}) and \ttt{Xmipp} (\scommand{xmipp3- manual-picking (step1)} and \scommand{xmipp3-auto-picking (step 2)} \citep{sorzano2013semiautomatic}). The reason for using several pickers is that, each of them have different properties and different errors which complement the process to have a better estimate.\\
 
-The protocol \scommand{relion-auto-picking LoG} (\ffigure{fig:relion_autopicking}) provides particle coordinates in an automatic way. Together with the 28 input micrographs and the size in pixels for each particle, the protocol form allows to set specific parameters to compute the Laplacian of Gaussian (LoG).\\
+The protocol \scommand{relion-auto-picking LoG} (\ffigure{fig:relion_autopicking}) provides particle coordinates in an automatic way. Together with the 28 input micrographs and the size in pixels for each particle, the protocol form allows to set specific parameters to compute the Laplacian of Gaussian (LoG).
+
 \begin{figure}[H]
   \centering
   \captionsetup{width=.8\linewidth} 
@@ -22,7 +23,8 @@ The protocol \scommand{relion-auto-picking LoG} (\ffigure{fig:relion_autopicking
   \label{fig:relion_autopicking}
   \end{figure}
   
-  The protocol \scommand{eman2-sparx gaussian picker} (\ffigure{fig:eman2_sparx}) provides particle coordinates in an automatic way. Similar to Relion together with the 28 input micrographs, the size in pixels for each particle, and the width of the Gaussian kernel used for automated particle picking, the protocol allows to obtain the particles as a set of coordinates.\\
+  The protocol \scommand{eman2-sparx gaussian picker} (\ffigure{fig:eman2_sparx}) provides particle coordinates in an automatic way. Similar to Relion, together with the 28 input micrographs, we have to set the size in pixels for each particle, and the width of the Gaussian kernel used for automated particle picking, the protocol allows us to obtain the particles as a set of coordinates.
+  
 \begin{figure}[H]
   \centering
   \captionsetup{width=.8\linewidth} 
@@ -32,7 +34,8 @@ The protocol \scommand{relion-auto-picking LoG} (\ffigure{fig:relion_autopicking
   \label{fig:eman2_sparx}
   \end{figure}
   
-The protocol \scommand{sphire-cryolo picking} (\ffigure{fig:sphire-cryolo}) integrates a fully automated particle picker based on deep learning. The protocol form also requires the 28 micrographs and the size of particles, and gives you the possibility of using your own network model, obtained in a previous training step, instead of the general one. \ttt{Confidence threshold} allows to perform a more or less conservative picking by increasing or decreasing the value of this param.\\
+The protocol \scommand{sphire-cryolo picking} (\ffigure{fig:sphire-cryolo}) integrates a fully automated particle picker based on deep learning. The protocol form also requires the 28 micrographs and the size of particles, and gives you the possibility of using your own network model, obtained in a previous training step, instead of the general one. \ttt{Confidence threshold} allows to perform a more or less conservative picking by increasing or decreasing the value of this param.
+
 \begin{figure}[H]
   \centering
   \captionsetup{width=.8\linewidth} 
@@ -42,7 +45,8 @@ The protocol \scommand{sphire-cryolo picking} (\ffigure{fig:sphire-cryolo}) inte
   \label{fig:sphire-cryolo}
   \end{figure}
   
-The protocol \scommand{xmipp3-manual-picking (step1)} (\ffigure{fig:xmipp_manual_picking_step1}) is the first part of the \ttt{Xmipp} picking method, and allows to perform manual picking in a set of micrographs either manually or in a supervised mode. This protocol only requires as input the set of micrographs.\\
+The protocol \scommand{xmipp3-manual-picking (step1)} (\ffigure{fig:xmipp_manual_picking_step1}) is the first part of the \ttt{Xmipp} picking method, and allows to perform manual picking in a set of micrographs either manually or in a supervised mode. This protocol only requires as input the set of micrographs.
+
 \begin{figure}[H]
   \centering
   \captionsetup{width=.8\linewidth} 
@@ -51,6 +55,7 @@ The protocol \scommand{xmipp3-manual-picking (step1)} (\ffigure{fig:xmipp_manual
   \caption{Filling in the protocol 4 \scommand{xmipp3- manual-picking (step1)}.}
   \label{fig:xmipp_manual_picking_step1}
   \end{figure}
+  
   After executing this protocol, the respective box will become light yellow because an interactive job is running and it can be relaunched at any time.\\
   
   The \ttt{Xmipp} picking GUI contains a control panel with the list of micrographs and some other parameters. The micrograph that we are going to pick is displayed in a separate window and we can apply to it a number of filters/enhancements (like Gaussian blurring, Invert contrast, adjust histogram, etc.) just to improve the visualization of particles. Main control actions are:
@@ -74,7 +79,7 @@ The protocol \scommand{xmipp3-manual-picking (step1)} (\ffigure{fig:xmipp_manual
   \label{fig:xmipp_autopicking_step2}
   \end{figure}
 
-  Results of all these protocols can be observed by pressing \scommand{Analyze Results}. In all cases a table details the number of particles extracted from each micrograph. Total number of particles appear in the lower part of this table, 4291, 6656, 4511, 764 and 3731 running \scommand{relion-auto-picking LoG}, \scommand{eman2-sparx gaussian picker} ,\scommand{sphire-cryolo picking}, \scommand{xmipp3-manual-picking (step1)}, and \scommand{xmipp3-auto-picking (step 2)}, respectively. As a conclusion, the three algorithms devoted to particle picking give us a similar result, around 4500 particles. However, there are some differences among programs and we would like to keep only the coordinates of the good particles selected by the three methods.
+  Results of all these protocols can be observed by pressing \scommand{Analyze Results}. In all cases a table details the number of particles extracted from each micrograph. Total number of particles appear in the lower part of this table, 4,291, 6,656, 4,511, 764 and 3,731 running \scommand{relion-auto-picking LoG}, \scommand{eman2-sparx gaussian picker} ,\scommand{sphire-cryolo picking}, \scommand{xmipp3-manual-picking (step1)}, and \scommand{xmipp3-auto-picking (step 2)}, respectively. As a conclusion, the three algorithms devoted to particle picking give us a similar result, around 4,500 particles. However, there are some differences among programs and we would like to keep only the coordinates of the good particles selected by the four methods.
   
   \subsection*{Consensus in particle picking}
   
@@ -89,9 +94,9 @@ The protocol \scommand{xmipp3-manual-picking (step1)} (\ffigure{fig:xmipp_manual
   \label{fig:xmipp_deep_consensus}
   \end{figure}
   
-  \ttt{(Note:when executed, if the process takes too long in step 13, stop the protocol and press continue.)}\\
+  \ttt{(\textbf{Note}:when executed, if the process takes too long in step 13, stop the protocol and press continue.)}\\
   
-  A neural network will be trained with subsets of coordinates from particles picked and not picked. Finally, the method provides a score for each particle according to the neural network predictions. After pressing \scommand{Analyze Results}, a menu allows to visualize a table showing an image and the value of the deep learning score of all the particles (\ttt{Select particles/coordinates with high 'zScoreDeepLearning1' values}). Considering that bad particles show scores values close to 0.00 and good particles scores close to 1.00, the threshold, automatically set to 0.50, allows to select good particles. In our example, from the total number of particles (4006), 0 particles were rejected, and the total number of particles were selected to remain in the processing workflow.\\
+  A neural network will be trained with subsets of coordinates from particles picked and not picked. Finally, the method provides a score for each particle according to the neural network predictions. After pressing \scommand{Analyze Results}, a menu allows to visualize a table showing an image and the value of the deep learning score of all the particles (\ttt{Select particles/coordinates with high 'zScoreDeepLearning1' values}). Considering that bad particles show scores values close to 0.00 and good particles scores close to 1.00, the threshold, automatically set to 0.50, allows to select good particles. In our example, from the total number of particles (4,006), 0 particles were rejected, and the total number of particles were selected to remain in the processing workflow.\\
   
   An additional cleaning step, accomplished with the protocol \scommand{xmipp3-deep micrograph cleaner}, removes particles located in carbon zones or in large impurities (\ffigure{fig:xmipp_deep_micrograph_cleaner}). Provide as input the previously selected set of coordinates and indicate the set of micrographs from which the computation will be performed. By default, we use the same as coordinates.
   
@@ -104,7 +109,7 @@ The protocol \scommand{xmipp3-manual-picking (step1)} (\ffigure{fig:xmipp_manual
   \label{fig:xmipp_deep_micrograph_cleaner}
   \end{figure}
   
-  After this additional step of cleaning, other set of 38 particles has been rejected. The coordinates of the remaining reliable 3968 particles are selected for further processing.\\ 
+  After this additional cleaning step, 38 particles were rejected. The coordinates of the remaining reliable 3,968 particles are selected for further processing.\\ 
   
   For more information: 
 \begin{itemize}

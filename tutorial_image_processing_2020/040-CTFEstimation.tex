@@ -7,13 +7,14 @@
   \caption{CTF estimation workflow.}
   \label{fig:workflow_2}
   \end{figure}
+  
 Since close to focus images of biological specimens embedded in vitreous ice generate very little contrast, we take our movie-frames out of focus, and retrieve systematically distorted images of our specimens. The alteration observed is due to the different transference of contrast for each frequency. In an ideal microscope all the frequencies are transferred with total contrast (+1). In a normal one, some frequencies are transferred with contrast 0 or even -1. The CTF (Contrast transfer function) indicates how much contrast is transferred to the image as a function of the spatial frequency. The estimation of the CTF is the first step to correct it, repair its negative effect and retrieve our specimens undistorted.\\
 
 How to estimate the CTF?\\
 
 Since part of the Fourier components are lost, attenuated or inverted, images of the specimens taken in a non-ideal microscope will appear blurry. We define this blurry effect with the PSF (Point spread function). The effect of the PSF makes that a discrete point in the specimen is reproduced in the image as a broad point with a complex shape. The PSF can be directly estimated from the micrographs and, since the PSF and the CTF are related through the Fourier Transform, by computing the Fourier Transform of the PSF, we can directly estimate the CTF.\\
 
-We count on different protocols to estimate the CTF of the micrographs in \scipion. In this tutorial we are going to use three different algorithms: \ttt{Gctf}\citep{gctf2016}, \ttt{CTFFind4} \citep{ctffind42015} and \ttt{Xmipp CTF estimation} \citep{sorzano2013semiautomatic} executed with protocols \scommand{gctf-ctf estimation} (\ffigure{fig:gctf_ctf_estimation}), \scommand{cistem-ctffind4}(\ffigure{fig:cistem-ctffind4}) and \scommand{xmipp3-ctf estimation}(\ffigure{fig:xmipp3_ctf_estimation}), respectively. Besides of estimating the CTF envelope, this last protocol improves the CTF estimation of \ttt{CTFFind4}. Thus, in this case an additional parameter  is the defoci from a \ttt{Previous CTF estimation}. \\
+We count on different protocols to estimate the CTF of the micrographs in \scipion. In this tutorial we are going to use three different algorithms: \ttt{Gctf}\citep{gctf2016}, \ttt{CTFFind4} \citep{ctffind42015} and \ttt{Xmipp CTF estimation} \citep{sorzano2013semiautomatic} executed with protocols \scommand{gctf-ctf estimation} (\ffigure{fig:gctf_ctf_estimation}), \scommand{cistem-ctffind4}(\ffigure{fig:cistem-ctffind4}) and \scommand{xmipp3-ctf estimation}(\ffigure{fig:xmipp3_ctf_estimation}), respectively. Besides of estimating the CTF envelope, this last protocol improves the CTF estimation of \ttt{CTFFind4}. Thus, in this case an additional parameter is the defoci from a \ttt{Previous CTF estimation}. \\
 
 \begin{figure}[H]
   \centering
@@ -73,7 +74,7 @@ In this first case we have selected, as first input, the estimation of the CTF c
   
  In this second case we have selected, as first input, the estimation of the CTF calculated by \scommand{xmipp3-ctf estimation} and, as second input, the estimation obtained by \scommand{xmipp3-ctf consensus GCTF and CTFFind4}. By pressing \scommand{Analyze Results} both accepted (28) and rejected (0) micrographs can be visualized. On the other hand, once we had a good estimate of the defocus with this consensus we obtained a good estimate of the envelope.\\ 
 
-With the proper set of micrographs we can continue the image processing. The negative effects of the CTF will be corrected in the next steps\\.
+With the proper set of micrographs we can continue the image processing. The negative effects of the CTF will be corrected in the next steps.\\
 
 For more information: 
 \begin{itemize}
