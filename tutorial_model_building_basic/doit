@@ -17,3 +17,17 @@ latexmk -pvc -pdf tutorial_model_building_basic.tex
 # cp ../../Documents/scipionLatexDocuments/tutorial_model_building_basic/output2.pdf tutorials/tutorial_model_building_basic.pdf 
 # git commit -m "for July course, added atomstructutils and contacts" tutorials/tutorial_model_building_basic.pdf
 # git push
+
+
+#Cambio con el nuevo repo: 
+#marta@lebesgue:~/software/scipion-docs$ git clone git@github.com:scipion-em/docs.git (9_02_2021)
+#marta@lebesgue:~/software/scipion-docs/docs/docs/pdfs$ cp /home/marta/Documents/scipionLatexDocuments/#tutorial_model_building_basic/output2.pdf ./tutorial_model_building_basic.pdf
+
+#0 sea:
+# upload to tutorial
+# go to ~/software/scipion-docs/docs/
+# git pull
+# overwrite with new pdf file
+# cp ../../Documents/scipionLatexDocuments/tutorial_model_building_basic/output2.pdf docs/pdfs/tutorial_model_building_basic.pdf
+# git push
+

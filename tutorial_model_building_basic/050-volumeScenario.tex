@@ -140,7 +140,7 @@ In the tiny example shown in this tutorial we are working with a high resolution
 
 
 
-\subsection*{Extraction of the map asymmetric unit}
+\subsection*{Extraction of the asymmetric unit map}
 Since smaller volumes usually include lower number of individual structural elements, making easier fitting models in maps and simplifying modeling process, the part of the map chosen to work with will always be the smaller asymmetrical subunit of the starting loaded map, also known as asymmetric unit (ASU). The size of the ASU thus depends on the symmetry order of the initial volume. The higher the symmetry order, the smaller the ASU. The atomic structure of the whole volume will be obtained straight forward by simply repetition of the ASU structure according to the symmetry order. Then, the first step to simplify the complexity of the initial volume is extracting the ASU. This task can be accomplished by using the \scipion protocol \scommand{xmipp3 - extract unit cell} that extracts the geometrical ASU of the map (Appendix \ref{app:extractUnitCell}).\\
 
 \ffigure{fig:extract_unit_cell} shows how to fill in this protocol form (1). Consider that in this particular case the protocol will be run three times, one with each map (the initial one and the two sharpened derived ones). Include each map in a protocol form parallel to that shown in \ffigure{fig:extract_unit_cell} (2). Since \ttt{metHgb} macromolecule shows symmetry C2, we have selected cyclic symmetry (Cn) as type of symmetry (3), and 2 as symmetry order (4). The angle offset selected (5) turns -45º around the Z axis the mask used to create the ASU. 

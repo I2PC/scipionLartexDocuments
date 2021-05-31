@@ -141,6 +141,7 @@ Density for amino acid side chains from an experimental electron density map at 
   \vhEntry{1.2}{04.24.2019}{MM}{added atomstructutils, contacts and submission protocols}
   \vhEntry{1.3}{09.10.2019}{MM}{added map preprocessing protocols (create mask, and compute local Resolution and Sharpening) and \phenix validation cryoEM}
   \vhEntry{1.4}{18.11.2020}{MM}{migration to python3 and adaptation to \scipion version 3.0, replacement of Chimera by ChimeraX (new functionalities in model from template and map subtract), added other preprocessing tools ($DeepEMhancer$), added \phenix dock-in-map protocol, removed singularities for \phenix version 1.13, removed \powerfit protocol}
+   \vhEntry{1.5}{18.05.2021}{MM}{added \phenix search fit protocol}
 \end{versionhistory}\newpage
 
 %----------------------------------------------------------------------------------------
@@ -228,7 +229,8 @@ This tutorial requires, in addition to \scipion, the \ccp4 suite (\url{http://ww
 \input{a140-realSpaceRefineProtocol.tex}
 \input{a150-superposePdbsProtocol.tex}
 \input{a160-dockInMapProtocol.tex}
-\input{a161-asignOrigAndSampling.tex}
+\input{a161-searcFitProtocol.tex}
+\input{a162-asignOrigAndSampling.tex}
 \input{a170-exportToEMDB.tex}
 
 
