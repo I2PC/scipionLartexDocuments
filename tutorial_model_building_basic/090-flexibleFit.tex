@@ -167,7 +167,7 @@ that you can see in the \ttt{Summary} of the \scipion framework after changing t
   \label{fig:phenix_search_fit_1}
   \end{figure}
   
-  This example shows a small fraction of residues from the \ttt{metHgb} $\alpha$ subunit that was not completely modeled, except for the skeleton of $\alpha$ carbons. The sequence of the chain is perfectly known, but for certain residues we were unable of tracing the lateral side chains of those residues and only \ttt{ALA} residues appear in our atomic structure. A detail of the small fragment of \ttt{ALA} residues can be observed in the \ffigure{fig:phenix_search_fit_1}. The protocol \phenix \ttt{search fit} might help us to replace the \ttt{ALA} residues by the appropriate aminoacids.
+  This example shows a small fraction of residues from the \ttt{metHgb} $\alpha$ subunit that was not completely modeled, except for the skeleton of $\alpha$ carbons. The sequence of the chain is perfectly known, but for certain residues we were unable of tracing the lateral side chains of those residues and only \ttt{ALA} residues appear in our atomic structure. A detail of the small fragment of \ttt{ALA} residues can be observed in the \ffigure{fig:phenix_search_fit_2} (red arrows). The protocol \phenix \ttt{search fit} might help us to replace the \ttt{ALA} residues by the appropriate aminoacids.
   
    \begin{figure}[H]
   \centering 
@@ -177,11 +177,11 @@ that you can see in the \ttt{Summary} of the \scipion framework after changing t
   \label{fig:phenix_search_fit_2}
   \end{figure}
   
-  As the \ffigure{fig:phenix_search_fit_1} indicates, the protocol \scommand{phenix - search fit} (4) requires three inputs (1, 2 and 3):
+  As the \ffigure{fig:phenix_search_fit_1} indicates, the protocol \scommand{phenix - search fit} (4) requires three different inputs (1, 2 and 3):
   
   \begin{enumerate}
   \item Initial map that contains the density of the \ttt{metHgb} $\alpha$ subunit. In this case we use the  asymmetric unit map extracted previously (section "Extraction of the asymmetric unit map", \ffigure{fig:extract_unit_cell}).
-  \item Small fragment of atomic structure that contains the \ttt{ALA} small chain. To create this fragment we start from the published atomic structure of the human \ttt{metHgb} $\alpha$ subunit (included in the model of the \ttt{PDB} ID \ttt{5NI1}, which can be downloaded from the database using the protocol \scommand{import atomic structure}. Next, use the protocol \chimera \ttt{operate} to isolate the chain \ttt{A} of the structure. The atomic structure \ttt{5NI1} is the only one input of the protocol \chimera \ttt{operate}. After the opening of \chimera, write in the command line:\\
+  \item Small fragment of atomic structure that contains the \ttt{ALA} small chain. To create this fragment we start from the published atomic structure of the human \ttt{metHgb} $\alpha$ subunit (included in the model of the \ttt{PDB} ID \ttt{5NI1}, which can be downloaded from the database using the protocol \scommand{import atomic structure}. Next, we use the protocol \chimera \ttt{operate} to isolate the chain \ttt{A} of the structure. The atomic structure \ttt{5NI1} is the only one input of the protocol \chimera \ttt{operate}. After the opening of \chimera, write in the command line:\\
   \ttt{sel #2 \& \~\ \#2/A}\\
   \ttt{del sel}\\
   \ttt{scipionwrite \#2 prefix 5ni1\_chainA\_}\\
@@ -198,7 +198,7 @@ that you can see in the \ttt{Summary} of the \scipion framework after changing t
   \item Sequence of the \ttt{metHgb} $\alpha$ subunit imported previously in section ``Sequences'' (\ffigure{fig:import_sequence}).
   \end{enumerate}
   
-  With these three previous inputs we can complete the \scommand{phenix - search fit} protocol form (\ffigure{fig:phenix_search_fit_3}(8)). Open it in the \scipion left menu (1) and include the asymmetric unit map (2) detailing its resolution (3), as well as the small fragment of mutated structure previously saved (4), the sequence downloaded (5) and take advantage of the two wizards on the right (6 and 7) to select the initial and final residues that delimite the sequence to search. 
+  With these three previous inputs we can complete the \scommand{phenix - search fit} protocol form (\ffigure{fig:phenix_search_fit_3}). Open it in the \scipion left menu (1) and include the asymmetric unit map (2) detailing its resolution (3), as well as the small fragment of mutated structure previously saved (4), the sequence downloaded (5) and take advantage of the two wizards on the right (6 and 7) to select the initial and final residues that delimite the sequence to search. 
   
   
    \begin{figure}[H]
@@ -209,7 +209,7 @@ that you can see in the \ttt{Summary} of the \scipion framework after changing t
   \label{fig:phenix_search_fit_3}
   \end{figure}
   
-  After executing the \scommand{phenix - search fit} protocol (\ffigure{fig:phenix_search_fit_3}(8)) we can have a look to the results. By pressing \ttt{Analyze Results} (\ffigure{fig:phenix_search_fit_3}(9)) a window with the Viewer menu is opened (\ffigure{fig:phenix_search_fit_4}(A)). This menu allows to visualize a certain number of  atomic structures, according to their ranking scores, with lateral side chains fitted in the map density (1). Those structures will be opened in \chimera (2) surrounded by the density located at 3.0\AA\ of the structure (3). The number \ttt{1000} shown by default in (1) allows displaying all atomic structures. By pressing \ttt{Summary Plot} (4) a pop up window will open to show the score values of each structure, as well as the average and standard deviation of those values (\ffigure{fig:phenix_search_fit_4}(B)). If we select the visualization of a certain number of atomic structures, 5 for example, as points the red arrow in (\ffigure{fig:phenix_search_fit_4}(C)), the five best score values will appear remarked in red in the Summary Plot. 
+  After executing the \scommand{phenix - search fit} protocol (\ffigure{fig:phenix_search_fit_3}(8)) we can have a look to the results. By pressing \ttt{Analyze Results} (\ffigure{fig:phenix_search_fit_3}(9)) a window with the Viewer menu is opened (\ffigure{fig:phenix_search_fit_4}(A)). This menu allows to visualize a certain number of  atomic structures, according to their ranking scores, with lateral side chains fitted in the map density (1). Those structures will be opened in \chimera (2) surrounded by the density located at 3.0\AA\ of the structure (3). The number \ttt{1000} shown by default in (1) allows displaying all atomic structures. By pressing \ttt{Summary Plot} (4) a pop up window will open and show the score values of each structure, as well as the average and standard deviation of those values (\ffigure{fig:phenix_search_fit_4}(B)). If we select the visualization of a certain number of atomic structures, 5 for example, as points the red arrow in (\ffigure{fig:phenix_search_fit_4}(C)), the five best score values will appear remarked in red in the Summary Plot. 
 
   
    \begin{figure}[H]
@@ -225,7 +225,7 @@ that you can see in the \ttt{Summary} of the \scipion framework after changing t
   \ttt{select \#9 \& \~\ \#9/A:94-118}\\
   \ttt{del sel}\\
   \ttt{mmaker \#9 to \#4}\\
-  In spite of some small differences, most of lateral side chains align quite well with the ones of the model \ttt{5NI1} traced on the experimental map.
+  In spite of some small differences, most of lateral side chains align quite well with the ones of the model \ttt{5NI1} traced on the experimental map. Then, the best approximation of the atomic structure retrieved (model \ttt{\#4}) can be selected to help with the tracing of a small fraction of the density map since the model \ttt{\#4} seems to be quite close to the actual atomic structure used as control (\ttt{PDB ID 5NI1}).
   
   \subsection*{\ccp4  \refmac}
   
